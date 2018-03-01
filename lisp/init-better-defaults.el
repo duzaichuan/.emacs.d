@@ -18,6 +18,16 @@
 
 (global-visual-line-mode t)
 
-(sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
+(fset 'yes-or-no-p 'y-or-n-p)
+
+(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'always)
+
+(put 'dired-find-alternate-file 'disabled nil)
+
+(require 'dired-x)
+(setq dired-dwim-target t)
+
+;;(sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
 
 (provide 'init-better-defaults)
