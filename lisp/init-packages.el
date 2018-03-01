@@ -20,7 +20,6 @@
 				   use-package
 				   matlab-mode
 				   eziam-theme
-				   solarized-theme
 				   ob-ipython
 				   racket-mode
 				   yaml-mode
@@ -46,8 +45,6 @@
       (when (not (package-installed-p pkg))
         (package-install pkg))))
 
-(show-paren-mode t)
-
 (when (and (memq window-system '(mac ns))
            (require 'exec-path-from-shell nil t))
   (setq exec-path-from-shell-debug t)
@@ -55,8 +52,10 @@
   (exec-path-from-shell-copy-envs '("LANG" "GPG_AGENT_INFO" "SSH_AUTH_SOCK"))
   (message "Initialized PATH and other variables from SHELL."))
 
+(show-paren-mode t)
+
 (global-company-mode t)
-;; global activation of the unicode symbol completion 
+;; global activation of the unicode symbol completion
 (add-to-list 'company-backends 'company-math-symbols-unicode)
 
 (ido-mode 1)
@@ -65,7 +64,6 @@
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
 
-(require 'smartparens-config)
 ;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
 
