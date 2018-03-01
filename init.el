@@ -176,6 +176,7 @@
 (set-keyboard-coding-system nil)
 
 (setq make-backup-files nil)
+(setq auto-save-default nil)
 
 (delete-selection-mode t)
 
@@ -442,3 +443,5 @@
 
 ;; disable audio bell
 (setq ring-bell-function 'ignore)
+
+(global-auto-revert-mode t)
