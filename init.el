@@ -7,14 +7,14 @@
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 (require 'init-ui)
-(require 'init-packages)
 (require 'init-better-defaults)
-(require 'init-org)
+(require 'init-packages)
 (require 'init-keybindings)
+(require 'init-org)
 
 (setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
 
-;; Greek letters completion globally except ess-julia
+(load-file custom-file)
 
 (require 'unicode-math-input)
 
