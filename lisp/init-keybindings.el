@@ -31,4 +31,7 @@
 ;; imenu everywhere
 (global-set-key (kbd "C-.") #'imenu-anywhere)
 
+;; git
+(global-set-key (kbd "C-x p f") 'counsel-git)
+
 (provide 'init-keybindings)

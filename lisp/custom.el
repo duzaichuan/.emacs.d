@@ -7,7 +7,9 @@
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+ '(company-idle-delay 0.1)
  '(company-math-allow-latex-symbols-in-faces t)
+ '(company-minimum-prefix-length 1)
  '(compilation-message-face (quote default))
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#657b83")
@@ -46,7 +48,6 @@
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
- '(org-latex-create-formula-image-program (quote dvipng))
  '(org-preview-latex-default-process (quote dvipng))
  '(org-startup-truncated nil)
  '(package-selected-packages

@@ -18,4 +18,6 @@
 
 (global-visual-line-mode t)
 
+(sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
+
 (provide 'init-better-defaults)
