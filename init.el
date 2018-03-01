@@ -2,54 +2,11 @@
 ;; installed packages.  Don't delete this line.  If you don't want (setq  initial-frame-alist (quote ((fullscreen . maximized))))it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-
-(require 'package)
 (package-initialize)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
+(add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(require 'cl)
+(require 'init-packages)
 
-;;add whatever packages you want here
-(defvar duzaichuan/packages '(
-				   company
-				   swiper
-				   counsel
-				   smartparens
-				   exec-path-from-shell
-				   auto-package-update
-				   polymode
-				   auctex
-				   ess
-				   org
-				   use-package
-				   matlab-mode
-				   eziam-theme
-				   solarized-theme
-				   ob-ipython
-				   racket-mode
-				   yaml-mode
-				   pdf-tools
-				   markdown-mode
-				   expand-region
-				   imenu-anywhere
-				   company-math
-				   popwin
-				   )  "Default packages")
-
-(setq package-selected-packages duzaichuan/packages)
-
-(defun duzaichuan/packages-installed-p ()
-    (loop for pkg in duzaichuan/packages
-          when (not (package-installed-p pkg)) do (return nil)
-          finally (return t)))
-
-(unless (duzaichuan/packages-installed-p)
-    (message "%s" "Refreshing package database...")
-    (package-refresh-contents)
-    (dolist (pkg duzaichuan/packages)
-      (when (not (package-installed-p pkg))
-        (package-install pkg))))
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -157,21 +114,14 @@
 (set-face-attribute 'default nil :height 170)
 (setq inhibit-startup-screen t)
 (setq-default cursor-type 'bar)
-(show-paren-mode t)
+
 (global-visual-line-mode t)
 
 ;; Locale setup
-(when (and (memq window-system '(mac ns))
-           (require 'exec-path-from-shell nil t))
-  (setq exec-path-from-shell-debug t)
-  (exec-path-from-shell-initialize)
-  (exec-path-from-shell-copy-envs '("LANG" "GPG_AGENT_INFO" "SSH_AUTH_SOCK"))
-  (message "Initialized PATH and other variables from SHELL."))
+
 
 (global-set-key (kbd "<f2>") (lambda () (interactive) (find-file user-init-file)))
 
-(ido-mode 1)
-(setq ido-separator "\n")
 
 (set-keyboard-coding-system nil)
 
@@ -187,8 +137,7 @@
     (interactive)
     (dired "~/")))
 
-(ivy-mode 1)
-(setq ivy-use-virtual-buffers t)
+
 (global-set-key "\C-s" 'swiper)
 (global-set-key (kbd "C-c C-r") 'ivy-resume)
 (global-set-key (kbd "M-x") 'counsel-M-x)
@@ -196,9 +145,7 @@
 (global-set-key (kbd "C-h f") 'counsel-describe-function)
 (global-set-key (kbd "C-h v") 'counsel-describe-variable)
 
-(require 'smartparens-config)
-;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
-(smartparens-global-mode t)
+
 
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
@@ -211,19 +158,14 @@
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 ;Reproducible Research and Literate Programming for Econometrics
-(require 'ess-site)
-(setq  inferior-julia-program-name "/Applications/JuliaPro-0.6.1.1.app/Contents/Resources/julia/Contents/Resources/julia/bin/julia")
 
-;; ESS tracing bugs
-(add-to-list 'ess-tracebug-search-path "/Applications/JuliaPro-0.6.1.1.app/Contents/Resources/julia/Contents/Resources/julia/bin/julia")
 
 ;; Tell emacs location of your personal elisp lib dir
-(add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(global-company-mode t)
 
-;; global activation of the unicode symbol completion 
-(add-to-list 'company-backends 'company-math-symbols-unicode)
+
+
+
 (global-set-key (kbd "C-u") 'company-math-symbols-unicode)
 
 ;; Greek letters completion globally(except ess-julia)
@@ -387,59 +329,22 @@
           ))))
 	     
 
-;; Matlab-mode
-(setq matlab-shell-command "/Applications/MATLAB/MATLAB_R2017b.app/bin/matlab")
-    (setq matlab-shell-command-switches (list "-nodesktop"))
+
 
 ;; dynare .mod file
 (require 'dynare)
 
-;; polymode
-;;; MARKDOWN
-(add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode))
-;;; R modes
-(add-to-list 'auto-mode-alist '("\\.Snw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rnw" . poly-noweb+r-mode))
-(add-to-list 'auto-mode-alist '("\\.Rmd" . poly-markdown+r-mode))
-(require 'poly-R)
-(require 'poly-markdown)
 
-;; Auctex
-(setq TeX-auto-save t)
-(setq TeX-parse-self t)
-(setq-default TeX-master nil)
-(add-hook 'LaTeX-mode-hook 'visual-line-mode)
-(add-hook 'LaTeX-mode-hook 'flyspell-mode)
-(add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(setq reftex-plug-into-AUCTeX t)
-(setq TeX-PDF-mode nil)
-(setq preview-image-type 'dvipng)
-(add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
-(add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
 
-;; Racket mode
-(add-hook 'racket-mode-hook
-          (lambda ()
-            (define-key racket-mode-map (kbd "C-c r") 'racket-run)))
-(setq tab-always-indent 'complete)
 
-;; pdf-tools
-(pdf-tools-install)
-;; automatically annotate highlights
-(setq pdf-annot-activate-created-annotations t)
-(add-hook 'pdf-view-mode-hook (lambda() (linum-mode -1)))
 
-;; expand-region
-(require 'expand-region)
+
 (global-set-key (kbd "C-=") 'er/expand-region)
 
 ;; imenu everywhere
 (global-set-key (kbd "C-.") #'imenu-anywhere)
 
-;; popwin help window is annoying
-(require 'popwin)
-(popwin-mode t)
+
 
 ;; disable audio bell
 (setq ring-bell-function 'ignore)
