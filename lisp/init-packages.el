@@ -30,6 +30,7 @@
 				   company-math
 				   popwin
 				   reveal-in-osx-finder
+				   ov
 				   )  "Default packages")
 
 (setq package-selected-packages duzaichuan/packages)
