@@ -116,4 +116,6 @@
 (require 'popwin)
 (popwin-mode t)
 
+(require 'ov)
+
 (provide 'init-packages)
