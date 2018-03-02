@@ -46,6 +46,7 @@
       (when (not (package-installed-p pkg))
         (package-install pkg))))
 
+;; path consistency between shell and emacs
 (when (and (memq window-system '(mac ns))
            (require 'exec-path-from-shell nil t))
   (setq exec-path-from-shell-debug t)
@@ -53,9 +54,10 @@
   (exec-path-from-shell-copy-envs '("LANG" "GPG_AGENT_INFO" "SSH_AUTH_SOCK"))
   (message "Initialized PATH and other variables from SHELL."))
 
+;; paren-mode
 (show-paren-mode t)
-
 (global-company-mode t)
+
 ;; global activation of the unicode symbol completion
 (add-to-list 'company-backends 'company-math-symbols-unicode)
 
@@ -68,6 +70,7 @@
 ;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
 
+;; ESS julia
 (require 'ess-site)
 (setq  inferior-julia-program-name "/Applications/JuliaPro-0.6.1.1.app/Contents/Resources/julia/Contents/Resources/julia/bin/julia")
 

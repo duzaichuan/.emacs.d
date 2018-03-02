@@ -3,3 +3,4 @@ elpa
 .DS_Store
 init.el~
 srecode-map.el
+ido.last

@@ -1,3 +1,4 @@
+;; open init.el 
 (global-set-key (kbd "<f2>") (lambda () (interactive) (find-file user-init-file)))
 
 (global-set-key (kbd "<f1>")
@@ -12,12 +13,15 @@
 (global-set-key (kbd "C-h f") 'counsel-describe-function)
 (global-set-key (kbd "C-h v") 'counsel-describe-variable)
 
+;; help menu
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
 
+;; open recent files
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
+;; execute unicode
 (global-set-key (kbd "C-u") 'company-math-symbols-unicode)
 
 ;; org commands
