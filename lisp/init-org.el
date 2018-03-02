@@ -1,11 +1,3 @@
-;; Add julia and ipython to babel languages (you need an entry for each 
-;; language you want to submit code for)
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((ipython . t)
-   (julia . t)
-   ))
-
 ;; org mode
 (require 'org)
 (setq org-latex-create-formula-image-program 'dvipng)
@@ -32,6 +24,14 @@
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)   
 (add-hook 'org-mode-hook 'org-display-inline-images)
 (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display)
+
+;; Add julia and ipython to babel languages (you need an entry for each 
+;; language you want to submit code for)
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((ipython . t)
+   (julia . t)
+   ))
 
 ;; Automatic latex image toggling when cursor is on a fragment
 (defvar cw/org-last-fragment nil
