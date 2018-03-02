@@ -1,6 +1,7 @@
 ;; org mode
 (require 'org)
-(setq org-latex-create-formula-image-program 'dvipng)
+;;(setq org-latex-create-formula-image-program 'dvipng)
+(setq org-latex-create-formula-image-program 'dvisvgm)
 (setq org-confirm-babel-evaluate nil)
 ;; bigger latex fragment
 (plist-put org-format-latex-options :scale 1.65)
@@ -47,14 +48,14 @@ line are justified."
 	 (= beg (line-beginning-position)))
     (let* ((img (create-image image 'imagemagick t))
 	   (width (car (image-size img)))
-	   (offset (floor (- (/ (window-text-width) 2) (/ width 2)))))
+	   (offset (floor (- (/ (window-max-chars-per-line) 2) (/ width 2)))))
       (overlay-put (ov-at) 'before-string (make-string offset ? ))))
    ;; Right justification
    ((and (eq 'right (plist-get org-format-latex-options :justify)) 
 	 (= beg (line-beginning-position)))
     (let* ((img (create-image image 'imagemagick t))
 	   (width (car (image-display-size (overlay-get (ov-at) 'display))))
-	   (offset (floor (- (window-text-width) width (- (line-end-position) end)))))
+	   (offset (floor (- (window-max-chars-per-line) width (- (line-end-position) end)))))
       (overlay-put (ov-at) 'before-string (make-string offset ? ))))))
 
 (defun org-latex-fragment-tooltip (beg end image imagetype)
