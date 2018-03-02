@@ -58,9 +58,6 @@
 (show-paren-mode t)
 (global-company-mode t)
 
-;; global activation of the unicode symbol completion
-(add-to-list 'company-backends 'company-math-symbols-unicode)
-
 (ido-mode 1)
 (setq ido-separator "\n")
 
@@ -104,12 +101,6 @@
 (setq preview-image-type 'dvipng)
 (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
 (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
-
-;; Racket mode
-(add-hook 'racket-mode-hook
-          (lambda ()
-            (define-key racket-mode-map (kbd "C-c r") 'racket-run)))
-(setq tab-always-indent 'complete)
 
 ;; pdf-tools
 (pdf-tools-install)

@@ -47,4 +47,7 @@
              (ignore-errors (backward-up-list))
              (funcall fn)))))
 
+;; global activation of the unicode symbol completion
+(add-to-list 'company-backends 'company-math-symbols-unicode)
+
 (provide 'init-better-defaults)
