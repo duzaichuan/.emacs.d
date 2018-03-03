@@ -22,7 +22,7 @@
 (global-set-key "\C-x\ \C-r" 'recentf-open-files)
 
 ;; execute unicode
-(global-set-key (kbd "C-u") 'company-math-symbols-unicode)
+(global-set-key (kbd "C-c u") 'company-math-symbols-unicode)
 
 ;; org commands
 (global-set-key "\C-cl" 'org-store-link)
@@ -51,6 +51,5 @@
 (add-hook 'racket-mode-hook
           (lambda ()
             (define-key racket-mode-map (kbd "C-c r") 'racket-run)))
-(setq tab-always-indent 'complete)
 
 (provide 'init-keybindings)

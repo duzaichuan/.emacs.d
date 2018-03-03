@@ -1,8 +1,7 @@
 ;; org mode
 (require 'org)
-;;(setq org-latex-create-formula-image-program 'dvipng)
-;;(setq org-latex-create-formula-image-program 'dvisvgm)
-(setq org-latex-create-formula-image-program 'imagemagick)
+(setq org-latex-create-formula-image-program 'dvisvgm)
+
 (setq org-confirm-babel-evaluate nil)
 ;; bigger latex fragment
 (plist-put org-format-latex-options :scale 1.65)
