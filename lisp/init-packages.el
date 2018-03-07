@@ -17,6 +17,7 @@
 				   auctex
 				   ess
 				   org
+				   org-ref
 				   use-package
 				   matlab-mode
 				   eziam-theme
@@ -31,6 +32,13 @@
 				   popwin
 				   reveal-in-osx-finder
 				   ov
+				   dash
+				   helm
+				   helm-bibtex
+				   hydra
+				   key-chord
+				   s
+				   f
 				   )  "Default packages")
 
 (setq package-selected-packages duzaichuan/packages)

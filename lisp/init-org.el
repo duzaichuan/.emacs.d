@@ -10,6 +10,20 @@
 ;; line wrap in org mode
 (set-default 'truncate-lines nil)
 
+;; bibliography
+(require 'org-ref)
+(setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib"))
+
+;; see org-ref for use of these variables
+(setq org-ref-bibliography-notes "~/Dropbox/bibliography/notes.org"
+      org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
+      org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
+
+;; open pdf with system pdf viewer (works on mac)
+(setq bibtex-completion-pdf-open-function
+  (lambda (fpath)
+    (start-process "open" "*open*" "open" fpath)))
+
 ;; headlines
 (defun my/org-mode-hook ()
   "Stop the org-level headers from increasing in height relative to the other text."
