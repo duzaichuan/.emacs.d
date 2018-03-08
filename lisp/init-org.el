@@ -4,7 +4,7 @@
 
 (setq org-confirm-babel-evaluate nil)
 ;; bigger latex fragment
-(plist-put org-format-latex-options :scale 1.65)
+(plist-put org-format-latex-options :scale 1.70)
 ;; syntax highlight in org mode
 (setq org-src-fontify-natively t)
 ;; line wrap in org mode
@@ -23,16 +23,6 @@
 (setq bibtex-completion-pdf-open-function
   (lambda (fpath)
     (start-process "open" "*open*" "open" fpath)))
-
-;; headlines
-(defun my/org-mode-hook ()
-  "Stop the org-level headers from increasing in height relative to the other text."
-  (dolist (face '(org-level-1
-                  org-level-2
-                  org-level-3
-                  org-level-4
-                  org-level-5))
-    (set-face-attribute face nil :weight 'semi-bold :height 1.1)))
 
 ;; images auto-load
 (add-hook 'org-mode-hook 'my/org-mode-hook)

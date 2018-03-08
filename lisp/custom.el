@@ -98,4 +98,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-document-title ((t (:foreground "#000000" :weight bold :height 1.5)))))
+ '(org-block ((t (:background "gray96"))))
+ '(org-document-title ((t (:foreground "Black" :weight semi-bold :height 1.4))))
+ '(org-level-1 ((t (:background "gray93" :foreground "black" :overline nil :weight semi-bold :height 1.25))))
+ '(org-level-2 ((t (:background "gray93" :foreground "gray25" :overline nil :weight semi-bold :height 1.2))))
+ '(org-level-3 ((t (:background "gray93" :foreground "gray40" :overline nil :weight semi-bold :height 1.1))))
+ '(org-ref-cite-face ((t (:inherit org-link :foreground "dark red")))))

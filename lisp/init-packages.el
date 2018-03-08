@@ -18,6 +18,7 @@
 				   ess
 				   org
 				   org-ref
+				   org-beautify-theme
 				   use-package
 				   matlab-mode
 				   eziam-theme
