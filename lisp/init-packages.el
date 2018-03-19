@@ -18,12 +18,12 @@
 				   ess
 				   org
 				   org-ref
-				   org-beautify-theme
 				   use-package
 				   matlab-mode
 				   eziam-theme
 				   ob-ipython
 				   racket-mode
+				   geiser
 				   yaml-mode
 				   pdf-tools
 				   markdown-mode
