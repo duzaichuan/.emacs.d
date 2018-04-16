@@ -25,7 +25,6 @@
     (start-process "open" "*open*" "open" fpath)))
 
 ;; images auto-load
-(add-hook 'org-mode-hook 'my/org-mode-hook)
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)   
 (add-hook 'org-mode-hook 'org-display-inline-images)
 (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display)
