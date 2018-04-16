@@ -10,6 +10,9 @@
 ;; line wrap in org mode
 (set-default 'truncate-lines nil)
 
+;; Quickly insert blocks
+(add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
+
 ;; bibliography
 (require 'org-ref)
 (setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib"))
