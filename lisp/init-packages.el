@@ -128,4 +128,7 @@
 ;; overlay
 (require 'ov)
 
+;; automaticly update packages at start-up
+(auto-package-update-maybe)
+
 (provide 'init-packages)
