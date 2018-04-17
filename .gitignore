@@ -5,3 +5,5 @@ init.el~
 srecode-map.el
 ido.last
 recentf
+.last-package-update-day
+ido.last~
