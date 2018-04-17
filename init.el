@@ -12,13 +12,10 @@
 (require 'init-keybindings)
 (require 'init-org)
 (require 'init-Tex)
-
 (setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
-
 (load-file custom-file)
-
-;; load ob-julia
-(load "ob-julia")
 
 ;; dynare .mod file
 (require 'dynare)
+;; load ob-julia
+(load "ob-julia")
