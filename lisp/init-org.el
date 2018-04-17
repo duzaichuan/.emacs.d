@@ -10,7 +10,7 @@
 ;; line wrap in org mode
 (set-default 'truncate-lines nil)
 ;; org-mode buffer latex syntax highlighting
-(setq org-highlight-latex-and-related '(latex entities))
+(setq org-highlight-latex-and-related '(latex))
 
 ;; Quickly insert blocks
 (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
