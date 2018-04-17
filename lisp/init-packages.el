@@ -15,6 +15,8 @@
 				   auto-package-update
 				   polymode
 				   auctex
+				   magic-latex-buffer
+				   latex-unicode-math-mode
 				   ess
 				   org
 				   org-ref
@@ -29,7 +31,6 @@
 				   markdown-mode
 				   expand-region
 				   imenu-anywhere
-				   company-math
 				   popwin
 				   reveal-in-osx-finder
 				   ov
@@ -112,6 +113,19 @@
 (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
 (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
 
+(require 'magic-latex-buffer)
+(add-hook 'LaTeX-mode-hook 'magic-latex-buffer)
+
+(require 'latex-unicode-math-mode)
+;; Enable latex-unicode-math-mode automatically for all LaTeX files.
+;; This converts LaTeX to Unicode inside math environments.
+;;(add-hook 'LaTeX-mode-hook 'latex-unicode-math-mode)
+
+;; Enable latex-unicode-mode automatically for all LaTeX files.
+;; This converts LaTeX to Unicode everwhere, not only in math
+;; environments.(org-mode)
+;;(add-hook 'org-mode-hook 'latex-unicode-mode)
+
 ;; pdf-tools
 (pdf-tools-install)
 ;; automatically annotate highlights
@@ -130,5 +144,8 @@
 
 ;; automaticly update packages at start-up
 (auto-package-update-maybe)
+;; show a manual prompt before automatic updates
+(setq auto-package-update-prompt-before-update t)
+(setq auto-package-update-hide-results t)
 
 (provide 'init-packages)
