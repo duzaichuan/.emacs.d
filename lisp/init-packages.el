@@ -20,6 +20,7 @@
 				   ess
 				   org
 				   org-ref
+				   org-bullets
 				   use-package
 				   matlab-mode
 				   eziam-theme

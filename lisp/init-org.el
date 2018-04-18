@@ -24,6 +24,10 @@
       org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
       org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
 
+;; Show org-mode bullets as UTF-8 characters.
+(require 'org-bullets)
+(add-hook 'org-mode-hook 'org-bullets-mode)
+
 ;; open pdf with system pdf viewer (works on mac)
 (setq bibtex-completion-pdf-open-function
   (lambda (fpath)
