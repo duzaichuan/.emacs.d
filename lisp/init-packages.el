@@ -76,7 +76,6 @@
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
 
-;;(add-hook 'emacs-lisp-mode-hook 'smartparens-mode)
 (smartparens-global-mode t)
 
 ;; ESS julia

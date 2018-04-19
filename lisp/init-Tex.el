@@ -14,8 +14,6 @@
 
 (require 'magic-latex-buffer)
 (add-hook 'LaTeX-mode-hook 'magic-latex-buffer)
-(add-hook 'LaTeX-mode-hook (lambda () (set (make-variable-buffer-local 'TeX-electric-math) (cons "$" "$"))))
-;;(add-hook 'LaTeX-mode-hook (lambda () (set (make-variable-buffer-local 'TeX-electric-math) (cons "\\(" "\\)"))))
 (require 'latex-unicode-math-mode)
 ;; Enable latex-unicode-mode automatically for all LaTeX files.
 ;; This converts LaTeX to Unicode everwhere, not only in math
