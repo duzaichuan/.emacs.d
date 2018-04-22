@@ -42,6 +42,8 @@
 				   key-chord
 				   s
 				   f
+				   clojure-mode
+				   cider
 				   )  "Default packages")
 
 (setq package-selected-packages duzaichuan/packages)
