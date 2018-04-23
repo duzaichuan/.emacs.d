@@ -20,6 +20,7 @@
 				   ess
 				   org
 				   org-ref
+				   citeproc
 				   org-bullets
 				   use-package
 				   matlab-mode

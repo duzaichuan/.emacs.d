@@ -49,6 +49,7 @@
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(org-preview-latex-default-process (quote dvipng))
+ '(org-ref-default-ref-type "eqref")
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote

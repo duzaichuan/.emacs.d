@@ -14,6 +14,9 @@
 
 (require 'smartparens-org)
 
+;; renumber footnotes when new ones are inserted
+(setq org-footnote-auto-adjust t)
+
 ;; Quickly insert blocks
 (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
 
@@ -25,6 +28,9 @@
 (setq org-ref-bibliography-notes "~/Dropbox/bibliography/notes.org"
       org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
       org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
+
+;; make org-latex-pdf-process run bibtex
+(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
 
 ;; Show org-mode bullets as UTF-8 characters.
 (require 'org-bullets)
