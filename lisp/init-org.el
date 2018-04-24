@@ -30,7 +30,7 @@
       org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
       org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
 
-(setq org-ref-default-citation-link "citep")
+(setq org-ref-default-citation-link "citet")
 
 ;; set value of the variable org-latex-pdf-process
 (setq org-latex-pdf-process
