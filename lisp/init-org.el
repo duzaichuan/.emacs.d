@@ -22,6 +22,7 @@
 
 ;; bibliography
 (require 'org-ref)
+(require 'org-ref-citeproc)
 (setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib"))
 
 ;; see org-ref for use of these variables
@@ -29,8 +30,14 @@
       org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
       org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
 
-;; make org-latex-pdf-process run bibtex
-(setq org-latex-pdf-process (list "latexmk -shell-escape -bibtex -f -pdf %f"))
+(setq org-ref-default-citation-link "citep")
+
+;; set value of the variable org-latex-pdf-process
+(setq org-latex-pdf-process
+      '("pdflatex -interaction nonstopmode -output-directory %o %f"
+	"bibtex %b"
+	"pdflatex -interaction nonstopmode -output-directory %o %f"
+	"pdflatex -interaction nonstopmode -output-directory %o %f"))
 
 ;; Show org-mode bullets as UTF-8 characters.
 (require 'org-bullets)
