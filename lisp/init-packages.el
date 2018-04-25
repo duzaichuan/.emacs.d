@@ -45,6 +45,7 @@
 				   f
 				   clojure-mode
 				   cider
+				   outlook
 				   )  "Default packages")
 
 (setq package-selected-packages duzaichuan/packages)
@@ -123,5 +124,8 @@
 ;; show a manual prompt before automatic updates
 (setq auto-package-update-prompt-before-update t)
 (setq auto-package-update-hide-results t)
+
+;; Email
+(require 'outlook-mu4e)
 
 (provide 'init-packages)
