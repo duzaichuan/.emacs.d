@@ -46,6 +46,7 @@
 				   clojure-mode
 				   cider
 				   outlook
+				   typo
 				   )  "Default packages")
 
 (setq package-selected-packages duzaichuan/packages)
@@ -127,5 +128,9 @@
 
 ;; Email
 (require 'outlook-mu4e)
+
+;; typo mode
+(typo-global-mode 1)
+(add-hook 'text-mode-hook 'typo-mode)
 
 (provide 'init-packages)
