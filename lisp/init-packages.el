@@ -137,9 +137,6 @@
 (setq auto-package-update-prompt-before-update t)
 (setq auto-package-update-hide-results t)
 
-;; Email
-(require 'outlook-mu4e)
-
 ;; typo mode
 (typo-global-mode 1)
 (add-hook 'text-mode-hook 'typo-mode)
