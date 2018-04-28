@@ -61,6 +61,12 @@
    (julia . t)
    ))
 
+;; remove linum in org mode
+(defun nolinum ()
+  (linum-mode 0)
+)
+(add-hook 'org-mode-hook 'nolinum)
+
 ;; Automatic latex image toggling when cursor is on a fragment
 (defvar cw/org-last-fragment nil
   "Holds the type and position of last valid fragment we were on. Format: (FRAGMENT_TYPE FRAGMENT_POINT_BEGIN)"
