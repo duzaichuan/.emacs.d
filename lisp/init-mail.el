@@ -28,7 +28,9 @@
        ("/[Outlook].All Mail"    . ?a)))
 
 ;; allow for updating mail using 'U' in the main view:
-(setq mu4e-get-mail-command "offlineimap")
+(setq
+  mu4e-get-mail-command "offlineimap"   ;; or fetchmail, or ...
+  mu4e-update-interval 300)             ;; update every 5 minutes
 
 ;; something about ourselves
 (setq
@@ -36,8 +38,8 @@
    user-full-name  "Zaichuan Du"
    mu4e-compose-signature
     (concat
-      "Zaichuan Du\n"
-      "http://www.example.com\n"))
+      "Best\n"
+      "Zaichuan Du\n"))
 
 ;; sending mail -- replace USERNAME with your gmail username
 ;; also, make sure the gnutls command line utils are installed
@@ -46,19 +48,12 @@
 (require 'smtpmail)
 (setq message-send-mail-function 'smtpmail-send-it
    starttls-use-gnutls t
-   smtpmail-starttls-credentials '(("smtp.live.com" 587 nil nil))
+   smtpmail-starttls-credentials '(("smtp.live.com" 25 nil nil))
    smtpmail-auth-credentials
-     '(("smtp.live.com" 587 "duzaichuan@hotmail.com" nil))
+     '(("smtp.live.com" 25 "duzaichuan@hotmail.com" nil))
    smtpmail-default-smtp-server "smtp.live.com"
    smtpmail-smtp-server "smtp.live.com"
-   smtpmail-smtp-service 587)
-
-;; alternatively, for emacs-24 you can use:
-;;(setq message-send-mail-function 'smtpmail-send-it
-;;     smtpmail-stream-type 'starttls
-;;     smtpmail-default-smtp-server "smtp.gmail.com"
-;;     smtpmail-smtp-server "smtp.gmail.com"
-;;     smtpmail-smtp-service 587)
+   smtpmail-smtp-service 25)
 
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
