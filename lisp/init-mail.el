@@ -12,15 +12,7 @@
 ;; don't save message to Sent Messages, Gmail/IMAP takes care of this
 ;;(setq mu4e-sent-messages-behavior 'delete)
 
-;; (See the documentation for `mu4e-sent-messages-behavior' if you have
-;; additional non-Gmail addresses and want assign them different
-;; behavior.)
-
 ;; setup some handy shortcuts
-;; you can quickly switch to your Inbox -- press ``ji''
-;; then, when you want archive some messages, move them to
-;; the 'All Mail' folder by pressing ``ma''.
-
 (setq mu4e-maildir-shortcuts
     '( ("/INBOX"               . ?i)
        ("/[Outlook].Sent Mail"   . ?s)
@@ -41,10 +33,7 @@
       "Best\n"
       "Zaichuan Du\n"))
 
-;; sending mail -- replace USERNAME with your gmail username
-;; also, make sure the gnutls command line utils are installed
-;; package 'gnutls-bin' in Debian/Ubuntu
-
+;; sending mail
 (require 'smtpmail)
 (setq message-send-mail-function 'smtpmail-send-it
    starttls-use-gnutls t

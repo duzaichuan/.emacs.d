@@ -25,6 +25,7 @@
 				   use-package
 				   matlab-mode
 				   eziam-theme
+				   tao-theme
 				   ob-ipython
 				   racket-mode
 				   geiser

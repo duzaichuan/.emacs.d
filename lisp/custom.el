@@ -15,7 +15,7 @@
  '(cua-normal-cursor-color "#657b83")
  '(cua-overwrite-cursor-color "#b58900")
  '(cua-read-only-cursor-color "#859900")
- '(custom-enabled-themes (quote (eziam-light)))
+ '(custom-enabled-themes (quote (tao-yang)))
  '(custom-safe-themes
    (quote
     ("9fcac3986e3550baac55dc6175195a4c7537e8aa082043dcbe3f93f548a3a1e0" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "1f3113447a652b8436a9938bbac71ecaf022cc73ecd0d76182eb9713aa781f17" "086970da368bb95e42fd4ddac3149e84ce5f165e90dfc6ce6baceae30cf581ef" "3e335d794ed3030fefd0dbd7ff2d3555e29481fe4bbb0106ea11c660d6001767" "0ee3fc6d2e0fc8715ff59aed2432510d98f7e76fe81d183a0eb96789f4d897ca" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "55d31108a7dc4a268a1432cd60a7558824223684afecefa6fae327212c40f8d3" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
@@ -48,6 +48,7 @@
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
+ '(org-fontify-quote-and-verse-blocks t)
  '(org-preview-latex-default-process (quote dvipng))
  '(org-ref-default-ref-type "eqref")
  '(org-startup-truncated nil)
@@ -59,7 +60,7 @@
  '(pos-tip-foreground-color "#586e75")
  '(preview-auto-cache-preamble t)
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
- '(tao-theme-use-height t)
+ '(tao-theme-use-height nil)
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")
  '(truncate-lines nil)
@@ -99,9 +100,20 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(org-block ((t (:background "gray96"))))
+ '(org-block ((t (:background "gray96" :foreground "#616161" :height 0.95))))
+ '(org-block-begin-line ((t (:inherit org-meta-line))))
+ '(org-block-end-line ((t (:inherit org-block-begin-line))))
+ '(org-code ((t (:inherit shadow))))
+ '(org-document-info ((t (:foreground "#C3C3C3"))))
+ '(org-document-info-keyword ((t (:foreground "#C3C3C3"))))
  '(org-document-title ((t (:foreground "Black" :weight semi-bold :height 1.4))))
+ '(org-inlinetask ((t (:inherit shadow))))
  '(org-level-1 ((t (:background "gray93" :foreground "black" :overline nil :weight semi-bold :height 1.25))))
  '(org-level-2 ((t (:background "gray93" :foreground "gray25" :overline nil :weight semi-bold :height 1.2))))
  '(org-level-3 ((t (:background "gray93" :foreground "gray40" :overline nil :weight semi-bold :height 1.1))))
- '(org-ref-cite-face ((t (:inherit org-link :foreground "dark red")))))
+ '(org-meta-line ((t (:foreground "#9E9E9E" :height 0.95))))
+ '(org-quote ((t (:inherit org-block))))
+ '(org-ref-cite-face ((t (:inherit org-link :foreground "dark red"))))
+ '(org-special-keyword ((t (:inherit org-meta-line))))
+ '(org-verbatim ((t (:inherit shadow))))
+ '(org-verse ((t (:inherit org-block)))))
