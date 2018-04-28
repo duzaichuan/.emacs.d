@@ -152,6 +152,13 @@
 ;; Don't ask to quit... why is this the default?
 (setq mu4e-confirm-quit nil)
 
+;; setup some handy shortcuts
+(setq mu4e-maildir-shortcuts
+    '( ("/Exchange/INBOX"               . ?I)
+       ("/Exchange/sent"   . ?S)
+       ("/Outlook/Inbox"       . ?i)
+       ("/Outlook/sent"    . ?s)))
+
 (require 'outlook-mu4e)
 
 (provide 'init-mail)
