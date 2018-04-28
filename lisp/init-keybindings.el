@@ -56,4 +56,6 @@
           (lambda ()
             (define-key racket-mode-map (kbd "C-c r") 'racket-run)))
 
+(global-set-key (kbd "C-c d") 'paredit-delete-region)
+
 (provide 'init-keybindings)
