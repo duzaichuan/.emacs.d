@@ -48,12 +48,11 @@
 (require 'smtpmail)
 (setq message-send-mail-function 'smtpmail-send-it
    starttls-use-gnutls t
-   smtpmail-starttls-credentials '(("smtp.live.com" 25 nil nil))
-   smtpmail-auth-credentials
-     '(("smtp.live.com" 25 "duzaichuan@hotmail.com" nil))
    smtpmail-default-smtp-server "smtp.live.com"
    smtpmail-smtp-server "smtp.live.com"
-   smtpmail-smtp-service 25)
+   smtpmail-smtp-service 25
+   smtpmail-queue-mail  nil
+   smtpmail-queue-dir  "~/Maildir/queue/cur")
 
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
