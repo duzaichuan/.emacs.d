@@ -15,4 +15,8 @@
 (setq-default cursor-type 'bar)
 (global-hl-line-mode t)
 
+(require 'all-the-icons)
+
+(add-hook 'after-init-hook 'global-color-identifiers-mode)
+
 (provide 'init-ui)

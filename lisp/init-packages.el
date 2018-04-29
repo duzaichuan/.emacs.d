@@ -25,8 +25,9 @@
 				   org-bullets
 				   use-package
 				   matlab-mode
-				   eziam-theme
 				   tao-theme
+				   color-identifiers-mode
+				   all-the-icons
 				   ob-ipython
 				   racket-mode
 				   geiser
