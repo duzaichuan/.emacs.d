@@ -68,4 +68,6 @@
 
 (global-set-key "\C-e" 'mu4e)
 
+(global-set-key [f8] 'neotree-toggle)
+
 (provide 'init-keybindings)

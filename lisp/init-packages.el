@@ -28,6 +28,8 @@
 				   tao-theme
 				   color-identifiers-mode
 				   all-the-icons
+				   neotree
+				   spaceline-all-the-icons
 				   ob-ipython
 				   racket-mode
 				   geiser
