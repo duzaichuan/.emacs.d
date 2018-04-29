@@ -67,6 +67,19 @@
 )
 (add-hook 'org-mode-hook 'nolinum)
 
+;; send HTML email using Org-mode HTML export.
+(require 'org-mime)
+;; for gnus – this is set by default
+(setq org-mime-library 'mml)
+;; OR for Wanderlust (WL)
+;; (setq org-mime-library 'semi)
+;; OR for VM – not yet supported
+;; (setq org-mime-library 'vm)
+
+(setq org-mime-export-options '(:section-numbers nil
+                                :with-author nil
+                                :with-toc nil))
+
 ;; Automatic latex image toggling when cursor is on a fragment
 (defvar cw/org-last-fragment nil
   "Holds the type and position of last valid fragment we were on. Format: (FRAGMENT_TYPE FRAGMENT_POINT_BEGIN)"

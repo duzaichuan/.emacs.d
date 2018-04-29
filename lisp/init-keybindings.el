@@ -58,4 +58,12 @@
 
 (global-set-key (kbd "C-c d") 'paredit-delete-region)
 
+;; appropriate org-mime function in both email and Org-mode buffers
+(add-hook 'message-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c M-o") 'org-mime-htmlize)))
+(add-hook 'org-mode-hook
+          (lambda ()
+            (local-set-key (kbd "C-c M-o") 'org-mime-org-buffer-htmlize)))
+
 (provide 'init-keybindings)

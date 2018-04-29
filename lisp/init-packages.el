@@ -20,6 +20,7 @@
 				   ess
 				   org
 				   org-ref
+				   org-mime
 				   citeproc
 				   org-bullets
 				   use-package
