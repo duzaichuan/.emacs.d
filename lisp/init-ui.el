@@ -28,5 +28,6 @@
 (add-hook 'after-init-hook 'global-color-identifiers-mode)
 (require 'neotree)
 (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(neotree-show)
 
 (provide 'init-ui)

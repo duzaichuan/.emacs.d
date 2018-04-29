@@ -45,6 +45,7 @@
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
  '(magit-diff-use-overlays nil)
+ '(neo-mode-line-type (quote neotree))
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
@@ -101,6 +102,8 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(neo-banner-face ((t (:foreground "dark cyan"))))
+ '(neo-header-face ((t (:foreground "dark gray" :weight semi-bold))))
  '(org-block ((t (:background "gray96" :foreground "#616161" :height 0.95))))
  '(org-block-begin-line ((t (:inherit org-meta-line))))
  '(org-block-end-line ((t (:inherit org-block-begin-line))))
