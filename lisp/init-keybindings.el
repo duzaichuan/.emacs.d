@@ -66,8 +66,6 @@
           (lambda ()
             (local-set-key (kbd "C-c M-o") 'org-mime-org-buffer-htmlize)))
 
-(global-set-key "\C-e" 'mu4e)
-
 (global-set-key [f8] 'neotree-toggle)
 
 (provide 'init-keybindings)

@@ -19,5 +19,3 @@
 
 ;; dynare .mod file
 (require 'dynare)
-;; load ob-julia
-(load "ob-julia")

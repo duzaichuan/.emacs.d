@@ -1,13 +1,9 @@
-;; use mu4e for e-mail in emacs
-(require 'mu4e)
-(setq mail-user-agent 'mu4e-user-agent)
-
-;; default
-;; (setq mu4e-maildir "~/Maildir")
-
-;; CONFIGURING MU4E
-(setq mu4e-contexts
- `( ,(make-mu4e-context
+(use-package mu4e
+  :commands (mu4e)
+  :bind (("<f9>" . mu4e))
+  :config
+  (setq mu4e-contexts
+    `( ,(make-mu4e-context
      :name "Outlook"
      :match-func (lambda (msg) (when msg
        (string-prefix-p "/Outlook" (mu4e-message-field msg :maildir))))
@@ -24,8 +20,8 @@
        (mu4e-refile-folder . exchange-mu4e-refile-folder)
        ))
    ))
-
-(defun exchange-mu4e-refile-folder (msg)
+  
+  (defun exchange-mu4e-refile-folder (msg)
   "Function for chosing the refile folder for my Exchange email.
    MSG is a message p-list from mu4e."
   (cond
@@ -36,28 +32,7 @@
    (t "/Exchange/Archive")
    )
   )
-
-;; Alerts for new mails
-(use-package mu4e-alert
-  :ensure t
-  :after mu4e
-  :init
-  (setq mu4e-alert-interesting-mail-query
-    (concat
-     "flag:unread maildir:/Exchange/INBOX "
-     "OR "
-     "flag:unread maildir:/Outlook/INBOX"
-     ))
-  (mu4e-alert-enable-mode-line-display)
-  (defun gjstein-refresh-mu4e-alert-mode-line ()
-    (interactive)
-    (mu4e~proc-kill)
-    (mu4e-alert-enable-mode-line-display)
-    )
-  (run-with-timer 0 60 'gjstein-refresh-mu4e-alert-mode-line)
-  )
-
-;; USING MU4E TO SEND MAIL
+  ;; USING MU4E TO SEND MAIL
 (setq mu4e-sent-folder "/sent"
       ;; mu4e-sent-messages-behavior 'delete ;; Unsure how this should be configured
       mu4e-drafts-folder "/drafts"
@@ -96,8 +71,7 @@
        (concat
 	"Best\n"
 	"Zaichuan Du\n")))
-     ))
-
+    ))
 (defun my-mu4e-set-account ()
   "Set the account for composing a message.
    This function is taken from: 
@@ -158,7 +132,26 @@
        ("/Exchange/sent"   . ?S)
        ("/Outlook/Inbox"       . ?i)
        ("/Outlook/sent"    . ?s)))
+)
 
-(require 'outlook-mu4e)
+;; Alerts for new mails
+(use-package mu4e-alert
+  :ensure t
+  :after mu4e
+  :config
+  (setq mu4e-alert-interesting-mail-query
+    (concat
+     "flag:unread maildir:/Exchange/INBOX "
+     "OR "
+     "flag:unread maildir:/Outlook/INBOX"
+     ))
+  (mu4e-alert-enable-mode-line-display)
+  (defun gjstein-refresh-mu4e-alert-mode-line ()
+    (interactive)
+    (mu4e~proc-kill)
+    (mu4e-alert-enable-mode-line-display)
+    )
+  (run-with-timer 0 60 'gjstein-refresh-mu4e-alert-mode-line)
+  )
 
 (provide 'init-mail)

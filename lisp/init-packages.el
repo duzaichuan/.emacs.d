@@ -69,6 +69,10 @@
       (when (not (package-installed-p pkg))
         (package-install pkg))))
 
+;; This is only needed once, near the top of the file
+(eval-when-compile
+  (require 'use-package))
+
 ;; path consistency between shell and emacs
 (when (and (memq window-system '(mac ns))
            (require 'exec-path-from-shell nil t))
