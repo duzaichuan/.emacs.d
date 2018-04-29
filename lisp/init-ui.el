@@ -15,15 +15,15 @@
 (setq-default cursor-type 'bar)
 (global-hl-line-mode t)
 
-(require 'all-the-icons)
-(all-the-icons-octicon "file-binary")  ;; GitHub Octicon for Binary File
-(all-the-icons-faicon  "cogs")         ;; FontAwesome icon for cogs
-(all-the-icons-wicon   "tornado")      ;; Weather Icon for tornado
+(use-package all-the-icons
+  :config
+  (all-the-icons-octicon "file-binary")  ;; GitHub Octicon for Binary File
+  (all-the-icons-faicon  "cogs")         ;; FontAwesome icon for cogs
+  (all-the-icons-wicon   "tornado"))
 
-(require 'spaceline-all-the-icons)
 (use-package spaceline-all-the-icons
-  :after spaceline
-  :config (spaceline-all-the-icons-theme)
+  :config
+  (spaceline-all-the-icons-theme)
   (setq spaceline-all-the-icons-icon-set-bookmark 'heart
         spaceline-all-the-icons-icon-set-modified 'toggle
         spaceline-all-the-icons-icon-set-dedicated 'pin
@@ -43,7 +43,7 @@
 
 (add-hook 'after-init-hook 'global-color-identifiers-mode)
 (require 'neotree)
-(setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+(setq neo-theme (if (display-graphic-p) 'icons 'none))
 (neotree-show)
 
 (provide 'init-ui)
