@@ -23,13 +23,23 @@
 (require 'spaceline-all-the-icons)
 (use-package spaceline-all-the-icons
   :after spaceline
-  :config (spaceline-all-the-icons-theme))
-(setq spaceline-all-the-icons-icon-set-modified 'toggle)
-
-(spaceline-all-the-icons--setup-package-updates) ;; Enable package update indicator
-(spaceline-all-the-icons--setup-git-ahead)       ;; Enable # of commits ahead of upstream in git
-(spaceline-all-the-icons--setup-paradox)         ;; Enable Paradox mode line
-(spaceline-all-the-icons--setup-neotree)         ;; Enable Neotree mode line
+  :config (spaceline-all-the-icons-theme)
+  (setq spaceline-all-the-icons-icon-set-bookmark 'heart
+        spaceline-all-the-icons-icon-set-modified 'toggle
+        spaceline-all-the-icons-icon-set-dedicated 'pin
+        spaceline-all-the-icons-separator-type 'none
+        spaceline-all-the-icons-icon-set-flycheck-slim 'dots
+        spaceline-all-the-icons-flycheck-alternate t
+        spaceline-all-the-icons-highlight-file-name t
+        spaceline-all-the-icons-hide-long-buffer-path t)
+  (spaceline-toggle-all-the-icons-bookmark-on)
+  (spaceline-toggle-all-the-icons-dedicated-on)
+  (spaceline-toggle-all-the-icons-fullscreen-on)
+  (spaceline-toggle-all-the-icons-buffer-position-on)
+  (spaceline-all-the-icons--setup-package-updates)
+  (spaceline-all-the-icons--setup-paradox)
+  (spaceline-all-the-icons--setup-neotree)
+  )
 
 (add-hook 'after-init-hook 'global-color-identifiers-mode)
 (require 'neotree)

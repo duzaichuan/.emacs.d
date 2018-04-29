@@ -45,6 +45,7 @@
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
  '(magit-diff-use-overlays nil)
+ '(mu4e-headers-include-related nil)
  '(neo-mode-line-type (quote none))
  '(neo-theme (quote icons))
  '(nrepl-message-colors

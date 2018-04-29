@@ -1,7 +1,12 @@
 (use-package mu4e
   :commands (mu4e)
   :bind (("<f9>" . mu4e))
+  :defer 15
   :config
+  (setq
+  mu4e-get-mail-command "offlineimap"   ;; or fetchmail, or ...
+  mu4e-update-interval 300)             ;; update every 5 minutes
+  
   (setq mu4e-contexts
     `( ,(make-mu4e-context
      :name "Outlook"
@@ -50,8 +55,6 @@
   '(("Outlook"
      (mu4e-sent-folder "/Outlook/sent")
      (user-mail-address "duzaichuan@hotmail.com")
-     (smtpmail-smtp-user "duzaichuan")
-     (smtpmail-local-domain "hotmail.com")
      (smtpmail-default-smtp-server "smtp.live.com")
      (smtpmail-smtp-server "smtp.live.com")
      (smtpmail-smtp-service 25)
@@ -138,7 +141,7 @@
 (use-package mu4e-alert
   :ensure t
   :after mu4e
-  :config
+  :init
   (setq mu4e-alert-interesting-mail-query
     (concat
      "flag:unread maildir:/Exchange/INBOX "

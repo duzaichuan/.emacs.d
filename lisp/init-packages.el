@@ -71,7 +71,8 @@
 
 ;; This is only needed once, near the top of the file
 (eval-when-compile
-  (require 'use-package))
+  (require 'use-package)
+  (setq use-package-verbose t))
 
 ;; path consistency between shell and emacs
 (when (and (memq window-system '(mac ns))
