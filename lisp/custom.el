@@ -57,7 +57,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (org-bullets matlab-mode org org-edna 0blayout pdf-tools eziam-theme tao-theme ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex solarized-theme)))
+    (writeroom-mode org-bullets matlab-mode org org-edna 0blayout pdf-tools eziam-theme tao-theme ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex solarized-theme)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")

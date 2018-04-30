@@ -1,9 +1,7 @@
 (require 'package)
-
+(require 'cl)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
 (add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-
-(require 'cl)
 
 ;;add whatever packages you want here
 (defvar duzaichuan/packages '(
@@ -53,6 +51,7 @@
 				   paredit
 				   outlook
 				   typo
+				   writeroom-mode
 				   )  "Default packages")
 
 (setq package-selected-packages duzaichuan/packages)
@@ -148,5 +147,9 @@
 ;; typo mode
 (typo-global-mode 1)
 (add-hook 'text-mode-hook 'typo-mode)
+
+(use-package writeroom-mode
+  :ensure t
+  :bind ("C-c C-w" . writeroom-mode))
 
 (provide 'init-packages)
