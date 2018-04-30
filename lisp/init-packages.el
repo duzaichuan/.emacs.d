@@ -150,6 +150,6 @@
 
 (use-package writeroom-mode
   :ensure t
-  :bind ("C-c C-w" . writeroom-mode))
+  :bind ("C-c w" . writeroom-mode))
 
 (provide 'init-packages)
