@@ -65,6 +65,7 @@
  '(send-mail-function (quote smtpmail-send-it))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
  '(spaceline-all-the-icons-separator-type (quote arrow))
+ '(spaceline-all-the-icons-slim-render nil)
  '(tao-theme-use-height nil)
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")

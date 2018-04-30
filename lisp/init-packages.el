@@ -82,8 +82,6 @@
   (exec-path-from-shell-copy-envs '("LANG" "GPG_AGENT_INFO" "SSH_AUTH_SOCK"))
   (message "Initialized PATH and other variables from SHELL."))
 
-;; paren-mode
-(show-paren-mode t)
 (global-company-mode t)
 
 ;; paredit

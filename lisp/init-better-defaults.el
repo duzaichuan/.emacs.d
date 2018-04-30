@@ -1,3 +1,5 @@
+;; paren-mode
+(show-paren-mode t)
 ;; disable audio bell
 (setq ring-bell-function 'ignore)
 
