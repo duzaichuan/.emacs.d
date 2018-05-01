@@ -103,10 +103,6 @@
 
 ;; ESS julia
 (require 'ess-site)
-;;(setq  inferior-julia-program-name "/Applications/JuliaPro-0.6.1.1.app/Contents/Resources/julia/Contents/Resources/julia/bin/julia")
-
-;; ESS tracing bugs
-;;(add-to-list 'ess-tracebug-search-path "/Applications/JuliaPro-0.6.1.1.app/Contents/Resources/julia/Contents/Resources/julia/bin/julia")
 
 ;; Matlab-mode
 (setq matlab-shell-command "/Applications/MATLAB/MATLAB_R2017b.app/bin/matlab")

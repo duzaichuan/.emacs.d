@@ -52,8 +52,25 @@
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
  '(org-fontify-quote-and-verse-blocks t)
+ '(org-latex-default-packages-alist
+   (quote
+    (("AUTO" "inputenc" t
+      ("pdflatex"))
+     ("T1" "fontenc" t
+      ("pdflatex"))
+     ("" "graphicx" t nil)
+     ("" "grffile" t nil)
+     ("" "longtable" nil nil)
+     ("" "wrapfig" nil nil)
+     ("" "rotating" nil nil)
+     ("normalem" "ulem" t nil)
+     ("" "amsmath" t nil)
+     ("" "textcomp" t nil)
+     ("" "amssymb" t nil)
+     ("" "capt-of" nil nil)
+     ("hidelinks = true" "hyperref" nil nil)
+     ("" "cleveref" nil nil))))
  '(org-preview-latex-default-process (quote dvipng))
- '(org-ref-default-ref-type "eqref")
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote

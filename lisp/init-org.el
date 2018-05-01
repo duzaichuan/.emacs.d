@@ -31,6 +31,7 @@
       org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
 
 (setq org-ref-default-citation-link "citet")
+(setq org-ref-default-ref-type "eqref")
 
 ;; set value of the variable org-latex-pdf-process
 (setq org-latex-pdf-process
