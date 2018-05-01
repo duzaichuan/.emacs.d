@@ -1,12 +1,6 @@
 ;; appearance setting
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-;;(add-to-list 'default-frame-alist '(height . 40))
-;;(add-to-list 'default-frame-alist '(width . 85))
-
-;; font
-(set-face-attribute 'default nil
-		    :font "DejaVu Sans Mono")
-
+(set-face-attribute 'default nil :font "DejaVu Sans Mono")
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (global-linum-mode 1)
@@ -41,9 +35,14 @@
   (spaceline-all-the-icons--setup-neotree)
   )
 
-(add-hook 'after-init-hook 'global-color-identifiers-mode)
-(require 'neotree)
-(setq neo-theme (if (display-graphic-p) 'icons 'none))
-(neotree-show)
+(use-package color-identifiers-mode
+  :ensure t
+  :config (add-hook 'after-init-hook 'global-color-identifiers-mode))
+
+(use-package neotree
+  :ensure t
+  :bind ([f8] . neotree-toggle)
+  :config
+  (setq neo-theme (if (display-graphic-p) 'icons 'none)))
 
 (provide 'init-ui)

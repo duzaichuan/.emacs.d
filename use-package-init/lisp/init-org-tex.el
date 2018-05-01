@@ -16,8 +16,6 @@
   (setq reftex-plug-into-AUCTeX t)
   (setq TeX-PDF-mode nil)
   (setq reftex-bibliography-commands '("bibliography" "nobibliography" "addbibresource")
-  (setq preview-image-type 'dvipng)
-  (add-hook 'LaTeX-mode-hook '(lambda () (setq        compile-command "latexmk -pdf")))
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
 
   (general-define-key
@@ -41,7 +39,7 @@
 
 (use-package magic-latex-buffer
   :ensure t
-  :after auctex)
+  :after tex)
 
 (use-package helm-bibtex
   :ensure t
