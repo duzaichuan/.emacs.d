@@ -1,20 +1,19 @@
 ;; Language support
 (use-package ess
   :ensure t
-  :mode ("\\.jl\\'" . ess-mode)
-  :interpreter ("julia" . ess-mode))
+  :config
+  (require 'ess-site))
 
 (use-package matlab-mode
   :ensure t
   :mode "\\.m\\'"
-  :interpreter "matlab"
   :config
-  (setq matlab-shell-command "/Applications/MATLAB/MATLAB_R2017b.app/bin/matlab")
-  (setq matlab-shell-command-switches (list "-nodesktop")))
+ (setq matlab-indent-function t)
+ (setq matlab-shell-command "matlab"))
 
 (use-package dynare
   :load-path "/lisp"
-  :mode "\\.mod\\'")
+  :mode ("\\.mod\\'" . dynare-mode))
 
 (use-package clojure-mode
   :ensure t
@@ -30,4 +29,4 @@
   :mode (("\\.md" . poly-markdown-mode)
 	 ("\\.Rmd" . poly-markdown+r-mode)))
 
-(provide 'init-languages)
+(provide 'init-pro-langs)

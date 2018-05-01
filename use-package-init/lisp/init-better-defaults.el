@@ -6,7 +6,6 @@
 ;; font
 (set-face-attribute 'default nil
 		    :font "DejaVu Sans Mono")
-
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (global-linum-mode 1)
@@ -51,5 +50,7 @@
         (t (save-excursion
              (ignore-errors (backward-up-list))
              (funcall fn)))))
+
+(global-set-key (kbd "C-w") 'backward-kill-word)
 
 (provide 'init-better-defaults)

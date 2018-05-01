@@ -104,4 +104,8 @@
 
           ))))
 
+;;; mode trigger
+;;;###autoload
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+
 (provide 'org-auto-formula)

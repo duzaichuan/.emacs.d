@@ -38,14 +38,14 @@
   (auto-package-update-maybe))
 
 ;; you only need to specify :defer if you know for a fact that some other package will do something to cause your package to load at the appropriate time
-(use-package ov        :ensure t        :defer t)
-(use-package popwin    :ensure t        :defer t)
-(use-package dash    :ensure t        :defer t)
-(use-package popwin    :ensure t        :defer t)
-(use-package f    :ensure t        :defer t)
-(use-package s    :ensure t        :defer t)
-(use-package hydra :ensure t   :defer t)
-(use-package math-symbol-lists  :defer t)
+(use-package ov        :ensure t)
+(use-package popwin    :ensure t)
+(use-package dash    :ensure t)
+(use-package popwin    :ensure t)
+(use-package f    :ensure t)
+(use-package s    :ensure t)
+(use-package hydra :ensure t)
+(use-package math-symbol-lists  :ensure t)
 
 (use-package key-chord
   :ensure t
@@ -53,7 +53,7 @@
 
 (use-package company
   :ensure t
-  :defer t
+  :defer 5
   :config (global-company-mode))
 
 (use-package paredit
@@ -113,9 +113,8 @@
     (swiper-mc)))
 
 (use-package counsel
-  :ensure
+  :ensure t
   :after ivy
-  :demand t
   :custom (counsel-find-file-ignore-regexp
            (concat "\\(\\`\\.[^.]\\|"
                    (regexp-opt completion-ignored-extensions)
@@ -143,25 +142,9 @@
   ;; single "'" in emacs-lisp mode
   (sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil))
 
-(use-package pdf-tools
-  :ensure t
-  :magic ("%PDF" . pdf-view-mode)
-  :config
-  (dolist
-      (pkg
-       '(pdf-annot pdf-cache pdf-dev pdf-history pdf-info pdf-isearch
-                   pdf-links pdf-misc pdf-occur pdf-outline pdf-sync
-                   pdf-util pdf-view pdf-virtual))
-    (require pkg))
-  (pdf-tools-install))
-
 (use-package expand-region
   :ensure t
   :bind ("C-=" . er/expand-region))
-
-(use-package typo
-  :ensure t
-  :hook text-mode)
 
 (use-package yaml-mode
   :ensure t
@@ -185,25 +168,18 @@
 
 (use-package dired
   :config
+  ;; 延迟加载
+  (with-eval-after-load 'dired
+    (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
   ;; dired - reuse current buffer by pressing 'a'
   (put 'dired-find-alternate-file 'disabled nil)
-
   ;; always delete and copy recursively
   (setq dired-recursive-deletes 'always)
   (setq dired-recursive-copies 'always)
-
   ;; if there is a dired buffer displayed in the next window, use its
   ;; current subdir, instead of the current subdir of this dired buffer
   (setq dired-dwim-target t)
-
   ;; enable some really cool extensions like C-x C-j(dired-jump)
   (require 'dired-x))
-
-(use-package markdown-mode
-  :ensure t
-  :mode (("\\`README\\.md\\'" . gfm-mode)
-         ("\\.md\\'"          . markdown-mode)
-         ("\\.markdown\\'"    . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
 
 (provide 'init-toolkit)
