@@ -11,15 +11,18 @@
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
   (fset 'tex-font-lock-suscript 'ignore)
   (setq font-latex-fontify-script nil)
+  (setq preview-image-type 'dvipng)
   (setq reftex-plug-into-AUCTeX t)
   (setq TeX-PDF-mode nil)
   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
   (setq reftex-plug-into-AUCTeX t)
+  (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
 
 (use-package magic-latex-buffer
   :ensure t
-  :after tex)
+  :config
+  (add-hook 'LaTeX-mode-hook 'magic-latex-buffer))
 
 (use-package helm-bibtex
   :ensure t
@@ -50,7 +53,7 @@
     ;; images auto-load
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)   
     (add-hook 'org-mode-hook 'org-display-inline-images)
-    (setq org-latex-create-formula-image-program 'dvisvgm)
+    (setq org-latex-create-formula-image-program 'dvipng)
 
     (setq org-confirm-babel-evaluate nil)
     ;; bigger latex fragment
@@ -73,6 +76,11 @@
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
     (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display)
+    ;; open pdf with system pdf viewer (works on mac)
+    (setq bibtex-completion-pdf-open-function
+	  (lambda (fpath)
+	    (start-process "open" "*open*" "open" fpath)))
+
     ))
 
 (use-package org-bullets
@@ -92,19 +100,14 @@
   :config
   (require 'org-ref-citeproc)
   (setq org-ref-default-citation-link "citet")
+  (setq org-ref-default-ref-type "eqref")
   ;; set value of the variable org-latex-pdf-process
-  (setq org-latex-pdf-process
-      '("pdflatex -interaction nonstopmode -output-directory %o %f"
-	"bibtex %b"
-	"pdflatex -interaction nonstopmode -output-directory %o %f"
-	"pdflatex -interaction nonstopmode -output-directory %o %f"))
   (add-hook 'org-mode-hook
           (lambda ()
             (define-key org-mode-map (kbd "C-c i r") 'org-ref-helm-insert-ref-link)))
   (add-hook 'org-mode-hook
           (lambda ()
             (define-key org-mode-map (kbd "C-c i l") 'org-ref-helm-insert-label-link))))
-
 
 (use-package org-mime
   :ensure t

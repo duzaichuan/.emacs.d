@@ -15,6 +15,10 @@
   :load-path "/lisp"
   :mode ("\\.mod\\'" . dynare-mode))
 
+(use-package python
+  :mode ("\\.py\\'" . python-mode)
+  :interpreter ("python" . python-mode))
+
 (use-package clojure-mode
   :ensure t
   :mode ("\\.clj\\'" "\\.cljs\\'" "\\.edn\\'" "\\.boot\\'")
