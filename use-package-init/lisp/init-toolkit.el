@@ -27,9 +27,6 @@
   :config
   (exec-path-from-shell-initialize))
 
-;; ensure system binaries exist alongside your package declarations.
-(use-package use-package-ensure-system-package :ensure t)
-
 (use-package auto-package-update
   :ensure t
   :config
@@ -145,10 +142,6 @@
 (use-package expand-region
   :ensure t
   :bind ("C-=" . er/expand-region))
-
-(use-package yaml-mode
-  :ensure t
-  :mode "\\.yaml\\'")
 
 (use-package recentf
   :bind ("\C-x\ \C-r" . recentf-open-files)

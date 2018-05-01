@@ -12,6 +12,7 @@
   (all-the-icons-wicon   "tornado"))
 
 (use-package spaceline-all-the-icons
+  :ensure t
   :config
   (spaceline-all-the-icons-theme)
   (setq spaceline-all-the-icons-icon-set-bookmark 'heart

@@ -155,7 +155,6 @@
     (mu4e~proc-kill)
     (mu4e-alert-enable-mode-line-display)
     )
-  (run-with-timer 0 60 'gjstein-refresh-mu4e-alert-mode-line)
-  )
+  (run-with-timer 0 60 'gjstein-refresh-mu4e-alert-mode-line))
 
 (provide 'init-mail)

@@ -1,14 +1,3 @@
-(use-package markdown-mode
-  :ensure t
-  :mode (("\\`README\\.md\\'" . gfm-mode)
-         ("\\.md\\'"          . markdown-mode)
-         ("\\.markdown\\'"    . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
-
-(use-package writeroom-mode
-  :ensure t
-  :bind ("C-c w" . writeroom-mode))
-
 ;; == LaTex / AucTeX ==
 (use-package tex
   :ensure auctex
@@ -43,7 +32,6 @@
 
 (use-package org
   :ensure t
-
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
          ("C-c c" . org-capture)
@@ -134,6 +122,21 @@
 (use-package org-auto-formula
   :after org
   :load-path "lisp/")
+
+(use-package yaml-mode
+  :ensure t
+  :mode "\\.yaml\\'")
+
+(use-package markdown-mode
+  :ensure t
+  :mode (("\\`README\\.md\\'" . gfm-mode)
+         ("\\.md\\'"          . markdown-mode)
+         ("\\.markdown\\'"    . markdown-mode))
+  :init (setq markdown-command "multimarkdown"))
+
+(use-package writeroom-mode
+  :ensure t
+  :bind ("C-c w" . writeroom-mode))
 
 (use-package typo
   :ensure t

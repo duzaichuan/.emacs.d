@@ -1,8 +1,5 @@
 ;; appearance setting
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
-;;(add-to-list 'default-frame-alist '(height . 40))
-;;(add-to-list 'default-frame-alist '(width . 85))
-
 ;; font
 (set-face-attribute 'default nil
 		    :font "DejaVu Sans Mono")
