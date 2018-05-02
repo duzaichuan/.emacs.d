@@ -11,6 +11,10 @@
   (all-the-icons-faicon  "cogs")         ;; FontAwesome icon for cogs
   (all-the-icons-wicon   "tornado"))
 
+(use-package powerline
+  :ensure t
+  :defer t)
+
 (use-package spaceline-all-the-icons
   :ensure t
   :config
