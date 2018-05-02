@@ -12,3 +12,4 @@ lisp/.DS_Store
 network-security.data
 .cask/
 lisp/tmpklUnLY
+org-clock-save.el

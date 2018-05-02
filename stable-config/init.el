@@ -4,19 +4,22 @@
 ;; You may delete these explanatory comments.
 
 (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
-(cask-initialize) ;; analogous to (package-initialize)
-
+(cask-initialize)
 (require 'pallet)
 (pallet-mode t)
 
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(require 'init-toolkit)
-(require 'init-better-defaults)
+(require 'init-packages)
 (require 'init-ui)
-(require 'init-proglangs)
-(require 'init-writing)
+(require 'init-better-defaults)
+(require 'init-org)
+(require 'init-Tex)
+(require 'smartparens-Tex-org)
 (require 'init-mail)
+(require 'init-keybindings)
 (setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
 (load-file custom-file)
 
+;; dynare .mod file
+(require 'dynare)

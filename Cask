@@ -43,6 +43,7 @@
 (depends-on "latex-unicode-math-mode")
 (depends-on "load-theme-buffer-local")
 (depends-on "log4e")
+(depends-on "lsp-mode")
 (depends-on "magic-latex-buffer")
 (depends-on "markdown-mode")
 (depends-on "math-symbol-lists")
