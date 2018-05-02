@@ -14,7 +14,7 @@
 (require 'init-toolkit)
 (require 'init-better-defaults)
 (require 'init-ui)
-(require 'init-pro-langs)
+(require 'init-proglangs)
 (require 'init-writing)
 (require 'init-mail)
 (setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
