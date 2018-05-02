@@ -78,7 +78,4 @@
   :ensure t
   :bind ("C-c w" . writeroom-mode))
 
-(use-package pallet
-  :ensure t)
-
 (provide 'init-packages)

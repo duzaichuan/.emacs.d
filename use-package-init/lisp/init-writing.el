@@ -2,22 +2,24 @@
 (use-package tex
   :ensure auctex
   :config
-  (setq TeX-auto-save t)
-  (setq TeX-parse-self t)
-  (setq-default TeX-master nil)
-  (add-hook 'LaTeX-mode-hook 'visual-line-mode)
-  (add-hook 'LaTeX-mode-hook 'flyspell-mode)
-  (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-  (fset 'tex-font-lock-suscript 'ignore)
-  (setq font-latex-fontify-script nil)
-  (setq preview-image-type 'dvipng)
-  (setq reftex-plug-into-AUCTeX t)
-  (setq TeX-PDF-mode nil)
-  (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-  (setq reftex-plug-into-AUCTeX t)
-  (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
-  (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer))
+  (progn
+   (setq TeX-auto-save t)
+   (setq TeX-parse-self t)
+   (setq-default TeX-master nil)
+   (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+   (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+   (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+   (fset 'tex-font-lock-suscript 'ignore)
+   (setq font-latex-fontify-script nil)
+   (setq preview-image-type 'dvipng)
+   (setq reftex-plug-into-AUCTeX t)
+   (setq TeX-PDF-mode nil)
+   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+   (setq reftex-plug-into-AUCTeX t)
+   (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
+   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+   ))
 
 (use-package magic-latex-buffer
   :ensure t
@@ -98,25 +100,29 @@
       org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
       org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
   :config
-  (require 'org-ref-citeproc)
-  (setq org-ref-default-citation-link "citet")
-  (setq org-ref-default-ref-type "eqref")
-  ;; set value of the variable org-latex-pdf-process
-  (add-hook 'org-mode-hook
-          (lambda ()
-            (define-key org-mode-map (kbd "C-c i r") 'org-ref-helm-insert-ref-link)))
-  (add-hook 'org-mode-hook
-          (lambda ()
-            (define-key org-mode-map (kbd "C-c i l") 'org-ref-helm-insert-label-link))))
+  (progn
+   (require 'org-ref-citeproc)
+   (setq org-ref-default-citation-link "citet")
+   (setq org-ref-default-ref-type "eqref")
+   ;; set value of the variable org-latex-pdf-process
+   (add-hook 'org-mode-hook
+             (lambda ()
+               (define-key org-mode-map (kbd "C-c i r") 'org-ref-helm-insert-ref-link)))
+   (add-hook 'org-mode-hook
+             (lambda ()
+               (define-key org-mode-map (kbd "C-c i l") 'org-ref-helm-insert-label-link)))
+   ))
 
 (use-package org-mime
   :ensure t
   :after org
   :config
-  (setq org-mime-library 'mml)
-  (setq org-mime-export-options '(:section-numbers nil
-                                :with-author nil
-                                :with-toc nil)))
+  (progn
+   (setq org-mime-library 'mml)
+   (setq org-mime-export-options '(:section-numbers nil
+						    :with-author nil
+						    :with-toc nil))
+   ))
 
 (use-package smartparens-Tex-org
     :after (:any Tex org)
