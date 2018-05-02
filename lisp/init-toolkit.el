@@ -44,7 +44,6 @@
 
 (use-package company
   :ensure t
-  :defer 5
   :config
   (progn
     (global-company-mode)
@@ -183,7 +182,7 @@
     ;; current subdir, instead of the current subdir of this dired buffer
     (setq dired-dwim-target t)
     ;; enable some really cool extensions like C-x C-j(dired-jump)
-    (require 'dired-x)
+    (use-package dired-x)
     ))
 
 (provide 'init-toolkit)
