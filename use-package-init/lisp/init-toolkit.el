@@ -1,14 +1,3 @@
-(require 'package)
-(require 'cl)
-;;(setq package-enable-at-startup nil)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-
-(setq package-archive-priorities '(("org" . 3)
-                                   ("melpa" . 2)
-                                   ("gnu" . 1)))
-
 ;; Bootstrap `use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -36,12 +25,16 @@
 
 ;; you only need to specify :defer if you know for a fact that some other package will do something to cause your package to load at the appropriate time
 (use-package ov        :ensure t :defer t)
-(use-package popwin    :ensure t :defer t)
 (use-package dash    :ensure t :defer t)
 (use-package f    :ensure t :defer t)
 (use-package s    :ensure t :defer t)
 (use-package hydra :ensure t :defer t)
 (use-package math-symbol-lists  :ensure t :defer t)
+
+(use-package popwin
+  :ensure t
+  :config
+  (popwin-mode t))
 
 (use-package key-chord
   :ensure t
@@ -50,7 +43,13 @@
 (use-package company
   :ensure t
   :defer 5
-  :config (global-company-mode))
+  :config
+  (global-company-mode)
+  (with-eval-after-load 'company
+  (define-key company-active-map (kbd "M-n") nil)
+  (define-key company-active-map (kbd "M-p") nil)
+  (define-key company-active-map (kbd "C-n") #'company-select-next)
+  (define-key company-active-map (kbd "C-p") #'company-select-previous)))
 
 (use-package paredit
   :ensure t

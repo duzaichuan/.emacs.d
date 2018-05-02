@@ -8,8 +8,10 @@
   :ensure t
   :mode "\\.m\\'"
   :config
- (setq matlab-indent-function t)
- (setq matlab-shell-command "matlab"))
+  (progn
+    (setq matlab-indent-function t)
+    (setq matlab-shell-command "matlab")
+    ))
 
 (use-package dynare
   :load-path "/lib"

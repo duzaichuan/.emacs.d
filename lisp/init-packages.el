@@ -1,73 +1,3 @@
-(require 'package)
-(require 'cl)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
-(add-to-list 'package-archives '("org" . "https://orgmode.org/elpa/") t)
-
-;;add whatever packages you want here
-(defvar duzaichuan/packages '(
-				   company
-				   swiper
-				   counsel
-				   smartparens
-				   exec-path-from-shell
-				   auto-package-update
-				   polymode
-				   auctex
-				   magic-latex-buffer
-				   latex-unicode-math-mode
-				   ess
-				   org
-				   org-ref
-				   org-mime
-				   citeproc
-				   org-bullets
-				   use-package
-				   matlab-mode
-				   tao-theme
-				   color-identifiers-mode
-				   all-the-icons
-				   neotree
-				   spaceline-all-the-icons
-				   ob-ipython
-				   racket-mode
-				   geiser
-				   yaml-mode
-				   pdf-tools
-				   markdown-mode
-				   expand-region
-				   imenu-anywhere
-				   popwin
-				   reveal-in-osx-finder
-				   ov
-				   dash
-				   helm
-				   helm-bibtex
-				   hydra
-				   key-chord
-				   s
-				   f
-				   clojure-mode
-				   cider
-				   paredit
-				   outlook
-				   typo
-				   writeroom-mode
-				   )  "Default packages")
-
-(setq package-selected-packages duzaichuan/packages)
-
-(defun duzaichuan/packages-installed-p ()
-    (loop for pkg in duzaichuan/packages
-          when (not (package-installed-p pkg)) do (return nil)
-          finally (return t)))
-
-(unless (duzaichuan/packages-installed-p)
-    (message "%s" "Refreshing package database...")
-    (package-refresh-contents)
-    (dolist (pkg duzaichuan/packages)
-      (when (not (package-installed-p pkg))
-        (package-install pkg))))
-
 ;; This is only needed once, near the top of the file
 (eval-when-compile
   (require 'use-package)
@@ -147,5 +77,8 @@
 (use-package writeroom-mode
   :ensure t
   :bind ("C-c w" . writeroom-mode))
+
+(use-package pallet
+  :ensure t)
 
 (provide 'init-packages)

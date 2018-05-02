@@ -6,7 +6,7 @@
  '(ansi-color-faces-vector
    [default default default italic underline success warning error])
  '(ansi-color-names-vector
-   ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
+   ["#E8E8E8" "#3C3C3C" "#616161" "#0E0E0E" "#252525" "#3C3C3C" "#171717" "#0E0E0E"])
  '(company-idle-delay 0.1)
  '(company-math-allow-latex-symbols-in-faces t)
  '(company-minimum-prefix-length 2)
@@ -20,7 +20,7 @@
    (quote
     ("9fcac3986e3550baac55dc6175195a4c7537e8aa082043dcbe3f93f548a3a1e0" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "1f3113447a652b8436a9938bbac71ecaf022cc73ecd0d76182eb9713aa781f17" "086970da368bb95e42fd4ddac3149e84ce5f165e90dfc6ce6baceae30cf581ef" "3e335d794ed3030fefd0dbd7ff2d3555e29481fe4bbb0106ea11c660d6001767" "0ee3fc6d2e0fc8715ff59aed2432510d98f7e76fe81d183a0eb96789f4d897ca" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "55d31108a7dc4a268a1432cd60a7558824223684afecefa6fae327212c40f8d3" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" default)))
  '(eziam-scale-headings t)
- '(fci-rule-color "#eee8d5" t)
+ '(fci-rule-color "#F1F1F1" t)
  '(highlight-changes-colors (quote ("#d33682" "#6c71c4")))
  '(highlight-symbol-colors
    (--map
@@ -46,7 +46,7 @@
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
  '(magit-diff-use-overlays nil)
  '(mu4e-headers-include-related nil)
- '(neo-mode-line-type (quote none))
+ '(neo-mode-line-type (quote none) t)
  '(neo-theme (quote icons))
  '(nrepl-message-colors
    (quote
@@ -74,7 +74,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (writeroom-mode org-bullets matlab-mode org org-edna 0blayout pdf-tools eziam-theme tao-theme ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex solarized-theme)))
+    (2048-game cider citeproc clojure-mode color-identifiers-mode counsel ess exec-path-from-shell expand-region geiser highlight-parentheses imenu-anywhere julia-mode latex-unicode-math-mode load-theme-buffer-local magic-latex-buffer markdown-mode math-symbol-lists mu4e-alert neotree org-beautify-theme org-mime org-ref outlook ov pallet paredit parsebib pkg-info popup popwin queue racket-mode reveal-in-osx-finder shut-up spaceline-all-the-icons spinner string-inflection swiper tablist typo use-package yaml-mode writeroom-mode org-bullets matlab-mode org org-edna 0blayout pdf-tools eziam-theme tao-theme ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex solarized-theme)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
@@ -87,29 +87,29 @@
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")
  '(truncate-lines nil)
- '(vc-annotate-background nil)
+ '(vc-annotate-background "#F6F6F6")
  '(vc-annotate-background-mode nil)
  '(vc-annotate-color-map
    (quote
-    ((20 . "#dc322f")
-     (40 . "#c85d17")
-     (60 . "#be730b")
-     (80 . "#b58900")
-     (100 . "#a58e00")
-     (120 . "#9d9100")
-     (140 . "#959300")
-     (160 . "#8d9600")
-     (180 . "#859900")
-     (200 . "#669b32")
-     (220 . "#579d4c")
-     (240 . "#489e65")
-     (260 . "#399f7e")
-     (280 . "#2aa198")
-     (300 . "#2898af")
-     (320 . "#2793ba")
-     (340 . "#268fc6")
-     (360 . "#268bd2"))))
- '(vc-annotate-very-old-color nil)
+    ((20 . "#C3C3C3")
+     (40 . "#9E9E9E")
+     (60 . "#9E9E9E")
+     (80 . "#616161")
+     (100 . "#616161")
+     (120 . "#3C3C3C")
+     (140 . "#3C3C3C")
+     (160 . "#252525")
+     (180 . "#252525")
+     (200 . "#252525")
+     (220 . "#171717")
+     (240 . "#171717")
+     (260 . "#171717")
+     (280 . "#0E0E0E")
+     (300 . "#0E0E0E")
+     (320 . "#0E0E0E")
+     (340 . "#090909")
+     (360 . "#090909"))))
+ '(vc-annotate-very-old-color "#3C3C3C")
  '(weechat-color-list
    (quote
     (unspecified "#fdf6e3" "#eee8d5" "#990A1B" "#dc322f" "#546E00" "#859900" "#7B6000" "#b58900" "#00629D" "#268bd2" "#93115C" "#d33682" "#00736F" "#2aa198" "#657b83" "#839496")))

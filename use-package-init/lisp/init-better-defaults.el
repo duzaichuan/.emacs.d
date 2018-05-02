@@ -50,4 +50,8 @@
 
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
+;; single "'" in emacs-lisp mode 
+(sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
+(sp-local-pair 'emacs-lisp-mode "`" nil :actions nil)
+
 (provide 'init-better-defaults)
