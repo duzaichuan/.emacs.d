@@ -2,7 +2,6 @@
 (use-package mu4e
   :commands (mu4e)
   :bind (("<f9>" . mu4e))
-  :defer 15
   :config
   (setq
   mu4e-get-mail-command "offlineimap"   ;; or fetchmail, or ...
