@@ -12,7 +12,7 @@
  (setq matlab-shell-command "matlab"))
 
 (use-package dynare
-  :load-path "/lisp"
+  :load-path "/lib"
   :mode ("\\.mod\\'" . dynare-mode))
 
 (use-package python

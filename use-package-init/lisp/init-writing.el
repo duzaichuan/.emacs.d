@@ -120,11 +120,11 @@
 
 (use-package smartparens-Tex-org
     :after (:any Tex org)
-    :load-path "lisp/")
+    :load-path "lib/")
 
 (use-package org-auto-formula
   :after org
-  :load-path "lisp/")
+  :load-path "lib/")
 
 (use-package yaml-mode
   :ensure t
