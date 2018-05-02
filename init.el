@@ -5,10 +5,8 @@
 
 (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
 (cask-initialize) ;; analogous to (package-initialize)
-
 (require 'pallet)
 (pallet-mode t)
-
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
 (require 'init-toolkit)

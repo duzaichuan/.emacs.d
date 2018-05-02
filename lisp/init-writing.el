@@ -1,6 +1,8 @@
 ;; == LaTex / AucTeX ==
-(use-package tex
+(use-package tex-site
   :ensure auctex
+  :after tex
+  :after latex
   :config
   (progn
    (setq TeX-auto-save t)
