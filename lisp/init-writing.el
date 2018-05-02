@@ -25,8 +25,7 @@
 
 (use-package magic-latex-buffer
   :ensure t
-  :config
-  (add-hook 'LaTeX-mode-hook 'magic-latex-buffer))
+  :hook LaTeX-mode)
 
 (use-package helm-bibtex
   :ensure t

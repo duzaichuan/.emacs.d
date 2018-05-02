@@ -76,8 +76,4 @@
   :hook (lsp-mode-hook . lsp-ui-mode)
   :config (require 'lsp-flycheck))
 
-(use-package lsp-julia
-  :load-path "lib/"
-  :after lsp-mode)
-
 (provide 'init-proglangs)

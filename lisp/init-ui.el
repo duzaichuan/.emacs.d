@@ -44,8 +44,39 @@
 
 (use-package neotree
   :ensure t
+  :disabled t
   :bind ([f8] . neotree-toggle)
   :config
   (setq neo-theme (if (display-graphic-p) 'icons 'none)))
+
+(use-package treemacs
+  :ensure t
+  ;:after hl-line-mode
+  :config
+  (progn
+   (setq treemacs-follow-after-init          t
+         treemacs-width                      35
+         treemacs-indentation                2
+         treemacs-git-integration            t
+         treemacs-collapse-dirs              3
+         treemacs-silent-refresh             nil
+         treemacs-change-root-without-asking nil
+         treemacs-sorting                    'alphabetic-desc
+         treemacs-show-hidden-files          t
+         treemacs-never-persist              nil
+         treemacs-is-never-other-window      nil
+         treemacs-goto-tag-strategy          'refetch-index
+	 treemacs-width                      30)
+   (treemacs-follow-mode t)
+   (treemacs-filewatch-mode t)
+   
+   ;; remove linum in org mode
+    (defun nolinum ()
+      (linum-mode 0))
+    (add-hook 'treemacs-mode-hook 'nolinum)
+   )
+  :bind
+  (:map global-map
+        ([f8]        . treemacs-toggle)))
 
 (provide 'init-ui)
