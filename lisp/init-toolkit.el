@@ -191,6 +191,8 @@
   (global-undo-tree-mode))
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :demand t
+  :bind ("C-x g" . magit-status))
 
 (provide 'init-toolkit)

@@ -136,7 +136,7 @@
     (esh-section esh-num
 		 "\xf0c9"  ;  (list icon)
 		 (number-to-string esh-prompt-num)
-		 '(:foreground "grey"))
+		 '(:foreground "grey60"))
 
     ;; Separator between esh-sections
     (setq esh-sep "  ")  ; or " | "
