@@ -13,3 +13,4 @@ network-security.data
 .cask/
 lisp/tmpklUnLY
 org-clock-save.el
+eshell/

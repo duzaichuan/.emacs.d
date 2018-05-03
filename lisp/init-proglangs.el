@@ -55,6 +55,7 @@
 
 (use-package clojure-mode
   :ensure t
+  :commands (clojure-mode)
   :mode ("\\.clj\\'" "\\.cljs\\'" "\\.edn\\'" "\\.boot\\'")
   :interpreter "clojure")
 
@@ -75,5 +76,28 @@
   :commands lsp-ui-mode
   :hook (lsp-mode-hook . lsp-ui-mode)
   :config (require 'lsp-flycheck))
+
+(use-package eshell
+  :commands eshell
+  :init
+  (setq
+   eshell-buffer-shorthand t
+   eshell-cmpl-ignore-case t
+   eshell-cmpl-cycle-completions nil
+   eshell-history-size 10000
+   eshell-hist-ignoredups t
+   eshell-error-if-no-glob t
+   eshell-glob-case-insensitive t
+   eshell-scroll-to-bottom-on-input 'all)
+  :config
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (define-key eshell-mode-map
+                [remap eshell-pcomplete]
+                'helm-esh-pcomplete)
+              (define-key eshell-mode-map
+                (kbd "M-p")
+                'helm-eshell-history)
+              (eshell/export "NODE_NO_READLINE=1"))))
 
 (provide 'init-proglangs)

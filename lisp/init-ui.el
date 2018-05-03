@@ -77,6 +77,7 @@
    )
   :bind
   (:map global-map
-        ([f8]        . treemacs-toggle)))
+        ([f8]        . treemacs-toggle)
+	("C-c C-f" . treemacs-find-file)))
 
 (provide 'init-ui)
