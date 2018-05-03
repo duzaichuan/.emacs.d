@@ -51,7 +51,10 @@
 
 (use-package treemacs
   :ensure t
-  ;:after hl-line-mode
+  :bind
+  (:map global-map
+        ([f8]        . treemacs-toggle)
+	("C-c C-f" . treemacs-find-file))
   :config
   (progn
    (setq treemacs-follow-after-init          t
@@ -74,10 +77,6 @@
     (defun nolinum ()
       (linum-mode 0))
     (add-hook 'treemacs-mode-hook 'nolinum)
-   )
-  :bind
-  (:map global-map
-        ([f8]        . treemacs-toggle)
-	("C-c C-f" . treemacs-find-file)))
+   ))
 
 (provide 'init-ui)
