@@ -120,7 +120,7 @@
     (esh-section esh-dir
 		 "\xf07c"  ;  (faicon folder)
 		 (abbreviate-file-name (eshell/pwd))
-		 '(:foreground "dark-grey" :bold extra-bold :underline -1))
+		 '(:foreground "black" :bold ultra-bold :underline t))
 
     (esh-section esh-git
 		 "\xe907"  ;  (git icon)
@@ -163,5 +163,9 @@
 (use-package eshell-fringe-status
   :ensure t
   :hook (eshell-mode . eshell-fringe-status-mode))
+
+(use-package esh-autosuggest
+  :ensure t
+  :hook (eshell-mode . esh-autosuggest-mode))
 
 (provide 'init-proglangs)

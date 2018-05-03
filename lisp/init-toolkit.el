@@ -128,13 +128,15 @@
          ("M-x"     . counsel-M-x)
          ("M-s f" . counsel-file-jump)
          ("M-s g" . counsel-rg)
-         ("M-s j" . counsel-dired-jump))
+         ("M-s j" . counsel-dired-jump)
+	 ("C-x p f" . counsel-git))
   :commands counsel-minibuffer-history
   :init
   (bind-key "M-r" #'counsel-minibuffer-history minibuffer-local-map)
   :config
   (add-to-list 'ivy-sort-matches-functions-alist
-               '(counsel-find-file . ivy--sort-files-by-date)))
+               '(counsel-find-file . ivy--sort-files-by-date))
+  )
 
 (use-package smartparens
   :ensure t
