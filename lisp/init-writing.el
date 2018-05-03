@@ -56,8 +56,8 @@
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)   
     (add-hook 'org-mode-hook 'org-display-inline-images)
     (setq org-latex-create-formula-image-program 'dvipng)
-
-    (setq org-confirm-babel-evaluate nil)
+    (setq org-pretty-entities t) ;; render UTF8 characters
+    (setq org-confirm-babel-evaluate nil)   
     ;; bigger latex fragment
     (plist-put org-format-latex-options :scale 1.70)
     ;; syntax highlight in org mode
@@ -78,11 +78,6 @@
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
     (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display)
-    ;; open pdf with system pdf viewer (works on mac)
-    (setq bibtex-completion-pdf-open-function
-	  (lambda (fpath)
-	    (start-process "open" "*open*" "open" fpath)))
-
     ))
 
 (use-package org-bullets
