@@ -77,9 +77,6 @@
   :hook (lsp-mode-hook . lsp-ui-mode)
   :config (require 'lsp-flycheck))
 
-(use-package magit
-  :ensure t)
-
 (use-package eshell
   :ensure t
   :bind ([f1] . eshell)
