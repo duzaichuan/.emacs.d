@@ -1,7 +1,8 @@
 ;;Mail
 (use-package mu4e
-  :commands (mu4e)
-  :bind (("<f9>" . mu4e))
+  :commands mu4e
+  :defer 15
+  :bind ([f9] . mu4e)
   :config
   (progn
     (setq

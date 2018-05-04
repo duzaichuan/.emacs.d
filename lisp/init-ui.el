@@ -14,7 +14,8 @@
 
 (use-package powerline
   :ensure t
-  :defer t)
+  :defer t
+  :init (setq powerline-image-apple-rgb t))
 
 (use-package spaceline
   :ensure t)
@@ -36,10 +37,10 @@
 	 spaceline-all-the-icons-icon-set-sun-time 'sun/moon
          spaceline-all-the-icons-flycheck-alternate t
          spaceline-all-the-icons-highlight-file-name t
-	 spaceline-all-the-icons-window-number-always-visible t)
+	 spaceline-all-the-icons-window-number-always-visible t
+	 spaceline-all-the-icons-hide-long-buffer-path t)
    (spaceline-toggle-all-the-icons-bookmark-on)
    (spaceline-toggle-all-the-icons-dedicated-on)
-   (spaceline-toggle-all-the-icons-fullscreen-on)
    (spaceline-toggle-all-the-icons-buffer-position-on)
    (spaceline-toggle-all-the-icons-narrowed-on)
    (spaceline-all-the-icons--setup-anzu)            ;; Enable anzu searching
@@ -56,10 +57,7 @@
 
 (use-package neotree
   :ensure t
-  :disabled t
-  :bind ([f8] . neotree-toggle)
-  :config
-  (setq neo-theme (if (display-graphic-p) 'icons 'none)))
+  :defer t)
 
 (use-package treemacs
   :ensure t
