@@ -16,26 +16,38 @@
   :ensure t
   :defer t)
 
+(use-package spaceline
+  :ensure t
+  :defer t)
+
 (use-package spaceline-all-the-icons
   :ensure t
   :config
   (progn
    (spaceline-all-the-icons-theme)
-   (setq spaceline-all-the-icons-icon-set-bookmark 'heart
-         spaceline-all-the-icons-icon-set-modified 'toggle
+   (setq spaceline-all-the-icons-icon-set-bookmark 'bookmark
+         spaceline-all-the-icons-icon-set-modified 'circle
          spaceline-all-the-icons-icon-set-dedicated 'pin
-         spaceline-all-the-icons-separator-type 'none
+         spaceline-all-the-icons-separator-type 'arrow
          spaceline-all-the-icons-icon-set-flycheck-slim 'dots
+	 spaceline-all-the-icons-icon-set-window-numbering 'square
+	 spaceline-all-the-icons-icon-set-git-stats 'diff-icons
+	 spaceline-all-the-icons-icon-set-flycheck-slim 'solid
+	 spaceline-all-the-icons-icon-set-sun-time 'sun/moon
          spaceline-all-the-icons-flycheck-alternate t
          spaceline-all-the-icons-highlight-file-name t
-         spaceline-all-the-icons-hide-long-buffer-path t)
+         spaceline-all-the-icons-hide-long-buffer-path t
+	 spaceline-all-the-icons-window-number-always-visible t)
    (spaceline-toggle-all-the-icons-bookmark-on)
    (spaceline-toggle-all-the-icons-dedicated-on)
    (spaceline-toggle-all-the-icons-fullscreen-on)
    (spaceline-toggle-all-the-icons-buffer-position-on)
-   (spaceline-all-the-icons--setup-package-updates)
-   (spaceline-all-the-icons--setup-paradox)
-   (spaceline-all-the-icons--setup-neotree)
+   (spaceline-all-the-icons--setup-anzu)            ;; Enable anzu searching
+   (spaceline-all-the-icons--setup-package-updates) ;; Enable package update indicator
+   (spaceline-all-the-icons--git-ahead-update)
+   (spaceline-all-the-icons--setup-git-ahead)       ;; Enable # of commits ahead of upstream in git
+   (spaceline-all-the-icons--setup-paradox)         ;; Enable Paradox mode line
+   (spaceline-all-the-icons--setup-neotree)         ;; Enable Neotree mode line
    ))
 
 (use-package color-identifiers-mode

@@ -83,7 +83,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (writeroom-mode org-bullets matlab-mode org org-edna 0blayout pdf-tools eziam-theme tao-theme ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex solarized-theme)))
+    (writeroom-mode org-bullets matlab-mode org org-edna 0blayout pdf-tools tao-theme ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
@@ -91,7 +91,6 @@
  '(send-mail-function (quote smtpmail-send-it))
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
  '(spaceline-all-the-icons-separator-type (quote arrow))
- '(spaceline-all-the-icons-slim-render nil)
  '(tao-theme-use-height nil)
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")
