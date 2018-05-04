@@ -57,6 +57,7 @@
 (depends-on "org")
 (depends-on "org-bullets")
 (depends-on "org-mime")
+(depends-on "org-pdfview")
 (depends-on "org-ref")
 (depends-on "outlook")
 (depends-on "ov")

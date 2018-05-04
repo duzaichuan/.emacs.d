@@ -163,6 +163,8 @@
     (add-hook 'pdf-view-mode-hook 'nolinum)
     (setq-default pdf-view-display-size 'fit-page) ; fit page by default
     (setq pdf-view-resize-factor 1.10)
+    (use-package org-pdfview
+      :ensure t)
     ))
 
 (provide 'init-writing)
