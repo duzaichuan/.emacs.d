@@ -147,4 +147,22 @@
   :demand t
   :hook (text-mode . typo-mode))
 
+(use-package pdf-tools
+  :ensure t
+  :commands pdf-tools-install
+  :mode ("\\.pdf\\'" . pdf-view-mode)
+  :bind
+  (:map pdf-view-mode-map
+	       ("j"  . pdf-view-next-page)
+               ("k"  . pdf-view-previous-page))
+  :config
+  (progn
+    ;; remove linum in org mode
+    (defun nolinum ()
+      (linum-mode 0))
+    (add-hook 'pdf-view-mode-hook 'nolinum)
+    (setq-default pdf-view-display-size 'fit-page) ; fit page by default
+    (setq pdf-view-resize-factor 1.10)
+    ))
+
 (provide 'init-writing)
