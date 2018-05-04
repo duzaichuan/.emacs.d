@@ -132,6 +132,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "gray98"))))
+ '(mode-line ((t (:background "gray86" :foreground "#171717" :box nil :height 1.0))))
  '(neo-banner-face ((t (:foreground "dark cyan"))))
  '(neo-header-face ((t (:foreground "dark gray" :weight semi-bold))))
  '(org-block ((t (:background "gray96" :foreground "#616161" :height 0.95))))
@@ -150,4 +151,7 @@
  '(org-ref-cite-face ((t (:inherit org-link :foreground "dark red"))))
  '(org-special-keyword ((t (:inherit org-meta-line))))
  '(org-verbatim ((t (:inherit shadow))))
- '(org-verse ((t (:inherit org-block)))))
+ '(org-verse ((t (:inherit org-block))))
+ '(powerline-active2 ((t (:inherit mode-line :background "gray86" :foreground "white"))))
+ '(powerline-inactive1 ((t (:inherit mode-line-inactive))))
+ '(powerline-inactive2 ((t (:inherit mode-line-inactive)))))

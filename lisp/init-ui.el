@@ -17,11 +17,11 @@
   :defer t)
 
 (use-package spaceline
-  :ensure t
-  :defer t)
+  :ensure t)
 
 (use-package spaceline-all-the-icons
   :ensure t
+  :after spaceline
   :config
   (progn
    (spaceline-all-the-icons-theme)
@@ -36,12 +36,12 @@
 	 spaceline-all-the-icons-icon-set-sun-time 'sun/moon
          spaceline-all-the-icons-flycheck-alternate t
          spaceline-all-the-icons-highlight-file-name t
-         spaceline-all-the-icons-hide-long-buffer-path t
 	 spaceline-all-the-icons-window-number-always-visible t)
    (spaceline-toggle-all-the-icons-bookmark-on)
    (spaceline-toggle-all-the-icons-dedicated-on)
    (spaceline-toggle-all-the-icons-fullscreen-on)
    (spaceline-toggle-all-the-icons-buffer-position-on)
+   (spaceline-toggle-all-the-icons-narrowed-on)
    (spaceline-all-the-icons--setup-anzu)            ;; Enable anzu searching
    (spaceline-all-the-icons--setup-package-updates) ;; Enable package update indicator
    (spaceline-all-the-icons--git-ahead-update)
