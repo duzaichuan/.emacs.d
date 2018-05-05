@@ -1,7 +1,7 @@
 ;; == LaTex / AucTeX ==
 (use-package tex-site
   :ensure auctex
-  :after (:any tex latex)
+  :mode ("\\.tex\\'" . TeX-latex-mode)
   :config
   (progn
    (setq TeX-auto-save t)
@@ -17,10 +17,15 @@
    (setq reftex-plug-into-AUCTeX t)
    (setq TeX-PDF-mode nil)
    (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+   (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex) 
    (setq reftex-plug-into-AUCTeX t)
    (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
    (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
    ))
+
+(use-package cdlatex
+  :ensure t
+  :commands (turn-on-cdlatex cdlatex-mode))
 
 (use-package magic-latex-buffer
   :ensure t
@@ -78,6 +83,7 @@
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
     (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display)
+    (add-hook 'org-mode-hook 'turn-on-org-cdlatex) ;; speed-up insertion of environments
     ))
 
 (use-package org-bullets

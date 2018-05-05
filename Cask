@@ -11,6 +11,7 @@
 (depends-on "biblio-core")
 (depends-on "bind-key")
 (depends-on "cask")
+(depends-on "cdlatex")
 (depends-on "cider")
 (depends-on "citeproc")
 (depends-on "clojure-mode")
