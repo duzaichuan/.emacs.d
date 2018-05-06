@@ -47,6 +47,8 @@
   :config
   (progn
     (global-company-mode)
+    (setq company-idle-delay 0.1
+	  company-minimum-prefix-length 3)
     (with-eval-after-load 'company
       (define-key company-active-map (kbd "M-n") nil)
       (define-key company-active-map (kbd "M-p") nil)
