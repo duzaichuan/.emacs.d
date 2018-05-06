@@ -61,9 +61,9 @@
 
 (use-package treemacs
   :ensure t
-  :bind
+  :bind 
   (:map global-map
-        ([f8]        . treemacs-toggle)
+	([f8] . treemacs)
 	("C-c C-f" . treemacs-find-file))
   :config
   (progn
@@ -81,12 +81,9 @@
          treemacs-goto-tag-strategy          'refetch-index
 	 treemacs-width                      30)
    (treemacs-follow-mode t)
-   (treemacs-filewatch-mode t)
-   
-   ;; remove linum in org mode
-    (defun nolinum ()
-      (linum-mode 0))
-    (add-hook 'treemacs-mode-hook 'nolinum)
+   (treemacs-filewatch-mode t)  
+   ;; remove linum
+   (add-hook 'treemacs-mode-hook (lambda () (linum-mode -1)))
    ))
 
 (provide 'init-ui)

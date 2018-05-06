@@ -53,10 +53,7 @@
   :config
   (progn
     ;; remove linum in org mode
-    (defun nolinum ()
-      (linum-mode 0))
-    (add-hook 'org-mode-hook 'nolinum)
-
+    (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
     ;; images auto-load
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)   
     (add-hook 'org-mode-hook 'org-display-inline-images)
@@ -163,10 +160,8 @@
                ("k"  . pdf-view-previous-page))
   :config
   (progn
-    ;; remove linum in org mode
-    (defun nolinum ()
-      (linum-mode 0))
-    (add-hook 'pdf-view-mode-hook 'nolinum)
+    ;; remove linum
+    (add-hook 'pdf-view-mode-hook (lambda () (linum-mode -1)))
     (setq-default pdf-view-display-size 'fit-page) ; fit page by default
     (setq pdf-view-resize-factor 1.10)
     (use-package org-pdfview

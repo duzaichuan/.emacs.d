@@ -85,7 +85,7 @@
   (add-hook 'eshell-mode-hook
             (lambda ()
               (eshell/export "NODE_NO_READLINE=1")))
-  ;; remove linum in org mode
+  ;; remove linum
   (add-hook 'eshell-mode-hook (lambda () (linum-mode -1)))
   :config
   (progn
