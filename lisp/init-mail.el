@@ -130,6 +130,12 @@
     ;; Don't ask to quit... why is this the default?
     (setq mu4e-confirm-quit nil)
 
+    ;; customize the reply-quote-string
+    (setq message-citation-line-format "On %a %d %b %Y at %R, %f wrote:\n")
+    ;; choose to use the formatted string
+    (setq message-citation-line-function 'message-insert-formatted-citation-line)
+    (setq message-cite-reply-position 'above)
+
     ;; setup some handy shortcuts
     (setq mu4e-maildir-shortcuts
 	  '( ("/Exchange/INBOX"               . ?I)
