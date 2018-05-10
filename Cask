@@ -57,6 +57,7 @@
 (depends-on "ob-ipython")
 (depends-on "org")
 (depends-on "org-bullets")
+(depends-on "org-download")
 (depends-on "org-mime")
 (depends-on "org-pdfview")
 (depends-on "org-ref")

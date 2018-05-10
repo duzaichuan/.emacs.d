@@ -57,6 +57,7 @@
     ;; images auto-load
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)   
     (add-hook 'org-mode-hook 'org-display-inline-images)
+    (setq org-image-actual-width (/ (display-pixel-width) 3))
     (setq org-latex-create-formula-image-program 'dvipng)
     (setq org-pretty-entities t) ;; render UTF8 characters
     (setq org-confirm-babel-evaluate nil)   
@@ -110,6 +111,11 @@
              (lambda ()
                (define-key org-mode-map (kbd "C-c i l") 'org-ref-helm-insert-label-link)))
    ))
+
+(use-package org-download
+  :ensure t
+  :after org
+  :config (add-hook 'dired-mode-hook 'org-download-enable))
 
 (use-package org-mime
   :ensure t
