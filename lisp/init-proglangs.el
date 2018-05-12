@@ -57,7 +57,14 @@
   :ensure t
   :commands (clojure-mode)
   :mode ("\\.clj\\'" "\\.cljs\\'" "\\.edn\\'" "\\.boot\\'")
-  :interpreter "clojure")
+  :interpreter "clojure"
+  :config
+  (progn
+    (add-hook 'clojure-mode-hook #'paredit-mode)
+    ;; single "'" and "`" 
+    (sp-local-pair '(clojure-mode cider-repl-mode) "'" nil :actions nil)
+    (sp-local-pair '(clojure-mode cider-repl-mode) "`" nil :actions nil))
+  )
 
 (use-package rainbow-delimiters
   :ensure t
@@ -69,15 +76,14 @@
   :after clojure-mode
   :init
   (setq cider-auto-select-error-buffer t
-        cider-repl-pop-to-buffer-on-connect nil
+        cider-repl-pop-to-buffer-on-connect t
         cider-repl-use-clojure-font-lock t
         cider-repl-wrap-history t
         cider-repl-history-size 1000
         cider-repl-history-file (f-expand ".cider-history"
 				      user-emacs-directory)
         cider-show-error-buffer t
-        nrepl-hide-special-buffers t
-        nrepl-popup-stacktraces nil))
+        nrepl-hide-special-buffers t))
 
 (use-package polymode
   :ensure t
