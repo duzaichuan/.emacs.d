@@ -75,6 +75,7 @@
 (depends-on "powerline")
 (depends-on "queue")
 (depends-on "racket-mode")
+(depends-on "rainbow-delimiters")
 (depends-on "reveal-in-osx-finder")
 (depends-on "s")
 (depends-on "shut-up")
