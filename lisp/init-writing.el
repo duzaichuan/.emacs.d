@@ -164,7 +164,12 @@
     ispell-program-name (executable-find "hunspell")
     ispell-choices-win-default-height 5
     ispell-dictionary "en_US")
-    (setenv "DICTIONARY" "en_US")))
+    (setenv "DICTIONARY" "en_US")
+
+    (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
+    (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
+    (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXPORT" . "#\\+END_EXPORT")))
+  )
 
 (use-package flyspell
   :bind ([f6] . flyspell-buffer)
