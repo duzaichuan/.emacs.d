@@ -73,10 +73,9 @@
 (use-package cider
   :ensure t
   :commands (cider-connect cider-jack-in)
-  :after clojure-mode
   :init
   (setq cider-auto-select-error-buffer t
-        cider-repl-pop-to-buffer-on-connect t
+        cider-repl-pop-to-buffer-on-connect nil
         cider-repl-use-clojure-font-lock t
         cider-repl-wrap-history t
         cider-repl-history-size 1000

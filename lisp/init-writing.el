@@ -1,4 +1,8 @@
-;; == LaTex / AucTeX ==
+;; == LaTex / Org ==
+(use-package flyspell
+  :commands flyspell-mode
+  :config (setq flyspell-issue-message-flag nil))
+
 (use-package tex-site
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)
