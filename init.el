@@ -8,14 +8,42 @@
 (require 'cl)
 (require 'pallet)
 (pallet-mode t)
-(add-to-list 'load-path "~/.emacs.d/lisp/")
 
-(require 'init-toolkit)
-(require 'init-better-defaults)
-(require 'init-ui)
-(require 'init-proglangs)
-(require 'init-writing)
-(require 'init-mail)
+;; Bootstrap `use-package'
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+;; This is only needed once, near the top of the file
+(eval-when-compile
+  (require 'use-package)
+  (setq use-package-verbose t))
+;;(require 'diminish)                ;; if you use :diminish
+(require 'bind-key)                ;; if you use any :bind variant
+
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns))
+  :ensure t
+  :config
+  (exec-path-from-shell-initialize))
+
+(use-package auto-package-update
+  :ensure t
+  :config
+  (progn
+    (setq auto-package-update-delete-old-versions t)
+    (setq auto-package-update-hide-results t)
+    (auto-package-update-maybe)
+    ))
+
+;;; Require files under ~/.emacs.d/lisp
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(use-package init-toolkit)
+(use-package init-better-defaults)
+(use-package init-ui)
+(use-package init-proglangs)
+(use-package init-writing)
+(use-package init-mail)
 (setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
 (load-file custom-file)
  

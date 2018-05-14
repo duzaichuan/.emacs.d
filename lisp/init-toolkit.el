@@ -1,30 +1,3 @@
-;; Bootstrap `use-package'
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-
-;; This is only needed once, near the top of the file
-(eval-when-compile
-  (require 'use-package)
-  (setq use-package-verbose t))
-;;(require 'diminish)                ;; if you use :diminish
-(require 'bind-key)                ;; if you use any :bind variant
-
-(use-package exec-path-from-shell
-  :if (memq window-system '(mac ns))
-  :ensure t
-  :config
-  (exec-path-from-shell-initialize))
-
-(use-package auto-package-update
-  :ensure t
-  :config
-  (progn
-    (setq auto-package-update-delete-old-versions t)
-    (setq auto-package-update-hide-results t)
-    (auto-package-update-maybe)
-    ))
-
 ;; you only need to specify :defer if you know for a fact that some other package will do something to cause your package to load at the appropriate time
 (use-package ov        :ensure t :defer t)
 (use-package dash    :ensure t :defer t)
