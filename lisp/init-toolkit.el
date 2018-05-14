@@ -1,6 +1,5 @@
 ;; you only need to specify :defer if you know for a fact that some other package will do something to cause your package to load at the appropriate time
 (use-package ov        :ensure t :defer t)
-(use-package dash    :ensure t :defer t)
 (use-package f    :ensure t :defer t)
 (use-package s    :ensure t :defer t)
 (use-package hydra :ensure t :defer t)

@@ -9,7 +9,7 @@
 (require 'pallet)
 (pallet-mode t)
 
-;; Bootstrap `use-package'
+;; Bootstrap 'use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -18,8 +18,14 @@
 (eval-when-compile
   (require 'use-package)
   (setq use-package-verbose t))
-;;(require 'diminish)                ;; if you use :diminish
-(require 'bind-key)                ;; if you use any :bind variant
+
+(use-package diminish                 ; Hide modes in the mode-line
+  :ensure t)
+
+(use-package bind-key)                ; if you use any :bind variant
+
+(use-package dash                     ; A modern list library
+  :ensure t)
 
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns))
