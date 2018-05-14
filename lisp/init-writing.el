@@ -82,6 +82,8 @@
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
     (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display)
     (add-hook 'org-mode-hook 'turn-on-org-cdlatex) ;; speed-up insertion of environments
+    ;; FlySpell in Org-Mode recognize latex syntax like auctex
+    (add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
     ))
 
 (use-package org-bullets
