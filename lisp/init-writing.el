@@ -1,8 +1,4 @@
 ;; == LaTex / Org ==
-(use-package flyspell
-  :commands flyspell-mode
-  :config (setq flyspell-issue-message-flag nil))
-
 (use-package tex-site
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)
@@ -159,6 +155,34 @@
   :ensure t
   :demand t
   :hook (text-mode . typo-mode))
+
+(use-package ispell
+  :commands ispell
+  :config
+  (progn
+    (setq
+    ispell-program-name (executable-find "hunspell")
+    ispell-choices-win-default-height 5
+    ispell-dictionary "en_US")
+    (setenv "DICTIONARY" "en_US")))
+
+(use-package flyspell
+  :bind ([f6] . flyspell-buffer)
+  :config
+  (setq flyspell-issue-message-flag nil))
+
+(use-package flyspell-correct-ivy
+  :ensure t
+  :after flyspell
+  :bind (:map flyspell-mode-map
+              ("C-c $" . flyspell-correct-word-generic)))
+
+(use-package langtool
+  :ensure t
+  :commands langtool-check
+  :config
+  (setq langtool-default-language "en-US"
+	langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
 
 (use-package pdf-tools
   :ensure t
