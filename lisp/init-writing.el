@@ -125,6 +125,16 @@
     :after (:any Tex org)
     :load-path "lib/")
 
+;; a WYSiWYG HTML mail editor that can be useful for sending tables, fontified source code, and inline images in email. 
+(use-package org-mime
+  :ensure t
+  :after mu4e
+  :init (setq org-mime-up-subtree-heading 'org-back-to-heading
+	      org-mime-export-options '(:section-numbers nil
+							 :with-author nil
+							 :with-toc nil
+							 :with-latex dvipng)))
+
 (use-package org-auto-formula
   :after org
   :load-path "lib/")
