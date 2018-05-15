@@ -32,9 +32,6 @@
 (setq make-backup-files nil)
 (setq auto-save-default nil)
 
-;; return word at the end of lines
-(global-visual-line-mode t)
-
 ;; change reminder "yes" to "y"
 (fset 'yes-or-no-p 'y-or-n-p)
 

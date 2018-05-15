@@ -84,6 +84,8 @@
     (add-hook 'org-mode-hook 'turn-on-org-cdlatex) ;; speed-up insertion of environments
     ;; FlySpell in Org-Mode recognize latex syntax like auctex
     (add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
+    ;; return word at the end of lines
+    (add-hook 'org-mode-hook 'visual-line-mode)
     ))
 
 (use-package org-bullets
