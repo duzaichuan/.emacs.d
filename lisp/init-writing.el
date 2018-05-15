@@ -121,17 +121,6 @@
   :after org
   :config (add-hook 'dired-mode-hook 'org-download-enable))
 
-(use-package org-mime
-  :ensure t
-  :after org
-  :config
-  (progn
-   (setq org-mime-library 'mml)
-   (setq org-mime-export-options '(:section-numbers nil
-						    :with-author nil
-						    :with-toc nil))
-   ))
-
 (use-package smartparens-Tex-org
     :after (:any Tex org)
     :load-path "lib/")

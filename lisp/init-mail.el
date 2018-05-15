@@ -164,4 +164,16 @@
     (run-with-timer 0 60 'gjstein-refresh-mu4e-alert-mode-line)
     ))
 
+;; a WYSiWYG HTML mail editor that can be useful for sending tables, fontified source code, and inline images in email. 
+(use-package org-mime
+  :ensure t
+  :after mu4e
+  :config
+  (progn
+   (setq org-mime-library 'mml)
+   (setq org-mime-export-options '(:section-numbers nil
+						    :with-author nil
+						    :with-toc nil))
+   ))
+
 (provide 'init-mail)
