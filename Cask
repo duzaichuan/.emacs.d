@@ -26,6 +26,7 @@
 (depends-on "esh-autosuggest")
 (depends-on "eshell-fringe-status")
 (depends-on "ess")
+(depends-on "eval-in-repl")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "f")

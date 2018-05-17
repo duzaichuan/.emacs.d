@@ -150,6 +150,11 @@
          ("\\.markdown\\'"    . markdown-mode))
   :init (setq markdown-command "multimarkdown"))
 
+(use-package polymode
+  :ensure t
+  :mode (("\\.md" . poly-markdown-mode)
+	 ("\\.Rmd" . poly-markdown+r-mode)))
+
 (use-package writeroom-mode
   :ensure t
   :bind ("C-c w" . writeroom-mode))

@@ -1,4 +1,11 @@
-;; Language support
+;; Consistent ESS-like eval interface for various REPLs
+(use-package eval-in-repl
+  :ensure t
+  :defer t
+  :init
+  ;; Place REPL on the left of the script window when splitting.
+  (setq eir-repl-placement 'left))
+
 (use-package ess-site
   :ensure ess
   :mode (("\\.jl$" . ess-julia-mode)
@@ -63,7 +70,10 @@
     (add-hook 'clojure-mode-hook #'paredit-mode)
     ;; single "'" and "`" 
     (sp-local-pair '(clojure-mode cider-repl-mode) "'" nil :actions nil)
-    (sp-local-pair '(clojure-mode cider-repl-mode) "`" nil :actions nil))
+    (sp-local-pair '(clojure-mode cider-repl-mode) "`" nil :actions nil)
+    (require 'eval-in-repl-cider)
+    (define-key clojure-mode-map (kbd "<C-return>") 'eir-eval-in-cider)
+    )
   )
 
 (use-package rainbow-delimiters
@@ -83,11 +93,6 @@
 				      user-emacs-directory)
         cider-show-error-buffer t
         nrepl-hide-special-buffers t))
-
-(use-package polymode
-  :ensure t
-  :mode (("\\.md" . poly-markdown-mode)
-	 ("\\.Rmd" . poly-markdown+r-mode)))
 
 (use-package lsp-mode
   :ensure  t
