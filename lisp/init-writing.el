@@ -197,8 +197,8 @@
   (setq langtool-default-language "en-US"
 	langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
 
-(use-package pdf-tools
-  :ensure t
+(use-package pdf-view
+  :ensure pdf-tools
   :commands pdf-tools-install
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :bind
@@ -211,8 +211,11 @@
     (add-hook 'pdf-view-mode-hook (lambda () (linum-mode -1)))
     (setq-default pdf-view-display-size 'fit-page) ; fit page by default
     (setq pdf-view-resize-factor 1.10)
-    (use-package org-pdfview
-      :ensure t)
+    (use-package org-pdfview :ensure t)
+    (setq pdf-view-midnight-colors `(,(face-attribute 'default :foreground) .
+                                     ,(face-attribute 'default :background)))
+    (add-hook 'pdf-view-mode-hook (lambda ()
+                                    (pdf-view-midnight-minor-mode)))
     ))
 
 (provide 'init-writing)
