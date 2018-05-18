@@ -19,13 +19,9 @@
   (require 'use-package)
   (setq use-package-verbose t))
 
-(use-package diminish                 ; Hide modes in the mode-line
-  :ensure t)
-
-(use-package bind-key)                ; if you use any :bind variant
-
-(use-package dash                     ; A modern list library
-  :ensure t)
+(use-package dash :ensure t)      ; A modern list library
+(use-package diminish :ensure t)  ; Hide modes in the mode-line
+(use-package bind-key)            ; if you use any :bind variant
 
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns))
@@ -42,7 +38,7 @@
     (auto-package-update-maybe)
     ))
 
-;;; Require files under ~/.emacs.d/lisp
+;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (use-package init-toolkit)
 (use-package init-better-defaults)
