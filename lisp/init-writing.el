@@ -139,6 +139,14 @@
   :after org
   :load-path "lib/")
 
+(use-package org-babel-eval-in-repl
+  :ensure t
+  :after ob
+  :bind (:map org-mode-map
+	      ("C-<return>" . ober-eval-in-repl)
+	      ("M-<return>" . ober-eval-block-in-repl))
+  )
+
 (use-package yaml-mode
   :ensure t
   :mode "\\.yaml\\'")

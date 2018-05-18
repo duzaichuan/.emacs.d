@@ -171,4 +171,8 @@
   :demand t
   :bind ("C-x g" . magit-status))
 
+(use-package projectile
+  :ensure t
+  :bind ([f5] . projectile-compile-project))
+
 (provide 'init-toolkit)
