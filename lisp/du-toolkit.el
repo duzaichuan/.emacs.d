@@ -59,7 +59,6 @@
 
 (use-package ivy
   :ensure t
-  :demand t
   :bind (("C-x b" . ivy-switch-buffer)
          ("C-x B" . ivy-switch-buffer-other-window)
          ("M-H"   . ivy-resume))
@@ -79,7 +78,6 @@
    (ivy-set-occur 'ivy-switch-buffer 'ivy-switch-buffer-occur)))
 
 (use-package swiper
-  :after ivy
   :bind ("\C-s" . swiper)
   :config
   (defun haba/swiper-mc-fixed ()
@@ -89,7 +87,6 @@
 
 (use-package counsel
   :ensure t
-  :after ivy
   :custom (counsel-find-file-ignore-regexp
            (concat "\\(\\`\\.[^.]\\|"
                    (regexp-opt completion-ignored-extensions)
@@ -121,13 +118,8 @@
     (sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
     ))
 
-(use-package expand-region
-  :ensure t
-  :bind ("C-=" . er/expand-region))
-
 (use-package recentf
   :bind ("\C-x\ \C-r" . recentf-open-files)
-  :demand t
   :config
   (progn
     (setq 
@@ -162,7 +154,6 @@
     ))
 
 (use-package undo-tree
-  :ensure t
   :config
   (global-undo-tree-mode))
 

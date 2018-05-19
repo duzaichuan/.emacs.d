@@ -44,13 +44,13 @@
  '(hl-fg-colors
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
- '(ivy-dynamic-exhibit-delay-ms 200)
- '(ivy-height 10)
+ '(ivy-dynamic-exhibit-delay-ms 200 t)
+ '(ivy-height 10 t)
  '(ivy-initial-inputs-alist nil t)
- '(ivy-magic-tilde nil)
+ '(ivy-magic-tilde nil t)
  '(ivy-re-builders-alist (quote ((t . ivy--regex-ignore-order))) t)
- '(ivy-use-virtual-buffers t)
- '(ivy-wrap t)
+ '(ivy-use-virtual-buffers t t)
+ '(ivy-wrap t t)
  '(magit-diff-use-overlays nil)
  '(mu4e-headers-include-related nil)
  '(neo-mode-line-type (quote none) t)
