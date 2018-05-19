@@ -10,6 +10,7 @@
 (setq inhibit-startup-screen t)
 (setq-default cursor-type 'bar)
 (global-hl-line-mode t)
+(global-prettify-symbols-mode)
 
 ;; better defaults
 ;; open init.el 
