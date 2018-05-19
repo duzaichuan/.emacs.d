@@ -169,7 +169,6 @@
 
 (use-package typo
   :ensure t
-  :demand t
   :hook (text-mode . typo-mode))
 
 (use-package ispell
@@ -226,4 +225,4 @@
                                     (pdf-view-midnight-minor-mode)))
     ))
 
-(provide 'init-writing)
+(provide 'du-writing)

@@ -57,4 +57,4 @@
 (prefer-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 
-(provide 'init-better-defaults)
+(provide 'du-better-defaults)

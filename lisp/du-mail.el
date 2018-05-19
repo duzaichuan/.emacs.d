@@ -164,4 +164,4 @@
     (run-with-timer 0 60 'gjstein-refresh-mu4e-alert-mode-line)
     ))
 
-(provide 'init-mail)
+(provide 'du-mail)

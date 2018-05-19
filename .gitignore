@@ -16,3 +16,4 @@ org-clock-save.el
 eshell/
 .cider-history
 projectile-bookmarks.eld
+emms/

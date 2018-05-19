@@ -40,13 +40,13 @@
 
 ;; Require files under ~/.emacs.d/lisp
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(use-package init-toolkit)
-(use-package init-better-defaults)
-(use-package init-ui)
-(use-package init-proglangs)
-(use-package init-writing)
-(use-package init-mail)
-(use-package init-media)
+(use-package du-toolkit)
+(use-package du-better-defaults)
+(use-package du-ui)
+(use-package du-proglangs)
+(use-package du-writing)
+(use-package du-mail)
+(use-package du-media)
 (setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
 (load-file custom-file)
  

@@ -194,4 +194,4 @@
   :ensure t
   :hook (eshell-mode . esh-autosuggest-mode))
 
-(provide 'init-proglangs)
+(provide 'du-proglangs)

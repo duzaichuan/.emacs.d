@@ -86,4 +86,4 @@
    (add-hook 'treemacs-mode-hook (lambda () (linum-mode -1)))
    ))
 
-(provide 'init-ui)
+(provide 'du-ui)

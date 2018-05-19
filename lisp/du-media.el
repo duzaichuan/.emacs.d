@@ -13,4 +13,4 @@
     (setq emms-player-mpd-server-port "6601"))   
     )
 
-(provide 'init-media)
+(provide 'du-media)

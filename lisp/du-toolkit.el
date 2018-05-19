@@ -175,4 +175,4 @@
   :ensure t
   :bind ([f5] . projectile-compile-project))
 
-(provide 'init-toolkit)
+(provide 'du-toolkit)
