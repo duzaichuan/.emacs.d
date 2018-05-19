@@ -31,16 +31,12 @@
 (use-package paredit
   :ensure t
   :bind ("C-c d" . paredit-delete-region)
-  :demand t
-  :config
-  (progn
-    (add-hook 'emacs-lisp-mode-hook #'paredit-mode)
-    ;; enable in the *scratch* buffer
-    (add-hook 'lisp-interaction-mode-hook #'paredit-mode)
-    (add-hook 'ielm-mode-hook #'paredit-mode)
-    (add-hook 'lisp-mode-hook #'paredit-mode)
-    (add-hook 'eval-expression-minibuffer-setup-hook #'paredit-mode)
-    ))
+  :hook ((lisp-mode . paredit-mode)
+	 (emacs-lisp-mode . paredit-mode)
+	 (lisp-interaction-mode . paredit-mode)
+	 (ielm-mode . paredit-mode)
+	 (eval-expression-minibuffer-setup . paredit-mode))
+  )
 
 (use-package paren
   :config
