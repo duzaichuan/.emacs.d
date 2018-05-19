@@ -46,6 +46,7 @@
 (use-package init-proglangs)
 (use-package init-writing)
 (use-package init-mail)
+(use-package init-media)
 (setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
 (load-file custom-file)
  

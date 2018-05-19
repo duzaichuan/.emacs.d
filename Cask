@@ -23,6 +23,7 @@
 (depends-on "dash-functional")
 (depends-on "dashboard")
 (depends-on "diminish")
+(depends-on "emms")
 (depends-on "epl")
 (depends-on "esh-autosuggest")
 (depends-on "eshell-fringe-status")
