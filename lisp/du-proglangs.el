@@ -24,6 +24,8 @@
 					; Make ESS use more horizontal screen			       
     (add-hook 'ess-R-post-run-hook 'ess-execute-screen-options) 
     (define-key inferior-ess-mode-map "\C-cw" 'ess-execute-screen-options)
+    ;; remove linum in repl
+    (add-hook 'inferior-ess-mode-hook (lambda () (linum-mode -1)))
     ))
 
 (use-package matlab-mode
@@ -33,23 +35,25 @@
               ("C-c C-c" . term-interrupt-subjob))
   :commands matlab-shell
   :init
-  ;; workaround for emacs 26
-   (if (version< emacs-version "26")
-       (message "Tracking stable Emacs")
-     (defvar default-fill-column (default-value 'fill-column))
-     (defalias 'string-to-int 'string-to-number))
-   (setq matlab-indent-function t)
-   (setq matlab-shell-command "/Applications/MATLAB/MATLAB_R2017b.app/bin/matlab")
-   (eval-after-load 'matlab
-     '(add-to-list 'matlab-shell-command-switches "-nodesktop -nosplash"))
-   :config
-   (defun matlab-shell-here ()
-     "opens up a new matlab shell in the directory associated with the current buffer's file."
-     (interactive)
-     (split-window-right)
-     (other-window 1)
-     (matlab-shell))
-  )
+  (progn
+    ;; workaround for emacs 26
+    (if (version< emacs-version "26")
+	(message "Tracking stable Emacs")
+      (defvar default-fill-column (default-value 'fill-column))
+      (defalias 'string-to-int 'string-to-number))
+    (setq matlab-indent-function t)
+    (setq matlab-shell-command "/Applications/MATLAB/MATLAB_R2017b.app/bin/matlab")
+    (eval-after-load 'matlab
+      '(add-to-list 'matlab-shell-command-switches "-nodesktop -nosplash"))
+    ;; remove linum in repl
+    (add-hook 'matlab-shell-mode-hook (lambda () (linum-mode -1)))
+    (defun matlab-shell-here ()
+      "opens up a new matlab shell in the directory associated with the current buffer's file."
+      (interactive)
+      (split-window-right)
+      (other-window 1)
+      (matlab-shell))
+    ))
 
 (use-package dynare
   :load-path "/lib"
