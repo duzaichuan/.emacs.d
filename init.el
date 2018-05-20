@@ -8,6 +8,8 @@
 (require 'cl)
 (require 'pallet)
 (pallet-mode t)
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+(setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
 
 ;; Bootstrap 'use-package'
 (unless (package-installed-p 'use-package)
@@ -39,7 +41,6 @@
     ))
 
 ;; Require files under ~/.emacs.d/lisp
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 (use-package du-toolkit)
 (use-package du-better-defaults)
 (use-package du-ui)
@@ -47,6 +48,5 @@
 (use-package du-writing)
 (use-package du-mail)
 (use-package du-media)
-(setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
+
 (load-file custom-file)
- 
