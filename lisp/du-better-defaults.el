@@ -49,10 +49,6 @@
 (setq tab-always-indent 'complete)
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
-;; single "'" in emacs-lisp mode 
-(sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
-(sp-local-pair 'emacs-lisp-mode "`" nil :actions nil)
-
 ;; Define the global encoding as utf-8 english US related
 (setq system-time-locale "en_US.utf8")
 (prefer-coding-system 'utf-8)

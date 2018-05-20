@@ -111,8 +111,9 @@
   :config
   (progn
     (smartparens-global-mode t)
-    ;; single "'" in emacs-lisp mode
+    ;; single "'" in emacs-lisp mode 
     (sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
+    (sp-local-pair 'emacs-lisp-mode "`" nil :actions nil)
     ))
 
 (use-package recentf
