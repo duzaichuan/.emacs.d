@@ -256,4 +256,45 @@
   :ensure t
   :hook (eshell-mode . esh-autosuggest-mode))
 
+(use-package evil
+  :ensure t
+  :init
+  (progn
+    (evil-mode 1)
+    (setcdr evil-insert-state-map nil)
+    (define-key evil-insert-state-map [escape] 'evil-normal-state)
+    (setq evil-want-C-u-scroll t)
+    (use-package evil-leader
+      :ensure t
+      :init (global-evil-leader-mode)
+      :config
+      (progn
+        (evil-leader/set-leader "SPC")
+        (evil-leader/set-key "wd" 'delete-window)
+        (evil-leader/set-key "wo" 'delete-other-windows)
+        (evil-leader/set-key "ws" 'split-window-below)
+        (evil-leader/set-key "wh" 'split-window-horizontally)
+        (evil-leader/set-key "wv" 'split-window-vertically)
+        (evil-leader/set-key "ww" 'other-window)))
+        )
+  :config
+  (progn
+    (setq evil-cross-lines t)
+    (setq evil-move-cursor-back nil)
+    (use-package evil-org
+      :ensure t
+      :hook (org-mode . evil-org-mode))
+    (use-package evil-cleverparens
+      :ensure t
+      :init   (add-hook 'paredit-mode-hook 'evil-cleverparens-mode)
+      :config (setq evil-cleverparens-swap-move-by-word-and-symbol t))
+    (use-package evil-surround
+      :ensure t
+      :config
+      (progn
+        (global-evil-surround-mode 1)
+        (add-to-list 'evil-surround-operator-alist '(evil-cp-change . change))
+        (add-to-list 'evil-surround-operator-alist '(evil-cp-delete . delete))))
+    ))
+
 (provide 'du-toolkit)

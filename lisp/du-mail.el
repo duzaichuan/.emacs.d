@@ -1,13 +1,13 @@
 ;;Mail
 (use-package mu4e
   :commands mu4e
-  :defer 10
+  :defer 15
   :bind ([f9] . mu4e)
   :config
   (progn
     (setq
      mu4e-get-mail-command "offlineimap"   ;; or fetchmail, or ...
-     mu4e-update-interval 300)             ;; update every 5 minutes
+     mu4e-update-interval 180)             ;; update every 5 minutes
   
     (setq mu4e-contexts
 	  `( ,(make-mu4e-context

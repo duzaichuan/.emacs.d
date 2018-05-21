@@ -38,7 +38,8 @@
          spaceline-all-the-icons-flycheck-alternate t
          spaceline-all-the-icons-highlight-file-name t
 	 spaceline-all-the-icons-window-number-always-visible t
-	 spaceline-all-the-icons-hide-long-buffer-path t)
+	 spaceline-all-the-icons-hide-long-buffer-path t
+	 spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
    (spaceline-toggle-all-the-icons-bookmark-on)
    (spaceline-toggle-all-the-icons-dedicated-on)
    (spaceline-toggle-all-the-icons-buffer-position-on)
