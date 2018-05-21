@@ -275,8 +275,14 @@
         (evil-leader/set-key "ws" 'split-window-below)
         (evil-leader/set-key "wh" 'split-window-horizontally)
         (evil-leader/set-key "wv" 'split-window-vertically)
-        (evil-leader/set-key "ww" 'other-window)))
-        )
+        (evil-leader/set-key "ww" 'other-window)
+	(evil-leader/set-key "bb" 'ivy-switch-buffer)
+	(evil-leader/set-key "bk" 'kill-buffer)
+	(evil-leader/set-key ":" 'counsel-M-x)
+	(evil-leader/set-key "ff" 'counsel-find-file)
+	(evil-leader/set-key "fr" 'recentf-open-files)
+	(evil-leader/set-key "gs" 'magit-status)))
+    )
   :config
   (progn
     (setq evil-cross-lines t)
