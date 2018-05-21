@@ -287,20 +287,16 @@
   (progn
     (setq evil-cross-lines t)
     (setq evil-move-cursor-back nil)
+    (use-package evil-magit
+      :ensure t
+      :after magit)
     (use-package evil-org
       :ensure t
       :hook (org-mode . evil-org-mode))
     (use-package evil-cleverparens
       :ensure t
-      :init   (add-hook 'paredit-mode-hook 'evil-cleverparens-mode)
+      :hook (paredit-mode . evil-cleverparens-mode)
       :config (setq evil-cleverparens-swap-move-by-word-and-symbol t))
-    (use-package evil-surround
-      :ensure t
-      :config
-      (progn
-        (global-evil-surround-mode 1)
-        (add-to-list 'evil-surround-operator-alist '(evil-cp-change . change))
-        (add-to-list 'evil-surround-operator-alist '(evil-cp-delete . delete))))
     ))
 
 (provide 'du-toolkit)
