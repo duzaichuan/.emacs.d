@@ -256,6 +256,13 @@
   :ensure t
   :hook (eshell-mode . esh-autosuggest-mode))
 
+(use-package which-key
+      :ensure t
+      :config
+      (progn
+	(which-key-mode)
+	(which-key-setup-side-window-right)))
+
 (use-package evil
   :ensure t
   :init
@@ -293,7 +300,14 @@
       :after magit)
     (use-package evil-org
       :ensure t
-      :hook (org-mode . evil-org-mode))
+      :hook (org-mode . evil-org-mode)
+      :config
+      (progn
+	(add-hook 'evil-org-mode-hook
+		  (lambda () (evil-org-set-key-theme)))
+	(require 'evil-org-agenda)
+	(evil-org-agenda-set-keys)
+	))
     (use-package evil-cleverparens
       :ensure t
       :hook (paredit-mode . evil-cleverparens-mode)
@@ -301,12 +315,6 @@
     (use-package evil-nerd-commenter
       :ensure t
       :bind ("M-;" . evilnc-comment-or-uncomment-lines))
-    (use-package which-key
-      :ensure t
-      :config
-      (progn
-	(which-key-mode)
-	(which-key-setup-side-window-right)))
     ))
 
 (provide 'du-toolkit)
