@@ -281,7 +281,8 @@
 	(evil-leader/set-key ":" 'counsel-M-x)
 	(evil-leader/set-key "ff" 'counsel-find-file)
 	(evil-leader/set-key "fr" 'recentf-open-files)
-	(evil-leader/set-key "gs" 'magit-status)))
+	(evil-leader/set-key "gs" 'magit-status)
+	(evil-leader/set-key "ci" 'evilnc-comment-or-uncomment-lines)))
     )
   :config
   (progn
@@ -297,6 +298,15 @@
       :ensure t
       :hook (paredit-mode . evil-cleverparens-mode)
       :config (setq evil-cleverparens-swap-move-by-word-and-symbol t))
+    (use-package evil-nerd-commenter
+      :ensure t
+      :bind ("M-;" . evilnc-comment-or-uncomment-lines))
+    (use-package which-key
+      :ensure t
+      :config
+      (progn
+	(which-key-mode)
+	(which-key-setup-side-window-right)))
     ))
 
 (provide 'du-toolkit)
