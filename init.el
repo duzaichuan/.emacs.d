@@ -26,10 +26,16 @@
 (use-package bind-key)            ; if you use any :bind variant
 
 (use-package exec-path-from-shell
-  :if (memq window-system '(mac ns))
+  :if (and (eq system-type 'darwin) (display-graphic-p))
   :ensure t
   :config
-  (exec-path-from-shell-initialize))
+  (progn
+    (when (string-match-p "/zsh$" (getenv "SHELL"))
+      ;; Use a non-interactive login shell.  A login shell, because my
+      ;; environment variables are mostly set in `.zprofile'.
+      (setq exec-path-from-shell-arguments '("-l")))
+    (exec-path-from-shell-initialize)
+    ))
 
 (use-package auto-package-update
   :ensure t
