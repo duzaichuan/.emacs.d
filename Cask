@@ -33,6 +33,7 @@
 (depends-on "evil-cleverparens")
 (depends-on "evil-leader")
 (depends-on "evil-magit")
+(depends-on "evil-mu4e")
 (depends-on "evil-nerd-commenter")
 (depends-on "evil-org")
 (depends-on "evil-surround")

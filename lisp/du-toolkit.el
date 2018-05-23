@@ -315,6 +315,9 @@
     (use-package evil-nerd-commenter
       :ensure t
       :bind ("M-;" . evilnc-comment-or-uncomment-lines))
+    (use-package evil-mu4e
+      :ensure t
+      :after mu4e)
     ))
 
 (provide 'du-toolkit)
