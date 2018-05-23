@@ -36,6 +36,7 @@
 (depends-on "evil-mu4e")
 (depends-on "evil-nerd-commenter")
 (depends-on "evil-org")
+(depends-on "evil-paredit")
 (depends-on "evil-surround")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")

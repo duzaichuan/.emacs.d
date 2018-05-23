@@ -1,5 +1,5 @@
 ;; == LaTex / Org ==
-(use-package tex-site
+(use-package tex
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)
   :config

@@ -318,6 +318,9 @@
     (use-package evil-mu4e
       :ensure t
       :after mu4e)
+    (use-package evil-paredit
+      :ensure t
+      :after paredit)
     ))
 
 (provide 'du-toolkit)
