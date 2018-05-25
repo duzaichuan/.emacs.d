@@ -312,15 +312,15 @@
       :ensure t
       :hook (paredit-mode . evil-cleverparens-mode)
       :config (setq evil-cleverparens-swap-move-by-word-and-symbol t))
+    (use-package evil-paredit
+      :ensure t
+      :hook (paredit-mode . evil-paredit-mode))
     (use-package evil-nerd-commenter
       :ensure t
       :bind ("M-;" . evilnc-comment-or-uncomment-lines))
     (use-package evil-mu4e
       :ensure t
       :after mu4e)
-    (use-package evil-paredit
-      :ensure t
-      :after paredit)
     ))
 
 (provide 'du-toolkit)

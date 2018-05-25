@@ -44,7 +44,6 @@
   :ensure t
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
-         ("C-c c" . org-capture)
          ("C-c a" . org-agenda)
          ("C-c b" . org-iswitchb)
          ("C-c C-w" . org-refile)
@@ -86,6 +85,19 @@
     (add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
     ;; return word at the end of lines
     (add-hook 'org-mode-hook 'visual-line-mode)
+    (use-package org-capture
+      :bind ("C-c c" . org-capture)
+      :init
+      (progn
+	(setq org-directory "~/Dropbox/Org")
+	(setq org-capture-templates
+	      (quote (
+		      ("n" "note" entry (file+datetree "~/Dropbox/org/reference.org")
+		       "* %?\nEntered on %U\n  %i"))))
+	(setq org-tag-alist (quote (("BUDD"    . ?b)
+				    ("PHIL"    . ?p)
+				    ("ENGL"    . ?e))))
+	))
     ))
 
 (use-package org-bullets
