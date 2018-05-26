@@ -62,7 +62,7 @@
 					 (org-agenda-files :maxlevel . 6)))
 	      org-capture-templates (quote (("n" "note" entry (file+datetree "~/Dropbox/Org/notes.org")
 					     "* %?\nEntered on %U\n  %i")
-					    ("t" "Todo" entry (file+headline "~/Dropbox/Org/notes.org" "Tasks")
+					    ("e" "eng" entry (file+headline "~/Dropbox/Org/notes.org" "Oral_eng")
 					     "* %?\nEntered on %U\n  %i")))
 	      org-tag-alist (quote (("BUDD"    . ?b)
 				    ("PHIL"    . ?p)
@@ -111,7 +111,9 @@
 
 (use-package org-ref
   :ensure t
-  :after org
+  :bind (("C-c r" . org-ref-helm-insert-cite-link)
+	 ("C-c i r" . org-ref-helm-insert-ref-link)
+	 ("C-c i l" . org-ref-helm-insert-label-link))
   :init
   (setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib"))
   ;; see org-ref for use of these variables
@@ -144,7 +146,7 @@
 ;; a WYSiWYG HTML mail editor that can be useful for sending tables, fontified source code, and inline images in email. 
 (use-package org-mime
   :ensure t
-  :after mu4e
+  :commands (org-mime-htmlize)
   :init (setq org-mime-up-subtree-heading 'org-back-to-heading
 	      org-mime-export-options '(:section-numbers nil
 							 :with-author nil
@@ -237,8 +239,7 @@
     (use-package org-pdfview :ensure t)
     (setq pdf-view-midnight-colors `(,(face-attribute 'default :foreground) .
                                      ,(face-attribute 'default :background)))
-    (add-hook 'pdf-view-mode-hook (lambda ()
-                                    (pdf-view-midnight-minor-mode)))
+    (add-hook 'pdf-view-mode-hook (lambda () (pdf-view-midnight-minor-mode)))
     ))
 
 (use-package deft
