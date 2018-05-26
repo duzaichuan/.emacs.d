@@ -5,6 +5,8 @@
   :bind ([f9] . mu4e)
   :config
   (progn
+    ;; remove linum in mu4e-view-mode
+    (add-hook 'mu4e-view-mode-hook (lambda () (linum-mode -1)))
     (setq
      mu4e-get-mail-command "offlineimap"   ;; or fetchmail, or ...
      mu4e-update-interval 180)             ;; update every 5 minutes

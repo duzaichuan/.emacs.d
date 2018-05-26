@@ -22,6 +22,7 @@
 (depends-on "dash")
 (depends-on "dash-functional")
 (depends-on "dashboard")
+(depends-on "deft")
 (depends-on "diminish")
 (depends-on "emms")
 (depends-on "epl")

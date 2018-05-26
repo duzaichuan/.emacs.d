@@ -51,6 +51,19 @@
          ("C-c C-x C-o" . org-clock-out))
   :config
   (progn
+    (use-package org-capture
+      :bind ("C-c c" . org-capture)
+      :init
+      (progn
+	(setq org-directory "~/Dropbox/Org")
+	(setq org-capture-templates
+	      (quote (
+		      ("n" "note" entry (file+datetree "~/Dropbox/Org/notes.org")
+		       "* %?\nEntered on %U\n  %i"))))
+	(setq org-tag-alist (quote (("BUDD"    . ?b)
+				    ("PHIL"    . ?p)
+				    ("ENGL"    . ?e))))
+	))
     ;; remove linum in org mode
     (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
     ;; images auto-load
@@ -85,19 +98,6 @@
     (add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
     ;; return word at the end of lines
     (add-hook 'org-mode-hook 'visual-line-mode)
-    (use-package org-capture
-      :bind ("C-c c" . org-capture)
-      :init
-      (progn
-	(setq org-directory "~/Dropbox/Org")
-	(setq org-capture-templates
-	      (quote (
-		      ("n" "note" entry (file+datetree "~/Dropbox/org/reference.org")
-		       "* %?\nEntered on %U\n  %i"))))
-	(setq org-tag-alist (quote (("BUDD"    . ?b)
-				    ("PHIL"    . ?p)
-				    ("ENGL"    . ?e))))
-	))
     ))
 
 (use-package org-bullets
@@ -235,6 +235,18 @@
                                      ,(face-attribute 'default :background)))
     (add-hook 'pdf-view-mode-hook (lambda ()
                                     (pdf-view-midnight-minor-mode)))
+    ))
+
+(use-package deft
+  :ensure t
+  :bind ("<f7>" . deft)
+  :commands (deft)
+  :config
+  (progn
+    (setq deft-directory         "~/Dropbox/notes"
+	  deft-extensions        '("org")
+	  deft-default-extension "org"
+	  deft-text-mode         'org-mode)
     ))
 
 (provide 'du-writing)
