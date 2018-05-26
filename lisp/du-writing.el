@@ -49,18 +49,22 @@
          ("C-c C-w" . org-refile)
          ("C-c j" . org-clock-goto)
          ("C-c C-x C-o" . org-clock-out))
+  :init (global-set-key (kbd "<f3>") (lambda () (interactive) (find-file "~/Dropbox/Org/notes.org")))
   :config
   (progn
     (use-package org-capture
       :bind ("C-c c" . org-capture)
       :init
       (progn
-	(setq org-directory "~/Dropbox/Org")
-	(setq org-capture-templates
-	      (quote (
-		      ("n" "note" entry (file+datetree "~/Dropbox/Org/notes.org")
-		       "* %?\nEntered on %U\n  %i"))))
-	(setq org-tag-alist (quote (("BUDD"    . ?b)
+	(setq org-directory "~/Dropbox/Org"
+	      org-default-notes-file "~/Dropbox/Org/notes.org"
+	      org-refile-targets (quote ((nil :maxlevel . 6)
+					 (org-agenda-files :maxlevel . 6)))
+	      org-capture-templates (quote (("n" "note" entry (file+datetree "~/Dropbox/Org/notes.org")
+					     "* %?\nEntered on %U\n  %i")
+					    ("t" "Todo" entry (file+headline "~/Dropbox/Org/notes.org" "Tasks")
+					     "* %?\nEntered on %U\n  %i")))
+	      org-tag-alist (quote (("BUDD"    . ?b)
 				    ("PHIL"    . ?p)
 				    ("ENGL"    . ?e))))
 	))
