@@ -279,7 +279,6 @@
         (evil-leader/set-leader "SPC")
         (evil-leader/set-key "wd" 'delete-window)
         (evil-leader/set-key "wo" 'delete-other-windows)
-        (evil-leader/set-key "ws" 'split-window-below)
         (evil-leader/set-key "wh" 'split-window-horizontally)
         (evil-leader/set-key "wv" 'split-window-vertically)
         (evil-leader/set-key "ww" 'other-window)
