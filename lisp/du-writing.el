@@ -4,23 +4,23 @@
   :mode ("\\.tex\\'" . TeX-latex-mode)
   :config
   (progn
-   (setq TeX-auto-save t)
-   (setq TeX-parse-self t)
-   (setq-default TeX-master nil)
-   (add-hook 'LaTeX-mode-hook 'visual-line-mode)
-   (add-hook 'LaTeX-mode-hook 'flyspell-mode)
-   (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-   (fset 'tex-font-lock-suscript 'ignore)
-   (setq font-latex-fontify-script nil)
-   (setq preview-image-type 'dvipng)
-   (setq reftex-plug-into-AUCTeX t)
-   (setq TeX-PDF-mode nil)
-   (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-   (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex) 
-   (setq reftex-plug-into-AUCTeX t)
-   (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
-   (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+    (setq TeX-auto-save t
+	  TeX-parse-self t
+	  font-latex-fontify-script nil
+	  preview-image-type 'dvipng
+	  reftex-plug-into-AUCTeX t
+	  TeX-PDF-mode nil
+	  reftex-plug-into-AUCTeX t)
+    (setq-default TeX-master nil)
+    (fset 'tex-font-lock-suscript 'ignore)
+    (add-hook 'LaTeX-mode-hook 'visual-line-mode
+	      'LaTeX-mode-hook 'flyspell-mode
+	      'LaTeX-mode-hook 'LaTeX-math-mode
+	      'LaTeX-mode-hook 'turn-on-reftex
+	      'LaTeX-mode-hook 'turn-on-reftex
+	      'LaTeX-mode-hook 'turn-on-cdlatex
+	      'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf"))
+	      'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
    ))
 
 (use-package cdlatex
@@ -56,53 +56,50 @@
       :bind ("C-c c" . org-capture)
       :init
       (setq org-directory "~/Dropbox/Org"
-	      org-default-notes-file (concat org-directory "/notes.org")
-	      org-refile-targets (quote ((nil :maxlevel . 6)
-					 (org-agenda-files :maxlevel . 6)))
-	      org-capture-templates (quote (("n" "note" entry (file+datetree "~/Dropbox/Org/captures.org")
-					     "* %?\nEntered on %U\n  %i")
-					    ("e" "eng" entry (file+headline "~/Dropbox/Org/captures.org" "Oral_eng")
-					     "* %?\nEntered on %U\n  %i")))
-	      org-tag-alist (quote (("BUDD"    . ?b)
-				    ("PHIL"    . ?p)
-				    ("ENGL"    . ?e)))
-	      org-refile-use-outline-path 'file
-	      org-outline-path-complete-in-steps nil
-	      org-refile-allow-creating-parent-nodes 'confirm))
-    ;; remove linum in org mode
-    (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
-    ;; images auto-load
-    (add-hook 'org-babel-after-execute-hook 'org-display-inline-images)   
-    (add-hook 'org-mode-hook 'org-display-inline-images)
-    (setq org-image-actual-width (/ (display-pixel-width) 3))
-    (setq org-latex-create-formula-image-program 'dvipng)
-    (setq org-pretty-entities t) ;; render UTF8 characters
-    (setq org-confirm-babel-evaluate nil)   
-    ;; bigger latex fragment
-    (plist-put org-format-latex-options :scale 1.70)
-    ;; syntax highlight in org mode
-    (setq org-src-fontify-natively t)
-    ;; line wrap in org mode
-    (set-default 'truncate-lines nil)
-    ;; org-mode buffer latex syntax highlighting
-    (setq org-highlight-latex-and-related '(latex))
-    ;; renumber footnotes when new ones are inserted
-    (setq org-footnote-auto-adjust t)
-    (require 'smartparens-org)
-    ;; Quickly insert blocks
-    (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
-    ;; set value of the variable org-latex-pdf-process
-    (setq org-latex-pdf-process
+	    org-default-notes-file (concat org-directory "/notes.org")
+	    org-agenda-files '("captures.org" "notes.org")
+	    org-refile-targets (quote ((nil :maxlevel . 3)
+				       (org-agenda-files :maxlevel . 3)))
+	    org-capture-templates (quote (("n" "note" entry (file+datetree "~/Dropbox/Org/captures.org")
+					   "* %?\nEntered on %U\n  %i")
+					  ("e" "eng" entry (file+headline "~/Dropbox/Org/captures.org" "Oral_eng")
+					   "* %?\nEntered on %U\n  %i")))
+	    org-tag-alist (quote (("BUDD"    . ?b)
+				  ("PHIL"    . ?p)
+				  ("ENGL"    . ?e)))
+	    org-refile-use-outline-path 'file
+	    org-outline-path-complete-in-steps nil
+	    org-refile-allow-creating-parent-nodes 'confirm))
+    
+    (add-hook 'org-mode-hook (lambda () (linum-mode -1)) ; remove linum in org mode
+	      ;; images auto-load
+	      'org-babel-after-execute-hook 'org-display-inline-images 
+	      'org-mode-hook 'org-display-inline-images
+	      ;; speed-up insertion of environments
+	      'org-mode-hook 'turn-on-org-cdlatex
+	      ;; FlySpell in Org-Mode recognize latex syntax like auctex
+	      'org-mode-hook (lambda () (setq ispell-parser 'tex))
+	      ;; return word at the end of lines
+	      'org-mode-hook 'visual-line-mode
+	      'post-command-hook 'cw/org-auto-toggle-fragment-display)
+    (setq org-image-actual-width (/ (display-pixel-width) 3)
+	  org-latex-create-formula-image-program 'dvipng
+	  org-pretty-entities t ; render UTF8 characters
+	  org-confirm-babel-evaluate nil
+	  org-src-fontify-natively t ; syntax highlight in org mode
+	  org-highlight-latex-and-related '(latex) ; org-mode buffer latex syntax highlighting
+	  org-footnote-auto-adjust t ; renumber footnotes when new ones are inserted
+	  ;; set value of the variable org-latex-pdf-process
+	  org-latex-pdf-process
 	  '("pdflatex -interaction nonstopmode -output-directory %o %f"
 	    "bibtex %b"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"
-	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
-    (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display)
-    (add-hook 'org-mode-hook 'turn-on-org-cdlatex) ;; speed-up insertion of environments
-    ;; FlySpell in Org-Mode recognize latex syntax like auctex
-    (add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
-    ;; return word at the end of lines
-    (add-hook 'org-mode-hook 'visual-line-mode)
+	    "pdflatex -interaction nonstopmode -output-directory %o %f"))  
+    (plist-put org-format-latex-options :scale 1.70) ; bigger latex fragment
+    (set-default 'truncate-lines nil) ; line wrap in org mode
+    (require 'smartparens-org)
+    ;; Quickly insert blocks
+    (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
     ))
 
 (use-package org-bullets
@@ -116,23 +113,19 @@
 	 ("C-c i r" . org-ref-helm-insert-ref-link)
 	 ("C-c i l" . org-ref-helm-insert-label-link))
   :init
-  (setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib"))
-  ;; see org-ref for use of these variables
-  (setq org-ref-bibliography-notes "~/Dropbox/bibliography/notes.org"
-      org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
-      org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
+  (setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib")
+	org-ref-bibliography-notes "~/Dropbox/bibliography/notes.org"
+	org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
+	org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
   :config
   (progn
    (require 'org-ref-citeproc)
-   (setq org-ref-default-citation-link "citet")
-   (setq org-ref-default-ref-type "eqref")
-   ;; set value of the variable org-latex-pdf-process
+   (setq org-ref-default-citation-link "citet"
+	 org-ref-default-ref-type "eqref")
    (add-hook 'org-mode-hook
-             (lambda ()
-               (define-key org-mode-map (kbd "C-c i r") 'org-ref-helm-insert-ref-link)))
-   (add-hook 'org-mode-hook
-             (lambda ()
-               (define-key org-mode-map (kbd "C-c i l") 'org-ref-helm-insert-label-link)))
+             (lambda () (define-key org-mode-map (kbd "C-c i r") 'org-ref-helm-insert-ref-link))
+	     'org-mode-hook
+             (lambda () (define-key org-mode-map (kbd "C-c i l") 'org-ref-helm-insert-label-link)))
    ))
 
 (use-package org-download
@@ -194,12 +187,10 @@
   :commands ispell
   :config
   (progn
-    (setq
-    ispell-program-name (executable-find "hunspell")
-    ispell-choices-win-default-height 5
-    ispell-dictionary "en_US")
+    (setq ispell-program-name (executable-find "hunspell")
+	  ispell-choices-win-default-height 5
+	  ispell-dictionary "en_US")
     (setenv "DICTIONARY" "en_US")
-
     (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
     (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
     (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXPORT" . "#\\+END_EXPORT")))
