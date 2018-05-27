@@ -49,25 +49,26 @@
          ("C-c C-w" . org-refile)
          ("C-c j" . org-clock-goto)
          ("C-c C-x C-o" . org-clock-out))
-  :init (global-set-key (kbd "<f3>") (lambda () (interactive) (find-file "~/Dropbox/Org/notes.org")))
+  :init (global-set-key (kbd "<f3>") (lambda () (interactive) (find-file "~/Dropbox/Org/captures.org")))
   :config
   (progn
     (use-package org-capture
       :bind ("C-c c" . org-capture)
       :init
-      (progn
-	(setq org-directory "~/Dropbox/Org"
-	      org-default-notes-file "~/Dropbox/Org/notes.org"
+      (setq org-directory "~/Dropbox/Org"
+	      org-default-notes-file (concat org-directory "/notes.org")
 	      org-refile-targets (quote ((nil :maxlevel . 6)
 					 (org-agenda-files :maxlevel . 6)))
-	      org-capture-templates (quote (("n" "note" entry (file+datetree "~/Dropbox/Org/notes.org")
+	      org-capture-templates (quote (("n" "note" entry (file+datetree "~/Dropbox/Org/captures.org")
 					     "* %?\nEntered on %U\n  %i")
-					    ("e" "eng" entry (file+headline "~/Dropbox/Org/notes.org" "Oral_eng")
+					    ("e" "eng" entry (file+headline "~/Dropbox/Org/captures.org" "Oral_eng")
 					     "* %?\nEntered on %U\n  %i")))
 	      org-tag-alist (quote (("BUDD"    . ?b)
 				    ("PHIL"    . ?p)
-				    ("ENGL"    . ?e))))
-	))
+				    ("ENGL"    . ?e)))
+	      org-refile-use-outline-path 'file
+	      org-outline-path-complete-in-steps nil
+	      org-refile-allow-creating-parent-nodes 'confirm))
     ;; remove linum in org mode
     (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
     ;; images auto-load
@@ -248,7 +249,7 @@
   :commands (deft)
   :config
   (progn
-    (setq deft-directory         "~/Dropbox/notes"
+    (setq deft-directory         "~/Dropbox/Org"
 	  deft-extensions        '("org")
 	  deft-default-extension "org"
 	  deft-text-mode         'org-mode)

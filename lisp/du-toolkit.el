@@ -44,14 +44,13 @@
 
 (use-package helm
   :ensure t
-  :defer t
+  :hook (org-mode . helm-mode)
   :bind (:map helm-map
               ("<tab>" . helm-execute-persistent-action)
               ("C-i"   . helm-execute-persistent-action)
               ("C-z"   . helm-select-action)
               ("A-v"   . helm-previous-page))
-  :config
-  (helm-autoresize-mode 1))
+  :config (helm-autoresize-mode 1))
 
 (use-package ivy
   :ensure t
