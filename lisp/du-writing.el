@@ -13,14 +13,14 @@
 	  reftex-plug-into-AUCTeX t)
     (setq-default TeX-master nil)
     (fset 'tex-font-lock-suscript 'ignore)
-    (add-hook 'LaTeX-mode-hook 'visual-line-mode
-	      'LaTeX-mode-hook 'flyspell-mode
-	      'LaTeX-mode-hook 'LaTeX-math-mode
-	      'LaTeX-mode-hook 'turn-on-reftex
-	      'LaTeX-mode-hook 'turn-on-reftex
-	      'LaTeX-mode-hook 'turn-on-cdlatex
-	      'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf"))
-	      'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
+    (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+    (add-hook 'LaTeX-mode-hook 'flyspell-mode)
+    (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
+    (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+    (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+    (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
+    (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
+    (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
    ))
 
 (use-package cdlatex
@@ -70,18 +70,7 @@
 	    org-refile-use-outline-path 'file
 	    org-outline-path-complete-in-steps nil
 	    org-refile-allow-creating-parent-nodes 'confirm))
-    
-    (add-hook 'org-mode-hook (lambda () (linum-mode -1)) ; remove linum in org mode
-	      ;; images auto-load
-	      'org-babel-after-execute-hook 'org-display-inline-images 
-	      'org-mode-hook 'org-display-inline-images
-	      ;; speed-up insertion of environments
-	      'org-mode-hook 'turn-on-org-cdlatex
-	      ;; FlySpell in Org-Mode recognize latex syntax like auctex
-	      'org-mode-hook (lambda () (setq ispell-parser 'tex))
-	      ;; return word at the end of lines
-	      'org-mode-hook 'visual-line-mode
-	      'post-command-hook 'cw/org-auto-toggle-fragment-display)
+
     (setq org-image-actual-width (/ (display-pixel-width) 3)
 	  org-latex-create-formula-image-program 'dvipng
 	  org-pretty-entities t ; render UTF8 characters
@@ -94,7 +83,14 @@
 	  '("pdflatex -interaction nonstopmode -output-directory %o %f"
 	    "bibtex %b"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"
-	    "pdflatex -interaction nonstopmode -output-directory %o %f"))  
+	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
+    (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
+    (add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
+    (add-hook 'org-mode-hook 'org-display-inline-images)
+    (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
+    (add-hook 'org-mode-hook 'visual-line-mode)
+    (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
+    (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display)  
     (plist-put org-format-latex-options :scale 1.70) ; bigger latex fragment
     (set-default 'truncate-lines nil) ; line wrap in org mode
     (require 'smartparens-org)

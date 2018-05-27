@@ -270,6 +270,7 @@
     (setcdr evil-insert-state-map nil)
     (define-key evil-insert-state-map [escape] 'evil-normal-state)
     (setq evil-want-C-u-scroll t)
+    (evil-add-hjkl-bindings recentf-dialog-mode-map 'emacs)
     (use-package evil-leader
       :ensure t
       :init (global-evil-leader-mode)
