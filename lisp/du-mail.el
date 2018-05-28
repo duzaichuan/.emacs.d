@@ -6,6 +6,9 @@
   (progn
     ;; remove linum in mu4e-view-mode
     (add-hook 'mu4e-view-mode-hook (lambda () (linum-mode -1)))
+    (add-hook 'mu4e-view-mode-hook 'visual-line-mode)
+    (add-hook 'mu4e-compose-mode-hook (lambda () (linum-mode -1)))
+    (add-hook 'mu4e-compose-mode-hook 'visual-line-mode)
     (setq
      mu4e-get-mail-command "offlineimap"   ;; or fetchmail, or ...
      mu4e-update-interval 180)             ;; update every 5 minutes

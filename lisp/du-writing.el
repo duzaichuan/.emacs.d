@@ -45,6 +45,7 @@
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
+	 ("C-c c" . org-capture)
          ("C-c b" . org-iswitchb)
          ("C-c C-w" . org-refile)
          ("C-c j" . org-clock-goto)
@@ -53,20 +54,22 @@
   :config
   (progn
     (use-package org-capture
-      :bind ("C-c c" . org-capture)
-      :init
+      :config
       (setq org-directory "~/Dropbox/Org"
 	    org-default-notes-file (concat org-directory "/notes.org")
 	    org-agenda-files '("captures.org" "notes.org")
 	    org-refile-targets (quote ((nil :maxlevel . 3)
 				       (org-agenda-files :maxlevel . 3)))
-	    org-capture-templates (quote (("t" "Todo" entry (file+headline "~/Dropbox/Org/captures.org" "Tasks")
-					   "* TODO %?\nCaptured on %U\n  %i")
-					  ("n" "note" entry (file+datetree "~/Dropbox/Org/captures.org")
-					   "* %?\nCaptured on %U\n  %i")))
+	    org-capture-templates (quote (("t" "TODO" entry (file+datetree "~/Dropbox/Org/captures.org")
+					   "* TODO %?")
+					  ("n" "note" entry (file+headline "~/Dropbox/Org/captures.org" "IDEAS")
+					   "* %?\nCaptured on %U\n  %i")
+					  ("j" "Journal" entry (file+olp+datetree "~/Dropbox/journal.org")
+					   "* %?\nEntered on %U\n  %i")))
 	    org-tag-alist (quote (("BUDD"    . ?b)
 				  ("PHIL"    . ?p)
 				  ("ENGL"    . ?e)))
+	    org-log-done 'time
 	    org-refile-use-outline-path 'file
 	    org-outline-path-complete-in-steps nil
 	    org-refile-allow-creating-parent-nodes 'confirm))

@@ -260,7 +260,7 @@
       :config
       (progn
 	(which-key-mode)
-	(which-key-setup-side-window-right)))
+	(which-key-setup-side-window-right-bottom)))
 
 (use-package evil
   :ensure t
@@ -271,6 +271,7 @@
     (define-key evil-insert-state-map [escape] 'evil-normal-state)
     (setq evil-want-C-u-scroll t)
     (evil-add-hjkl-bindings recentf-dialog-mode-map 'emacs)
+    (evil-add-hjkl-bindings package-menu-mode-map 'emacs)
     (use-package evil-leader
       :ensure t
       :init (global-evil-leader-mode)
