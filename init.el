@@ -4,7 +4,7 @@
 ;; You may delete these explanatory comments.
 
 (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
-(cask-initialize) ;; analogous to (package-initialize)
+(cask-initialize) ; analogous to (package-initialize)
 (require 'cl)
 (require 'pallet)
 (pallet-mode t)

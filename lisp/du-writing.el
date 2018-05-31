@@ -62,6 +62,8 @@
 				       (org-agenda-files :maxlevel . 3)))
 	    org-capture-templates (quote (("t" "TODO" entry (file+datetree "~/Dropbox/Org/captures.org")
 					   "* TODO %?")
+					  ("a" "Appointment" entry (file+datetree "~/Dropbox/Org/captures.org")
+					   "* %?")
 					  ("n" "note" entry (file+headline "~/Dropbox/Org/captures.org" "IDEAS")
 					   "* %?\nCaptured on %U\n  %i")
 					  ("j" "Journal" entry (file+olp+datetree "~/Dropbox/journal.org")
@@ -69,6 +71,8 @@
 	    org-tag-alist (quote (("BUDD"    . ?b)
 				  ("PHIL"    . ?p)
 				  ("ENGL"    . ?e)))
+	    org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")
+				(sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)"))
 	    org-log-done 'time
 	    org-refile-use-outline-path 'file
 	    org-outline-path-complete-in-steps nil

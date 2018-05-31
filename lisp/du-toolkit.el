@@ -289,7 +289,11 @@
 	(evil-leader/set-key "ff" 'counsel-find-file)
 	(evil-leader/set-key "fr" 'recentf-open-files)
 	(evil-leader/set-key "gs" 'magit-status)
-	(evil-leader/set-key "ci" 'evilnc-comment-or-uncomment-lines)))
+	(evil-leader/set-key "ci" 'evilnc-comment-or-uncomment-lines)
+	(evil-leader/set-key "oc" 'org-capture)
+	(evil-leader/set-key "oa" 'org-agenda)
+	(evil-leader/set-key "or" 'org-refile)
+	(evil-leader/set-key "ol" 'org-store-link)))
     )
   :config
   (progn
