@@ -31,17 +31,9 @@
   :ensure t
   :hook LaTeX-mode)
 
-(use-package helm-bibtex
-  :ensure t
-  :after (:any (:all helm auctex) (:all helm org))
-  :config
-  ;; open pdf with system pdf viewer (works on mac)
-  (setq bibtex-completion-pdf-open-function
-	(lambda (fpath)
-	  (start-process "open" "*open*" "open" fpath))))
-
 (use-package org
   :ensure t
+  :defer 0.1
   :mode ("\\.org\\'" . org-mode)
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
@@ -51,33 +43,30 @@
          ("C-c j" . org-clock-goto)
          ("C-c C-x C-o" . org-clock-out))
   :init (global-set-key (kbd "<f3>") (lambda () (interactive) (find-file "~/Dropbox/Org/captures.org")))
+        (setq org-directory "~/Dropbox/Org"
+	      org-default-notes-file (concat org-directory "/notes.org")
+	      org-agenda-files (list "~/Dropbox/Org")
+	      org-refile-targets (quote ((nil :maxlevel . 3)
+					 (org-agenda-files :maxlevel . 3)))
+	      org-capture-templates (quote (("t" "TODO" entry (file+datetree "~/Dropbox/Org/captures.org")
+					     "* TODO %?")
+					    ("a" "Appointment" entry (file+datetree "~/Dropbox/Org/captures.org")
+					     "* %?")
+					    ("n" "note" entry (file+headline "~/Dropbox/Org/captures.org" "IDEAS")
+					     "* %?\nCaptured on %U\n  %i")
+					    ("j" "Journal" entry (file+olp+datetree "~/Dropbox/journal.org")
+					     "* %?\nEntered on %U\n  %i")))
+	      org-tag-alist (quote (("BUDD"    . ?b)
+				    ("PHIL"    . ?p)
+				    ("ENGL"    . ?e)))
+	      org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")
+				  (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)"))
+	      org-log-done 'time
+	      org-refile-use-outline-path 'file
+	      org-outline-path-complete-in-steps nil
+	      org-refile-allow-creating-parent-nodes 'confirm)
   :config
   (progn
-    (use-package org-capture
-      :config
-      (setq org-directory "~/Dropbox/Org"
-	    org-default-notes-file (concat org-directory "/notes.org")
-	    org-agenda-files '("captures.org" "notes.org")
-	    org-refile-targets (quote ((nil :maxlevel . 3)
-				       (org-agenda-files :maxlevel . 3)))
-	    org-capture-templates (quote (("t" "TODO" entry (file+datetree "~/Dropbox/Org/captures.org")
-					   "* TODO %?")
-					  ("a" "Appointment" entry (file+datetree "~/Dropbox/Org/captures.org")
-					   "* %?")
-					  ("n" "note" entry (file+headline "~/Dropbox/Org/captures.org" "IDEAS")
-					   "* %?\nCaptured on %U\n  %i")
-					  ("j" "Journal" entry (file+olp+datetree "~/Dropbox/journal.org")
-					   "* %?\nEntered on %U\n  %i")))
-	    org-tag-alist (quote (("BUDD"    . ?b)
-				  ("PHIL"    . ?p)
-				  ("ENGL"    . ?e)))
-	    org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")
-				(sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)"))
-	    org-log-done 'time
-	    org-refile-use-outline-path 'file
-	    org-outline-path-complete-in-steps nil
-	    org-refile-allow-creating-parent-nodes 'confirm))
-
     (setq org-image-actual-width (/ (display-pixel-width) 3)
 	  org-latex-create-formula-image-program 'dvipng
 	  org-pretty-entities t ; render UTF8 characters
@@ -91,24 +80,32 @@
 	    "bibtex %b"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
+    (plist-put org-format-latex-options :scale 1.70) ; bigger latex fragment
+    (set-default 'truncate-lines nil) ; line wrap in org mode
+    ;; Quickly insert blocks
+    (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
+    (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
     (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
     (add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
     (add-hook 'org-mode-hook 'org-display-inline-images)
     (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
     (add-hook 'org-mode-hook 'visual-line-mode)
-    (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
-    (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display)  
-    (plist-put org-format-latex-options :scale 1.70) ; bigger latex fragment
-    (set-default 'truncate-lines nil) ; line wrap in org mode
-    (require 'smartparens-org)
-    ;; Quickly insert blocks
-    (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
+    (add-hook 'org-mode-hook (lambda () (use-package helm-bibtex :ensure t
+				     :config
+				     ;; open pdf with system pdf viewer (works on mac)
+				     (setq bibtex-completion-pdf-open-function
+					   (lambda (fpath) (start-process "open" "*open*" "open" fpath))))))
+    (add-hook 'org-mode-hook (lambda () (use-package org-download :ensure t
+				     :config (add-hook 'dired-mode-hook 'org-download-enable))))
+    (add-hook 'org-mode-hook (lambda () (use-package smartparens-org)))
+    (add-hook 'org-mode-hook (lambda () (use-package smartparens-Tex-org :load-path "lib/")))
+    (add-hook 'org-mode-hook (lambda () (use-package org-auto-formula :load-path "lib/"
+				     :init (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display))))
     ))
 
 (use-package org-bullets
   :ensure t
-  :commands (org-bullets-mode)
-  :init (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+  :hook (org-mode . org-bullets-mode))
 
 (use-package org-ref
   :ensure t
@@ -126,19 +123,10 @@
    (setq org-ref-default-citation-link "citet"
 	 org-ref-default-ref-type "eqref")
    (add-hook 'org-mode-hook
-             (lambda () (define-key org-mode-map (kbd "C-c i r") 'org-ref-helm-insert-ref-link))
-	     'org-mode-hook
+             (lambda () (define-key org-mode-map (kbd "C-c i r") 'org-ref-helm-insert-ref-link)))
+   (add-hook 'org-mode-hook
              (lambda () (define-key org-mode-map (kbd "C-c i l") 'org-ref-helm-insert-label-link)))
    ))
-
-(use-package org-download
-  :ensure t
-  :after org
-  :config (add-hook 'dired-mode-hook 'org-download-enable))
-
-(use-package smartparens-Tex-org
-    :after (:any Tex org)
-    :load-path "lib/")
 
 ;; a WYSiWYG HTML mail editor that can be useful for sending tables, fontified source code, and inline images in email. 
 (use-package org-mime
@@ -149,10 +137,6 @@
 							 :with-author nil
 							 :with-toc nil
 							 :with-latex dvipng)))
-
-(use-package org-auto-formula
-  :after org
-  :load-path "lib/")
 
 (use-package org-babel-eval-in-repl
   :ensure t
@@ -184,6 +168,7 @@
 
 (use-package typo
   :ensure t
+  :diminish t
   :hook (text-mode . typo-mode))
 
 (use-package ispell
@@ -217,7 +202,7 @@
   (setq langtool-default-language "en-US"
 	langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
 
-(use-package pdf-view
+ (use-package pdf-view
   :ensure pdf-tools
   :commands pdf-tools-install
   :mode ("\\.pdf\\'" . pdf-view-mode)

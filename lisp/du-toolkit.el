@@ -7,6 +7,7 @@
 
 (use-package popwin
   :ensure t
+  :diminish t
   :config
   (popwin-mode t))
 
@@ -16,6 +17,7 @@
 
 (use-package company
   :ensure t
+  :diminish t
   :config
   (progn
     (global-company-mode)
@@ -30,6 +32,7 @@
 
 (use-package paredit
   :ensure t
+  :diminish t
   :bind ("C-c d" . paredit-delete-region)
   :hook ((lisp-mode . paredit-mode)
 	 (emacs-lisp-mode . paredit-mode)
@@ -44,7 +47,8 @@
 
 (use-package helm
   :ensure t
-  :hook (org-mode . helm-mode)
+  :diminish t
+  :demand t
   :bind (:map helm-map
               ("<tab>" . helm-execute-persistent-action)
               ("C-i"   . helm-execute-persistent-action)
@@ -107,6 +111,7 @@
 
 (use-package smartparens
   :ensure t
+  :diminish t
   :config
   (progn
     (smartparens-global-mode t)
@@ -152,6 +157,7 @@
 
 (use-package undo-tree
   :ensure t
+  :diminish t
   :config
   (global-undo-tree-mode))
 

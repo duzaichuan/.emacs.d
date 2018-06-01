@@ -82,6 +82,7 @@
 
 (use-package rainbow-delimiters
   :ensure t
+  :diminish t
   :hook (cider-repl-mode . rainbow-delimiters-mode))
 
 (use-package cider

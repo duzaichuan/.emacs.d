@@ -1,5 +1,6 @@
 ;;Mail
 (use-package mu4e
+  :defer 0.15
   :commands mu4e
   :bind ([f9] . mu4e)
   :config
@@ -11,7 +12,7 @@
     (add-hook 'mu4e-compose-mode-hook 'visual-line-mode)
     (setq
      mu4e-get-mail-command "offlineimap"   ;; or fetchmail, or ...
-     mu4e-update-interval 180)             ;; update every 5 minutes
+     mu4e-update-interval 90)             ;; update every 5 minutes
   
     (setq mu4e-contexts
 	  `( ,(make-mu4e-context
@@ -149,6 +150,7 @@
 
     ))
 
+
 ;; Alerts for new mails
 (use-package mu4e-alert
   :ensure t
@@ -166,6 +168,6 @@
       (mu4e~proc-kill)
       (mu4e-alert-enable-mode-line-display))
     (run-with-timer 0 60 'gjstein-refresh-mu4e-alert-mode-line)
-    ))
+        ))
 
 (provide 'du-mail)

@@ -54,12 +54,10 @@
  '(ivy-wrap t)
  '(magit-diff-use-overlays nil)
  '(mu4e-headers-include-related nil)
- '(neo-mode-line-type (quote none) t)
  '(neo-theme (quote icons))
  '(nrepl-message-colors
    (quote
     ("#dc322f" "#cb4b16" "#b58900" "#546E00" "#B4C342" "#00629D" "#2aa198" "#d33682" "#6c71c4")))
- '(org-agenda-files nil)
  '(org-fontify-quote-and-verse-blocks t)
  '(org-latex-default-packages-alist
    (quote
@@ -89,8 +87,6 @@
  '(pos-tip-foreground-color "#586e75")
  '(preview-auto-cache-preamble t)
  '(send-mail-function (quote smtpmail-send-it))
- '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#eee8d5" 0.2))
- '(spaceline-all-the-icons-separator-type (quote arrow))
  '(tao-theme-use-height nil)
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")
@@ -132,7 +128,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "gray98"))))
- '(mode-line ((t (:background "gray86" :foreground "#171717" :box nil :height 1.0))))
+ '(mode-line ((t (:background "dark gray" :foreground "gray40" :box nil :height 1.0))))
  '(neo-banner-face ((t (:foreground "dark cyan"))))
  '(neo-header-face ((t (:foreground "dark gray" :weight semi-bold))))
  '(org-block ((t (:background "gray96" :foreground "#616161" :height 0.95))))
@@ -155,6 +151,8 @@
  '(org-todo ((t (:background "#E8E8E8" :foreground "dark red" :weight bold))))
  '(org-verbatim ((t (:inherit shadow))))
  '(org-verse ((t (:inherit org-block))))
- '(powerline-active2 ((t (:inherit mode-line :background "gray86" :foreground "white"))))
- '(powerline-inactive1 ((t (:inherit mode-line-inactive))))
- '(powerline-inactive2 ((t (:inherit mode-line-inactive)))))
+ '(powerline-active0 ((t (:inherit mode-line))))
+ '(powerline-active1 ((t (:inherit mode-line :background "dark gray" :foreground "gray40"))))
+ '(powerline-active2 ((t (:inherit mode-line :background "gray40" :foreground "white"))))
+ '(powerline-inactive1 ((t (:background "dark gray"))))
+ '(powerline-inactive2 ((t (:background "dark gray")))))
