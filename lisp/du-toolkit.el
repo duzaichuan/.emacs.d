@@ -17,7 +17,7 @@
 
 (use-package company
   :ensure t
-  :diminish t
+  :diminish company-mode
   :config
   (progn
     (global-company-mode)
@@ -32,7 +32,7 @@
 
 (use-package paredit
   :ensure t
-  :diminish t
+  :diminish paredit-mode
   :bind ("C-c d" . paredit-delete-region)
   :hook ((lisp-mode . paredit-mode)
 	 (emacs-lisp-mode . paredit-mode)
@@ -58,6 +58,7 @@
 
 (use-package ivy
   :ensure t
+  :diminish ivy-mode
   :bind (("C-x b" . ivy-switch-buffer)
          ("C-x B" . ivy-switch-buffer-other-window)
          ("M-H"   . ivy-resume))
@@ -111,7 +112,7 @@
 
 (use-package smartparens
   :ensure t
-  :diminish t
+  :diminish smartparens-mode
   :config
   (progn
     (smartparens-global-mode t)
@@ -157,7 +158,7 @@
 
 (use-package undo-tree
   :ensure t
-  :diminish t
+  :diminish undo-tree-mode
   :config
   (global-undo-tree-mode))
 
@@ -263,6 +264,7 @@
 
 (use-package which-key
       :ensure t
+      :diminish which-key-mode
       :config
       (progn
 	(which-key-mode)
@@ -270,6 +272,7 @@
 
 (use-package evil
   :ensure t
+  :diminish evil-mode
   :init
   (progn
     (evil-mode 1)
@@ -313,8 +316,7 @@
       :hook (org-mode . evil-org-mode)
       :config
       (progn
-	(add-hook 'evil-org-mode-hook
-		  (lambda () (evil-org-set-key-theme)))
+	(add-hook 'evil-org-mode-hook (lambda () (evil-org-set-key-theme)))
 	(require 'evil-org-agenda)
 	(evil-org-agenda-set-keys)
 	))

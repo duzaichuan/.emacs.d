@@ -4,18 +4,11 @@
   :config
   (load-theme 'tao-yang t))
 
-(use-package all-the-icons
-  :ensure t
-  :config
-  (progn
-    (all-the-icons-octicon "file-binary") ;; GitHub Octicon for Binary File
-    (all-the-icons-faicon  "cogs")	 ;; FontAwesome icon for cogs
-    (all-the-icons-wicon   "tornado")))
-
 (use-package powerline
   :ensure t
   :config
-  (setq powerline-image-apple-rgb t)
+  (setq powerline-image-apple-rgb t
+	powerline-default-separator 'butt)
   (powerline-center-evil-theme)
   )
 
@@ -25,7 +18,7 @@
 
 (use-package color-identifiers-mode
   :ensure t
-  :diminish t
+  :diminish color-identifiers-mode
   :config (add-hook 'after-init-hook 'global-color-identifiers-mode))
 
 (use-package treemacs

@@ -129,6 +129,7 @@
  ;; If there is more than one, they won't work right.
  '(hl-line ((t (:background "gray98"))))
  '(mode-line ((t (:background "dark gray" :foreground "gray40" :box nil :height 1.0))))
+ '(mode-line-buffer-id ((t (:foreground "gray28" :weight bold))))
  '(neo-banner-face ((t (:foreground "dark cyan"))))
  '(neo-header-face ((t (:foreground "dark gray" :weight semi-bold))))
  '(org-block ((t (:background "gray96" :foreground "#616161" :height 0.95))))
@@ -151,8 +152,8 @@
  '(org-todo ((t (:background "#E8E8E8" :foreground "dark red" :weight bold))))
  '(org-verbatim ((t (:inherit shadow))))
  '(org-verse ((t (:inherit org-block))))
- '(powerline-active0 ((t (:inherit mode-line))))
  '(powerline-active1 ((t (:inherit mode-line :background "dark gray" :foreground "gray40"))))
  '(powerline-active2 ((t (:inherit mode-line :background "gray40" :foreground "white"))))
+ '(powerline-inactive0 ((t (:inherit mode-line-inactive))))
  '(powerline-inactive1 ((t (:background "dark gray"))))
  '(powerline-inactive2 ((t (:background "dark gray")))))

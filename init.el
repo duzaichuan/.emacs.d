@@ -49,9 +49,9 @@
 (use-package du-better-defaults)
 (use-package du-toolkit)
 (use-package du-ui)
-(use-package du-mail)
 (use-package du-proglangs)
 (use-package du-writing)
+(use-package du-mail)
 (use-package du-media)
 
 (load-file custom-file)

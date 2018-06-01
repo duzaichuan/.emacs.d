@@ -206,20 +206,41 @@
   :ensure pdf-tools
   :commands pdf-tools-install
   :mode ("\\.pdf\\'" . pdf-view-mode)
+  :init (setq pdf-annot-activate-created-annotations t) ; automatically annotate highlights
   :bind
   (:map pdf-view-mode-map
-	       ("j"  . pdf-view-next-page)
-               ("k"  . pdf-view-previous-page))
+	       ("d"  . pdf-view-next-page)
+               ("u"  . pdf-view-previous-page)
+	       ("j" .  pdf-view-scroll-up-or-next-page)
+	       ("k" .  pdf-view-scroll-down-or-previous-page)
+	       ("g"  . pdf-view-first-page)
+               ("G"  . pdf-view-last-page)
+	       ("e"  . pdf-view-goto-page)
+               ("l"  . image-forward-hscroll)
+               ("h"  . image-backward-hscroll)
+	       ("C-s" . isearch-forward)
+	       ("s"  . pdf-occur)
+	       ("al" . pdf-annot-list-annotations)
+               ("ad" . pdf-annot-delete)
+               ("am" . pdf-annot-add-markup-annotation)
+               ("at" . pdf-annot-add-text-annotation)
+	       ("ah" . pdf-annot-add-highlight-markup-annotation)
+	       ("au" . pdf-annot-add-underline-markup-annotation)
+	       ("M" . pdf-view-midnight-minor-mode)
+	       ;; Trim margins
+	       ("b"  . pdf-view-set-slice-from-bounding-box)
+	       ("r"  . pdf-view-reset-slice))
   :config
   (progn
-    ;; remove linum
+    (pdf-tools-install)
+    ;; remove linum and blink-cursor-mode
     (add-hook 'pdf-view-mode-hook (lambda () (linum-mode -1)))
+    (add-hook 'pdf-view-mode-hook (lambda () (blink-cursor-mode -1)))
     (setq-default pdf-view-display-size 'fit-page) ; fit page by default
     (setq pdf-view-resize-factor 1.10)
     (use-package org-pdfview :ensure t)
     (setq pdf-view-midnight-colors `(,(face-attribute 'default :foreground) .
                                      ,(face-attribute 'default :background)))
-    (add-hook 'pdf-view-mode-hook (lambda () (pdf-view-midnight-minor-mode)))
     ))
 
 (use-package deft

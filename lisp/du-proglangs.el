@@ -99,13 +99,4 @@
         cider-show-error-buffer t
         nrepl-hide-special-buffers t))
 
-(use-package lsp-mode
-  :ensure  t
-  :hook prog-mode)
-
-(use-package lsp-ui
-  ;;:commands lsp-ui-mode
-  :hook (lsp-mode-hook . lsp-ui-mode)
-  :config (require 'lsp-flycheck))
-
 (provide 'du-proglangs)
