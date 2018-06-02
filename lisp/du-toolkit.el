@@ -47,7 +47,7 @@
 
 (use-package helm
   :ensure t
-  :diminish t
+ ;:diminish t
   :demand t
   :bind (:map helm-map
               ("<tab>" . helm-execute-persistent-action)
@@ -58,7 +58,7 @@
 
 (use-package ivy
   :ensure t
-  :diminish ivy-mode
+ ;:diminish ivy-mode
   :bind (("C-x b" . ivy-switch-buffer)
          ("C-x B" . ivy-switch-buffer-other-window)
          ("M-H"   . ivy-resume))
@@ -160,7 +160,10 @@
   :ensure t
   :diminish undo-tree-mode
   :config
-  (global-undo-tree-mode))
+  (progn
+    (global-undo-tree-mode 1)
+    (defalias 'redo 'undo-tree-redo)
+    (global-set-key (kbd "s-r") 'redo)))
 
 (use-package magit
   :ensure t
@@ -313,6 +316,7 @@
       :after magit)
     (use-package evil-org
       :ensure t
+      :diminish  evil-org-mode
       :hook (org-mode . evil-org-mode)
       :config
       (progn

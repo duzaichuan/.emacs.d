@@ -60,7 +60,7 @@
 				    ("PHIL"    . ?p)
 				    ("ENGL"    . ?e)))
 	      org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")
-				  (sequence "REPORT(r)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)"))
+				  (sequence "QUESTION(q)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)"))
 	      org-log-done 'time
 	      org-refile-use-outline-path 'file
 	      org-outline-path-complete-in-steps nil
@@ -85,8 +85,7 @@
     ;; Quickly insert blocks
     (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
-    (add-hook 'org-mode-hook (lambda () (linum-mode -1)))
-    (add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
+    (add-hook 'org-mode-hook (lambda () (linum-mode -1) (setq ispell-parser 'tex)))
     (add-hook 'org-mode-hook 'org-display-inline-images)
     (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
     (add-hook 'org-mode-hook 'visual-line-mode)
@@ -168,7 +167,7 @@
 
 (use-package typo
   :ensure t
-  :diminish t
+  :diminish typo-mode
   :hook (text-mode . typo-mode))
 
 (use-package ispell
@@ -220,7 +219,9 @@
                ("h"  . image-backward-hscroll)
 	       ("C-s" . isearch-forward)
 	       ("s"  . pdf-occur)
+	       ("aa" . pdf-annot-attachment-dired)
 	       ("al" . pdf-annot-list-annotations)
+	       ("af" . pdf-annot-list-follow-minor-mode) ; shows the text of the current annot
                ("ad" . pdf-annot-delete)
                ("am" . pdf-annot-add-markup-annotation)
                ("at" . pdf-annot-add-text-annotation)
@@ -235,7 +236,9 @@
     (pdf-tools-install)
     ;; remove linum and blink-cursor-mode
     (add-hook 'pdf-view-mode-hook (lambda () (linum-mode -1)))
-    (add-hook 'pdf-view-mode-hook (lambda () (blink-cursor-mode -1)))
+    (evil-set-initial-state 'pdf-view-mode 'emacs)
+    (add-hook 'pdf-view-mode-hook
+	      (lambda () (set (make-local-variable 'evil-emacs-state-cursor) (list nil))))
     (setq-default pdf-view-display-size 'fit-page) ; fit page by default
     (setq pdf-view-resize-factor 1.10)
     (use-package org-pdfview :ensure t)
@@ -252,7 +255,6 @@
     (setq deft-directory         "~/Dropbox/Org"
 	  deft-extensions        '("org")
 	  deft-default-extension "org"
-	  deft-text-mode         'org-mode)
-    ))
+	  deft-text-mode         'org-mode)))
 
 (provide 'du-writing)

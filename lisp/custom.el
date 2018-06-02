@@ -152,6 +152,7 @@
  '(org-todo ((t (:background "#E8E8E8" :foreground "dark red" :weight bold))))
  '(org-verbatim ((t (:inherit shadow))))
  '(org-verse ((t (:inherit org-block))))
+ '(pdf-occur-document-face ((t (:foreground "dark magenta"))))
  '(powerline-active1 ((t (:inherit mode-line :background "dark gray" :foreground "gray40"))))
  '(powerline-active2 ((t (:inherit mode-line :background "gray40" :foreground "white"))))
  '(powerline-inactive0 ((t (:inherit mode-line-inactive))))

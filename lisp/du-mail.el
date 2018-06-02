@@ -150,7 +150,6 @@
 
     ))
 
-
 ;; Alerts for new mails
 (use-package mu4e-alert
   :ensure t
@@ -163,11 +162,11 @@
 	   "OR "
 	   "flag:unread maildir:/Outlook/INBOX"))
     (mu4e-alert-enable-mode-line-display)
-    (defun gjstein-refresh-mu4e-alert-mode-line ()
+    (defun du-refresh-mu4e-alert-mode-line ()
       (interactive)
       (mu4e~proc-kill)
       (mu4e-alert-enable-mode-line-display))
-    (run-with-timer 0 60 'gjstein-refresh-mu4e-alert-mode-line)
+    (run-with-timer 0 60 'du-refresh-mu4e-alert-mode-line)
         ))
 
 (provide 'du-mail)
