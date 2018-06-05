@@ -10,7 +10,6 @@
     (setq emms-player-list '(emms-player-mpd))
     (setq emms-info-functions '(emms-info-mpd))
     (setq emms-player-mpd-server-name "localhost")
-    (setq emms-player-mpd-server-port "6601"))   
-    )
+    (setq emms-player-mpd-server-port "6601")))
 
 (provide 'du-media)

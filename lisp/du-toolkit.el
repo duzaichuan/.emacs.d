@@ -27,8 +27,7 @@
       (define-key company-active-map (kbd "M-n") nil)
       (define-key company-active-map (kbd "M-p") nil)
       (define-key company-active-map (kbd "C-n") #'company-select-next)
-      (define-key company-active-map (kbd "C-p") #'company-select-previous))
-    ))
+      (define-key company-active-map (kbd "C-p") #'company-select-previous))))
 
 (use-package paredit
   :ensure t
@@ -38,12 +37,10 @@
 	 (emacs-lisp-mode . paredit-mode)
 	 (lisp-interaction-mode . paredit-mode)
 	 (ielm-mode . paredit-mode)
-	 (eval-expression-minibuffer-setup . paredit-mode))
-  )
+	 (eval-expression-minibuffer-setup . paredit-mode)))
 
 (use-package paren
-  :config
-  (show-paren-mode +1))
+  :config (show-paren-mode +1))
 
 (use-package helm
   :ensure t
@@ -66,12 +63,12 @@
               ("C-k" . ivy-switch-buffer-kill))
   :custom
   (ivy-dynamic-exhibit-delay-ms 200)
-   (ivy-height 10)
-   (ivy-initial-inputs-alist nil t)
-   (ivy-magic-tilde nil)
-   (ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
-   (ivy-use-virtual-buffers t)
-   (ivy-wrap t)
+  (ivy-height 10)
+  (ivy-initial-inputs-alist nil t)
+  (ivy-magic-tilde nil)
+  (ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
+  (ivy-use-virtual-buffers t)
+  (ivy-wrap t)
   :config
   (progn
    (ivy-mode 1)
@@ -79,12 +76,7 @@
 
 (use-package swiper
   :ensure t
-  :bind ("\C-s" . swiper)
-  :config
-  (defun haba/swiper-mc-fixed ()
-    (interactive)
-    (setq swiper--current-window-start nil)
-    (swiper-mc)))
+  :bind ("\C-s" . swiper))
 
 (use-package counsel
   :ensure t
@@ -107,8 +99,7 @@
   (bind-key "M-r" #'counsel-minibuffer-history minibuffer-local-map)
   :config
   (add-to-list 'ivy-sort-matches-functions-alist
-               '(counsel-find-file . ivy--sort-files-by-date))
-  )
+               '(counsel-find-file . ivy--sort-files-by-date)))
 
 (use-package smartparens
   :ensure t
@@ -118,8 +109,7 @@
     (smartparens-global-mode t)
     ;; single "'" in emacs-lisp mode 
     (sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
-    (sp-local-pair 'emacs-lisp-mode "`" nil :actions nil)
-    ))
+    (sp-local-pair 'emacs-lisp-mode "`" nil :actions nil)))
 
 (use-package recentf
   :bind ("\C-x\ \C-r" . recentf-open-files)
@@ -128,11 +118,9 @@
     (setq 
         recentf-max-saved-items 500
         recentf-max-menu-items 15
-        ;; disable recentf-cleanup on Emacs start, because it can cause
-        ;; problems with remote files
+        ;; disable recentf-cleanup on Emacs start, because it can cause problems with remote files
         recentf-auto-cleanup 'never)
-    (recentf-mode +1)
-    ))
+    (recentf-mode +1)))
 
 (use-package imenu-anywhere
   :ensure t
@@ -153,8 +141,7 @@
     ;; current subdir, instead of the current subdir of this dired buffer
     (setq dired-dwim-target t)
     ;; enable some really cool extensions like C-x C-j(dired-jump)
-    (use-package dired-x)
-    ))
+    (use-package dired-x)))
 
 (use-package undo-tree
   :ensure t
@@ -284,6 +271,7 @@
     (setq evil-want-C-u-scroll t)
     (evil-add-hjkl-bindings recentf-dialog-mode-map 'emacs)
     (evil-add-hjkl-bindings package-menu-mode-map 'emacs)
+    (evil-add-hjkl-bindings pdf-outline-buffer-mode-map 'emacs)
     (use-package evil-leader
       :ensure t
       :init (global-evil-leader-mode)
@@ -305,8 +293,7 @@
 	(evil-leader/set-key "oc" 'org-capture)
 	(evil-leader/set-key "oa" 'org-agenda)
 	(evil-leader/set-key "or" 'org-refile)
-	(evil-leader/set-key "ol" 'org-store-link)))
-    )
+	(evil-leader/set-key "ol" 'org-store-link))))
   :config
   (progn
     (setq evil-cross-lines t)
@@ -322,8 +309,7 @@
       (progn
 	(add-hook 'evil-org-mode-hook (lambda () (evil-org-set-key-theme)))
 	(require 'evil-org-agenda)
-	(evil-org-agenda-set-keys)
-	))
+	(evil-org-agenda-set-keys)))
     (use-package evil-cleverparens
       :ensure t
       :hook (paredit-mode . evil-cleverparens-mode)
@@ -336,7 +322,6 @@
       :bind ("M-;" . evilnc-comment-or-uncomment-lines))
     (use-package evil-mu4e
       :ensure t
-      :after mu4e)
-    ))
+      :after mu4e)))
 
 (provide 'du-toolkit)

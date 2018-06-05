@@ -33,8 +33,7 @@
     (when (string-match-p "/zsh$" (getenv "SHELL"))
       ;; Use a non-interactive login shell. A login shell, because my environment variables are mostly set in `.zprofile'.
       (setq exec-path-from-shell-arguments '("-l")))
-    (exec-path-from-shell-initialize)
-    ))
+    (exec-path-from-shell-initialize)))
 
 (use-package auto-package-update
   :ensure t
@@ -42,8 +41,7 @@
   (progn
     (setq auto-package-update-delete-old-versions t)
     (setq auto-package-update-hide-results t)
-    (auto-package-update-maybe)
-    ))
+    (auto-package-update-maybe)))
 
 ;; Require files under ~/.emacs.d/lisp
 (use-package du-better-defaults)

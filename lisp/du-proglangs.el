@@ -76,9 +76,7 @@
     (sp-local-pair '(clojure-mode cider-repl-mode) "'" nil :actions nil)
     (sp-local-pair '(clojure-mode cider-repl-mode) "`" nil :actions nil)
     (require 'eval-in-repl-cider)
-    (define-key clojure-mode-map (kbd "<C-return>") 'eir-eval-in-cider)
-    )
-  )
+    (define-key clojure-mode-map (kbd "<C-return>") 'eir-eval-in-cider)))
 
 (use-package rainbow-delimiters
   :ensure t

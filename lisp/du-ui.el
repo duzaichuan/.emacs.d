@@ -9,8 +9,7 @@
   :config
   (setq powerline-image-apple-rgb t
 	powerline-default-separator 'butt)
-  (powerline-center-evil-theme)
-  )
+  (powerline-center-evil-theme))
 
 (use-package neotree
   :ensure t

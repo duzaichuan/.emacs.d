@@ -45,6 +45,7 @@
 (depends-on "faceup")
 (depends-on "flyspell-correct-ivy")
 (depends-on "geiser")
+(depends-on "git-commit")
 (depends-on "gntp")
 (depends-on "helm")
 (depends-on "helm-bibtex")

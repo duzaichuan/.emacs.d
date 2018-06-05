@@ -20,8 +20,7 @@
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
     (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
     (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
-    (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)
-   ))
+    (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)))
 
 (use-package cdlatex
   :ensure t
@@ -180,8 +179,7 @@
     (setenv "DICTIONARY" "en_US")
     (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
     (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
-    (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXPORT" . "#\\+END_EXPORT")))
-  )
+    (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXPORT" . "#\\+END_EXPORT"))))
 
 (use-package flyspell
   :bind ([f6] . flyspell-buffer)
@@ -230,7 +228,8 @@
 	       ("M" . pdf-view-midnight-minor-mode)
 	       ;; Trim margins
 	       ("b"  . pdf-view-set-slice-from-bounding-box)
-	       ("r"  . pdf-view-reset-slice))
+	       ("r"  . pdf-view-reset-slice)
+	       ("SPC" . image-next-line))
   :config
   (progn
     (pdf-tools-install)
