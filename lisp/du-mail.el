@@ -17,7 +17,7 @@
 			(mu4e-refile-folder . "/Outlook/Archive")
 			(mu4e-sent-folder . "/Outlook/Sent")
 			(mu4e-drafts-folder . "/Outlook/Drafts")
-			( mu4e-sent-messages-behavior . delete)
+			(mu4e-sent-messages-behavior . delete)
 			(user-mail-address . "duzaichuan@hotmail.com")
 			(smtpmail-default-smtp-server . "smtp.live.com")
 			(smtpmail-smtp-server . "smtp.live.com")
@@ -25,7 +25,7 @@
 			(user-full-name . "Zaichuan Du")
 			(mu4e-compose-signature . (concat
 						   "Best\n"
-						   "Zaichuan Du\n")) ))
+						   "Zaichuan\n")) ))
 	     ,(make-mu4e-context
 	       :name "Exchange"
 	       :enter-func (lambda () (mu4e-message "Switch to the Work context"))
@@ -45,7 +45,8 @@
 						   "Zaichuan Du\n")) ))
 	     ))
     
-    (setq mu4e-get-mail-command "offlineimap"   ; or fetchmail, or ...
+    (setq mu4e-get-mail-command "/usr/local/bin/mbsync -a"   ; or fetchmail, or ...
+	  mu4e-html2text-command "/usr/local/bin/w3m -T text/html"
 	  mu4e-update-interval 90               ;; update every 1.5 minutes 
 	  mu4e-completing-read-function 'completing-read  ; This allows me to use 'helm' to select mailboxes
 	  message-kill-buffer-on-exit t ; Why would I want to leave my message open after I've sent it?
@@ -54,10 +55,16 @@
 	  message-citation-line-format "On %a %d %b %Y at %R, %f wrote:\n" ; customize the reply-quote-string
 	  message-citation-line-function 'message-insert-formatted-citation-line ; choose to use the formatted string
 	  message-cite-reply-position 'above
-	  mu4e-maildir-shortcuts '( ("/Exchange/Inbox"               . ?I)
+	  mu4e-maildir-shortcuts '( ("/Exchange/Inbox"  . ?I)
 				    ("/Exchange/Sent"   . ?S)
-				    ("/Outlook/Inbox"       . ?i)
+				    ("/Outlook/Inbox"   . ?i)
 				    ("/Outlook/Sent"    . ?s)))
+    ;; enable inline images
+    (setq mu4e-view-show-images t)
+    ;; use imagemagick, if available
+    (when (fboundp 'imagemagick-register-types)
+      (imagemagick-register-types))
+
     (setq mu4e-attachment-dir
 	  (lambda (fname mtype)
 	    (cond
@@ -65,13 +72,6 @@
 	     ((and fname (string-match "\\.doc$" fname))  "~/Desktop")
 	     ;; ... other cases  ...
 	     (t "~/Downloads")))) ;; everything else
-
-    ;; enable inline images
-    (setq mu4e-view-show-images t)
-    ;; use imagemagick, if available
-    (when (fboundp 'imagemagick-register-types)
-      (imagemagick-register-types))
-
     ;;(setq mu4e-html2text-command "html2text -utf8 -width 72")
 
      ;; remove linum in mu4e-view-mode
@@ -82,15 +82,6 @@
     (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
     (add-hook 'mu4e-compose-mode-hook 'visual-line-mode)
     (add-hook 'mu4e-view-mode-hook 'visual-line-mode)
-    
-    (add-to-list 'mu4e-marks
-		 '(trash
-		   :char ("d" . "▼")
-		   :prompt "dtrash"
-		   :dyn-target (lambda (target msg) (mu4e-get-trash-folder msg))
-		   :action (lambda (docid msg target) 
-			     (mu4e~proc-move docid
-					     (mu4e~mark-check-target target) "-N"))))
 
     ;; Include a bookmark to open all of my inboxes
     (add-to-list 'mu4e-bookmarks

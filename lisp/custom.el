@@ -130,6 +130,8 @@
  '(hl-line ((t (:background "gray98"))))
  '(mode-line ((t (:background "dark gray" :foreground "gray40" :box nil :height 1.0))))
  '(mode-line-buffer-id ((t (:foreground "gray28" :weight bold))))
+ '(mu4e-link-face ((t (:foreground "blue2" :underline t))))
+ '(mu4e-url-number-face ((t (:foreground "blue2"))))
  '(neo-banner-face ((t (:foreground "dark cyan"))))
  '(neo-header-face ((t (:foreground "dark gray" :weight semi-bold))))
  '(org-block ((t (:background "gray96" :foreground "#616161" :height 0.95))))
