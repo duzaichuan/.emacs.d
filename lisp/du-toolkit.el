@@ -55,7 +55,7 @@
 
 (use-package ivy
   :ensure t
- ;:diminish ivy-mode
+  ;:diminish ivy-mode
   :bind (("C-x b" . ivy-switch-buffer)
          ("C-x B" . ivy-switch-buffer-other-window)
          ("M-H"   . ivy-resume))
@@ -80,6 +80,7 @@
 
 (use-package counsel
   :ensure t
+  :demand t
   :custom (counsel-find-file-ignore-regexp
            (concat "\\(\\`\\.[^.]\\|"
                    (regexp-opt completion-ignored-extensions)
