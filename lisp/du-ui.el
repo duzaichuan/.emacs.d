@@ -15,11 +15,6 @@
   :ensure t
   :defer t)
 
-(use-package color-identifiers-mode
-  :ensure t
-  :diminish color-identifiers-mode
-  :config (add-hook 'after-init-hook 'global-color-identifiers-mode))
-
 (use-package treemacs
   :ensure t
   :bind 

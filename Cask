@@ -113,6 +113,7 @@
 (depends-on "undo-tree")
 (depends-on "use-package")
 (depends-on "visual-fill-column")
+(depends-on "w3m")
 (depends-on "which-key")
 (depends-on "writeroom-mode")
 (depends-on "yaml-mode")

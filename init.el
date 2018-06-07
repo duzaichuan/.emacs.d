@@ -49,6 +49,7 @@
 (use-package du-ui)
 (use-package du-proglangs)
 (use-package du-writing)
+(use-package du-browser)
 (use-package du-mail)
 (use-package du-media)
 
