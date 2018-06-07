@@ -1,6 +1,5 @@
 ;;Mail
 (use-package mu4e
- ;:defer 0.15
   :commands mu4e
   :bind ([f9] . mu4e)
   :config
@@ -68,7 +67,12 @@
 						   "Best regards\n"
 						   "Zaichuan Du\n")) ))
 	     ))
-   
+    
+    (add-to-list 'mu4e-bookmarks
+		 (make-mu4e-bookmark
+		  :name "All Inboxes"
+		  :query "maildir:/Exchange/inbox OR maildir:/Outlook/inbox"
+		  :key ?i))   
     ;; enable inline images
     (setq mu4e-view-show-images t)
     ;; use imagemagick, if available
@@ -82,14 +86,7 @@
 	     ((and fname (string-match "\\.doc$" fname))  "~/Desktop")
 	     ;; ... other cases  ...
 	     (t "~/Downloads")))) ;; everything else
-    
-    ;; Include a bookmark to open all of my inboxes
-    (add-to-list 'mu4e-bookmarks
-		 (make-mu4e-bookmark
-		  :name "All Inboxes"
-		  :query "maildir:/Exchange/inbox OR maildir:/Outlook/inbox"
-		  :key ?i))
-    ))
+        ))
 
 ;; Alerts for new mails
 (use-package mu4e-alert

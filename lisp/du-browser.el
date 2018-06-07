@@ -46,8 +46,8 @@
 
 (use-package w3m
   :ensure t
-  :commands (w3m-browse-url w3m-session-crash-recovery-remove w3m-search w3m-find-file)
-  :bind ("C-x x"   . w3m-browse-url)
+  :bind (("C-x x"   . w3m-browse-url)
+	 ([f3]      . w3m))
   :init
   (setq w3m-command "w3m")
   (setq w3m-coding-system 'utf-8
@@ -57,6 +57,12 @@
         w3m-output-coding-system 'utf-8
         w3m-terminal-coding-system 'utf-8)
   (eval-when-compile
-    (autoload 'w3m-search-escape-query-string "w3m-search")))
+    (autoload 'w3m-search-escape-query-string "w3m-search"))
+  :config
+  (add-hook 'w3m-mode-hook (lambda () (linum-mode -1))))
+
+(use-package eww
+  :bind ("C-x m" . browse-url-at-point)
+  :config (add-hook 'eww-mode-hook (lambda () (linum-mode -1))))
 
 (provide 'du-browser)

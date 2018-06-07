@@ -127,9 +127,11 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(eww-valid-certificate ((t (:foreground "dark red" :weight bold))))
  '(hl-line ((t (:background "gray98"))))
  '(mode-line ((t (:background "dark gray" :foreground "gray40" :box nil :height 1.0))))
  '(mode-line-buffer-id ((t (:foreground "gray28" :weight bold))))
+ '(mu4e-attach-number-face ((t (:foreground "blue1"))))
  '(mu4e-link-face ((t (:foreground "blue2" :underline t))))
  '(mu4e-url-number-face ((t (:foreground "blue2"))))
  '(neo-banner-face ((t (:foreground "dark cyan"))))
@@ -159,4 +161,9 @@
  '(powerline-active2 ((t (:inherit mode-line :background "gray40" :foreground "white"))))
  '(powerline-inactive0 ((t (:inherit mode-line-inactive))))
  '(powerline-inactive1 ((t (:background "dark gray"))))
- '(powerline-inactive2 ((t (:background "dark gray")))))
+ '(powerline-inactive2 ((t (:background "dark gray"))))
+ '(w3m-tab-background ((t (:background "gray50" :foreground "#FCFCFC" :underline nil :weight normal))))
+ '(w3m-tab-mouse ((t (:background "gray40" :foreground "white" :box (:line-width -1 :style released-button)))))
+ '(w3m-tab-selected ((t (:background "gray40" :foreground "gray100" :box (:line-width -1 :style released-button)))))
+ '(w3m-tab-selected-background ((t (:background "gray50" :foreground "black"))))
+ '(w3m-tab-unselected ((t (:background "gray50" :foreground "gray100" :box (:line-width 2 :color "gray50"))))))

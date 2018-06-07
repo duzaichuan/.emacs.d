@@ -1,17 +1,3 @@
-;; appearance setting
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
-;; font
-(set-face-attribute 'default nil
-		    :font "DejaVu Sans Mono")
-(tool-bar-mode -1)
-(scroll-bar-mode -1)
-(global-linum-mode 1)
-(set-face-attribute 'default nil :height 170)
-(setq inhibit-startup-screen t)
-(setq-default cursor-type 'bar)
-(global-hl-line-mode t)
-(global-prettify-symbols-mode)
-
 ;; better defaults
 ;; open init.el 
 (global-set-key (kbd "<f2>") (lambda () (interactive) (find-file user-init-file)))
@@ -46,7 +32,6 @@
              (ignore-errors (backward-up-list))
              (funcall fn)))))
 
-(setq tab-always-indent 'complete)
 (global-set-key (kbd "C-w") 'backward-kill-word)
 
 ;; Define the global encoding as utf-8 english US related

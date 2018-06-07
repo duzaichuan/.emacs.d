@@ -41,7 +41,7 @@
          ("C-c C-w" . org-refile)
          ("C-c j" . org-clock-goto)
          ("C-c C-x C-o" . org-clock-out))
-  :init (global-set-key (kbd "<f3>") (lambda () (interactive) (find-file "~/Dropbox/Org/captures.org")))
+  :init (global-set-key (kbd "<f4>") (lambda () (interactive) (find-file "~/Dropbox/Org/captures.org")))
         (setq org-directory "~/Dropbox/Org"
 	      org-default-notes-file (concat org-directory "/notes.org")
 	      org-agenda-files (list "~/Dropbox/Org")
@@ -198,16 +198,5 @@
   :config
   (setq langtool-default-language "en-US"
 	langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
-
-(use-package deft
-  :ensure t
-  :bind ("<f7>" . deft)
-  :commands (deft)
-  :config
-  (progn
-    (setq deft-directory         "~/Dropbox/Org"
-	  deft-extensions        '("org")
-	  deft-default-extension "org"
-	  deft-text-mode         'org-mode)))
 
 (provide 'du-writing)
