@@ -1,3 +1,33 @@
+(use-package eww
+  :bind ("C-x m" . browse-url-at-point)
+  :config (add-hook 'eww-mode-hook (lambda () (linum-mode -1))))
+
+(use-package w3m
+  :ensure t
+  :bind (("C-x x"   . w3m-browse-url)
+	 ([f3]      . w3m)
+	 :map w3m-mode-map
+	 ("n" . w3m-next-buffer)
+	 ("p" . w3m-previous-buffer))
+  :config
+  (progn
+    (add-hook 'w3m-mode-hook (lambda () (linum-mode -1)))
+    (setq w3m-command "w3m"
+	  w3m-home-page "about://bookmark/")
+    (setq w3m-coding-system 'utf-8
+          w3m-file-coding-system 'utf-8
+          w3m-file-name-coding-system 'utf-8
+          w3m-input-coding-system 'utf-8
+          w3m-output-coding-system 'utf-8
+          w3m-terminal-coding-system 'utf-8)
+    (setq w3m-use-cookies t
+	  w3m-view-this-url-new-session-in-background t
+	  w3m-command-arguments '("-cookie" "-F")
+	  browse-url-browser-function 'w3m-browse-url)
+    (eval-when-compile
+      (autoload 'w3m-search-escape-query-string "w3m-search"))
+        ))
+
 (use-package pdf-view
   :ensure pdf-tools
   :commands pdf-tools-install
@@ -43,26 +73,5 @@
     (setq pdf-view-midnight-colors `(,(face-attribute 'default :foreground) .
                                      ,(face-attribute 'default :background)))
     ))
-
-(use-package w3m
-  :ensure t
-  :bind (("C-x x"   . w3m-browse-url)
-	 ([f3]      . w3m))
-  :init
-  (setq w3m-command "w3m")
-  (setq w3m-coding-system 'utf-8
-        w3m-file-coding-system 'utf-8
-        w3m-file-name-coding-system 'utf-8
-        w3m-input-coding-system 'utf-8
-        w3m-output-coding-system 'utf-8
-        w3m-terminal-coding-system 'utf-8)
-  (eval-when-compile
-    (autoload 'w3m-search-escape-query-string "w3m-search"))
-  :config
-  (add-hook 'w3m-mode-hook (lambda () (linum-mode -1))))
-
-(use-package eww
-  :bind ("C-x m" . browse-url-at-point)
-  :config (add-hook 'eww-mode-hook (lambda () (linum-mode -1))))
 
 (provide 'du-browser)
