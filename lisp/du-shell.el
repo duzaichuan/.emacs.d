@@ -45,12 +45,11 @@
     (esh-section esh-dir
 		 "\xf07c"  ;  (faicon folder)
 		 (abbreviate-file-name (eshell/pwd))
-		 '(:foreground "black" :bold ultra-bold :underline t))
+		 '(:bold ultra-bold :underline t))
 
     (esh-section esh-git
 		 "\xe907"  ;  (git icon)
-		 (magit-get-current-branch)
-		 '(:foreground "grey40"))
+		 (magit-get-current-branch))
 
     ;; Below I implement a "prompt number" section
     (setq esh-prompt-num 0)
@@ -60,8 +59,7 @@
 
     (esh-section esh-num
 		 "\xf0c9"  ;  (list icon)
-		 (number-to-string esh-prompt-num)
-		 '(:foreground "grey60"))
+		 (number-to-string esh-prompt-num))
 
     ;; Separator between esh-sections
     (setq esh-sep "  ")  ; or " | "

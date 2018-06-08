@@ -11,10 +11,10 @@
 (global-hl-line-mode t)
 (global-prettify-symbols-mode)
 
-(use-package tao-theme
+(use-package zenburn-theme
   :ensure t
   :config
-  (load-theme 'tao-yang t))
+  (load-theme 'zenburn t))
 
 (use-package powerline
   :ensure t
