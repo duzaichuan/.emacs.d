@@ -210,9 +210,12 @@
 (use-package evil
   :ensure t
   :diminish evil-mode
-  :init
+  :init (setq evil-want-integration nil)
+  :config
   (progn
     (evil-mode 1)
+    (setq evil-cross-lines t)
+    (setq evil-move-cursor-back nil)
     (setcdr evil-insert-state-map nil)
     (define-key evil-insert-state-map [escape] 'evil-normal-state)
     (setq evil-want-C-u-scroll t)
@@ -240,35 +243,44 @@
 	(evil-leader/set-key "oc" 'org-capture)
 	(evil-leader/set-key "oa" 'org-agenda)
 	(evil-leader/set-key "or" 'org-refile)
-	(evil-leader/set-key "ol" 'org-store-link))))
+	(evil-leader/set-key "ol" 'org-store-link)))
+    ))
+
+(use-package evil-magit
+        :ensure t
+        :after magit)
+
+(use-package evil-org
+    :ensure t
+    :diminish  evil-org-mode
+    :hook (org-mode . evil-org-mode)
+    :config
+    (progn
+      (add-hook 'evil-org-mode-hook (lambda () (evil-org-set-key-theme)))
+      (require 'evil-org-agenda)
+      (evil-org-agenda-set-keys)))
+
+(use-package evil-cleverparens
+    :ensure t
+    :hook (paredit-mode . evil-cleverparens-mode)
+    :config (setq evil-cleverparens-swap-move-by-word-and-symbol t))
+
+(use-package evil-paredit
+    :ensure t
+    :hook (paredit-mode . evil-paredit-mode))
+
+(use-package evil-nerd-commenter
+    :ensure t
+    :bind ("M-;" . evilnc-comment-or-uncomment-lines))
+
+(use-package evil-mu4e
+    :ensure t
+    :after mu4e)
+
+(use-package evil-collection
+  :after evil
+  :ensure t
   :config
-  (progn
-    (setq evil-cross-lines t)
-    (setq evil-move-cursor-back nil)
-    (use-package evil-magit
-      :ensure t
-      :after magit)
-    (use-package evil-org
-      :ensure t
-      :diminish  evil-org-mode
-      :hook (org-mode . evil-org-mode)
-      :config
-      (progn
-	(add-hook 'evil-org-mode-hook (lambda () (evil-org-set-key-theme)))
-	(require 'evil-org-agenda)
-	(evil-org-agenda-set-keys)))
-    (use-package evil-cleverparens
-      :ensure t
-      :hook (paredit-mode . evil-cleverparens-mode)
-      :config (setq evil-cleverparens-swap-move-by-word-and-symbol t))
-    (use-package evil-paredit
-      :ensure t
-      :hook (paredit-mode . evil-paredit-mode))
-    (use-package evil-nerd-commenter
-      :ensure t
-      :bind ("M-;" . evilnc-comment-or-uncomment-lines))
-    (use-package evil-mu4e
-      :ensure t
-      :after mu4e)))
+  (evil-collection-init 'eww))
 
 (provide 'du-toolkit)

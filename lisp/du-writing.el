@@ -13,6 +13,7 @@
 	  reftex-plug-into-AUCTeX t)
     (setq-default TeX-master nil)
     (fset 'tex-font-lock-suscript 'ignore)
+    (add-hook 'LaTeX-mode-hook (lambda () (linum-mode -1)))
     (add-hook 'LaTeX-mode-hook 'visual-line-mode)
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)

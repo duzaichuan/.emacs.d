@@ -80,13 +80,12 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (clj-refactor rainbow-delimiters org-download org-pdfview writeroom-mode org-bullets matlab-mode org org-edna 0blayout pdf-tools tao-theme ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex)))
+    (evil-collection clj-refactor rainbow-delimiters org-download org-pdfview writeroom-mode org-bullets matlab-mode org org-edna 0blayout pdf-tools ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
  '(preview-auto-cache-preamble t)
  '(send-mail-function (quote smtpmail-send-it))
- ;'(tao-theme-use-height nil)
  '(term-default-bg-color "#fdf6e3")
  '(term-default-fg-color "#657b83")
  '(truncate-lines nil)
@@ -126,7 +125,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(eww-valid-certificate ((t (:foreground "dark red" :weight bold))))
  '(neo-banner-face ((t (:foreground "dark cyan"))))
  '(neo-header-face ((t (:foreground "dark gray" :weight semi-bold))))
  '(org-special-keyword ((t (:inherit org-meta-line))))

@@ -1,11 +1,14 @@
 (use-package eww
-  :bind ("C-x m" . browse-url-at-point)
-  :config (add-hook 'eww-mode-hook (lambda () (linum-mode -1))))
+  :bind (("C-x m" . browse-url-at-point)
+	 ("C-x ," . shr-copy-url)
+	 ([f7] . eww))
+  :init (setq browse-url-browser-function #'eww-browse-url)
+  :config
+  (add-hook 'eww-mode-hook (lambda () (linum-mode -1) (evil-emacs-state))))
 
 (use-package w3m
   :ensure t
-  :bind (("C-x x"   . w3m-browse-url)
-	 ([f3]      . w3m)
+  :bind (([f3]      . w3m)
 	 :map w3m-mode-map
 	 ("n" . w3m-next-buffer)
 	 ("p" . w3m-previous-buffer))

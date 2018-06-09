@@ -33,6 +33,7 @@
 (depends-on "eval-in-repl")
 (depends-on "evil")
 (depends-on "evil-cleverparens")
+(depends-on "evil-collection")
 (depends-on "evil-leader")
 (depends-on "evil-magit")
 (depends-on "evil-mu4e")
