@@ -281,6 +281,6 @@
   :after evil
   :ensure t
   :config
-  (evil-collection-init 'eww))
+  (evil-collection-init '(eww eshell dired)))
 
 (provide 'du-toolkit)

@@ -1,6 +1,7 @@
 ;;Mail
 (use-package mu4e
   :commands mu4e
+  :load-path "/usr/local/share/emacs/site-lisp/mu/mu4e"
   :bind ([f9] . mu4e)
   :config
   (progn

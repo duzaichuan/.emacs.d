@@ -14,7 +14,8 @@
 (use-package zenburn-theme
   :ensure t
   :config
-  (load-theme 'zenburn t))
+  (setf custom-safe-themes t)
+  (load-theme 'zenburn))
 
 (use-package powerline
   :ensure t

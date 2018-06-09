@@ -68,7 +68,7 @@
   :config
   (progn
     (setq org-image-actual-width (/ (display-pixel-width) 3)
-	  org-latex-create-formula-image-program 'dvipng
+	  org-latex-create-formula-image-program 'imagemagick
 	  org-pretty-entities t ; render UTF8 characters
 	  org-confirm-babel-evaluate nil
 	  org-src-fontify-natively t ; syntax highlight in org mode

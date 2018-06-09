@@ -1,7 +1,9 @@
 (use-package eww
   :bind (("C-x m" . browse-url-at-point)
 	 ("C-x ," . shr-copy-url)
-	 ([f7] . eww))
+	 ([f7] . eww)
+	 :map eww-mode-map
+	 ("C-c p" . eww-copy-page-url))
   :init (setq browse-url-browser-function #'eww-browse-url)
   :config
   (add-hook 'eww-mode-hook (lambda () (linum-mode -1) (evil-emacs-state))))
@@ -25,8 +27,7 @@
           w3m-terminal-coding-system 'utf-8)
     (setq w3m-use-cookies t
 	  w3m-view-this-url-new-session-in-background t
-	  w3m-command-arguments '("-cookie" "-F")
-	  browse-url-browser-function 'w3m-browse-url)
+	  w3m-command-arguments '("-cookie" "-F"))
     (eval-when-compile
       (autoload 'w3m-search-escape-query-string "w3m-search"))
         ))
