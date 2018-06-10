@@ -80,6 +80,7 @@
 (depends-on "ob-ipython")
 (depends-on "org")
 (depends-on "org-babel-eval-in-repl")
+(depends-on "org-beautify-theme")
 (depends-on "org-bullets")
 (depends-on "org-download")
 (depends-on "org-mime")

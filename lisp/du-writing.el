@@ -102,6 +102,9 @@
 				     :init (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display))))
     ))
 
+(use-package org-beautify-theme
+  :ensure t)
+
 (use-package org-bullets
   :ensure t
   :hook (org-mode . org-bullets-mode))

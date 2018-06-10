@@ -13,7 +13,7 @@
     (add-hook 'mu4e-compose-mode-hook 'visual-line-mode)
     (add-hook 'mu4e-view-mode-hook 'visual-line-mode)
 
-    (setq mu4e-maildir "~/Mail"
+    (setq mu4e-maildir "~/Maildir"
 	  mu4e-get-mail-command "mbsync -a"
 	  mu4e-html2text-command "w3m -T text/html"
 	  mu4e-update-interval 90               ;; update every 1.5 minutes 
@@ -25,10 +25,10 @@
 	  message-citation-line-format "On %a %d %b %Y at %R, %f wrote:\n" ; customize the reply-quote-string
 	  message-citation-line-function 'message-insert-formatted-citation-line ; choose to use the formatted string
 	  message-cite-reply-position 'above
-	  mu4e-maildir-shortcuts '( ("/Exchange/inbox"  . ?I)
-				    ("/Exchange/sent"   . ?S)
-				    ("/Outlook/inbox"   . ?i)
-				    ("/Outlook/sent"    . ?s)))   
+	  mu4e-maildir-shortcuts '( ("/Exchange/Inbox"  . ?I)
+				    ("/Exchange/Sent"   . ?S)
+				    ("/Outlook/Inbox"   . ?i)
+				    ("/Outlook/Sent"    . ?s)))   
     ;; Multiple accounts
     (setq mu4e-contexts
 	  `( ,(make-mu4e-context
@@ -37,10 +37,10 @@
                :leave-func (lambda () (mu4e-message "Leaving Private context"))
 	       :match-func (lambda (msg) (when msg
 					   (string-prefix-p "/Outlook" (mu4e-message-field msg :maildir))))
-	       :vars '( (mu4e-trash-folder . "/Outlook/trash")
-			(mu4e-refile-folder . "/Outlook/archive")
-			(mu4e-sent-folder . "/Outlook/sent")
-			(mu4e-drafts-folder . "/Outlook/drafts")
+	       :vars '( (mu4e-trash-folder . "/Outlook/Trash")
+			(mu4e-refile-folder . "/Outlook/Archive")
+			(mu4e-sent-folder . "/Outlook/Sent")
+			(mu4e-drafts-folder . "/Outlook/Drafts")
 			(mu4e-sent-messages-behavior . delete)
 			(user-mail-address . "duzaichuan@hotmail.com")
 			(smtpmail-default-smtp-server . "smtp.live.com")
@@ -55,10 +55,10 @@
 	       :enter-func (lambda () (mu4e-message "Switch to the Work context"))
 	       :match-func (lambda (msg) (when msg
 					   (string-prefix-p "/Exchange" (mu4e-message-field msg :maildir))))
-	       :vars '( (mu4e-sent-folder . "/Exchange/sent")
-			(mu4e-trash-folder . "/Exchange/trash")
-			(mu4e-refile-folder . "/Exchange/archive")
-			(mu4e-drafts-folder . "/Exchange/drafts")
+	       :vars '( (mu4e-sent-folder . "/Exchange/Sent")
+			(mu4e-trash-folder . "/Exchange/Trash")
+			(mu4e-refile-folder . "/Exchange/Archive")
+			(mu4e-drafts-folder . "/Exchange/Drafts")
 			(user-mail-address . "cjq192@alumni.ku.dk")
 			(smtpmail-default-smtp-server . "exchange.ku.dk")
 			(smtpmail-smtp-server . "exchange.ku.dk")
@@ -72,7 +72,7 @@
     (add-to-list 'mu4e-bookmarks
 		 (make-mu4e-bookmark
 		  :name "All Inboxes"
-		  :query "maildir:/Exchange/inbox OR maildir:/Outlook/inbox"
+		  :query "maildir:/Exchange/Inbox OR maildir:/Outlook/Inbox"
 		  :key ?i))   
     ;; enable inline images
     (setq mu4e-view-show-images t)
@@ -100,8 +100,8 @@
   (progn
     (setq mu4e-alert-interesting-mail-query
 	  (concat
-	   "flag:unread maildir:/Exchange/inbox"
+	   "flag:unread maildir:/Exchange/Inbox"
 	   "OR "
-	   "flag:unread maildir:/Outlook/inbox"))))
+	   "flag:unread maildir:/Outlook/Inbox"))))
 
 (provide 'du-mail)
