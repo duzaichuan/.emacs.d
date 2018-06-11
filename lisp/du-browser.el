@@ -34,8 +34,8 @@
 
 (use-package pdf-view
   :ensure pdf-tools
-  :commands pdf-tools-install
   :mode ("\\.pdf\\'" . pdf-view-mode)
+  :hook (pdf-view-mode . pdf-view-midnight-minor-mode)
   :init (setq pdf-annot-activate-created-annotations t) ; automatically annotate highlights
   :bind
   (:map pdf-view-mode-map

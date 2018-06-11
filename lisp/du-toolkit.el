@@ -40,7 +40,15 @@
 	 (eval-expression-minibuffer-setup . paredit-mode)))
 
 (use-package paren
-  :config (show-paren-mode +1))
+  :config
+  (show-paren-mode t)
+  ;; show paren highlight inside
+  (define-advice show-paren-function (:around (fn) fix-show-paren-function)
+    "Highlight enclosing parens."
+    (cond ((looking-at-p "\\s(") (funcall fn))
+          (t (save-excursion
+               (ignore-errors (backward-up-list))
+               (funcall fn))))))
 
 (use-package helm
   :ensure t
