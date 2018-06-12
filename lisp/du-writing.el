@@ -1,4 +1,6 @@
-;; == LaTex / Org ==
+(use-package text-mode
+  :hook (text-mode . visual-line-mode))
+
 (use-package tex
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)
@@ -11,10 +13,8 @@
 	  reftex-plug-into-AUCTeX t
 	  TeX-PDF-mode nil
 	  reftex-plug-into-AUCTeX t)
-    (setq-default TeX-master nil)
     (fset 'tex-font-lock-suscript 'ignore)
-    (add-hook 'LaTeX-mode-hook (lambda () (linum-mode -1)))
-    (add-hook 'LaTeX-mode-hook 'visual-line-mode)
+    (setq-default TeX-master nil)
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
@@ -85,10 +85,9 @@
     ;; Quickly insert blocks
     (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
-    (add-hook 'org-mode-hook (lambda () (linum-mode -1) (setq ispell-parser 'tex)))
+    (add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
     (add-hook 'org-mode-hook 'org-display-inline-images)
     (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
-    (add-hook 'org-mode-hook 'visual-line-mode)
     (add-hook 'org-mode-hook (lambda () (use-package helm-bibtex :ensure t
 				     :config
 				     ;; open pdf with system pdf viewer (works on mac)
@@ -167,7 +166,6 @@
 
 (use-package typo
   :ensure t
-  :diminish typo-mode
   :hook (text-mode . typo-mode))
 
 (use-package ispell
@@ -209,7 +207,6 @@
   :commands (osx-dictionary-search-word-at-point osx-dictionary-search-word-at-point) ; kbd in evil module
   :init (evil-set-initial-state 'osx-dictionary-mode 'emacs)
   :config
-  (add-hook 'osx-dictionary-mode-hook (lambda () (linum-mode -1)))
   ;; Support Chinese word
   (setq osx-dictionary-use-chinese-text-segmentation t)
   ;; Work with popwin-el (https://github.com/m2ym/popwin-el)

@@ -174,10 +174,7 @@
          treemacs-goto-tag-strategy          'refetch-index
 	 treemacs-width                      30)
    (treemacs-follow-mode t)
-   (treemacs-filewatch-mode t)  
-   ;; remove linum
-   (add-hook 'treemacs-mode-hook (lambda () (linum-mode -1)))
-   ))
+   (treemacs-filewatch-mode t) ))
 
 (use-package undo-tree
   :ensure t

@@ -5,8 +5,7 @@
 	 :map eww-mode-map
 	 ("C-c p" . eww-copy-page-url))
   :init
-  (setq browse-url-browser-function #'eww-browse-url)
-  (add-hook 'eww-mode-hook (lambda () (linum-mode -1))))
+  (setq browse-url-browser-function #'eww-browse-url))
 
 (use-package w3m
   :ensure t
@@ -16,7 +15,6 @@
 	 ("p" . w3m-previous-buffer))
   :config
   (progn
-    (add-hook 'w3m-mode-hook (lambda () (linum-mode -1)))
     (setq w3m-command "w3m"
 	  w3m-home-page "about://bookmark/")
     (setq w3m-coding-system 'utf-8
@@ -38,7 +36,6 @@
   :hook (pdf-view-mode . pdf-view-midnight-minor-mode)
   :init
   (setq pdf-annot-activate-created-annotations t) ; automatically annotate highlights
-  (add-hook 'pdf-view-mode-hook (lambda () (linum-mode -1)))
   (evil-set-initial-state 'pdf-view-mode 'emacs)
   :bind
   (:map pdf-view-mode-map

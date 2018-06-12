@@ -1,3 +1,6 @@
+(use-package prog-mode
+  :hook (prog-mode . linum-mode))
+
 ;; Consistent ESS-like eval interface for various REPLs
 (use-package eval-in-repl
   :ensure t
@@ -23,10 +26,7 @@
     (add-hook 'ess-mode-hook (lambda() (ess-set-style 'RStudio)))
 					; Make ESS use more horizontal screen			       
     (add-hook 'ess-R-post-run-hook 'ess-execute-screen-options) 
-    (define-key inferior-ess-mode-map "\C-cw" 'ess-execute-screen-options)
-    ;; remove linum in repl
-    (add-hook 'inferior-ess-mode-hook (lambda () (linum-mode -1)))
-    ))
+    (define-key inferior-ess-mode-map "\C-cw" 'ess-execute-screen-options)))
 
 (use-package matlab-mode
   :ensure t
@@ -34,6 +34,7 @@
   :bind (:map matlab-shell-mode-map
               ("C-c C-c" . term-interrupt-subjob))
   :commands matlab-shell
+  :hook (matlab-mode . linum-mode)
   :init
   (progn
     ;; workaround for emacs 26
@@ -45,8 +46,7 @@
     (setq matlab-shell-command "/Applications/MATLAB/MATLAB_R2017b.app/bin/matlab")
     (eval-after-load 'matlab
       '(add-to-list 'matlab-shell-command-switches "-nodesktop -nosplash"))
-    ;; remove linum in repl
-    (add-hook 'matlab-shell-mode-hook (lambda () (linum-mode -1)))
+    
     (defun matlab-shell-here ()
       "opens up a new matlab shell in the directory associated with the current buffer's file."
       (interactive)

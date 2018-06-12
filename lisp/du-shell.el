@@ -10,8 +10,6 @@
   (add-hook 'eshell-mode-hook
             (lambda ()
               (eshell/export "NODE_NO_READLINE=1")))
-  ;; remove linum
-  (add-hook 'eshell-mode-hook (lambda () (linum-mode -1)))
   :config
   (progn
     (use-package magit)

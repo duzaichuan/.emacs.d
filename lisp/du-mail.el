@@ -5,10 +5,6 @@
   :bind ([f9] . mu4e)
   :hook ((mu4e-compose-mode mu4e-view-mode) . visual-line-mode)
   :init
-  (add-hook 'mu4e-view-mode-hook (lambda () (linum-mode -1)))
-  (add-hook 'mu4e-compose-mode-hook (lambda () (linum-mode -1)))
-  (add-hook 'mu4e-headers-mode-hook (lambda () (linum-mode -1)))
-  (add-hook 'mu4e-main-mode-hook (lambda () (linum-mode -1)))
   (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
   :config
   (progn
