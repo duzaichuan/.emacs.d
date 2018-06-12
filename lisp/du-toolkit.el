@@ -183,7 +183,7 @@
   (progn
     (global-undo-tree-mode 1)
     (defalias 'redo 'undo-tree-redo)
-    (global-set-key (kbd "s-r") 'redo)))
+    (global-set-key (kbd "s-r") 'redo) ))
 
 (use-package magit
   :ensure t
@@ -252,8 +252,7 @@
 	(evil-leader/set-key "or" 'org-refile)
 	(evil-leader/set-key "ol" 'org-store-link)
 	(evil-leader/set-key "dd" 'osx-dictionary-search-word-at-point)
-	(evil-leader/set-key "di" 'osx-dictionary-search-input)))
-    ))
+	(evil-leader/set-key "di" 'osx-dictionary-search-input))) ))
 
 (use-package evil-magit
         :ensure t

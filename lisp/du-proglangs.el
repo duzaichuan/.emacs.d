@@ -13,20 +13,17 @@
   :ensure ess
   :mode (("\\.jl$" . ess-julia-mode)
          ("\\.R$"  . R-mode))
+  :bind (:map inferior-ess-mode-map
+	      ("C-cw" . ess-execute-screen-options))
   :config
   (progn
-    (add-hook 'ess-mode-hook 'company-mode)
     (add-hook 'ess-julia-mode-hook
               (lambda()
 		(define-key
                   ess-julia-mode-map (kbd "TAB") 'julia-latexsub-or-indent)))
-    (ess-toggle-underscore nil)
-    (setq ess-fancy-comments nil)
-					; Make ESS use RStudio's indenting style
-    (add-hook 'ess-mode-hook (lambda() (ess-set-style 'RStudio)))
-					; Make ESS use more horizontal screen			       
-    (add-hook 'ess-R-post-run-hook 'ess-execute-screen-options) 
-    (define-key inferior-ess-mode-map "\C-cw" 'ess-execute-screen-options)))
+    (setq ess-fancy-comments nil) ; Make ESS use RStudio's indenting style
+    (add-hook 'ess-mode-hook (lambda() (ess-set-style 'RStudio))) ; Make ESS use more horizontal screen	     
+    (add-hook 'ess-R-post-run-hook 'ess-execute-screen-options) ))
 
 (use-package matlab-mode
   :ensure t
@@ -52,8 +49,7 @@
       (interactive)
       (split-window-right)
       (other-window 1)
-      (matlab-shell))
-    ))
+      (matlab-shell)) ))
 
 (use-package dynare
   :load-path "/lib"
@@ -69,14 +65,15 @@
   :commands (clojure-mode)
   :mode ("\\.clj\\'" "\\.cljs\\'" "\\.edn\\'" "\\.boot\\'")
   :interpreter "clojure"
+  :hook (clojure-mode . paredit-mode)
+  :bind (:map clojure-mode-map
+	      ("C-<return>" . eir-eval-in-cider))
   :config
   (progn
-    (add-hook 'clojure-mode-hook #'paredit-mode)
     ;; single "'" and "`" 
     (sp-local-pair '(clojure-mode cider-repl-mode) "'" nil :actions nil)
     (sp-local-pair '(clojure-mode cider-repl-mode) "`" nil :actions nil)
-    (require 'eval-in-repl-cider)
-    (define-key clojure-mode-map (kbd "<C-return>") 'eir-eval-in-cider)))
+    (require 'eval-in-repl-cider) ))
 
 (use-package rainbow-delimiters
   :ensure t

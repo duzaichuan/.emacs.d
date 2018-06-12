@@ -74,6 +74,7 @@
 	  org-src-fontify-natively t ; syntax highlight in org mode
 	  org-highlight-latex-and-related '(latex) ; org-mode buffer latex syntax highlighting
 	  org-footnote-auto-adjust t ; renumber footnotes when new ones are inserted
+	  org-export-with-smart-quotes t ; export pretty double quotation marks
 	  ;; set value of the variable org-latex-pdf-process
 	  org-latex-pdf-process
 	  '("pdflatex -interaction nonstopmode -output-directory %o %f"
@@ -108,23 +109,17 @@
 (use-package org-ref
   :ensure t
   :bind (("C-c r" . org-ref-helm-insert-cite-link)
-	 ("C-c i r" . org-ref-helm-insert-ref-link)
-	 ("C-c i l" . org-ref-helm-insert-label-link))
+	 ("C-c ir" . org-ref-helm-insert-ref-link)
+	 ("C-c il" . org-ref-helm-insert-label-link))
   :init
   (setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib")
 	org-ref-bibliography-notes "~/Dropbox/bibliography/notes.org"
 	org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
 	org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
   :config
-  (progn
-   (require 'org-ref-citeproc)
-   (setq org-ref-default-citation-link "citet"
-	 org-ref-default-ref-type "eqref")
-   (add-hook 'org-mode-hook
-             (lambda () (define-key org-mode-map (kbd "C-c i r") 'org-ref-helm-insert-ref-link)))
-   (add-hook 'org-mode-hook
-             (lambda () (define-key org-mode-map (kbd "C-c i l") 'org-ref-helm-insert-label-link)))
-   ))
+  (require 'org-ref-citeproc)
+  (setq org-ref-default-citation-link "citet"
+	org-ref-default-ref-type "eqref"))
 
 ;; a WYSiWYG HTML mail editor that can be useful for sending tables, fontified source code, and inline images in email. 
 (use-package org-mime
@@ -141,8 +136,7 @@
   :after ob
   :bind (:map org-mode-map
 	      ("C-<return>" . ober-eval-in-repl)
-	      ("M-<return>" . ober-eval-block-in-repl))
-  )
+	      ("M-<return>" . ober-eval-block-in-repl)))
 
 (use-package yaml-mode
   :ensure t
@@ -163,10 +157,6 @@
 (use-package writeroom-mode
   :ensure t
   :bind ("C-c w" . writeroom-mode))
-
-(use-package typo
-  :ensure t
-  :hook (text-mode . typo-mode))
 
 (use-package ispell
   :commands ispell
