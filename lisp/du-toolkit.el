@@ -230,6 +230,7 @@
     (evil-add-hjkl-bindings recentf-dialog-mode-map 'emacs)
     (evil-add-hjkl-bindings package-menu-mode-map 'emacs)
     (evil-add-hjkl-bindings pdf-outline-buffer-mode-map 'emacs)
+    (evil-set-initial-state 'messages-buffer-mode 'emacs)
     (use-package evil-leader
       :ensure t
       :init (global-evil-leader-mode)
@@ -247,11 +248,14 @@
 	(evil-leader/set-key "ff" 'counsel-find-file)
 	(evil-leader/set-key "fr" 'recentf-open-files)
 	(evil-leader/set-key "gs" 'magit-status)
-	(evil-leader/set-key "ci" 'evilnc-comment-or-uncomment-lines)
+	(evil-leader/set-key "gu" 'browse-url-at-point)
+	(evil-leader/set-key "cc" 'evilnc-comment-or-uncomment-lines)
 	(evil-leader/set-key "oc" 'org-capture)
 	(evil-leader/set-key "oa" 'org-agenda)
 	(evil-leader/set-key "or" 'org-refile)
-	(evil-leader/set-key "ol" 'org-store-link)))
+	(evil-leader/set-key "ol" 'org-store-link)
+	(evil-leader/set-key "dd" 'osx-dictionary-search-word-at-point)
+	(evil-leader/set-key "di" 'osx-dictionary-search-input)))
     ))
 
 (use-package evil-magit

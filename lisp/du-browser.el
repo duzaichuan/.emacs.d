@@ -4,9 +4,9 @@
 	 ([f7] . eww)
 	 :map eww-mode-map
 	 ("C-c p" . eww-copy-page-url))
-  :init (setq browse-url-browser-function #'eww-browse-url)
-  :config
-  (add-hook 'eww-mode-hook (lambda () (linum-mode -1) (evil-emacs-state))))
+  :init
+  (setq browse-url-browser-function #'eww-browse-url)
+  (add-hook 'eww-mode-hook (lambda () (linum-mode -1))))
 
 (use-package w3m
   :ensure t
@@ -36,7 +36,10 @@
   :ensure pdf-tools
   :mode ("\\.pdf\\'" . pdf-view-mode)
   :hook (pdf-view-mode . pdf-view-midnight-minor-mode)
-  :init (setq pdf-annot-activate-created-annotations t) ; automatically annotate highlights
+  :init
+  (setq pdf-annot-activate-created-annotations t) ; automatically annotate highlights
+  (add-hook 'pdf-view-mode-hook (lambda () (linum-mode -1)))
+  (evil-set-initial-state 'pdf-view-mode 'emacs)
   :bind
   (:map pdf-view-mode-map
 	       ("d"  . pdf-view-next-page)
@@ -66,9 +69,6 @@
   :config
   (progn
     (pdf-tools-install)
-    ;; remove linum and blink-cursor-mode
-    (add-hook 'pdf-view-mode-hook (lambda () (linum-mode -1)))
-    (evil-set-initial-state 'pdf-view-mode 'emacs)
     (add-hook 'pdf-view-mode-hook
 	      (lambda () (set (make-local-variable 'evil-emacs-state-cursor) (list nil))))
     (setq-default pdf-view-display-size 'fit-page) ; fit page by default

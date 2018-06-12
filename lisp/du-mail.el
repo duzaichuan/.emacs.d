@@ -3,16 +3,15 @@
   :commands mu4e
   :load-path "/usr/local/share/emacs/site-lisp/mu/mu4e"
   :bind ([f9] . mu4e)
+  :hook ((mu4e-compose-mode mu4e-view-mode) . visual-line-mode)
+  :init
+  (add-hook 'mu4e-view-mode-hook (lambda () (linum-mode -1)))
+  (add-hook 'mu4e-compose-mode-hook (lambda () (linum-mode -1)))
+  (add-hook 'mu4e-headers-mode-hook (lambda () (linum-mode -1)))
+  (add-hook 'mu4e-main-mode-hook (lambda () (linum-mode -1)))
+  (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
   :config
   (progn
-    (add-hook 'mu4e-view-mode-hook (lambda () (linum-mode -1)))
-    (add-hook 'mu4e-compose-mode-hook (lambda () (linum-mode -1)))
-    (add-hook 'mu4e-headers-mode-hook (lambda () (linum-mode -1)))
-    (add-hook 'mu4e-main-mode-hook (lambda () (linum-mode -1)))
-    (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
-    (add-hook 'mu4e-compose-mode-hook 'visual-line-mode)
-    (add-hook 'mu4e-view-mode-hook 'visual-line-mode)
-
     (setq mu4e-maildir "~/Maildir"
 	  mu4e-get-mail-command "mbsync -a"
 	  mu4e-html2text-command "w3m -T text/html"

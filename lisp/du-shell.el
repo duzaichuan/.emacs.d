@@ -4,6 +4,7 @@
 	 :map comint-mode-map
 	 ([up] . comint-previous-input)
 	 ([down] . comint-next-input))
+  :hook (eshell-mode . visual-line-mode)
   :commands eshell-mode
   :init
   (add-hook 'eshell-mode-hook

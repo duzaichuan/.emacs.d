@@ -7,7 +7,7 @@
     (setq TeX-auto-save t
 	  TeX-parse-self t
 	  font-latex-fontify-script nil
-	  preview-image-type 'dvipng
+	  preview-image-type 'imagemagick
 	  reftex-plug-into-AUCTeX t
 	  TeX-PDF-mode nil
 	  reftex-plug-into-AUCTeX t)
@@ -67,8 +67,8 @@
 	      org-refile-allow-creating-parent-nodes 'confirm)
   :config
   (progn
-    (setq org-image-actual-width (/ (display-pixel-width) 3)
-	  org-latex-create-formula-image-program 'imagemagick
+    (setq org-preview-latex-default-process 'imagemagick
+	  org-image-actual-width (/ (display-pixel-width) 2)
 	  org-pretty-entities t ; render UTF8 characters
 	  org-confirm-babel-evaluate nil
 	  org-src-fontify-natively t ; syntax highlight in org mode
@@ -99,11 +99,8 @@
     (add-hook 'org-mode-hook (lambda () (use-package smartparens-org)))
     (add-hook 'org-mode-hook (lambda () (use-package smartparens-Tex-org :load-path "lib/")))
     (add-hook 'org-mode-hook (lambda () (use-package org-auto-formula :load-path "lib/"
-				     :init (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display))))
+				     :config (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display))))
     ))
-
-(use-package org-beautify-theme
-  :ensure t)
 
 (use-package org-bullets
   :ensure t
@@ -202,5 +199,20 @@
   :config
   (setq langtool-default-language "en-US"
 	langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
+
+(use-package chinese-word-at-point
+  :ensure t
+  :defer t)
+
+(use-package osx-dictionary
+  :ensure t
+  :commands (osx-dictionary-search-word-at-point osx-dictionary-search-word-at-point) ; kbd in evil module
+  :init (evil-set-initial-state 'osx-dictionary-mode 'emacs)
+  :config
+  (add-hook 'osx-dictionary-mode-hook (lambda () (linum-mode -1)))
+  ;; Support Chinese word
+  (setq osx-dictionary-use-chinese-text-segmentation t)
+  ;; Work with popwin-el (https://github.com/m2ym/popwin-el)
+  (push "*osx-dictionary*" popwin:special-display-config))
 
 (provide 'du-writing)

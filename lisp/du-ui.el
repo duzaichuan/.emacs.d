@@ -24,8 +24,7 @@
 	powerline-default-separator 'butt)
   (powerline-center-evil-theme))
 
-(use-package neotree
-  :ensure t
-  :defer t)
+(use-package org-beautify-theme
+  :ensure t)
 
 (provide 'du-ui)
