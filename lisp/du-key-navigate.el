@@ -59,7 +59,7 @@
 
 (use-package evil-org
     :ensure t
-    :diminish  evil-org-mode
+    :diminish evil-org-mode
     :hook (org-mode . evil-org-mode)
     :config
     (progn

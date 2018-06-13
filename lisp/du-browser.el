@@ -69,7 +69,6 @@
 	      (lambda () (set (make-local-variable 'evil-emacs-state-cursor) (list nil))))
     (setq-default pdf-view-display-size 'fit-page) ; fit page by default
     (setq pdf-view-resize-factor 1.10)
-    (use-package org-pdfview :ensure t)
     (setq pdf-view-midnight-colors `(,(face-attribute 'default :foreground) .
                                      ,(face-attribute 'default :background))) ))
 

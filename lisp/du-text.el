@@ -35,6 +35,7 @@
   :ensure t
   :defer 0.1
   :mode ("\\.org\\'" . org-mode)
+  :hook (org-mode . turn-on-org-cdlatex)
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
 	 ("C-c c" . org-capture)
@@ -69,7 +70,7 @@
   (progn
     (setq org-preview-latex-default-process 'imagemagick
 	  org-image-actual-width (/ (display-pixel-width) 2)
-	  org-pretty-entities t ; render UTF8 characters
+	 ; org-pretty-entities t ; render UTF8 characters
 	  org-confirm-babel-evaluate nil
 	  org-src-fontify-natively t ; syntax highlight in org mode
 	  org-highlight-latex-and-related '(latex) ; org-mode buffer latex syntax highlighting
@@ -88,18 +89,18 @@
     (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
     (add-hook 'org-mode-hook 'org-display-inline-images)
-    (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
-    (add-hook 'org-mode-hook (lambda () (use-package helm-bibtex :ensure t
-				     :config
-				     ;; open pdf with system pdf viewer (works on mac)
-				     (setq bibtex-completion-pdf-open-function
-					   (lambda (fpath) (start-process "open" "*open*" "open" fpath))))))
-    (add-hook 'org-mode-hook (lambda () (use-package org-download :ensure t
-				     :config (add-hook 'dired-mode-hook 'org-download-enable))))
-    (add-hook 'org-mode-hook (lambda () (use-package smartparens-org)))
-    (add-hook 'org-mode-hook (lambda () (use-package smartparens-Tex-org :load-path "lib/")))
-    (add-hook 'org-mode-hook (lambda () (use-package org-auto-formula :load-path "lib/"
-				     :config (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display)))) ))
+    (use-package smartparens-org)
+    (use-package smartparens-Tex-org :load-path "lib/") ))
+
+(use-package org-auto-formula
+  :load-path "lib/"
+  :after org
+  :config
+  (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display))
+
+(use-package org-download
+  :ensure t
+  :hook ((org-mode dired-mode) . org-download-enable))
 
 (use-package org-bullets
   :ensure t
@@ -120,6 +121,14 @@
   (setq org-ref-default-citation-link "citet"
 	org-ref-default-ref-type "eqref"))
 
+(use-package helm-bibtex
+  :ensure t
+  :defer t
+  :init
+  ;; open pdf with system pdf viewer (works on mac)
+  (setq bibtex-completion-pdf-open-function
+	(lambda (fpath) (start-process "open" "*open*" "open" fpath))))
+
 ;; a WYSiWYG HTML mail editor that can be useful for sending tables, fontified source code, and inline images in email. 
 (use-package org-mime
   :ensure t
@@ -128,7 +137,7 @@
 	      org-mime-export-options '(:section-numbers nil
 							 :with-author nil
 							 :with-toc nil
-							 :with-latex dvipng)))
+							 :with-latex imagemagick)))
 
 (use-package org-babel-eval-in-repl
   :ensure t
