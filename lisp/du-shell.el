@@ -8,8 +8,7 @@
   :commands eshell-mode
   :init
   (add-hook 'eshell-mode-hook
-            (lambda ()
-              (eshell/export "NODE_NO_READLINE=1")))
+            (lambda () (eshell/export "NODE_NO_READLINE=1")))
   :config
   (progn
     (use-package magit)
@@ -23,8 +22,7 @@
              (lambda () (when ,FORM
 			  (-> ,ICON
 			      (concat esh-section-delim ,FORM)
-			      (with-face ,@PROPS))))
-	     ))
+			      (with-face ,@PROPS)))) ))
 
     (defun esh-acc (acc x)
       "Accumulator for evaluating and concatenating esh-sections."
@@ -78,9 +76,7 @@
     (setq eshell-funcs (list esh-dir esh-git esh-num))
 
     ;; Enable the new eshell prompt
-    (setq eshell-prompt-function 'esh-prompt-func)
-
-  ))
+    (setq eshell-prompt-function 'esh-prompt-func) ))
 
 (use-package eshell-fringe-status
   :ensure t

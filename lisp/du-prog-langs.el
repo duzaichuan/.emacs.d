@@ -14,7 +14,7 @@
   :mode (("\\.jl$" . ess-julia-mode)
          ("\\.R$"  . R-mode))
   :bind (:map inferior-ess-mode-map
-	      ("C-cw" . ess-execute-screen-options))
+	      ("C-c w" . ess-execute-screen-options))
   :config
   (progn
     (add-hook 'ess-julia-mode-hook
@@ -94,4 +94,4 @@
         cider-show-error-buffer t
         nrepl-hide-special-buffers t))
 
-(provide 'du-prog)
+(provide 'du-prog-langs)

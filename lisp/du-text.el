@@ -21,7 +21,7 @@
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
     (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
     (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
-    (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer)))
+    (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer) ))
 
 (use-package cdlatex
   :ensure t
@@ -99,8 +99,7 @@
     (add-hook 'org-mode-hook (lambda () (use-package smartparens-org)))
     (add-hook 'org-mode-hook (lambda () (use-package smartparens-Tex-org :load-path "lib/")))
     (add-hook 'org-mode-hook (lambda () (use-package org-auto-formula :load-path "lib/"
-				     :config (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display))))
-    ))
+				     :config (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display)))) ))
 
 (use-package org-bullets
   :ensure t
@@ -168,7 +167,7 @@
     (setenv "DICTIONARY" "en_US")
     (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
     (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
-    (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXPORT" . "#\\+END_EXPORT"))))
+    (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXPORT" . "#\\+END_EXPORT")) ))
 
 (use-package flyspell
   :bind ([f6] . flyspell-buffer)

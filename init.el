@@ -46,8 +46,10 @@
 ;; Require files under ~/.emacs.d/lisp
 (use-package du-better-defaults)
 (use-package du-ui)
-(use-package du-toolkit)
-(use-package du-prog)
+(use-package du-key-navigate)
+(use-package du-edit-assit)
+(use-package du-project-manage)
+(use-package du-prog-langs)
 (use-package du-text)
 (use-package du-browser)
 (use-package du-shell)

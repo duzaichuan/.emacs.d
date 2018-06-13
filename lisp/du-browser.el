@@ -27,8 +27,7 @@
 	  w3m-view-this-url-new-session-in-background t
 	  w3m-command-arguments '("-cookie" "-F"))
     (eval-when-compile
-      (autoload 'w3m-search-escape-query-string "w3m-search"))
-        ))
+      (autoload 'w3m-search-escape-query-string "w3m-search")) ))
 
 (use-package pdf-view
   :ensure pdf-tools
@@ -72,7 +71,6 @@
     (setq pdf-view-resize-factor 1.10)
     (use-package org-pdfview :ensure t)
     (setq pdf-view-midnight-colors `(,(face-attribute 'default :foreground) .
-                                     ,(face-attribute 'default :background)))
-    ))
+                                     ,(face-attribute 'default :background))) ))
 
 (provide 'du-browser)

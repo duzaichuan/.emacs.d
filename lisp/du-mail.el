@@ -60,8 +60,7 @@
 			(user-full-name . "Zaichuan Du")
 			(mu4e-compose-signature . (concat
 						   "Best regards\n"
-						   "Zaichuan Du\n")) ))
-	     ))
+						   "Zaichuan Du\n")) )) ))
     
     (add-to-list 'mu4e-bookmarks
 		 (make-mu4e-bookmark
