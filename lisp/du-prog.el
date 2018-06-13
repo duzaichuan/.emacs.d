@@ -94,4 +94,4 @@
         cider-show-error-buffer t
         nrepl-hide-special-buffers t))
 
-(provide 'du-proglangs)
+(provide 'du-prog)

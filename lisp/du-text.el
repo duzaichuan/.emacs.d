@@ -80,13 +80,13 @@
 	  '("pdflatex -interaction nonstopmode -output-directory %o %f"
 	    "bibtex %b"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"
-	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
+	    "pdflatex -interaction nonstopmode -output-directory %o %f")
+	  ispell-parser 'tex)
     (plist-put org-format-latex-options :scale 1.70) ; bigger latex fragment
     (set-default 'truncate-lines nil) ; line wrap in org mode
     ;; Quickly insert blocks
     (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
-    (add-hook 'org-mode-hook (lambda () (setq ispell-parser 'tex)))
     (add-hook 'org-mode-hook 'org-display-inline-images)
     (add-hook 'org-mode-hook 'turn-on-org-cdlatex)
     (add-hook 'org-mode-hook (lambda () (use-package helm-bibtex :ensure t
@@ -202,4 +202,4 @@
   ;; Work with popwin-el (https://github.com/m2ym/popwin-el)
   (push "*osx-dictionary*" popwin:special-display-config))
 
-(provide 'du-writing)
+(provide 'du-text)
