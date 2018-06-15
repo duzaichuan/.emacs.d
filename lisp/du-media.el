@@ -14,7 +14,7 @@
 
 (use-package twittering-mode
   :ensure t
-  :commands twit
+  :bind ([f3] . twit)
   :init (setq twittering-use-master-password t
 	      epa-pinentry-mode 'loopback
 	      twittering-icon-mode t

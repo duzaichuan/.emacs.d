@@ -12,24 +12,25 @@
 	  preview-image-type 'imagemagick
 	  reftex-plug-into-AUCTeX t
 	  TeX-PDF-mode nil
-	  reftex-plug-into-AUCTeX t)
+	  reftex-plug-into-AUCTeX t
+	  LaTeX-electric-left-right-brace t)
     (fset 'tex-font-lock-suscript 'ignore)
     (setq-default TeX-master nil)
+    (use-package smartparens-latex :ensure smartparens)
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
-    (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
     (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
     (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
     (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer) ))
 
-(use-package cdlatex
-  :ensure t
-  :commands (turn-on-cdlatex cdlatex-mode))
-
 (use-package magic-latex-buffer
   :ensure t
   :hook LaTeX-mode)
+
+(use-package cdlatex
+  :ensure t
+  :commands (turn-on-cdlatex cdlatex-mode))
 
 (use-package org
   :ensure t

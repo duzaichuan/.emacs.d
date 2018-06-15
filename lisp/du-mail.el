@@ -3,6 +3,7 @@
   :commands mu4e
   :load-path "/usr/local/share/emacs/site-lisp/mu/mu4e"
   :bind ([f9] . mu4e)
+  :hook (mu4e-compose-mode . flyspell-mode)
   :init
   (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
   :config
