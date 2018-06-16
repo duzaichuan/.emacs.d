@@ -60,7 +60,7 @@
 (use-package evil-org
     :ensure t
     :diminish evil-org-mode
-    :hook (org-mode . evil-org-mode)
+    :after org
     :config
     (progn
       (add-hook 'evil-org-mode-hook (lambda () (evil-org-set-key-theme)))

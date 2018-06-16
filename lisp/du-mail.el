@@ -3,7 +3,8 @@
   :commands mu4e
   :load-path "/usr/local/share/emacs/site-lisp/mu/mu4e"
   :bind ([f9] . mu4e)
-  :hook (mu4e-compose-mode . flyspell-mode)
+  :hook ((mu4e-compose-mode . flyspell-mode)
+	 (mu4e-view-mode . visual-line-mode))
   :init
   (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
   :config
@@ -36,7 +37,6 @@
 			(mu4e-refile-folder . "/Outlook/Archive")
 			(mu4e-sent-folder . "/Outlook/Sent")
 			(mu4e-drafts-folder . "/Outlook/Drafts")
-			(mu4e-sent-messages-behavior . delete)
 			(user-mail-address . "duzaichuan@hotmail.com")
 			(smtpmail-default-smtp-server . "smtp.live.com")
 			(smtpmail-smtp-server . "smtp.live.com")

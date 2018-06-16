@@ -4,7 +4,7 @@
 ;; You may delete these explanatory comments.
 
 (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
-(cask-initialize) ; analogous to (package-initialize)
+(cask-initialize)
 (require 'cl)
 (require 'pallet)
 (pallet-mode t)
@@ -46,9 +46,9 @@
 ;; Require files under ~/.emacs.d/lisp
 (use-package du-better-defaults)
 (use-package du-ui)
-(use-package du-key-navigate)
 (use-package du-edit-assit)
 (use-package du-project-manage)
+(use-package du-key-navigate)
 (use-package du-prog-langs)
 (use-package du-text)
 (use-package du-browser)
