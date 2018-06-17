@@ -26,6 +26,7 @@
     (evil-add-hjkl-bindings package-menu-mode-map 'emacs)
     (evil-add-hjkl-bindings pdf-outline-buffer-mode-map 'emacs)
     (evil-add-hjkl-bindings osx-dictionary-mode-map 'emacs)
+    (evil-add-hjkl-bindings emms-playlist-mode-map 'emacs)
     (evil-set-initial-state 'messages-buffer-mode 'emacs)
     (use-package evil-leader
       :ensure t
@@ -51,7 +52,10 @@
 	(evil-leader/set-key "or" 'org-refile)
 	(evil-leader/set-key "ol" 'org-store-link)
 	(evil-leader/set-key "dd" 'osx-dictionary-search-word-at-point)
-	(evil-leader/set-key "di" 'osx-dictionary-search-input))) ))
+	(evil-leader/set-key "di" 'osx-dictionary-search-input)
+	(evil-leader/set-key "ej" 'emms-next)
+	(evil-leader/set-key "ek" 'emms-previous)
+	(evil-leader/set-key "ep" 'emms-pause))) ))
 
 (use-package evil-magit
         :ensure t

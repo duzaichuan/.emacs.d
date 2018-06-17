@@ -18,7 +18,8 @@
 
 (use-package w3m
   :ensure t
-  :bind (:map w3m-mode-map
+  :bind (([f3] . w3m)
+	 :map w3m-mode-map
 	 ("n" . w3m-next-buffer)
 	 ("p" . w3m-previous-buffer))
   :config

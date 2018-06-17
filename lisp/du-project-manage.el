@@ -64,7 +64,7 @@
 
 (use-package deft
   :ensure t
-  :bind ("<f7>" . deft)
+  ;:bind ("<f7>" . deft)
   :commands (deft)
   :config
   (progn
