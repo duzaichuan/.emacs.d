@@ -33,6 +33,7 @@
           w3m-output-coding-system 'utf-8
           w3m-terminal-coding-system 'utf-8)
     (setq w3m-use-cookies t
+	  w3m-default-display-inline-images t
 	  w3m-view-this-url-new-session-in-background t
 	  w3m-command-arguments '("-cookie" "-F"))
     (eval-when-compile

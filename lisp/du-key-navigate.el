@@ -27,35 +27,45 @@
     (evil-add-hjkl-bindings pdf-outline-buffer-mode-map 'emacs)
     (evil-add-hjkl-bindings osx-dictionary-mode-map 'emacs)
     (evil-add-hjkl-bindings emms-playlist-mode-map 'emacs)
-    (evil-set-initial-state 'messages-buffer-mode 'emacs)
-    (use-package evil-leader
-      :ensure t
-      :init (global-evil-leader-mode)
-      :config
-      (progn
-        (evil-leader/set-leader "SPC")
-        (evil-leader/set-key "wd" 'delete-window)
-        (evil-leader/set-key "wo" 'delete-other-windows)
-        (evil-leader/set-key "wh" 'split-window-horizontally)
-        (evil-leader/set-key "wv" 'split-window-vertically)
-        (evil-leader/set-key "ww" 'other-window)
-	(evil-leader/set-key "bb" 'ivy-switch-buffer)
-	(evil-leader/set-key "bk" 'kill-buffer)
-	(evil-leader/set-key ":" 'counsel-M-x)
-	(evil-leader/set-key "ff" 'counsel-find-file)
-	(evil-leader/set-key "fr" 'recentf-open-files)
-	(evil-leader/set-key "gs" 'magit-status)
-	(evil-leader/set-key "gu" 'browse-url-at-point)
-	(evil-leader/set-key "cc" 'evilnc-comment-or-uncomment-lines)
-	(evil-leader/set-key "oc" 'org-capture)
-	(evil-leader/set-key "oa" 'org-agenda)
-	(evil-leader/set-key "or" 'org-refile)
-	(evil-leader/set-key "ol" 'org-store-link)
-	(evil-leader/set-key "dd" 'osx-dictionary-search-word-at-point)
-	(evil-leader/set-key "di" 'osx-dictionary-search-input)
-	(evil-leader/set-key "ej" 'emms-next)
-	(evil-leader/set-key "ek" 'emms-previous)
-	(evil-leader/set-key "ep" 'emms-pause))) ))
+    (evil-set-initial-state 'messages-buffer-mode 'emacs) ))
+
+(use-package evil-leader
+  :ensure t
+  :after evil
+  :init (global-evil-leader-mode)
+  :config
+  (progn
+    (evil-leader/set-leader "SPC")
+    (evil-leader/set-key "wd" 'delete-window)
+    (evil-leader/set-key "wo" 'delete-other-windows)
+    (evil-leader/set-key "wh" 'split-window-horizontally)
+    (evil-leader/set-key "wv" 'split-window-vertically)
+    (evil-leader/set-key "ww" 'other-window)
+    (evil-leader/set-key "bb" 'ivy-switch-buffer)
+    (evil-leader/set-key "bk" 'kill-buffer)
+    (evil-leader/set-key ":" 'counsel-M-x)
+    (evil-leader/set-key "ff" 'counsel-find-file)
+    (evil-leader/set-key "fr" 'recentf-open-files)
+    (evil-leader/set-key "gs" 'magit-status)
+    (evil-leader/set-key "gu" 'browse-url-at-point)
+    (evil-leader/set-key "cc" 'evilnc-comment-or-uncomment-lines)
+    (evil-leader/set-key "oc" 'org-capture)
+    (evil-leader/set-key "oa" 'org-agenda)
+    (evil-leader/set-key "or" 'org-refile)
+    (evil-leader/set-key "ol" 'org-store-link)
+    (evil-leader/set-key "oe" 'org-export-dispatch)
+    (evil-leader/set-key "of" 'writeroom-mode)
+    (evil-leader/set-key "dd" 'osx-dictionary-search-word-at-point)
+    (evil-leader/set-key "di" 'osx-dictionary-search-input)
+    (evil-leader/set-key "ej" 'emms-next)
+    (evil-leader/set-key "ek" 'emms-previous)
+    (evil-leader/set-key "ep" 'emms-pause) ))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config
+  (evil-collection-init '(eww eshell dired)))
 
 (use-package evil-magit
         :ensure t
@@ -87,11 +97,5 @@
 (use-package evil-mu4e
     :ensure t
     :after mu4e)
-
-(use-package evil-collection
-  :after evil
-  :ensure t
-  :config
-  (evil-collection-init '(eww eshell dired)))
 
 (provide 'du-key-navigate)

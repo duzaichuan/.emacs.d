@@ -165,7 +165,7 @@
 
 (use-package writeroom-mode
   :ensure t
-  :bind ("C-c w" . writeroom-mode))
+  :commands writeroom-mode)
 
 (use-package ispell
   :commands ispell

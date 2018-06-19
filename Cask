@@ -77,7 +77,6 @@
 (depends-on "memoize")
 (depends-on "mu4e-alert")
 (depends-on "multiple-cursors")
-(depends-on "neotree")
 (depends-on "ob-ipython")
 (depends-on "org")
 (depends-on "org-babel-eval-in-repl")
