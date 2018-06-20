@@ -22,36 +22,45 @@
       :config
       (progn
 	(evil-leader/set-leader "SPC")
-	(evil-leader/set-key "wd" 'delete-window)
-	(evil-leader/set-key "wo" 'delete-other-windows)
-	(evil-leader/set-key "wh" 'split-window-horizontally)
-	(evil-leader/set-key "wv" 'split-window-vertically)
-	(evil-leader/set-key "ww" 'other-window)
-	(evil-leader/set-key "bb" 'ivy-switch-buffer)
-	(evil-leader/set-key "bq" 'kill-buffer)
-	(evil-leader/set-key "bj" 'next-buffer)
-	(evil-leader/set-key "bk" 'previous-buffer)
-	(evil-leader/set-key ":" 'counsel-M-x)
-	(evil-leader/set-key "ff" 'counsel-find-file)
-	(evil-leader/set-key "fr" 'recentf-open-files)
 	(evil-leader/set-key "gs" 'magit-status)
 	(evil-leader/set-key "gu" 'browse-url-at-point)	
 	(evil-leader/set-key "cc" 'evilnc-comment-or-uncomment-lines)
-	(evil-leader/set-key "oc" 'org-capture)
-	(evil-leader/set-key "oa" 'org-agenda)
-	(evil-leader/set-key "ob" 'org-iswitchb)
-	(evil-leader/set-key "or" 'org-refile)
-	(evil-leader/set-key "ol" 'org-store-link)
-	(evil-leader/set-key "oe" 'org-export-dispatch)
-	(evil-leader/set-key "of" 'writeroom-mode)
-	(evil-leader/set-key "ok" 'org-priority-up)
-	(evil-leader/set-key "oj" 'org-priority-down)
-	(evil-leader/set-key "ot" 'org-time-stamp)
-	(evil-leader/set-key "dd" 'osx-dictionary-search-word-at-point)
-	(evil-leader/set-key "di" 'osx-dictionary-search-input)
-	(evil-leader/set-key "ej" 'emms-next)
-	(evil-leader/set-key "ek" 'emms-previous)
-	(evil-leader/set-key "ep" 'emms-pause) )) )
+	;; window edit
+	(evil-leader/set-key
+	  "wd" 'delete-window
+	  "wo" 'delete-other-windows
+	  "wh" 'split-window-horizontally
+	  "wv" 'split-window-vertically
+	  "ww" 'other-window)
+	;; buffer switch
+	(evil-leader/set-key
+	  "bb" 'ivy-switch-buffer
+	  "bq" 'kill-buffer
+	  "bj" 'next-buffer
+	  "bk" 'previous-buffer)
+	;; file navigate
+	(evil-leader/set-key
+	  "ff" 'counsel-find-file
+	  "fr" 'recentf-open-files)
+	;; org
+	(evil-leader/set-key
+	  "oa" 'org-agenda
+	  "oc" 'org-capture
+	  "ob" 'org-iswitchb
+	  "or" 'org-refile
+	  "ol" 'org-store-link
+	  "oe" 'org-export-dispatch
+	  "of" 'writeroom-mode
+	  "ot" 'org-time-stamp)
+	;; dictionary
+	(evil-leader/set-key
+	  "dd" 'osx-dictionary-search-word-at-point
+	  "di" 'osx-dictionary-search-input)
+	;; emms media
+	(evil-leader/set-key
+	  "ej" 'emms-next
+	  "ek" 'emms-previous
+	  "ep" 'emms-pause) )) )
   :config
   (progn
     (evil-mode 1)
@@ -87,11 +96,12 @@
 
 (use-package evil-org
     :ensure t
-    :diminish evil-org-mode
     :after org
     :config
     (progn
-      (add-hook 'evil-org-mode-hook (lambda () (evil-org-set-key-theme)))
+      (add-hook 'org-mode-hook 'evil-org-mode)
+      (add-hook 'evil-org-mode-hook
+		(lambda () (evil-org-set-key-theme '(textobjects insert navigation additional shift todo heading))))
       (require 'evil-org-agenda)
       (evil-org-agenda-set-keys)))
 
