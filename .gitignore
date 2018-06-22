@@ -1,12 +1,10 @@
 auto-save-list
 elpa
 .DS_Store
-init.el~
 srecode-map.el
 ido.last
 recentf
 .last-package-update-day
-ido.last~
 abbrev_defs
 lisp/.DS_Store
 network-security.data
@@ -20,3 +18,4 @@ emms/
 bookmarks
 url/
 eww-bookmarks
+.cache/
