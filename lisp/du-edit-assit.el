@@ -1,4 +1,14 @@
-;; you only need to specify :defer if you know for a fact that some other package will do something to cause your package to load at the appropriate time
+(delete-selection-mode t)
+(setq tab-always-indent 'complete)
+(global-set-key (kbd "C-w") 'backward-kill-word)
+;; change reminder "yes" to "y"
+(fset 'yes-or-no-p 'y-or-n-p)
+;; disable audio bell
+(setq ring-bell-function 'ignore)
+;; eliminate backup and auto-save files in .emacs.d
+(setq make-backup-files nil)
+(setq auto-save-default nil)
+
 (use-package ov        :ensure t :defer t)
 (use-package f    :ensure t :defer t)
 (use-package s    :ensure t :defer t)
@@ -109,7 +119,6 @@
          ("M-s g" . counsel-rg)
          ("M-s j" . counsel-dired-jump)
 	 ("C-x p f" . counsel-git))
-  :commands counsel-minibuffer-history
   :init
   (bind-key "M-r" #'counsel-minibuffer-history minibuffer-local-map)
   :config

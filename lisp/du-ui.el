@@ -1,5 +1,6 @@
 ;; appearance setting
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
+
 ;; font
 (set-face-attribute 'default nil :font "DejaVu Sans Mono")
 (tool-bar-mode -1)
@@ -9,6 +10,12 @@
 (setq-default cursor-type 'bar)
 (global-hl-line-mode t)
 (global-prettify-symbols-mode)
+
+;; Define the global encoding as utf-8 english US related
+(setq system-time-locale "en_US.utf8")
+(prefer-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(set-keyboard-coding-system nil)
 
 (use-package zenburn-theme
   :ensure t

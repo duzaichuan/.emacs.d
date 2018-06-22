@@ -1,3 +1,11 @@
+;; open init.el 
+(global-set-key (kbd "<f2>") (lambda () (interactive) (find-file user-init-file)))
+
+;; help menu
+(global-set-key (kbd "C-h C-f") 'find-function)
+(global-set-key (kbd "C-h C-v") 'find-variable)
+(global-set-key (kbd "C-h C-k") 'find-function-on-key)
+
 (use-package key-chord
   :ensure t
   :commands key-chord-mode)
