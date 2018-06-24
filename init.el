@@ -49,10 +49,11 @@
 (use-package du-project-manage)
 (use-package du-key-navigate)
 (use-package du-prog-langs)
-(use-package du-text)
+(use-package du-text-edit)
 (use-package du-browser)
 (use-package du-shell)
 (use-package du-mail)
 (use-package du-media)
+(use-package du-data-manipulate)
 
 (load-file custom-file)

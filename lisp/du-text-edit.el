@@ -211,4 +211,4 @@
   ;; Work with popwin-el (https://github.com/m2ym/popwin-el)
   (push "*osx-dictionary*" popwin:special-display-config))
 
-(provide 'du-text)
+(provide 'du-text-edit)
