@@ -59,7 +59,9 @@
 	  "ol" 'org-store-link
 	  "oe" 'org-export-dispatch
 	  "of" 'writeroom-mode
-	  "ot" 'org-time-stamp)
+	  "ot" 'org-time-stamp
+	  "on" 'org-noter
+	  "oi" 'org-noter-insert-note)
 	;; dictionary
 	(evil-leader/set-key
 	  "dd" 'osx-dictionary-search-word-at-point
@@ -96,7 +98,7 @@
   :ensure t
   :custom (evil-collection-setup-minibuffer t)
   :config
-  (evil-collection-init '(eww eshell cider company dired package-menu))
+  (evil-collection-init '(eww eshell cider company dired package-menu nov))
   (with-eval-after-load 'pdf-tools
     (require 'evil-collection-pdf) (evil-collection-pdf-setup)))
 
