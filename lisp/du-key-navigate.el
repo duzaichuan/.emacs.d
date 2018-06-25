@@ -79,24 +79,26 @@
     (define-key evil-insert-state-map [escape] 'evil-normal-state)
     (evil-add-hjkl-bindings recentf-dialog-mode-map 'emacs)
     (evil-add-hjkl-bindings package-menu-mode-map 'emacs)
-    (evil-add-hjkl-bindings pdf-outline-buffer-mode-map 'emacs)
     (evil-add-hjkl-bindings osx-dictionary-mode-map 'emacs)
     (evil-add-hjkl-bindings emms-playlist-mode-map 'emacs)
     
-    (defun my-evil-record-macro ()
+    (defun du/evil-record-macro ()
       (interactive)
       (if buffer-read-only
 	  (quit-window)
 	(call-interactively 'evil-record-macro)))
     ;; evil quit-window and evil-record-macro integration
     (with-eval-after-load 'evil-maps
-      (define-key evil-normal-state-map (kbd "q") 'my-evil-record-macro)) ))
+      (define-key evil-normal-state-map (kbd "q") 'du/evil-record-macro)) ))
 
 (use-package evil-collection
   :after evil
   :ensure t
+  :custom (evil-collection-setup-minibuffer t)
   :config
-  (evil-collection-init '(eww eshell cider company dired package-menu)))
+  (evil-collection-init '(eww eshell cider company dired package-menu))
+  (with-eval-after-load 'pdf-tools
+    (require 'evil-collection-pdf) (evil-collection-pdf-setup)))
 
 (use-package evil-magit
         :ensure t

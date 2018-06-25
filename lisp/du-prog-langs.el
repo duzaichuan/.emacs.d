@@ -44,7 +44,7 @@
     (eval-after-load 'matlab
       '(add-to-list 'matlab-shell-command-switches "-nodesktop -nosplash"))
     
-    (defun matlab-shell-here ()
+    (defun du/matlab-shell-here ()
       "opens up a new matlab shell in the directory associated with the current buffer's file."
       (interactive)
       (split-window-right)
