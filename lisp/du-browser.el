@@ -42,7 +42,6 @@
 (use-package pdf-tools
   :ensure t
   :magic ("%PDF" . pdf-view-mode)
-  :hook (pdf-view-mode . pdf-view-midnight-minor-mode)
   :init
   (setq pdf-annot-activate-created-annotations t) ; automatically annotate highlights
   :config

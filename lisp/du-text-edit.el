@@ -114,8 +114,8 @@
 	 ("C-c ir" . org-ref-helm-insert-ref-link)
 	 ("C-c il" . org-ref-helm-insert-label-link))
   :init
-  (setq reftex-default-bibliography '("~/Dropbox/bibliography/references.bib")
-	org-ref-bibliography-notes "~/Dropbox/bibliography/notes.org"
+  (global-set-key (kbd "<f6>") (lambda () (interactive) (find-file "~/Dropbox/bibliography/bibtex-pdfs/")))
+  (setq org-ref-bibliography-notes "~/Dropbox/bibliography/Notes.org"
 	org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
 	org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
   :config
@@ -127,9 +127,9 @@
   :ensure t
   :defer t
   :init
-  ;; open pdf with system pdf viewer (works on mac)
-  (setq bibtex-completion-pdf-open-function
-	(lambda (fpath) (start-process "open" "*open*" "open" fpath))))
+  (setq bibtex-completion-bibliography "~/Dropbox/bibliography/references.bib" 
+	bibtex-completion-library-path "~/Dropbox/bibliography/bibtex-pdfs"
+	bibtex-completion-notes-path "~/Dropbox/bibliography/Notes.org"))
 
 ;; a WYSiWYG HTML mail editor that can be useful for sending tables, fontified source code, and inline images in email. 
 (use-package org-mime
@@ -181,7 +181,7 @@
     (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXPORT" . "#\\+END_EXPORT")) ))
 
 (use-package flyspell
-  :bind ([f6] . flyspell-buffer)
+  :commands flyspell-buffers
   :config
   (setq flyspell-issue-message-flag nil))
 
