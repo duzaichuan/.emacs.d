@@ -6,6 +6,10 @@
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
 
+;; grow shrink windows
+(global-set-key (kbd "M-[") 'shrink-window-horizontally)
+(global-set-key (kbd "M-]") 'enlarge-window-horizontally)
+
 (use-package key-chord
   :ensure t
   :commands key-chord-mode)

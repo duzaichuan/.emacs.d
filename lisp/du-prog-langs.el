@@ -60,6 +60,14 @@
   :mode ("\\.py\\'" . python-mode)
   :interpreter ("python" . python-mode))
 
+(use-package ein
+  :ensure t
+  :commands (ein:notebooklist-open)
+  :hook (ein:notebook-multilang-mode . visual-line-mode)
+  :init
+  (setq ein:jupyter-default-server-command "~/anaconda/bin/jupyter"
+	ein:jupyter-default-notebook-directory "~/Jupyter/"))
+
 (use-package clojure-mode
   :ensure t
   :commands (clojure-mode)

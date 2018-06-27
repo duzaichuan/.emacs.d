@@ -67,7 +67,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (org-beautify-theme evil-collection clj-refactor rainbow-delimiters org-download org-pdfview writeroom-mode org-bullets matlab-mode org org-edna 0blayout pdf-tools ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex)))
+    (skewer-mode org-beautify-theme evil-collection clj-refactor rainbow-delimiters org-download org-pdfview writeroom-mode org-bullets matlab-mode org org-edna 0blayout pdf-tools ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")
