@@ -22,7 +22,7 @@
 		(define-key
                   ess-julia-mode-map (kbd "TAB") 'julia-latexsub-or-indent)))
     (setq ess-fancy-comments nil) ; Make ESS use RStudio's indenting style
-    (add-hook 'ess-mode-hook (lambda() (ess-set-style 'RStudio))) ; Make ESS use more horizontal screen	     
+    (add-hook 'ess-mode-hook (lambda () (ess-set-style 'RStudio))) ; Make ESS use more horizontal screen	     
     (add-hook 'ess-R-post-run-hook 'ess-execute-screen-options) ))
 
 (use-package matlab-mode
@@ -62,11 +62,10 @@
 
 (use-package ein
   :ensure t
-  :commands (ein:notebooklist-open)
-  :hook (ein:notebook-multilang-mode . visual-line-mode)
-  :init
-  (setq ein:jupyter-default-server-command "~/anaconda/bin/jupyter"
-	ein:jupyter-default-notebook-directory "~/Jupyter/"))
+  :bind ([f6] . ein:jupyter-server-start)
+  :hook ((ein:notebook-mode . visual-line-mode))
+  :init (setq ein:jupyter-default-server-command "~/anaconda/bin/jupyter"
+	      ein:jupyter-default-notebook-directory "~/Jupyter/"))
 
 (use-package clojure-mode
   :ensure t
