@@ -27,6 +27,10 @@
     ;; if there is a dired buffer displayed in the next window, use its
     ;; current subdir, instead of the current subdir of this dired buffer
     (setq dired-dwim-target t)
+    ;; get rid of a message error
+    (when (eq system-type 'darwin)
+      (require 'ls-lisp)
+      (setq ls-lisp-use-insert-directory-program nil))
     ;; enable some really cool extensions like C-x C-j(dired-jump)
     (use-package dired-x)))
 

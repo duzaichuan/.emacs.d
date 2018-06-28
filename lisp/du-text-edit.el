@@ -114,7 +114,6 @@
 	 ("C-c ir" . org-ref-helm-insert-ref-link)
 	 ("C-c il" . org-ref-helm-insert-label-link))
   :init
-  (global-set-key (kbd "<f6>") (lambda () (interactive) (find-file "~/Dropbox/bibliography/bibtex-pdfs/")))
   (setq org-ref-bibliography-notes "~/Dropbox/bibliography/Notes.org"
 	org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
 	org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")

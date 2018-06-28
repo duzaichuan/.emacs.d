@@ -116,6 +116,7 @@
 (depends-on "swiper")
 (depends-on "tablist")
 (depends-on "treemacs")
+(depends-on "treemacs-evil")
 (depends-on "twittering-mode")
 (depends-on "typo")
 (depends-on "undo-tree")

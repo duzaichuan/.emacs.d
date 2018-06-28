@@ -58,7 +58,13 @@
 (use-package nov
   :ensure t
   :mode ("\\.epub\\'" . nov-mode)
-  :config (setq nov-text-width 80))
+  :config
+  (progn
+    (setq nov-text-width 75)
+    (defun du/nov-font-setup ()
+      (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
+                               :height 1.1))
+    (add-hook 'nov-mode-hook 'du/nov-font-setup) )) 
 
 (use-package writeroom-mode
   :ensure t

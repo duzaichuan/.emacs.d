@@ -138,4 +138,8 @@
     :ensure t
     :after mu4e)
 
+(use-package treemacs-evil
+  :after treemacs evil
+  :ensure t)
+
 (provide 'du-key-navigate)
