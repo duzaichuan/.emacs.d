@@ -61,6 +61,7 @@
 (depends-on "hydra")
 (depends-on "imenu-anywhere")
 (depends-on "ivy")
+(depends-on "js2-mode")
 (depends-on "julia-mode")
 (depends-on "julia-shell")
 (depends-on "key-chord")

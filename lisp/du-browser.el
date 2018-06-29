@@ -42,6 +42,7 @@
 (use-package pdf-tools
   :ensure t
   :magic ("%PDF" . pdf-view-mode)
+  :hook (pdf-view-mode . savehist-mode)
   :init
   (setq pdf-annot-activate-created-annotations t) ; automatically annotate highlights
   :config
@@ -53,14 +54,26 @@
     (setq-default pdf-view-display-size 'fit-width) ; fit page by default
     (setq pdf-view-resize-factor 1.10)
     (setq pdf-view-midnight-colors `(,(face-attribute 'default :foreground) .
-                                     ,(face-attribute 'default :background))) ))
+                                     ,(face-attribute 'default :background)))
+    ;; default annot color
+    (push '(color . "dark cyan") pdf-annot-default-markup-annotation-properties)
+    ;; wrapper for save-buffer ignoring arguments
+    (defun du/save-buffer-no-args ()
+      "Save buffer ignoring arguments"
+      (save-buffer))
+    ;; wait until map is available
+    (with-eval-after-load "pdf-annot"
+      (define-key pdf-annot-edit-contents-minor-mode-map (kbd "<return>") 'pdf-annot-edit-contents-commit)
+      (define-key pdf-annot-edit-contents-minor-mode-map (kbd "<S-return>") 'newline)
+      ;; save after adding comment
+      (advice-add 'pdf-annot-edit-contents-commit :after 'du/save-buffer-no-args)) ))
 
 (use-package nov
   :ensure t
   :mode ("\\.epub\\'" . nov-mode)
   :config
   (progn
-    (setq nov-text-width 75)
+    (setq nov-text-width 70)
     (defun du/nov-font-setup ()
       (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
                                :height 1.1))

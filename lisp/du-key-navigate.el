@@ -74,7 +74,11 @@
 	(evil-leader/set-key
 	  "ej" 'emms-next
 	  "ek" 'emms-previous
-	  "ep" 'emms-pause) )) )
+	  "ep" 'emms-pause)
+	(evil-leader/set-key
+	  "pu" 'pdf-annot-add-underline-markup-annotation
+	  "ph" 'pdf-annot-add-highlight-markup-annotation
+	  "pd" 'pdf-annot-delete) )) )
   :config
   (progn
     (evil-mode 1)
