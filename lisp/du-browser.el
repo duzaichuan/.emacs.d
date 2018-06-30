@@ -56,17 +56,11 @@
     (setq pdf-view-midnight-colors `(,(face-attribute 'default :foreground) .
                                      ,(face-attribute 'default :background)))
     ;; default annot color
-    (push '(color . "dark cyan") pdf-annot-default-markup-annotation-properties)
-    ;; wrapper for save-buffer ignoring arguments
-    (defun du/save-buffer-no-args ()
-      "Save buffer ignoring arguments"
-      (save-buffer))
+    (push '(color . "light green") pdf-annot-default-markup-annotation-properties)
     ;; wait until map is available
     (with-eval-after-load "pdf-annot"
       (define-key pdf-annot-edit-contents-minor-mode-map (kbd "<return>") 'pdf-annot-edit-contents-commit)
-      (define-key pdf-annot-edit-contents-minor-mode-map (kbd "<S-return>") 'newline)
-      ;; save after adding comment
-      (advice-add 'pdf-annot-edit-contents-commit :after 'du/save-buffer-no-args)) ))
+      (define-key pdf-annot-edit-contents-minor-mode-map (kbd "<S-return>") 'newline)) ))
 
 (use-package nov
   :ensure t
