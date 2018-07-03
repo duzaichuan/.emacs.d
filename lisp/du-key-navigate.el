@@ -78,7 +78,8 @@
 	(evil-leader/set-key
 	  "pu" 'pdf-annot-add-underline-markup-annotation
 	  "ph" 'pdf-annot-add-highlight-markup-annotation
-	  "pd" 'pdf-annot-delete) )) )
+	  "pd" 'pdf-annot-delete
+	  "pg" 'pdf-view-goto-page) )) )
   :config
   (progn
     (evil-mode 1)
