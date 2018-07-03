@@ -7,76 +7,37 @@
   :hook (eshell-mode . visual-line-mode)
   :commands eshell-mode
   :init
-  (add-hook 'eshell-mode-hook
-            (lambda () (eshell/export "NODE_NO_READLINE=1")))
+  (progn
+    (setq eshell-visual-subcommands '(("git" "log" "diff" "show")))
+    (setq  eshell-highlight-promp nil
+	   eshell-buffer-shorthand t
+	   eshell-history-size 5000
+	   ;;  ;; auto truncate after 12k lines
+	   eshell-buffer-maximum-lines 12000
+	   eshell-hist-ignoredups t
+	   eshell-error-if-no-glob t
+	   eshell-glob-case-insensitive t
+	   eshell-scroll-to-bottom-on-input 'all
+	   eshell-list-files-after-cd t))
   :config
   (progn
-    (use-package magit)
-    (defmacro with-face (STR &rest PROPS)
-      "Return STR propertized with PROPS."
-      `(propertize ,STR 'face (list ,@PROPS)))
+    (add-hook 'eshell-mode-hook
+	      (lambda ()(eshell-cmpl-initialize))) ))
 
-    (defmacro esh-section (NAME ICON FORM &rest PROPS)
-      "Build eshell section NAME with ICON prepended to evaled FORM with PROPS."
-      `(setq ,NAME
-             (lambda () (when ,FORM
-			  (-> ,ICON
-			      (concat esh-section-delim ,FORM)
-			      (with-face ,@PROPS)))) ))
+(use-package virtualenvwrapper
+  :ensure t
+  :defer t)
 
-    (defun esh-acc (acc x)
-      "Accumulator for evaluating and concatenating esh-sections."
-      (--if-let (funcall x)
-	  (if (s-blank? acc)
-              it
-            (concat acc esh-sep it))
-	acc))
-
-    (defun esh-prompt-func ()
-      "Build `eshell-prompt-function'"
-      (concat esh-header
-              (-reduce-from 'esh-acc "" eshell-funcs)
-              "\n"
-              eshell-prompt-string))
-
-    (esh-section esh-dir
-		 "\xf07c"  ;  (faicon folder)
-		 (abbreviate-file-name (eshell/pwd))
-		 '(:bold ultra-bold :underline t))
-
-    (esh-section esh-git
-		 "\xe907"  ;  (git icon)
-		 (magit-get-current-branch))
-
-    ;; Below I implement a "prompt number" section
-    (setq esh-prompt-num 0)
-    (add-hook 'eshell-exit-hook (lambda () (setq esh-prompt-num 0)))
-    (advice-add 'eshell-send-input :before
-		(lambda (&rest args) (setq esh-prompt-num (incf esh-prompt-num))))
-
-    (esh-section esh-num
-		 "\xf0c9"  ;  (list icon)
-		 (number-to-string esh-prompt-num))
-
-    ;; Separator between esh-sections
-    (setq esh-sep "  ")  ; or " | "
-
-    ;; Separator between an esh-section icon and form
-    (setq esh-section-delim " ")
-
-    ;; Eshell prompt header
-    (setq esh-header " ")  ; or "\n┌─"
-
-    ;; Eshell prompt regexp and string. Unless you are varying the prompt by eg.
-    ;; your login, these can be the same.
-    (setq eshell-prompt-regexp "$ ")   ; or "└─> "
-    (setq eshell-prompt-string "$ ")   ; or "└─> "
-
-    ;; Choose which eshell-funcs to enable
-    (setq eshell-funcs (list esh-dir esh-git esh-num))
-
-    ;; Enable the new eshell prompt
-    (setq eshell-prompt-function 'esh-prompt-func) ))
+(use-package eshell-prompt-extras
+  :ensure t
+  :after eshell
+  :config
+  (with-eval-after-load "esh-opt"
+    (require 'virtualenvwrapper)
+    (venv-initialize-eshell)
+    (autoload 'epe-theme-lambda "eshell-prompt-extras")
+    (setq eshell-highlight-prompt nil
+          eshell-prompt-function 'epe-theme-lambda)))
 
 (use-package eshell-fringe-status
   :ensure t
@@ -85,5 +46,13 @@
 (use-package esh-autosuggest
   :ensure t
   :hook (eshell-mode . esh-autosuggest-mode))
+
+(use-package shell-pop
+  :ensure t
+  :commands shell-pop
+  :config
+  (progn
+    (setq shell-pop-window-position "bottom"
+	  shell-pop-window-size 35) ))
 
 (provide 'du-shell)
