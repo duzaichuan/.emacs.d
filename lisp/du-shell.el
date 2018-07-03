@@ -47,12 +47,4 @@
   :ensure t
   :hook (eshell-mode . esh-autosuggest-mode))
 
-(use-package shell-pop
-  :ensure t
-  :commands shell-pop
-  :config
-  (progn
-    (setq shell-pop-window-position "bottom"
-	  shell-pop-window-size 35) ))
-
 (provide 'du-shell)
