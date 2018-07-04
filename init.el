@@ -26,7 +26,7 @@
 (use-package bind-key)            ; if you use any :bind variant
 
 (use-package exec-path-from-shell
-  :if (and (eq system-type 'darwin) (display-graphic-p))
+  :if (memq window-system '(ns mac))
   :ensure t
   :config
   (progn

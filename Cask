@@ -17,6 +17,7 @@
 (depends-on "chinese-word-at-point")
 (depends-on "cider")
 (depends-on "circe")
+(depends-on "circe-notifications")
 (depends-on "citeproc")
 (depends-on "clojure-mode")
 (depends-on "color-identifiers-mode")
