@@ -22,30 +22,20 @@
   :ensure t
   :commands circe
   :init
-  (setq circe-network-options
-	'(("127.0.0.1"
-	   :port "6667"
-	   :nick "Solatle")))
-  (setq lui-time-stamp-position 'right-margin
-	lui-fill-type nil
-	lui-time-stamp-format "%H:%M"
-	)
-  :config
   (progn
-    (add-hook 'circe-chat-mode-hook 'my-circe-prompt)
-    (defun my-circe-prompt ()
-      (lui-set-prompt
-       (concat (propertize (concat (buffer-name) ">")
-			   'face 'circe-prompt-face)
-               " ")))
+    (setq circe-use-cycle-completion t)
+    (setq my-credentials-file "~/.private.el")
 
-    (add-hook 'lui-mode-hook 'my-lui-setup)
-    (defun my-lui-setup ()
-      (setq
-       fringes-outside-margins t
-       right-margin-width 5
-       word-wrap t
-       wrap-prefix "    ")) ))
+    (defun du/nickserv-password (server)
+      (with-temp-buffer
+	(insert-file-contents-literally my-credentials-file)
+	(plist-get (read (buffer-string)) :nickserv-password)))
+
+    (setq circe-network-options
+	  '(("Freenode"
+             :nick "Solatle"
+             :channels ("#org-mode" "#evil-mode" :after-auth "#emacs")
+             :nickserv-password du/nickserv-password))) ))
 
 (use-package circe-notifications
   :ensure t
