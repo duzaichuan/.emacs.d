@@ -5,9 +5,11 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; disable audio bell
 (setq ring-bell-function 'ignore)
-;; eliminate backup and auto-save files in .emacs.d
-(setq make-backup-files nil)
-(setq auto-save-default nil)
+;; store all backup and autosave files in the tmp dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
 
 (use-package ov        :ensure t :defer t)
 (use-package f    :ensure t :defer t)
