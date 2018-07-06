@@ -213,8 +213,9 @@
 
 (use-package pyim
   :ensure t
-  :diminish t
-  :bind ("M-j" . pyim-convert-code-at-point)
+  :bind (("M-p" . pyim-convert-code-at-point)
+	 ("M-f" . pyim-forward-word)
+	 ("M-b" . pyim-backward-word))
   :init
   (progn
     (setq default-input-method "pyim"
@@ -224,11 +225,11 @@
 
     (setq pyim-dicts
 	  '((:name "default" :file "~/pyim-dicts/pyim-bigdict.pyim")
-            ))
+            (:name "eng abbriv" :file "~/pyim-dicts/eng-abbrev.pyim")))
     
     (setq-default pyim-english-input-switch-functions
                 '(pyim-probe-dynamic-english
-                  pyim-probe-isearch-mode
+                  ;pyim-probe-isearch-mode
                   pyim-probe-program-mode
                   pyim-probe-org-structure-template))
 
@@ -237,11 +238,9 @@
                   pyim-probe-punctuation-after-punctuation)) )
   :config
   (progn
-    (pyim-isearch-mode 1)
+    ;(pyim-isearch-mode 1)
     ;; 激活 basedict 拼音词库
     (use-package pyim-basedict
-      :config (pyim-basedict-enable))
-    
-     ))
+      :config (pyim-basedict-enable)) ))
 
 (provide 'du-text-edit)
