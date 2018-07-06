@@ -1,5 +1,0 @@
-(#s(treemacs-workspace "Default Workspace"
-		       (#s(treemacs-project "Emacs_config" "/Users/Solatle/.emacs.d")
-			  #s(treemacs-project "Master_Thesis" "/Users/Solatle/Desktop/Master_Thesis")
-			  #s(treemacs-project "ebooks" "/Users/Solatle/Dropbox/ebooks")
-			  #s(treemacs-project "bibtex-pdfs" "/Users/Solatle/Dropbox/bibliography/bibtex-pdfs"))))
