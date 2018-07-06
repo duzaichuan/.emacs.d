@@ -211,4 +211,37 @@
   ;; Work with popwin-el (https://github.com/m2ym/popwin-el)
   (push "*osx-dictionary*" popwin:special-display-config))
 
+(use-package pyim
+  :ensure t
+  :diminish t
+  :bind ("M-j" . pyim-convert-code-at-point)
+  :init
+  (progn
+    (setq default-input-method "pyim"
+	  pyim-default-scheme 'quanpin
+	  pyim-page-tooltip 'posframe
+	  pyim-page-length 5)
+
+    (setq pyim-dicts
+	  '((:name "default" :file "~/pyim-dicts/pyim-bigdict.pyim")
+            ))
+    
+    (setq-default pyim-english-input-switch-functions
+                '(pyim-probe-dynamic-english
+                  pyim-probe-isearch-mode
+                  pyim-probe-program-mode
+                  pyim-probe-org-structure-template))
+
+    (setq-default pyim-punctuation-half-width-functions
+                '(pyim-probe-punctuation-line-beginning
+                  pyim-probe-punctuation-after-punctuation)) )
+  :config
+  (progn
+    (pyim-isearch-mode 1)
+    ;; 激活 basedict 拼音词库
+    (use-package pyim-basedict
+      :config (pyim-basedict-enable))
+    
+     ))
+
 (provide 'du-text-edit)

@@ -146,4 +146,4 @@
 				mark-page))))
   (add-hook 'text-mode-hook 'er/add-text-mode-expansions))
 
-(provide 'du-edit-assit)
+(provide 'du-operating-assist)
