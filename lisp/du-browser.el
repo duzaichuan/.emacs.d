@@ -8,13 +8,14 @@
   :init
   (setq browse-url-browser-function #'eww-browse-url)
   :config
-  (defun du/mpv-play (url)
-    "play youtube and bilibili at the url point"
-    (interactive (list (shr-url-at-point current-prefix-arg)))
-    (cond ((string-match "youtube" url)
-           (call-process "mpv" nil nil nil url))
-          ((string-match "bilibili" url)
-           (call-process "bili" nil nil nil url)))))
+  (progn
+    (defun du/mpv-play (url)
+      "play youtube and bilibili at the url point"
+      (interactive (list (shr-url-at-point current-prefix-arg)))
+      (cond ((string-match "youtube" url)
+             (call-process "mpv" nil nil nil url))
+            ((string-match "bilibili" url)
+             (call-process "bili" nil nil nil url)))) ))
 
 (use-package w3m
   :ensure t
