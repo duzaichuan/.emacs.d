@@ -80,8 +80,7 @@
              ;; docfiles go to ~/Desktop
 	     ((and fname (string-match "\\.doc$" fname))  "~/Desktop")
 	     ;; ... other cases  ...
-	     (t "~/Downloads")))) ;; everything else
-        ))
+	     (t "~/Downloads")))) ))
 
 ;; Alerts for new mails
 (use-package mu4e-alert
