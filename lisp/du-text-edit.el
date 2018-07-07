@@ -1,5 +1,6 @@
 (use-package text-mode
-  :hook (text-mode . visual-line-mode))
+  :hook ((text-mode . visual-line-mode)
+	 (text-mode . pyim-isearch-mode)))
 
 (use-package tex
   :ensure auctex
