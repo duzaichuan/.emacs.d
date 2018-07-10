@@ -1,6 +1,5 @@
 (use-package text-mode
-  :hook ((text-mode . visual-line-mode)
-	 (text-mode . pyim-isearch-mode)))
+  :hook (text-mode . visual-line-mode))
 
 (use-package tex
   :ensure auctex
@@ -50,8 +49,7 @@
         (setq org-directory "~/Dropbox/Org"
 	      org-default-notes-file (concat org-directory "/notes.org")
 	      org-agenda-files (list "~/Dropbox/Org")
-	      org-refile-targets (quote ((nil :maxlevel . 3)
-					 (org-agenda-files :maxlevel . 3)))
+	      org-refile-targets '((org-agenda-files :maxlevel . 3))
 	      org-capture-templates (quote (("t" "TODO" entry (file+olp+datetree "~/Dropbox/Org/captures.org")
 					     "* TODO %?")
 					    ("a" "Appointment" entry (file+olp+datetree "~/Dropbox/Org/captures.org")
