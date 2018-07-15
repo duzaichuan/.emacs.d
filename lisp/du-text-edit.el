@@ -105,7 +105,9 @@
 
 (use-package org-bullets
   :ensure t
-  :hook (org-mode . org-bullets-mode))
+  :hook (org-mode . org-bullets-mode)
+  :config
+  (setq org-bullets-bullet-list '("◉" "○" "●" "◆" "♦")))
 
 (use-package org-ref
   :ensure t

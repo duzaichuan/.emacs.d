@@ -77,4 +77,9 @@
 	  deft-default-extension "org"
 	  deft-text-mode         'org-mode)))
 
+(use-package bibliothek
+  :ensure t
+  :commands bibliothek
+  :init (setq bibliothek-path (list "~/Desktop")))
+
 (provide 'du-project-manage)

@@ -11,6 +11,7 @@
 (depends-on "avy")
 (depends-on "biblio")
 (depends-on "biblio-core")
+(depends-on "bibliothek")
 (depends-on "bind-key")
 (depends-on "cask")
 (depends-on "cdlatex")
