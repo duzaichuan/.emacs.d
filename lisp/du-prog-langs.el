@@ -31,7 +31,7 @@
   :bind (:map matlab-shell-mode-map
               ("C-c C-c" . term-interrupt-subjob))
   :commands matlab-shell
-  :hook (matlab-mode . linum-mode)
+  :hook (matlab-mode . display-line-numbers-mode)
   :init
   (progn
     ;; workaround for emacs 26
@@ -53,6 +53,7 @@
 
 (use-package dynare
   :load-path "/lib"
+  :hook (dynare-mode . display-line-numbers-mode)
   :mode ("\\.mod\\'" . dynare-mode))
 
 (use-package python

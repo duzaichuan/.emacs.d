@@ -1,5 +1,5 @@
 (use-package text-mode
-  :hook (text-mode . visual-line-mode))
+  :hook (text-mode . turn-on-visual-line-mode))
 
 (use-package tex
   :ensure auctex
