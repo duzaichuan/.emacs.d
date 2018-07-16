@@ -22,6 +22,10 @@
 	(which-key-mode)
 	(which-key-setup-side-window-right-bottom)))
 
+(use-package avy
+  :ensure t
+  :commands (avy-goto-char avy-goto-char-2 avy-goto-line))
+
 (use-package evil
   :ensure t
   :diminish evil-mode
@@ -79,7 +83,11 @@
 	  "pu" 'pdf-annot-add-underline-markup-annotation
 	  "ph" 'pdf-annot-add-highlight-markup-annotation
 	  "pd" 'pdf-annot-delete
-	  "pg" 'pdf-view-goto-page) )) )
+	  "pg" 'pdf-view-goto-page)
+	(evil-leader/set-key
+	  "jj" 'avy-goto-char
+	  "jt" 'avy-goto-char-2
+	  "jl" 'avy-goto-line) )) )
   :config
   (progn
     (evil-mode 1)
@@ -113,7 +121,7 @@
   :ensure t
   :custom (evil-collection-setup-minibuffer t)
   :config
-  (evil-collection-init '(eww eshell cider company dired package-menu nov))
+  (evil-collection-init '(avy eww eshell cider company dired package-menu nov))
   (with-eval-after-load 'pdf-tools
     (require 'evil-collection-pdf) (evil-collection-pdf-setup)))
 

@@ -1,5 +1,5 @@
 (use-package prog-mode
-  :hook (prog-mode . linum-mode))
+  :hook (prog-mode . display-line-numbers-mode))
 
 ;; Consistent ESS-like eval interface for various REPLs
 (use-package eval-in-repl
