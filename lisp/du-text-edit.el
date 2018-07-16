@@ -37,7 +37,7 @@
   :defer 0.1
   :mode ("\\.org\\'" . org-mode)
   :hook ((org-mode . turn-on-org-cdlatex)
-	 (org-mode . visual-line-mode))
+	 (org-mode . turn-on-visual-line-mode))
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
 	 ("C-c c" . org-capture)
