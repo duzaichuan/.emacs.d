@@ -50,7 +50,7 @@
 (use-package du-project-manage)
 (use-package du-prog-langs)
 (use-package du-text-edit)
-(use-package du-browser)
+(use-package du-browse-reader)
 (use-package du-shell)
 (use-package du-mail)
 (use-package du-media)

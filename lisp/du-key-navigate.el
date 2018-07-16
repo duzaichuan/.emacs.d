@@ -121,7 +121,7 @@
   :ensure t
   :custom (evil-collection-setup-minibuffer t)
   :config
-  (evil-collection-init '(avy eww eshell cider company dired package-menu nov))
+  (evil-collection-init '(avy eww eshell elfeed cider company dired package-menu nov))
   (with-eval-after-load 'pdf-tools
     (require 'evil-collection-pdf) (evil-collection-pdf-setup)))
 

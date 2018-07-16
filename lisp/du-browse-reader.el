@@ -40,6 +40,14 @@
     (eval-when-compile
       (autoload 'w3m-search-escape-query-string "w3m-search")) ))
 
+(use-package elfeed
+  :ensure t
+  :bind ("C-x w" . elfeed)
+  :init
+  (setq elfeed-feeds
+      '("http://sachachua.com/blog/category/emacs-news/feed"
+        )) )
+
 (use-package pdf-tools
   :ensure t
   :magic ("%PDF" . pdf-view-mode)
@@ -78,4 +86,4 @@
   :ensure t
   :hook (writeroom-mode . visual-line-mode))
 
-(provide 'du-browser)
+(provide 'du-browse-reader)

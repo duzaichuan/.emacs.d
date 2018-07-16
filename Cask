@@ -30,6 +30,7 @@
 (depends-on "deft")
 (depends-on "diminish")
 (depends-on "ein")
+(depends-on "elfeed")
 (depends-on "emms")
 (depends-on "epl")
 (depends-on "esh-autosuggest")
