@@ -13,6 +13,7 @@
 (depends-on "biblio-core")
 (depends-on "bibliothek")
 (depends-on "bind-key")
+(depends-on "bongo")
 (depends-on "cask")
 (depends-on "cdlatex")
 (depends-on "chinese-word-at-point")

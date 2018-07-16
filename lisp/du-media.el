@@ -10,6 +10,10 @@
     (emms-all)
     (emms-default-players) ))
 
+(use-package bongo
+  :ensure t
+  :commands bongo)
+
 (use-package twittering-mode
   :ensure t
   :commands twit

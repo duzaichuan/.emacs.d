@@ -46,7 +46,7 @@
   :init
   (setq elfeed-feeds
       '("http://sachachua.com/blog/category/emacs-news/feed"
-        )) )
+        "feed://cestlaz.github.io/rss.xml")) )
 
 (use-package pdf-tools
   :ensure t
