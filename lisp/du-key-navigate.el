@@ -74,16 +74,25 @@
 	(evil-leader/set-key
 	  "dd" 'osx-dictionary-search-word-at-point
 	  "di" 'osx-dictionary-search-input)
+	;; Media
+	(evil-leader/set-key
+	  "mb" 'bongo
+	  "me" 'emms
+	  "mt" 'twit
+	  "mm" 'simple-mpc
+	  "mc" 'circe)
 	;; emms media
 	(evil-leader/set-key
 	  "ej" 'emms-next
 	  "ek" 'emms-previous
 	  "ep" 'emms-pause)
+	;; pdf reader
 	(evil-leader/set-key
 	  "pu" 'pdf-annot-add-underline-markup-annotation
 	  "ph" 'pdf-annot-add-highlight-markup-annotation
 	  "pd" 'pdf-annot-delete
 	  "pg" 'pdf-view-goto-page)
+	;; avy jump
 	(evil-leader/set-key
 	  "jj" 'avy-goto-char
 	  "jt" 'avy-goto-char-2
@@ -106,6 +115,7 @@
     (evil-add-hjkl-bindings package-menu-mode-map 'emacs)
     (evil-add-hjkl-bindings osx-dictionary-mode-map 'emacs)
     (evil-add-hjkl-bindings emms-playlist-mode-map 'emacs)
+    (evil-add-hjkl-bindings bongo-library-mode-map 'emacs)
     
     (defun du/evil-record-macro ()
       (interactive)

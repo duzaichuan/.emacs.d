@@ -120,6 +120,7 @@
 (depends-on "s")
 (depends-on "shell-pop")
 (depends-on "shut-up")
+(depends-on "simple-mpc")
 (depends-on "skewer-mode")
 (depends-on "smartparens")
 (depends-on "spinner")

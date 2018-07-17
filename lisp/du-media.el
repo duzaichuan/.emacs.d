@@ -14,6 +14,10 @@
   :ensure t
   :commands bongo)
 
+(use-package simple-mpc
+  :ensure t
+  :commands (simple-mpc))
+
 (use-package twittering-mode
   :ensure t
   :commands twit
