@@ -54,6 +54,7 @@
 (use-package du-shell)
 (use-package du-mail)
 (use-package du-media)
+(use-package du-sns-client)
 (use-package du-data-manipulate)
 
 (load-file custom-file)

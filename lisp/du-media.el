@@ -1,14 +1,39 @@
 (use-package emms
   :ensure t
-  :bind (([f10] . emms))
+  :commands (emms)
   :init
-  (add-to-list 'load-path "~/.emacs.d/emms/")
-  (setq emms-source-file-default-directory "~/Music/")
+  (setq mpc-host "localhost:6600")
   :config
   (progn
     (require 'emms-setup)
+    (require 'emms-player-mpd)
     (emms-all)
-    (emms-default-players) ))
+    (setq emms-player-list '(emms-player-mpd)
+	  emms-info-functions '(emms-info-mpd)
+	  emms-player-mpd-server-name "localhost"
+	  emms-player-mpd-server-port "6600") ))
+
+(defun mpd/start-music-daemon ()
+  "Start MPD, connects to it and syncs the metadata cache."
+  (interactive)
+  (shell-command "mpd")
+  (mpd/update-database)
+  (emms-player-mpd-connect)
+  (emms-cache-set-from-mpd-all)
+  (message "MPD Started!"))
+
+(defun mpd/kill-music-daemon ()
+  "Stops playback and kill the music daemon."
+  (interactive)
+  (emms-stop)
+  (call-process "killall" nil nil nil "mpd")
+  (message "MPD Killed!"))
+
+(defun mpd/update-database ()
+  "Updates the MPD database synchronously."
+  (interactive)
+  (call-process "mpc" nil nil nil "update")
+  (message "MPD Database Updated!"))
 
 (use-package bongo
   :ensure t
@@ -17,47 +42,5 @@
 (use-package simple-mpc
   :ensure t
   :commands (simple-mpc))
-
-(use-package twittering-mode
-  :ensure t
-  :commands twit
-  :init
-  (setq twittering-use-master-password t
-	epa-pinentry-mode 'loopback
-	twittering-icon-mode t
-	twittering-use-icon-storage t))
-
-(use-package circe
-  :ensure t
-  :commands circe
-  :init
-  (progn
-    (setq circe-use-cycle-completion t)
-    (setq my-credentials-file "~/.private.el")
-
-    (defun du/nickserv-password (server)
-      (with-temp-buffer
-	(insert-file-contents-literally my-credentials-file)
-	(plist-get (read (buffer-string)) :nickserv-password)))
-
-    (setq circe-network-options
-	  '(("Freenode"
-             :nick "Solatle"
-             :channels ("#org-mode" "#evil-mode" :after-auth "#emacs")
-             :nickserv-password du/nickserv-password))) ))
-
-(use-package circe-notifications
-  :ensure t
-  :after circe
-  :config
-  (progn
-    (autoload 'enable-circe-notifications "circe-notifications" nil t)
-    
-    (eval-after-load "circe-notifications"
-      '(setq circe-notifications-watch-strings
-             '("people" "you" "like" "to" "hear" "from")
-             circe-notifications-alert-style 'osx-notifier)) ;; see alert-styles for more!
-    
-    (add-hook 'circe-server-connected-hook 'enable-circe-notifications) ))
 
 (provide 'du-media)

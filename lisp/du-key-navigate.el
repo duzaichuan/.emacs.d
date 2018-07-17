@@ -83,6 +83,9 @@
 	  "mc" 'circe)
 	;; emms media
 	(evil-leader/set-key
+	  "ec" 'mpd/start-music-daemon
+	  "ee" 'mpd/kill-music-daemon
+	  "eu" 'mpd/update-database
 	  "ej" 'emms-next
 	  "ek" 'emms-previous
 	  "ep" 'emms-pause)
