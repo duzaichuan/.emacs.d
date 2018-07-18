@@ -2,7 +2,7 @@
   :ensure t
   :commands (emms)
   :init
-  (setq mpc-host "localhost:6600")
+  (setq mpc-host "localhost:6601")
   :config
   (progn
     (require 'emms-setup)
@@ -11,7 +11,7 @@
     (setq emms-player-list '(emms-player-mpd)
 	  emms-info-functions '(emms-info-mpd)
 	  emms-player-mpd-server-name "localhost"
-	  emms-player-mpd-server-port "6600") ))
+	  emms-player-mpd-server-port "6601") ))
 
 (defun mpd/start-music-daemon ()
   "Start MPD, connects to it and syncs the metadata cache."
@@ -41,6 +41,9 @@
 
 (use-package simple-mpc
   :ensure t
-  :commands (simple-mpc))
+  :commands (simple-mpc)
+  :config
+  (setq simple-mpc-playlist-format "%artist%	%album%	%title%	%file%"
+	simple-mpc-table-separator " "))
 
 (provide 'du-media)
