@@ -76,7 +76,7 @@
 	  "di" 'osx-dictionary-search-input)
 	;; Media
 	(evil-leader/set-key
-	  "mb" 'bongo
+	  "mb" 'bongo-playlist
 	  "me" 'emms
 	  "mt" 'twit
 	  "mm" 'simple-mpc
@@ -108,17 +108,20 @@
     (setq evil-want-C-u-scroll t)
     (setcdr evil-insert-state-map nil)
     (define-key evil-insert-state-map [escape] 'evil-normal-state)
+    
     ;; Make evil-mode up/down operate in screen lines instead of logical lines
     (define-key evil-motion-state-map "j" 'evil-next-visual-line)
     (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
     ;; Also in visual mode
     (define-key evil-visual-state-map "j" 'evil-next-visual-line)
     (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
-    (evil-add-hjkl-bindings recentf-dialog-mode-map 'emacs)
+    
+    (evil-set-initial-state 'bongo-playlist-mode 'emacs)
     (evil-add-hjkl-bindings package-menu-mode-map 'emacs)
+    (evil-add-hjkl-bindings recentf-dialog-mode-map 'emacs)
     (evil-add-hjkl-bindings osx-dictionary-mode-map 'emacs)
     (evil-add-hjkl-bindings emms-playlist-mode-map 'emacs)
-    (evil-add-hjkl-bindings bongo-library-mode-map 'emacs)
+    (evil-add-hjkl-bindings bongo-playlist-mode-map 'emacs)
     
     (defun du/evil-record-macro ()
       (interactive)

@@ -2,16 +2,17 @@
   :ensure t
   :commands (emms)
   :init
-  (setq mpc-host "localhost:6601")
+  (setq mpc-host "localhost:6610")
   :config
   (progn
     (require 'emms-setup)
     (require 'emms-player-mpd)
     (emms-all)
+    (setq emms-seek-seconds 5)
     (setq emms-player-list '(emms-player-mpd)
 	  emms-info-functions '(emms-info-mpd)
 	  emms-player-mpd-server-name "localhost"
-	  emms-player-mpd-server-port "6601") ))
+	  emms-player-mpd-server-port "6610") ))
 
 (defun mpd/start-music-daemon ()
   "Start MPD, connects to it and syncs the metadata cache."
@@ -37,7 +38,8 @@
 
 (use-package bongo
   :ensure t
-  :commands bongo)
+  :commands bongo-playlist
+  :config (setq-default bongo-enabled-backends '(mplayer)))
 
 (use-package simple-mpc
   :ensure t

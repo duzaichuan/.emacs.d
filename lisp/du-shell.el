@@ -9,10 +9,11 @@
   :init
   (progn
     (setq eshell-visual-subcommands '(("git" "log" "diff" "show")))
-    (setq  eshell-highlight-promp nil
+    (setq  eshell-highlight-prompt nil
+	   comint-prompt-read-only t
 	   eshell-buffer-shorthand t
 	   eshell-history-size 5000
-	   ;;  ;; auto truncate after 12k lines
+	   ;; auto truncate after 12k lines
 	   eshell-buffer-maximum-lines 12000
 	   eshell-hist-ignoredups t
 	   eshell-error-if-no-glob t
@@ -36,8 +37,7 @@
     (require 'virtualenvwrapper)
     (venv-initialize-eshell)
     (autoload 'epe-theme-lambda "eshell-prompt-extras")
-    (setq eshell-highlight-prompt nil
-          eshell-prompt-function 'epe-theme-lambda)))
+    (setq eshell-prompt-function 'epe-theme-lambda)))
 
 (use-package eshell-fringe-status
   :ensure t
