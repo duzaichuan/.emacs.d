@@ -135,6 +135,7 @@
 (depends-on "use-package")
 (depends-on "virtualenvwrapper")
 (depends-on "visual-fill-column")
+(depends-on "volume")
 (depends-on "w3m")
 (depends-on "which-key")
 (depends-on "with-editor")

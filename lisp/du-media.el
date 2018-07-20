@@ -48,4 +48,8 @@
   (setq simple-mpc-playlist-format "%artist%	%album%	%title%	%file%"
 	simple-mpc-table-separator " "))
 
+(use-package volume
+  :ensure t
+  :after bongo)
+
 (provide 'du-media)

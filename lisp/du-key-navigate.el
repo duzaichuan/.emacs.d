@@ -24,6 +24,7 @@
 
 (use-package avy
   :ensure t
+  :bind ("C-;" . avy-goto-char)
   :commands (avy-goto-char avy-goto-char-2 avy-goto-line))
 
 (use-package evil
@@ -97,8 +98,8 @@
 	  "pg" 'pdf-view-goto-page)
 	;; avy jump
 	(evil-leader/set-key
-	  "jj" 'avy-goto-char
-	  "jt" 'avy-goto-char-2
+	  "SPC" 'avy-goto-char
+	  "jj" 'avy-goto-char-2
 	  "jl" 'avy-goto-line) )) )
   :config
   (progn
