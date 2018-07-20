@@ -5,11 +5,14 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 ;; disable audio bell
 (setq ring-bell-function 'ignore)
-;; store all backup and autosave files in the tmp dir
+;; store all backup and autosave files in the current dir
 (setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
+          `(("." . ,(concat user-emacs-directory "backups"))))
+
+(use-package real-auto-save
+  :ensure t
+  :init (setq save-silently t)
+  :hook ((prog-mode text-mode) . real-auto-save-mode))
 
 (use-package ov        :ensure t :defer t)
 (use-package f    :ensure t :defer t)
