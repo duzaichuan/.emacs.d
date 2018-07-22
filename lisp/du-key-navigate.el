@@ -118,10 +118,10 @@
     (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
     
     (evil-set-initial-state 'bongo-playlist-mode 'emacs)
+    (evil-set-initial-state 'osx-dictionary-mode 'emacs)
     (evil-add-hjkl-bindings package-menu-mode-map 'emacs)
     (evil-add-hjkl-bindings recentf-dialog-mode-map 'emacs)
     (evil-add-hjkl-bindings osx-dictionary-mode-map 'emacs)
-    (evil-add-hjkl-bindings emms-playlist-mode-map 'emacs)
     (evil-add-hjkl-bindings bongo-playlist-mode-map 'emacs)
     
     (defun du/evil-record-macro ()
@@ -138,7 +138,7 @@
   :ensure t
   :custom (evil-collection-setup-minibuffer t)
   :config
-  (evil-collection-init '(avy eww eshell elfeed cider company dired package-menu popup nov ivy simple))
+  (evil-collection-init '(avy eww eshell elfeed emms cider company dired package-menu popup nov ivy simple which-key))
   (with-eval-after-load 'pdf-tools
     (require 'evil-collection-pdf) (evil-collection-pdf-setup)))
 

@@ -86,4 +86,23 @@
   :ensure t
   :hook (writeroom-mode . visual-line-mode))
 
+(use-package chinese-word-at-point
+  :ensure t
+  :defer t)
+
+(use-package osx-dictionary
+  :ensure t
+  :commands (osx-dictionary-search-word-at-point osx-dictionary-search-word-at-point) ; kbd in evil module
+  :config
+  (progn
+    ;; Support Chinese word
+    (setq osx-dictionary-use-chinese-text-segmentation t)
+    ;; Work with popwin-el (https://github.com/m2ym/popwin-el)
+    (push "*osx-dictionary*" popwin:special-display-config) ))
+
+(use-package mw-thesaurus
+  :ensure t
+  :commands mw-thesaurus/lookup-at-point
+  :init (setq mw-thesaurus--api-key "YOUR-API-KEY"))
+
 (provide 'du-browse-reader)

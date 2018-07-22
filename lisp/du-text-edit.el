@@ -198,25 +198,6 @@
   (setq langtool-default-language "en-US"
 	langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
 
-(use-package chinese-word-at-point
-  :ensure t
-  :defer t)
-
-(use-package osx-dictionary
-  :ensure t
-  :commands (osx-dictionary-search-word-at-point osx-dictionary-search-word-at-point) ; kbd in evil module
-  :init (evil-set-initial-state 'osx-dictionary-mode 'emacs)
-  :config
-  ;; Support Chinese word
-  (setq osx-dictionary-use-chinese-text-segmentation t)
-  ;; Work with popwin-el (https://github.com/m2ym/popwin-el)
-  (push "*osx-dictionary*" popwin:special-display-config))
-
-(use-package mw-thesaurus
-  :ensure t
-  :commands mw-thesaurus/lookup-at-point
-  :init (setq mw-thesaurus--api-key "YOUR-API-KEY"))
-
 (use-package pyim
   :ensure t
   :bind (("M-p" . pyim-convert-code-at-point)
