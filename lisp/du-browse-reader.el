@@ -100,9 +100,4 @@
     ;; Work with popwin-el (https://github.com/m2ym/popwin-el)
     (push "*osx-dictionary*" popwin:special-display-config) ))
 
-(use-package mw-thesaurus
-  :ensure t
-  :commands mw-thesaurus/lookup-at-point
-  :init (setq mw-thesaurus--api-key "YOUR-API-KEY"))
-
 (provide 'du-browse-reader)
