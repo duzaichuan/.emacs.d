@@ -2,7 +2,9 @@
 (use-package mu4e
   :commands mu4e
   :load-path "/usr/local/share/emacs/site-lisp/mu/mu4e"
-  :bind ([f9] . mu4e)
+  :bind (([f9] . mu4e)
+	 :map mu4e-compose-mode-map
+	 ("C-x C-a" . mail-add-attachment))
   :hook ((mu4e-compose-mode . flyspell-mode)
 	 (mu4e-view-mode . turn-on-visual-line-mode))
   :init
@@ -12,6 +14,7 @@
     (setq mu4e-maildir "~/Maildir"
 	  mu4e-get-mail-command "mbsync -a"
 	  mu4e-html2text-command "w3m -T text/html"
+	  mu4e-attachment-dir  "~/Downloads"
 	  mu4e-update-interval 90               ;; update every 1.5 minutes 
 	  mu4e-change-filenames-when-moving t ; needed in mbsync
 	  mu4e-completing-read-function 'completing-read  ; This allows me to use 'helm' to select mailboxes
@@ -42,6 +45,8 @@
 			(smtpmail-smtp-server . "smtp.live.com")
 			(smtpmail-smtp-service . 25)
 			(user-full-name . "Zaichuan Du")
+			;; don't save messages to Sent Messages, Oulook/IMAP takes care of this
+			(mu4e-sent-messages-behavior . delete)
 			(mu4e-compose-signature . (concat
 						   "Best\n"
 						   "Zaichuan\n")) ))
@@ -72,15 +77,7 @@
     (setq mu4e-view-show-images t)
     ;; use imagemagick, if available
     (when (fboundp 'imagemagick-register-types)
-      (imagemagick-register-types))
-
-    (setq mu4e-attachment-dir
-	  (lambda (fname mtype)
-	    (cond
-             ;; docfiles go to ~/Desktop
-	     ((and fname (string-match "\\.doc$" fname))  "~/Desktop")
-	     ;; ... other cases  ...
-	     (t "~/Downloads")))) ))
+      (imagemagick-register-types)) ))
 
 ;; Alerts for new mails
 (use-package mu4e-alert
@@ -96,5 +93,47 @@
 	   "flag:unread maildir:/Exchange/Inbox"
 	   "OR "
 	   "flag:unread maildir:/Outlook/Inbox")) ))
+
+;; An attachment reminder in mu4e
+(defun mbork/message-attachment-present-p ()
+  "Return t if an attachment is found in the current message."
+  (save-excursion
+    (save-restriction
+      (widen)
+      (goto-char (point-min))
+      (when (search-forward "<#part" nil t) t))))
+
+(defcustom mbork/message-attachment-intent-re
+  (regexp-opt '("I attach"
+		"I attached"
+		"I have attached"
+		"I've attached"
+		"I have included"
+		"I've included"
+		"see the attached"
+		"see the attachment"
+		"attached file"))
+  "A regex which - if found in the message, and if there is no
+attachment - should launch the no-attachment warning.")
+
+(defcustom mbork/message-attachment-reminder
+  "Are you sure you want to send this message without any attachment? "
+  "The default question asked when trying to send a message
+containing `mbork/message-attachment-intent-re' without an
+actual attachment.")
+
+(defun mbork/message-warn-if-no-attachments ()
+  "Ask the user if s?he wants to send the message even though
+there are no attachments."
+  (when (and (save-excursion
+	       (save-restriction
+		 (widen)
+		 (goto-char (point-min))
+		 (re-search-forward mbork/message-attachment-intent-re nil t)))
+	     (not (mbork/message-attachment-present-p)))
+    (unless (y-or-n-p mbork/message-attachment-reminder)
+      (keyboard-quit))))
+
+(add-hook 'message-send-hook #'mbork/message-warn-if-no-attachments)
 
 (provide 'du-mail)
