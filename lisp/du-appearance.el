@@ -7,7 +7,7 @@
 (set-face-attribute 'default nil :font "DejaVu Sans Mono")
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(set-face-attribute 'default nil :height 170)
+(set-face-attribute 'default nil :height 160)
 (setq inhibit-startup-screen t)
 (setq-default cursor-type 'bar)
 (global-hl-line-mode t)
@@ -50,11 +50,5 @@
 
 (use-package org-beautify-theme
   :ensure t)
-
-(use-package golden-ratio
-  :ensure t
-  :diminish golden-ratio-mode
-  :config
-  (golden-ratio-mode 1))
 
 (provide 'du-appearance)

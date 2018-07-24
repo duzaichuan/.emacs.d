@@ -14,8 +14,9 @@
 	  mu4e-get-mail-command "mbsync -a"
 	  mu4e-html2text-command "w3m -T text/html"
 	  mu4e-attachment-dir  "~/Downloads"
+	  mu4e-split-view 'single-window ;;make the mu4e-main view into a minibuffer prompt
 	  mu4e-hide-index-messages t ;; disable the message in the minibuffer 
-	  mu4e-update-interval 90               ;; update every 1.5 minutes 
+	  mu4e-update-interval 60               ;; update every 1 minutes 
 	  mu4e-change-filenames-when-moving t ; needed in mbsync
 	  mu4e-view-show-images t ;; enable inline images
 	  mu4e-completing-read-function 'completing-read  ; This allows me to use 'helm' to select mailboxes
@@ -77,13 +78,6 @@
     ;; use imagemagick, if available
     (when (fboundp 'imagemagick-register-types)
       (imagemagick-register-types)) ))
-
-
-(use-package mu4e-maildirs-extension
-  :ensure t
-  :after mu4e
-  :config
-  (mu4e-maildirs-extension))
 
 ;; Alerts for new mails
 (use-package mu4e-alert
