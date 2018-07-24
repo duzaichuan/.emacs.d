@@ -51,4 +51,10 @@
 (use-package org-beautify-theme
   :ensure t)
 
-(provide 'du-ui)
+(use-package golden-ratio
+  :ensure t
+  :diminish golden-ratio-mode
+  :config
+  (golden-ratio-mode 1))
+
+(provide 'du-appearance)

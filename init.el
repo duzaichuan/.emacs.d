@@ -44,7 +44,7 @@
     (auto-package-update-maybe)))
 
 ;; Require files under ~/.emacs.d/lisp
-(use-package du-ui)
+(use-package du-appearance)
 (use-package du-operating-assist)
 (use-package du-key-navigate)
 (use-package du-project-manage)

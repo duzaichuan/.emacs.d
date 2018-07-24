@@ -58,6 +58,7 @@
 (depends-on "ghub")
 (depends-on "git-commit")
 (depends-on "gntp")
+(depends-on "golden-ratio")
 (depends-on "helm")
 (depends-on "helm-bibtex")
 (depends-on "helm-core")
