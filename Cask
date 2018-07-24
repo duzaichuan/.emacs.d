@@ -84,6 +84,7 @@
 (depends-on "matlab-mode")
 (depends-on "memoize")
 (depends-on "mu4e-alert")
+(depends-on "mu4e-maildirs-extension")
 (depends-on "multiple-cursors")
 (depends-on "nov")
 (depends-on "ob-ipython")

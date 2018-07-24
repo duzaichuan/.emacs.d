@@ -1,6 +1,5 @@
 ;;Mail
 (use-package mu4e
-  :commands mu4e
   :load-path "/usr/local/share/emacs/site-lisp/mu/mu4e"
   :bind (([f9] . mu4e)
 	 :map mu4e-compose-mode-map
@@ -15,8 +14,10 @@
 	  mu4e-get-mail-command "mbsync -a"
 	  mu4e-html2text-command "w3m -T text/html"
 	  mu4e-attachment-dir  "~/Downloads"
+	  mu4e-hide-index-messages t ;; disable the message in the minibuffer 
 	  mu4e-update-interval 90               ;; update every 1.5 minutes 
 	  mu4e-change-filenames-when-moving t ; needed in mbsync
+	  mu4e-view-show-images t ;; enable inline images
 	  mu4e-completing-read-function 'completing-read  ; This allows me to use 'helm' to select mailboxes
 	  message-kill-buffer-on-exit t ; Why would I want to leave my message open after I've sent it?
 	  mu4e-context-policy 'pick-first ; Don't ask for a 'context' upon opening mu4e
@@ -73,26 +74,29 @@
 		  :name "All Inboxes"
 		  :query "maildir:/Exchange/Inbox OR maildir:/Outlook/Inbox"
 		  :key ?i))   
-    ;; enable inline images
-    (setq mu4e-view-show-images t)
     ;; use imagemagick, if available
     (when (fboundp 'imagemagick-register-types)
       (imagemagick-register-types)) ))
+
+
+(use-package mu4e-maildirs-extension
+  :ensure t
+  :after mu4e
+  :config
+  (mu4e-maildirs-extension))
 
 ;; Alerts for new mails
 (use-package mu4e-alert
   :ensure t
   :after mu4e
   :init (mu4e-alert-set-default-style 'notifications)
-  :hook ((after-init . mu4e-alert-enable-mode-line-display)
-         (after-init . mu4e-alert-enable-notifications))
   :config
   (progn
+    (mu4e-alert-enable-mode-line-display)
     (setq mu4e-alert-interesting-mail-query
 	  (concat
-	   "flag:unread maildir:/Exchange/Inbox"
-	   "OR "
-	   "flag:unread maildir:/Outlook/Inbox")) ))
+	   "flag:unread"
+	   " AND NOT flag:trashed")) ))
 
 ;; An attachment reminder in mu4e
 (defun mbork/message-attachment-present-p ()
