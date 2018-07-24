@@ -84,7 +84,7 @@
 
 (use-package writeroom-mode
   :ensure t
-  :hook (writeroom-mode . visual-line-mode))
+  :commands writeroom-mode)
 
 (use-package chinese-word-at-point
   :ensure t

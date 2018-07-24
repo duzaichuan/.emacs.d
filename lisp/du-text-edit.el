@@ -1,6 +1,3 @@
-(use-package text-mode
-  :hook (text-mode . turn-on-visual-line-mode))
-
 (use-package tex
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)
@@ -36,8 +33,7 @@
   :ensure t
   :defer 0.1
   :mode ("\\.org\\'" . org-mode)
-  :hook ((org-mode . turn-on-org-cdlatex)
-	 (org-mode . turn-on-visual-line-mode))
+  :hook (org-mode . turn-on-org-cdlatex)
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
 	 ("C-c c" . org-capture)

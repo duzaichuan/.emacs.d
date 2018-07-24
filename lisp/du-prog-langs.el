@@ -64,7 +64,6 @@
 (use-package ein
   :ensure t
   :bind ([f6] . ein:jupyter-server-start)
-  :hook ((ein:notebook-mode . visual-line-mode))
   :init (setq ein:jupyter-default-server-command "~/anaconda/bin/jupyter"
 	      ein:jupyter-default-notebook-directory "~/Jupyter/"))
 

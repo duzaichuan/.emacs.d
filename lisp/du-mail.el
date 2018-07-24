@@ -5,17 +5,18 @@
 	 :map mu4e-compose-mode-map
 	 ("C-x C-a" . mail-add-attachment))
   :hook ((mu4e-compose-mode . flyspell-mode)
-	 (mu4e-view-mode . turn-on-visual-line-mode))
+	 (mu4e-compose-mode . visual-fill-column-mode))
   :init
   (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
   :config
   (progn
     (setq mu4e-maildir "~/Maildir"
 	  mu4e-get-mail-command "mbsync -a"
-	  mu4e-html2text-command "w3m -T text/html"
+	  mu4e-html2text-command "w3m -dump -s -T text/html"
 	  mu4e-attachment-dir  "~/Downloads"
 	  mu4e-split-view 'single-window ;;make the mu4e-main view into a minibuffer prompt
 	  mu4e-hide-index-messages t ;; disable the message in the minibuffer 
+	  mu4e-view-show-addresses t ;; Display email addresses (not just names)
 	  mu4e-update-interval 60               ;; update every 1 minutes 
 	  mu4e-change-filenames-when-moving t ; needed in mbsync
 	  mu4e-view-show-images t ;; enable inline images

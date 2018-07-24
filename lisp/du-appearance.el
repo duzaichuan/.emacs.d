@@ -3,6 +3,7 @@
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
+
 ;; font
 (set-face-attribute 'default nil :font "DejaVu Sans Mono")
 (tool-bar-mode -1)
@@ -11,6 +12,7 @@
 (setq inhibit-startup-screen t)
 (setq-default cursor-type 'bar)
 (global-hl-line-mode t)
+(global-visual-line-mode)
 (global-prettify-symbols-mode)
 
 ;;;; 设置编辑环境
