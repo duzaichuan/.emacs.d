@@ -48,6 +48,8 @@
 	      org-refile-targets '((org-agenda-files :maxlevel . 3))
 	      org-capture-templates (quote (("t" "TODO" entry (file+olp+datetree "~/Dropbox/Org/captures.org")
 					     "* TODO %?")
+					    ("m" "Mail-to-do" entry (file+headline "~/Dropbox/Org/captures.org" "Tasks")
+					     "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n%a\n")
 					    ("a" "Appointment" entry (file+olp+datetree "~/Dropbox/Org/captures.org")
 					     "* %?")
 					    ("n" "note" entry (file+headline "~/Dropbox/Org/captures.org" "IDEAS")

@@ -3,7 +3,6 @@
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
-
 ;; font
 (set-face-attribute 'default nil :font "DejaVu Sans Mono")
 (tool-bar-mode -1)

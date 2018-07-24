@@ -6,8 +6,7 @@
 	 ("C-x C-a" . mail-add-attachment))
   :hook ((mu4e-compose-mode . flyspell-mode)
 	 (mu4e-compose-mode . visual-fill-column-mode))
-  :init
-  (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
+  :init (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
   :config
   (progn
     (setq mu4e-maildir "~/Maildir"
@@ -79,6 +78,11 @@
     ;; use imagemagick, if available
     (when (fboundp 'imagemagick-register-types)
       (imagemagick-register-types)) ))
+
+(use-package org-mu4e
+  :after mu4e
+  :config
+  (setq org-mu4e-link-query-in-headers-mode nil))
 
 ;; Alerts for new mails
 (use-package mu4e-alert
