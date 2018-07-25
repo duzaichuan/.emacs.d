@@ -1,4 +1,3 @@
-;;Mail
 (use-package mu4e
   :load-path "/usr/local/share/emacs/site-lisp/mu/mu4e"
   :bind (([f9] . mu4e)
@@ -13,6 +12,10 @@
 	  mu4e-get-mail-command "mbsync -a"
 	  mu4e-html2text-command "w3m -dump -s -T text/html"
 	  mu4e-attachment-dir  "~/Downloads"
+	  ;; Speeding up indexing
+	  mu4e-index-cleanup nil      ;; don't do a full cleanup check
+	  mu4e-index-lazy-check t ;; don't consider up-to-date dirs
+  
 	  mu4e-split-view 'single-window ;;make the mu4e-main view into a minibuffer prompt
 	  mu4e-hide-index-messages t ;; disable the message in the minibuffer 
 	  mu4e-view-show-addresses t ;; Display email addresses (not just names)
@@ -75,6 +78,11 @@
 		  :name "All Inboxes"
 		  :query "maildir:/Exchange/Inbox OR maildir:/Outlook/Inbox"
 		  :key ?i))   
+    (add-to-list 'mu4e-bookmarks
+		 (make-mu4e-bookmark
+		  :name "All Archives"
+		  :query "maildir:/Exchange/Archive OR maildir:/Outlook/Archive"
+		  :key ?a))   
     ;; use imagemagick, if available
     (when (fboundp 'imagemagick-register-types)
       (imagemagick-register-types)) ))
