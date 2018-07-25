@@ -118,6 +118,7 @@
 (depends-on "real-auto-save")
 (depends-on "reveal-in-osx-finder")
 (depends-on "s")
+(depends-on "sesman")
 (depends-on "shell-pop")
 (depends-on "shut-up")
 (depends-on "simple-mpc")
