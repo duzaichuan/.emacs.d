@@ -41,7 +41,6 @@
 	(evil-leader/set-leader "SPC")
 	(evil-leader/set-key "gs" 'magit-status)
 	(evil-leader/set-key "gu" 'browse-url-at-point)	
-	(evil-leader/set-key "cc" 'evilnc-comment-or-uncomment-lines)
 	;; window edit
 	(evil-leader/set-key
 	  "wd" 'delete-window
@@ -55,10 +54,12 @@
 	  "bq" 'kill-buffer
 	  "bj" 'next-buffer
 	  "bk" 'previous-buffer)
-	;; file navigate
+	;; file navigate and formatting region
 	(evil-leader/set-key
 	  "ff" 'counsel-find-file
-	  "fr" 'recentf-open-files)
+	  "fr" 'recentf-open-files
+	  "fc" 'evilnc-comment-or-uncomment-lines
+	  "fi" 'indent-region)
 	;; org
 	(evil-leader/set-key
 	  "oa" 'org-agenda
@@ -67,7 +68,8 @@
 	  "or" 'org-refile
 	  "ol" 'org-store-link
 	  "oe" 'org-export-dispatch
-	  "of" 'writeroom-mode
+	  "ow" 'writeroom-mode
+	  "of" 'org-footnote-action
 	  "ot" 'org-time-stamp
 	  "on" 'org-noter
 	  "oi" 'org-noter-insert-note)

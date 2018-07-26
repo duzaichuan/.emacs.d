@@ -82,11 +82,6 @@
     (sp-local-pair '(clojure-mode cider-repl-mode) "`" nil :actions nil)
     (require 'eval-in-repl-cider) ))
 
-(use-package rainbow-delimiters
-  :ensure t
-  :diminish t
-  :hook ((clojure-mode cider-repl-mode emacs-lisp-mode) . rainbow-delimiters-mode))
-
 (use-package cider
   :ensure t
   :commands (cider-connect cider-jack-in)

@@ -52,4 +52,9 @@
 (use-package org-beautify-theme
   :ensure t)
 
+(use-package rainbow-delimiters
+  :ensure t
+  :diminish t
+  :hook ((clojure-mode cider-repl-mode emacs-lisp-mode) . rainbow-delimiters-mode))
+
 (provide 'du-appearance)
