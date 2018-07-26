@@ -2,6 +2,7 @@
 (source "org" "https://orgmode.org/elpa/")
 (source gnu)
 
+(depends-on "academic-phrases")
 (depends-on "ace-window")
 (depends-on "alert")
 (depends-on "all-the-icons")

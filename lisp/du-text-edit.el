@@ -234,4 +234,8 @@
     (use-package pyim-basedict
       :config (pyim-basedict-enable)) ))
 
+(use-package academic-phrases
+  :ensure t
+  :commands (academic-phrases academic-phrases-by-section))
+
 (provide 'du-text-edit)
