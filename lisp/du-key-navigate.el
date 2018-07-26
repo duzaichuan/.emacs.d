@@ -140,9 +140,10 @@
   :ensure t
   :custom (evil-collection-setup-minibuffer t)
   :config
-  (evil-collection-init '(avy eww eshell elfeed emms cider company dired package-menu popup nov ivy simple which-key))
-  (with-eval-after-load 'pdf-tools
-    (require 'evil-collection-pdf) (evil-collection-pdf-setup)))
+  (progn
+    (evil-collection-init)
+    (with-eval-after-load 'pdf-tools
+      (require 'evil-collection-pdf) (evil-collection-pdf-setup)) ))
 
 (use-package evil-magit
         :ensure t
@@ -171,10 +172,6 @@
 (use-package evil-nerd-commenter
     :ensure t
     :bind ("M-;" . evilnc-comment-or-uncomment-lines))
-
-(use-package evil-mu4e
-    :ensure t
-    :after mu4e)
 
 (use-package treemacs-evil
   :after treemacs evil
