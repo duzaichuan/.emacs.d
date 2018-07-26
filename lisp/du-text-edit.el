@@ -1,3 +1,9 @@
+(use-package persistent-scratch
+  :ensure t
+  :defer 1
+  :config
+  (persistent-scratch-setup-default))
+
 (use-package tex
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)

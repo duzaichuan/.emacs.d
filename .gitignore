@@ -24,3 +24,4 @@ lisp/.DS_Store
 srecode-map.el
 backups/
 elpa/
+.persistent-scratch

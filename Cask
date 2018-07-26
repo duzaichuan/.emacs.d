@@ -103,6 +103,7 @@
 (depends-on "paredit")
 (depends-on "parsebib")
 (depends-on "pdf-tools")
+(depends-on "persistent-scratch")
 (depends-on "pfuture")
 (depends-on "pkg-info")
 (depends-on "polymode")
