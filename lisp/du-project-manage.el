@@ -62,6 +62,14 @@
   :ensure t
   :bind ("C-x g" . magit-status))
 
+(use-package magithub
+  :ensure t
+  ;; :after magit
+  :defer t
+  :config
+  (magithub-feature-autoinject t)
+  (setq magithub-clone-default-directory "~/github"))
+
 (use-package projectile
   :ensure t
   :bind ([f5] . projectile-compile-project))

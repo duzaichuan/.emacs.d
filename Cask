@@ -80,6 +80,7 @@
 (depends-on "magic-latex-buffer")
 (depends-on "magit")
 (depends-on "magit-popup")
+(depends-on "magithub")
 (depends-on "markdown-mode")
 (depends-on "math-symbol-lists")
 (depends-on "matlab-mode")

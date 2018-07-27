@@ -152,6 +152,7 @@
 (use-package evil-org
     :ensure t
     :after org
+    :diminish t
     :config
     (progn
       (add-hook 'org-mode-hook 'evil-org-mode)
