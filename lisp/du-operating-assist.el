@@ -11,6 +11,7 @@
 
 (use-package real-auto-save
   :ensure t
+  :diminish real-auto-save-mode
   :init (setq save-silently t)
   :hook ((prog-mode text-mode) . real-auto-save-mode))
 
@@ -85,7 +86,7 @@
 
 (use-package ivy
   :ensure t
-  ;:diminish ivy-mode
+  :diminish ivy-mode
   :bind (("C-x b" . ivy-switch-buffer)
          ("C-x B" . ivy-switch-buffer-other-window)
          ("M-H"   . ivy-resume))

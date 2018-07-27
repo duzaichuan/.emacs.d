@@ -42,7 +42,8 @@
 
 (use-package elfeed
   :ensure t
-  :bind ("C-x w" . elfeed))
+  :bind ("C-x w" . elfeed)
+  :hook (elfeed-show-mode . visual-fill-column-mode))
 
 (use-package elfeed-org
   :ensure t

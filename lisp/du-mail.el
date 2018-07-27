@@ -4,7 +4,7 @@
 	 :map mu4e-compose-mode-map
 	 ("C-x C-a" . mail-add-attachment))
   :hook ((mu4e-compose-mode . flyspell-mode)
-	 (mu4e-compose-mode . visual-fill-column-mode))
+	 ((mu4e-compose-mode mu4e-view-mode) . visual-fill-column-mode))
   :init (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
   :config
   (progn
