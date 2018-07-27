@@ -178,4 +178,4 @@
   :after treemacs evil
   :ensure t)
 
-(provide 'du-key-navigate)
+(provide 'du-key-navigator)

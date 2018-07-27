@@ -21,4 +21,4 @@
     (add-hook 'ses-mode-hook
 	      (lambda () (add-hook 'after-save-hook 'du/ses-export-buffer-to-tsv t t))) ))
 
-(provide 'du-data-manipulate)
+(provide 'du-data-manipulator)

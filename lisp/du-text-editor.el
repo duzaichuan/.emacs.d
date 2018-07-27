@@ -238,4 +238,4 @@
   :ensure t
   :commands (academic-phrases academic-phrases-by-section))
 
-(provide 'du-text-edit)
+(provide 'du-text-editor)

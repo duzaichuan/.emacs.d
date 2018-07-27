@@ -90,4 +90,4 @@
   :commands bibliothek
   :init (setq bibliothek-path (list "~/Desktop")))
 
-(provide 'du-project-manage)
+(provide 'du-project-manager)
