@@ -135,7 +135,8 @@
       (define-key evil-normal-state-map (kbd "q") 'du/evil-record-macro)) ))
 
 (use-package evil-collection
-  :after evil
+  ;; :after evil
+  :defer 0.1
   :ensure t
   :custom (evil-collection-setup-minibuffer t)
   :config

@@ -29,6 +29,7 @@
 (use-package company
   :ensure t
   :diminish company-mode
+  :defer 0.3
   :config
   (progn
     (global-company-mode)
@@ -109,7 +110,7 @@
 
 (use-package counsel
   :ensure t
-  :demand t
+  ;; :demand t
   :custom (counsel-find-file-ignore-regexp
            (concat "\\(\\`\\.[^.]\\|"
                    (regexp-opt completion-ignored-extensions)

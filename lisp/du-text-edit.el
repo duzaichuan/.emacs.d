@@ -1,6 +1,6 @@
 (use-package persistent-scratch
   :ensure t
-  :defer 1
+  :defer 0.4
   :config
   (persistent-scratch-setup-default))
 
@@ -37,7 +37,7 @@
 
 (use-package org
   :ensure t
-  :defer 0.1
+  :defer 0.2
   :mode ("\\.org\\'" . org-mode)
   :hook (org-mode . turn-on-org-cdlatex)
   :bind (("C-c l" . org-store-link)

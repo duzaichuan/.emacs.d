@@ -33,6 +33,7 @@
 (depends-on "diminish")
 (depends-on "ein")
 (depends-on "elfeed")
+(depends-on "elfeed-org")
 (depends-on "emms")
 (depends-on "epl")
 (depends-on "esh-autosuggest")

@@ -1,0 +1,6 @@
+* Blogs
+** Emacs                                                              :emacs:
+*** http://sachachua.com/blog/category/emacs-news/feed
+*** http://cestlaz.github.io/rss.xml
+*** http://pragmaticemacs.com/feed/
+*** http://irreal.org/blog/?feed=rss2

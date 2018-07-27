@@ -42,11 +42,12 @@
 
 (use-package elfeed
   :ensure t
-  :bind ("C-x w" . elfeed)
-  :init
-  (setq elfeed-feeds
-      '("http://sachachua.com/blog/category/emacs-news/feed"
-        "feed://cestlaz.github.io/rss.xml")) )
+  :bind ("C-x w" . elfeed))
+
+(use-package elfeed-org
+  :ensure t
+  :after elfeed
+  :init (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
 
 (use-package pdf-tools
   :ensure t
