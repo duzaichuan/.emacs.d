@@ -18,6 +18,7 @@
   
 	  mu4e-split-view 'single-window ;;make the mu4e-main view into a minibuffer prompt
 	  mu4e-hide-index-messages t ;; disable the message in the minibuffer 
+	  mu4e-index-update-error-warning nil ;; disable non-zero exit code warning
 	  mu4e-view-show-addresses t ;; Display email addresses (not just names)
 	  mu4e-update-interval 60               ;; update every 1 minutes 
 	  mu4e-change-filenames-when-moving t ; needed in mbsync
