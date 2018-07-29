@@ -126,10 +126,19 @@
   :bind ("C-x w" . elfeed)
   :hook (elfeed-show-mode . visual-fill-column-mode))
 
+(use-package elfeed-goodies
+  :ensure t
+  :after elfeed
+  :config
+  (elfeed-goodies/setup))
+
 (use-package elfeed-org
   :ensure t
   :after elfeed
-  :init (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")))
+  :config
+  (progn
+    (elfeed-org)
+    (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")) ))
 
 (use-package pdf-tools
   :ensure t

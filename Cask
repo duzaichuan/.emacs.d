@@ -38,6 +38,7 @@
 (depends-on "edn")
 (depends-on "ein")
 (depends-on "elfeed")
+(depends-on "elfeed-goodies")
 (depends-on "elfeed-org")
 (depends-on "emms")
 (depends-on "epl")
