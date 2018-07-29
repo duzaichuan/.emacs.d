@@ -83,6 +83,7 @@
 (depends-on "julia-shell")
 (depends-on "key-chord")
 (depends-on "langtool")
+(depends-on "language-detection")
 (depends-on "latex-unicode-math-mode")
 (depends-on "load-theme-buffer-local")
 (depends-on "log4e")

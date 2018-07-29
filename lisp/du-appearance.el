@@ -1,7 +1,6 @@
-;;Titlebar
+;;Fancy Titlebar
+(setq ns-use-proxy-icon nil)
 (set-frame-name "Sub Specie Aeternitatis")
-
-;; appearance setting
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
