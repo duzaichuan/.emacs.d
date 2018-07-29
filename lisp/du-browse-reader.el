@@ -1,10 +1,8 @@
 (use-package eww
-  :bind (("C-x m" . browse-url-at-point)
-	 ([f7] . eww)
-	 :map eww-mode-map
-	 ("C-c p" . eww-copy-page-url)
+  :bind (([f7] . eww)
 	 :map eww-link-keymap
 	 ("p" . du/mpv-play))
+  :hook (eww-mode . visual-fill-column-mode)
   :init
   (setq browse-url-browser-function #'eww-browse-url)
   :config

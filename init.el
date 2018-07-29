@@ -1,7 +1,7 @@
 (setq gc-cons-threshold 100000000) ;; speed up Emacs start up time
+(eval-when-compile (require 'cl-lib))
 (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
 (cask-initialize)
-(require 'cl)
 (require 'pallet)
 (pallet-mode t)
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
