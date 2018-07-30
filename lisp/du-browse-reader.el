@@ -1,6 +1,3 @@
-(use-package du-eww-functions
-  :load-path "lib/")
-
 (use-package eww
   :bind (([f7] . eww)
 	 :map eww-link-keymap
@@ -10,6 +7,10 @@
   (progn
     (setq shr-external-rendering-functions '((pre . eww-tag-pre)))
     (setq browse-url-browser-function #'du-browse-url) ))
+
+(use-package du-eww-functions
+  :after eww
+  :load-path "lib/")
 
 (use-package w3m
   :ensure t

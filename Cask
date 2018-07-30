@@ -96,6 +96,7 @@
 (depends-on "markdown-mode")
 (depends-on "math-symbol-lists")
 (depends-on "matlab-mode")
+(depends-on "md4rd")
 (depends-on "memoize")
 (depends-on "mu4e-alert")
 (depends-on "multiple-cursors")

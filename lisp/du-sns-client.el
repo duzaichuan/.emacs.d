@@ -7,6 +7,15 @@
 	twittering-icon-mode t
 	twittering-use-icon-storage t))
 
+(use-package md4rd
+  :ensure t
+  :commands md4rd
+  :hook (md4rd-mode . visual-fill-column-mode)
+  :init
+  (setq md4rd-subs-active '(emacs Economics writing)
+	md4rd--oauth-access-token "147565326956-VPG767JAGLr9uxHu6KgzWKoYxeg"
+	md4rd--oauth-refresh-token "147565326956-dDXMWAq0SSME9Qvb6-hafaRsD-s"))
+
 (use-package circe
   :ensure t
   :commands circe

@@ -83,7 +83,8 @@
 	  "me" 'emms
 	  "mt" 'twit
 	  "mm" 'simple-mpc
-	  "mc" 'circe)
+	  "mc" 'circe
+	  "mr" 'md4rd)
 	;; emms media
 	(evil-leader/set-key
 	  "ec" 'mpd/start-music-daemon
