@@ -103,7 +103,11 @@
 	(evil-leader/set-key
 	  "SPC" 'avy-goto-char
 	  "jj" 'avy-goto-char-2
-	  "jl" 'avy-goto-line) )) )
+	  "jl" 'avy-goto-line)
+	;; lookup
+	(evil-leader/set-key
+	  "lw" 'xah-lookup-wikipedia
+	  "ld" 'xah-lookup-word-definition) )) )
   :config
   (progn
     (evil-mode 1)

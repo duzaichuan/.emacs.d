@@ -12,6 +12,11 @@
   :after eww
   :load-path "lib/")
 
+(use-package xah-lookup
+  :ensure t
+  :commands (xah-lookup-wikipedia xah-lookup-word-definition xah-lookup-wiktionary)
+  :init (setq xah-lookup-browser-function 'eww))
+
 (use-package w3m
   :ensure t
   :bind (([f3] . w3m)
@@ -40,12 +45,6 @@
   :bind ("C-x w" . elfeed)
   :hook (elfeed-show-mode . visual-fill-column-mode))
 
-(use-package elfeed-goodies
-  :ensure t
-  :after elfeed
-  :config
-  (elfeed-goodies/setup))
-
 (use-package elfeed-org
   :ensure t
   :after elfeed
@@ -53,6 +52,12 @@
   (progn
     (elfeed-org)
     (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")) ))
+
+(use-package elfeed-goodies
+  :ensure t
+  :after elfeed
+  :config
+  (elfeed-goodies/setup))
 
 (use-package pdf-tools
   :ensure t

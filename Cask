@@ -165,6 +165,7 @@
 (depends-on "which-key")
 (depends-on "with-editor")
 (depends-on "writeroom-mode")
+(depends-on "xah-lookup")
 (depends-on "yaml-mode")
 (depends-on "yasnippet")
 (depends-on "zenburn-theme")
