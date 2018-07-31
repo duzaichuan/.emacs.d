@@ -10,6 +10,9 @@
 (global-set-key (kbd "M-[") 'shrink-window-horizontally)
 (global-set-key (kbd "M-]") 'enlarge-window-horizontally)
 
+;; xwdget web browse
+(global-set-key (kbd "<f10>") 'xwidget-webkit-browse-url)
+
 (use-package key-chord
   :ensure t
   :commands key-chord-mode)
@@ -126,6 +129,7 @@
     
     (evil-set-initial-state 'bongo-playlist-mode 'emacs)
     (evil-set-initial-state 'osx-dictionary-mode 'emacs)
+    (evil-set-initial-state 'xwidget-webkit-mode 'emacs)
     (evil-add-hjkl-bindings osx-dictionary-mode-map 'emacs)
     (evil-add-hjkl-bindings bongo-playlist-mode-map 'emacs)
     (evil-add-hjkl-bindings recentf-dialog-mode-map 'emacs)

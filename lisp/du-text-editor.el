@@ -42,7 +42,7 @@
   :hook (org-mode . turn-on-org-cdlatex)
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
-	 ("C-c c" . org-capture)
+         ("C-c c" . org-capture)
          ("C-c b" . org-iswitchb)
          ("C-c C-w" . org-refile)
          ("C-c j" . org-clock-goto)
