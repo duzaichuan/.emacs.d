@@ -1,3 +1,7 @@
+(use-package language-detection
+  :ensure t
+  :commands (language-detection-buffer language-detection-string))
+
 (use-package eww
   :bind (([f7] . eww)
 	 :map eww-link-keymap
@@ -6,7 +10,8 @@
   :init
   (progn
     (setq shr-external-rendering-functions '((pre . eww-tag-pre)))
-    (setq browse-url-browser-function #'du-browse-url) ))
+    (setq browse-url-browser-function #'du-browse-url))
+  :config (language-detection-buffer))
 
 (use-package du-eww-functions
   :after eww
