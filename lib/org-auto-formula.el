@@ -24,7 +24,7 @@
     (goto-char fr-begin)
     (cond ((or (eq 'latex-fragment fr-type)
                (eq 'latex-environment fr-type))
-           (let ((ov (loop for ov in (org--list-latex-overlays)
+           (let ((ov (cl-loop for ov in (org--list-latex-overlays)
                            if
                            (and
                             (<= (overlay-start ov) (point))
