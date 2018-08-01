@@ -1,21 +1,25 @@
-(setq gc-cons-threshold 100000000) ;; speed up Emacs start up time
+;; Disable garbage collector for faster startup
+(setq gc-cons-threshold 402653184
+      message-log-max 16384)
+
+;; Customisations
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file) (load custom-file))
+
 (eval-when-compile (require 'cl-lib))
 (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
+(setq package-enable-at-startup nil)
 (cask-initialize)
 (require 'pallet)
 (pallet-mode t)
-(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-(setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
 
 ;; Bootstrap 'use-package'
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; This is only needed once, near the top of the file
 (eval-when-compile
-  (require 'use-package)
-  (setq use-package-verbose t))
+  (require 'use-package))
 
 (use-package dash :ensure t)      ; A modern list library
 (use-package diminish :ensure t)  ; Hide modes in the mode-line
@@ -39,7 +43,8 @@
     (setq auto-package-update-hide-results t)
     (auto-package-update-maybe)))
 
-;; Require files under ~/.emacs.d/lisp
+(add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
+
 (use-package du-appearance)
 (use-package du-operating-assist)
 (use-package du-key-navigator)
@@ -52,5 +57,3 @@
 (use-package du-media)
 (use-package du-sns-client)
 (use-package du-data-manipulator)
-
-(load-file custom-file)
