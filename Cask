@@ -1,6 +1,6 @@
-(source "melpa" "http://melpa.org/packages/")
-(source "org" "https://orgmode.org/elpa/")
 (source gnu)
+(source melpa)
+(source org)
 
 (depends-on "a")
 (depends-on "academic-phrases")
