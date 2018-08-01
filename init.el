@@ -1,14 +1,13 @@
-;; Disable garbage collector for faster startup
-(setq gc-cons-threshold 402653184
-      message-log-max 16384)
-
-;; Customisations
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(when (file-exists-p custom-file) (load custom-file))
+;; Startup speed
+(setq file-name-handler-alist nil
+      message-log-max 16384
+      gc-cons-threshold 402653184
+      gc-cons-percentage 0.6
+      auto-window-vscroll nil)
 
 (eval-when-compile (require 'cl-lib))
 (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
-(setq package-enable-at-startup nil)
+(setq package-enable-at-startup nil) ;; :mode :interpreter is needed if set to nil
 (cask-initialize)
 (require 'pallet)
 (pallet-mode t)
@@ -45,6 +44,7 @@
 
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
+;; Libraries
 (use-package du-appearance)
 (use-package du-operating-assist)
 (use-package du-key-navigator)
@@ -57,3 +57,7 @@
 (use-package du-media)
 (use-package du-sns-client)
 (use-package du-data-manipulator)
+
+;; Customisations
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(when (file-exists-p custom-file) (load custom-file))
