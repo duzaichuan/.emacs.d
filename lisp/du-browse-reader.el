@@ -14,8 +14,11 @@
   :config (language-detection-buffer))
 
 (use-package du-eww-functions
-  :after eww
   :load-path "lib/")
+
+(use-package web-search
+  :ensure t
+  :bind ("C-c w" . web-search))
 
 (use-package xah-lookup
   :ensure t

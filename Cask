@@ -161,6 +161,7 @@
 (depends-on "visual-fill-column")
 (depends-on "volume")
 (depends-on "w3m")
+(depends-on "web-search")
 (depends-on "websocket")
 (depends-on "which-key")
 (depends-on "with-editor")
