@@ -81,7 +81,7 @@
          (call-process "bili" nil nil nil url))))
 
 ;;msg prompt
-(defalias 'du-urls-external-browser 'xwidget-webkit-browse-url)
+(defalias 'du-urls-external-browser 'browse-url-default-browser)
 
 (defun du-browse-url (&rest args)
   "Prompt for whether or not to browse with EWW, if no browse with external browser."

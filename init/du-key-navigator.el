@@ -10,9 +10,6 @@
 (global-set-key (kbd "M-[") 'shrink-window-horizontally)
 (global-set-key (kbd "M-]") 'enlarge-window-horizontally)
 
-;; xwdget web browse
-(global-set-key (kbd "<f10>") 'xwidget-webkit-browse-url)
-
 (use-package key-chord
   :ensure t
   :commands key-chord-mode)

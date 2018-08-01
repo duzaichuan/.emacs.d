@@ -121,7 +121,8 @@
   :init
   (setq org-ref-bibliography-notes "~/Dropbox/bibliography/Notes.org"
 	org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
-	org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
+	org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/"
+	org-ref-show-broken-links nil)
   :config
   (require 'org-ref-citeproc)
   (setq org-ref-default-citation-link "citet"

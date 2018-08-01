@@ -50,7 +50,7 @@
 
 (use-package elfeed
   :ensure t
-  :bind ("C-x w" . elfeed)
+  :bind ("<f10>" . elfeed)
   :hook (elfeed-show-mode . visual-fill-column-mode))
 
 (use-package elfeed-org
@@ -103,7 +103,9 @@
 
 (use-package writeroom-mode
   :ensure t
-  :commands writeroom-mode)
+  :commands writeroom-mode
+  :init
+  (setq writeroom-fullscreen-effect 'maximized))
 
 (use-package chinese-word-at-point
   :ensure t
