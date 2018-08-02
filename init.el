@@ -18,7 +18,9 @@
   (package-install 'use-package))
 
 (eval-when-compile
-  (require 'use-package))
+  (require 'use-package)
+  ;; (setq use-package-verbose t)
+  )
 
 (use-package dash :ensure t)      ; A modern list library
 (use-package diminish :ensure t)  ; Hide modes in the mode-line

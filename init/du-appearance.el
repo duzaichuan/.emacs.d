@@ -5,6 +5,10 @@
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
+;; Default minibuffer message
+(defun display-startup-echo-area-message ()
+  (message "Write!"))
+
 ;; font
 (set-face-attribute 'default nil :font "DejaVu Sans Mono")
 (tool-bar-mode -1)
