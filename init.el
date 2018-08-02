@@ -1,16 +1,23 @@
 ;; Startup speed
-(setq file-name-handler-alist nil
+(setq package-enable-at-startup nil ; :mode :interpreter is needed if set to nil
+      file-name-handler-alist nil
       message-log-max 16384
       gc-cons-threshold 402653184
       gc-cons-percentage 0.6
       auto-window-vscroll nil)
 
 (eval-when-compile (require 'cl-lib))
-(require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
-(setq package-enable-at-startup nil) ;; :mode :interpreter is needed if set to nil
-(cask-initialize)
-(require 'pallet)
-(pallet-mode t)
+
+;; (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
+;; (cask-initialize)
+;; (require 'pallet)
+;; (pallet-mode t)
+
+(require 'package)
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")             
+                         ("melpa" . "https://melpa.org/packages/")
+			 ("org" . "http://orgmode.org/elpa/")))
+(package-initialize)
 
 ;; Bootstrap 'use-package'
 (unless (package-installed-p 'use-package)
@@ -22,9 +29,9 @@
   ;; (setq use-package-verbose t)
   )
 
-(use-package dash :ensure t)      ; A modern list library
+(use-package dash)                ; A modern list library
 (use-package diminish :ensure t)  ; Hide modes in the mode-line
-(use-package bind-key)            ; if you use any :bind variant
+(use-package bind-key :ensure t)  ; if you use any :bind variant
 
 (use-package exec-path-from-shell
   :if (memq window-system '(ns mac))

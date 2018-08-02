@@ -91,8 +91,8 @@
         cider-repl-use-clojure-font-lock t
         cider-repl-wrap-history t
         cider-repl-history-size 1000
-        cider-repl-history-file (f-expand ".cider-history"
-				      user-emacs-directory)
+        ;; cider-repl-history-file (f-expand ".cider-history"
+	;; 			      user-emacs-directory)
         cider-show-error-buffer t
         nrepl-hide-special-buffers t))
 
