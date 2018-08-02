@@ -8,11 +8,6 @@
 
 (eval-when-compile (require 'cl-lib))
 
-;; (require 'cask "/usr/local/share/emacs/site-lisp/cask/cask.el")
-;; (cask-initialize)
-;; (require 'pallet)
-;; (pallet-mode t)
-
 (require 'package)
 (setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")             
                          ("melpa" . "https://melpa.org/packages/")
