@@ -70,6 +70,7 @@
 			(smtpmail-smtp-server . "exchange.ku.dk")
 			(smtpmail-smtp-service . 465)
 			(user-full-name . "Zaichuan Du")
+			(mu4e-sent-messages-behavior . sent)
 			(mu4e-compose-signature . (concat
 						   "Best regards\n"
 						   "Zaichuan Du\n")) )) ))
