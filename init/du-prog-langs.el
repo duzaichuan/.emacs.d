@@ -1,5 +1,5 @@
-(use-package prog-mode
-  :hook (prog-mode . display-line-numbers-mode))
+(use-package emacs-lisp-mode
+  :hook (emacs-lisp-mode . display-line-numbers-mode))
 
 ;; Consistent ESS-like eval interface for various REPLs
 (use-package eval-in-repl
@@ -13,6 +13,7 @@
   :ensure ess
   :mode (("\\.jl$" . ess-julia-mode)
          ("\\.R$"  . R-mode))
+  :hook (ess-julia-mode . display-line-numbers-mode)
   :bind (:map inferior-ess-mode-map
 	      ("C-c w" . ess-execute-screen-options))
   :config
@@ -59,6 +60,7 @@
 (use-package python
   :ensure t
   :mode ("\\.py\\'" . python-mode)
+  :hook (python-mode . display-line-numbers-mode)
   :interpreter ("python" . python-mode))
 
 (use-package ein
@@ -72,7 +74,8 @@
   :commands (clojure-mode)
   :mode ("\\.clj\\'" "\\.cljs\\'" "\\.edn\\'" "\\.boot\\'")
   :interpreter "clojure"
-  :hook (clojure-mode . paredit-mode)
+  :hook ((clojure-mode . paredit-mode)
+         (clojure-mode . display-line-numbers-mode))
   :bind (:map clojure-mode-map
 	      ("C-<return>" . eir-eval-in-cider))
   :config

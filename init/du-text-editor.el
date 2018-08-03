@@ -171,13 +171,14 @@
   :hook (markdown-mode . writeroom-mode)
   :init
   (progn
-    ;; (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
     (setq markdown-enable-math t
-	  markdown-command "multimarkdown")))
+    	  markdown-command "multimarkdown")
+    ))
 
 (use-package polymode
   :ensure t
   :init (autoload 'r-mode "ess-site.el" "Major mode for editing R source." t)
+  :hook (poly-markdown+r-mode . writeroom-mode)
   :mode (("\\.md" . poly-markdown-mode)
 	 ("\\.[rR]md\\'" . poly-markdown+r-mode)))
 
