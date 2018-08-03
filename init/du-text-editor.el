@@ -168,12 +168,18 @@
   :mode (("\\`README\\.md\\'" . gfm-mode)
          ("\\.md\\'"          . markdown-mode)
          ("\\.markdown\\'"    . markdown-mode))
-  :init (setq markdown-command "multimarkdown"))
+  :hook (markdown-mode . writeroom-mode)
+  :init
+  (progn
+    ;; (add-to-list 'auto-mode-alist '("\\.Rmd\\'" . markdown-mode))
+    (setq markdown-enable-math t
+	  markdown-command "multimarkdown")))
 
 (use-package polymode
   :ensure t
+  :init (autoload 'r-mode "ess-site.el" "Major mode for editing R source." t)
   :mode (("\\.md" . poly-markdown-mode)
-	 ("\\.Rmd" . poly-markdown+r-mode)))
+	 ("\\.[rR]md\\'" . poly-markdown+r-mode)))
 
 (use-package ispell
   :commands ispell

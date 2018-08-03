@@ -83,8 +83,7 @@
     (setq pdf-view-resize-factor 1.10)
     (setq pdf-view-midnight-colors `(,(face-attribute 'default :foreground) .
                                      ,(face-attribute 'default :background)))
-    ;; default annot color
-    (push '(color . "light green") pdf-annot-default-markup-annotation-properties)
+    (setq pdf-annot-default-markup-annotation-properties '((color . "#90ee90")))
     ;; wait until map is available
     (with-eval-after-load "pdf-annot"
       (define-key pdf-annot-edit-contents-minor-mode-map (kbd "<return>") 'pdf-annot-edit-contents-commit)
