@@ -124,11 +124,13 @@
   (setq org-ref-bibliography-notes "~/Dropbox/bibliography/Notes.org"
 	org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
 	org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/"
-	org-ref-show-broken-links nil)
+	org-ref-show-broken-links nil
+	org-ref-default-ref-type "eqref"
+	org-ref-default-citation-link "citet"
+	org-ref-ref-color "Brown"
+	org-ref-label-color "light green")
   :config
-  (require 'org-ref-citeproc)
-  (setq org-ref-default-citation-link "citet"
-	org-ref-default-ref-type "eqref"))
+  (require 'org-ref-citeproc))
 
 (use-package helm-bibtex
   :ensure t
