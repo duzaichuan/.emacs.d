@@ -191,9 +191,24 @@
 	  ispell-choices-win-default-height 5
 	  ispell-dictionary "en_US")
     (setenv "DICTIONARY" "en_US")
-    (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
-    (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
-    (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXPORT" . "#\\+END_EXPORT")) ))
+    
+    (defun endless/org-ispell ()
+      "Configure `ispell-skip-region-alist' for `org-mode'."
+      (make-local-variable 'ispell-skip-region-alist)
+      (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
+      (add-to-list 'ispell-skip-region-alist '("~" "~"))
+      (add-to-list 'ispell-skip-region-alist '("=" "="))
+      ;; this next line approximately ignores org-ref-links
+      (add-to-list 'ispell-skip-region-alist '("cite:" . "[[:space:]]"))
+      (add-to-list 'ispell-skip-region-alist '("citet:" . "[[:space:]]"))
+      (add-to-list 'ispell-skip-region-alist '("label:" . "[[:space:]]"))
+      (add-to-list 'ispell-skip-region-alist '("ref:" . "[[:space:]]"))
+      (add-to-list 'ispell-skip-region-alist '("eqref:" . "[[:space:]]"))
+      (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_SRC" . "^#\\+END_SRC")))
+
+    (add-hook 'org-mode-hook #'endless/org-ispell)
+
+    ))
 
 (use-package langtool
   :ensure t
