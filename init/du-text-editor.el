@@ -195,17 +195,6 @@
     (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_SRC" . "#\\+END_SRC"))
     (add-to-list 'ispell-skip-region-alist '("#\\+BEGIN_EXPORT" . "#\\+END_EXPORT")) ))
 
-(use-package flyspell
-  :commands flyspell-buffers
-  :config
-  (setq flyspell-issue-message-flag nil))
-
-(use-package flyspell-correct-ivy
-  :ensure t
-  :after flyspell
-  :bind (:map flyspell-mode-map
-              ("C-c $" . flyspell-correct-word-generic)))
-
 (use-package langtool
   :ensure t
   :commands langtool-check

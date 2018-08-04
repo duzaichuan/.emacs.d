@@ -110,7 +110,13 @@
 	;; lookup
 	(evil-leader/set-key
 	  "lw" 'xah-lookup-wikipedia
-	  "ld" 'xah-lookup-word-definition) )) )
+	  "ld" 'xah-lookup-word-definition)
+	;; spell check
+	(evil-leader/set-key
+	  "ss" 'flyspell-mode
+	  "sb" 'flyspell-buffer
+	  "sw" 'ispell-word)
+	)) )
   :config
   (progn
     (evil-mode 1)
