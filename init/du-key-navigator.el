@@ -1,6 +1,9 @@
 ;; open init.el 
 (global-set-key (kbd "<f2>") (lambda () (interactive) (find-file user-init-file)))
 
+;; org capture
+(global-set-key (kbd "<f4>") (lambda () (interactive) (find-file "~/Dropbox/Org/captures.org")))
+
 ;; help menu
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)

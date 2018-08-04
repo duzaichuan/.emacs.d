@@ -49,8 +49,7 @@
          ("C-c C-w" . org-refile)
          ("C-c j" . org-clock-goto)
          ("C-c C-x C-o" . org-clock-out))
-  :init (global-set-key (kbd "<f4>") (lambda () (interactive) (find-file "~/Dropbox/Org/captures.org")))
-        (setq org-directory "~/Dropbox/Org"
+  :init (setq org-directory "~/Dropbox/Org"
 	      org-default-notes-file (concat org-directory "/notes.org")
 	      org-agenda-files (list "~/Dropbox/Org")
 	      org-refile-targets '((org-agenda-files :maxlevel . 3))

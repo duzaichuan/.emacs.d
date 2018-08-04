@@ -14,8 +14,7 @@
 	  mu4e-attachment-dir  "~/Downloads"
 	  ;; Speeding up indexing
 	  mu4e-index-cleanup nil      ;; don't do a full cleanup check
-	  mu4e-index-lazy-check t ;; don't consider up-to-date dirs
-  
+	  mu4e-index-lazy-check t ;; don't consider up-to-date dirs  
 	  mu4e-split-view 'single-window ;;make the mu4e-main view into a minibuffer prompt
 	  mu4e-hide-index-messages t ;; disable the message in the minibuffer 
 	  mu4e-index-update-error-warning nil ;; disable non-zero exit code warning
@@ -51,11 +50,12 @@
 			(smtpmail-smtp-server . "smtp.live.com")
 			(smtpmail-smtp-service . 25)
 			(user-full-name . "Zaichuan Du")
-			;; don't save messages to Sent Messages, Oulook/IMAP takes care of this
-			(mu4e-sent-messages-behavior . delete)
+			(mu4e-sent-messages-behavior . delete) ;; don't save Sent Messages, Oulook/IMAP takes care of this
 			(mu4e-compose-signature . (concat
 						   "Best\n"
-						   "Zaichuan\n")) ))
+						   "Zaichuan\n"))
+			))
+
 	     ,(make-mu4e-context
 	       :name "Exchange"
 	       :enter-func (lambda () (mu4e-message "Switch to the Work context"))
@@ -73,7 +73,9 @@
 			(mu4e-sent-messages-behavior . sent)
 			(mu4e-compose-signature . (concat
 						   "Best regards\n"
-						   "Zaichuan Du\n")) )) ))
+						   "Zaichuan Du\n"))
+			))
+	     ))
     
     (add-to-list 'mu4e-bookmarks
 		 (make-mu4e-bookmark
