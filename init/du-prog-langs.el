@@ -1,6 +1,3 @@
-(use-package emacs-lisp-mode
-  :hook (emacs-lisp-mode . display-line-numbers-mode))
-
 ;; Consistent ESS-like eval interface for various REPLs
 (use-package eval-in-repl
   :ensure t
@@ -74,8 +71,7 @@
   :commands (clojure-mode)
   :mode ("\\.clj\\'" "\\.cljs\\'" "\\.edn\\'" "\\.boot\\'")
   :interpreter "clojure"
-  :hook ((clojure-mode . paredit-mode)
-         (clojure-mode . display-line-numbers-mode))
+  :hook ((clojure-mode . paredit-mode))
   :bind (:map clojure-mode-map
 	      ("C-<return>" . eir-eval-in-cider))
   :config
