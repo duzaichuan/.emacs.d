@@ -4,15 +4,15 @@
 	 :map mu4e-compose-mode-map
 	 ("C-x C-a" . mail-add-attachment))
   :hook ((mu4e-compose-mode . flyspell-mode)
+	 (mu4e-compose-mode . turn-off-auto-fill)
 	 ((mu4e-compose-mode mu4e-view-mode) . visual-fill-column-mode))
-  :init (add-hook 'mu4e-compose-mode-hook 'turn-off-auto-fill)
   :config
   (progn
     (setq mu4e-maildir "~/Maildir"
 	  mu4e-get-mail-command "mbsync -a"
 	  mu4e-html2text-command "w3m -dump -s -T text/html"
 	  mu4e-attachment-dir  "~/Downloads"
-	  ;; Speeding up indexing
+	  mu4e-compose-signature nil ;; must be configured later by context
 	  mu4e-index-cleanup nil      ;; don't do a full cleanup check
 	  mu4e-index-lazy-check t ;; don't consider up-to-date dirs  
 	  mu4e-split-view 'single-window ;;make the mu4e-main view into a minibuffer prompt
@@ -28,11 +28,12 @@
 	  mu4e-confirm-quit nil ; Don't ask to quit... why is this the default?
 	  message-citation-line-format "On %a %d %b %Y at %R, %f wrote:\n" ; customize the reply-quote-string
 	  message-citation-line-function 'message-insert-formatted-citation-line ; choose to use the formatted string
-	  message-cite-reply-position 'above
+	  message-cite-reply-position 'above ;; set signature below reply
+	  mu4e-compose-dont-reply-to-self t ;; exclude own e-mail address when “replying to all”
 	  mu4e-maildir-shortcuts '( ("/Exchange/Inbox"  . ?I)
 				    ("/Exchange/Sent"   . ?S)
 				    ("/Outlook/Inbox"   . ?i)
-				    ("/Outlook/Sent"    . ?s)))   
+				    ("/Outlook/Sent"    . ?s)))
     ;; Multiple accounts
     (setq mu4e-contexts
 	  `( ,(make-mu4e-context
@@ -87,9 +88,12 @@
 		  :name "All Archives"
 		  :query "maildir:/Exchange/Archive OR maildir:/Outlook/Archive"
 		  :key ?a))   
+
     ;; use imagemagick, if available
     (when (fboundp 'imagemagick-register-types)
-      (imagemagick-register-types)) ))
+      (imagemagick-register-types))
+
+    ))
 
 (use-package org-mu4e
   :after mu4e

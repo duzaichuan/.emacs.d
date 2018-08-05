@@ -116,6 +116,7 @@
 
 (use-package org-ref
   :ensure t
+  :defer 0.5
   :bind (("C-c r" . org-ref-helm-insert-cite-link)
 	 ("C-c ir" . org-ref-helm-insert-ref-link)
 	 ("C-c il" . org-ref-helm-insert-label-link))
