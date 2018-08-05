@@ -92,12 +92,16 @@
 (use-package nov
   :ensure t
   :mode ("\\.epub\\'" . nov-mode)
+  :hook (nov-mode . visual-fill-column-mode)
+  :init (setq nov-text-width most-positive-fixnum
+	      visual-fill-column-center-text t)
   :config
   (progn
-    (setq nov-text-width 70)
+    
     (defun du/nov-font-setup ()
       (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
                                :height 1.1))
+    
     (add-hook 'nov-mode-hook 'du/nov-font-setup) )) 
 
 (use-package writeroom-mode
