@@ -9,6 +9,7 @@
   :hook (eww-mode . visual-fill-column-mode)
   :init
   (progn
+    (setq shr-width 75)
     (setq shr-external-rendering-functions '((pre . eww-tag-pre)))
     (setq browse-url-browser-function #'du-browse-url))
   :config (language-detection-buffer))
@@ -88,7 +89,6 @@
 (use-package elfeed
   :ensure t
   :bind ("<f10>" . elfeed)
-  :hook (elfeed-show-mode . visual-fill-column-mode)
   :config
   (progn
     
