@@ -13,7 +13,7 @@
   :ensure t
   :diminish real-auto-save-mode
   :init (setq save-silently t)
-  :hook ((prog-mode text-mode) . real-auto-save-mode))
+  :hook ((org-mode emacs-lisp-mode) . real-auto-save-mode))
 
 (use-package ov        :ensure t :defer t)
 (use-package f    :ensure t :defer t)

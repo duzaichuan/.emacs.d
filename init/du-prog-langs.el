@@ -6,6 +6,14 @@
   ;; Place REPL on the left of the script window when splitting.
   (setq eir-repl-placement 'left))
 
+(use-package julia-mode
+  :ensure t
+  :defer t)
+
+(use-package julia-repl
+  :ensure t
+  :commands julia-repl)
+
 (use-package ess-site
   :ensure ess
   :mode (("\\.jl$" . ess-julia-mode)
