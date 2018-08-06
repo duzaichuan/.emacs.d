@@ -48,25 +48,6 @@
     (eval-when-compile
       (autoload 'w3m-search-escape-query-string "w3m-search")) ))
 
-(use-package elfeed
-  :ensure t
-  :bind ("<f10>" . elfeed)
-  :hook (elfeed-show-mode . visual-fill-column-mode))
-
-(use-package elfeed-org
-  :ensure t
-  :after elfeed
-  :config
-  (progn
-    (elfeed-org)
-    (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")) ))
-
-(use-package elfeed-goodies
-  :ensure t
-  :after elfeed
-  :config
-  (elfeed-goodies/setup))
-
 (use-package pdf-tools
   :ensure t
   :magic ("%PDF" . pdf-view-mode)
@@ -103,6 +84,33 @@
                                :height 1.1))
     
     (add-hook 'nov-mode-hook 'du/nov-font-setup) )) 
+
+(use-package elfeed
+  :ensure t
+  :bind ("<f10>" . elfeed)
+  :hook (elfeed-show-mode . visual-fill-column-mode)
+  :config
+  (progn
+    
+    (defun du/feed-font-setup ()
+      (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
+                               :height 1.1))
+    
+    (add-hook 'elfeed-show-mode-hook 'du/feed-font-setup) ))
+
+(use-package elfeed-org
+  :ensure t
+  :after elfeed
+  :config
+  (progn
+    (elfeed-org)
+    (setq rmh-elfeed-org-files (list "~/.emacs.d/elfeed.org")) ))
+
+(use-package elfeed-goodies
+  :ensure t
+  :after elfeed
+  :config
+  (elfeed-goodies/setup))
 
 (use-package writeroom-mode
   :ensure t

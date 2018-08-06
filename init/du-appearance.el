@@ -9,7 +9,7 @@
 (defun display-startup-echo-area-message ()
   (message "Write!"))
 
-;; font
+;; font and format
 (set-face-attribute 'default nil :font "DejaVu Sans Mono")
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
@@ -19,6 +19,8 @@
 (global-hl-line-mode t)
 (global-visual-line-mode)
 (global-prettify-symbols-mode)
+(setq visual-fill-column-width 75)
+(setq visual-fill-column-center-text t)
 
 ;;;; 设置编辑环境
 ;; 设置为中文简体语言环境
