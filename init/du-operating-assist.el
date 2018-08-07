@@ -48,7 +48,6 @@
   :bind ("C-c d" . paredit-delete-region)
   :hook ((lisp-mode . paredit-mode)
 	 (emacs-lisp-mode . paredit-mode)
-	 (lisp-interaction-mode . paredit-mode)
 	 (ielm-mode . paredit-mode)
 	 (eval-expression-minibuffer-setup . paredit-mode)))
 
@@ -75,7 +74,6 @@
 
 (use-package helm
   :ensure t
- ;:diminish t
   :demand t
   :bind (:map helm-map
               ("<tab>" . helm-execute-persistent-action)
@@ -111,7 +109,6 @@
 
 (use-package counsel
   :ensure t
-  ;; :demand t
   :custom (counsel-find-file-ignore-regexp
            (concat "\\(\\`\\.[^.]\\|"
                    (regexp-opt completion-ignored-extensions)
@@ -135,6 +132,7 @@
 (use-package undo-tree
   :ensure t
   :diminish undo-tree-mode
+  :bind ("s-z" . undo-tree-undo)
   :config
   (progn
     (global-undo-tree-mode 1)
