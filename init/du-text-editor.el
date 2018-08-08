@@ -24,7 +24,6 @@
     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
     (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
-    (add-hook 'LaTeX-mode-hook 'writeroom-mode)
     (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
     (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer) ))
 
@@ -40,8 +39,7 @@
   :ensure t
   :defer 0.2
   :mode ("\\.org\\'" . org-mode)
-  :hook ((org-mode . turn-on-org-cdlatex)
-	 (org-mode . writeroom-mode))
+  :hook ((org-mode . turn-on-org-cdlatex))
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture)

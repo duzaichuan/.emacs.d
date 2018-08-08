@@ -8,8 +8,10 @@
 	 ((mu4e-compose-mode mu4e-view-mode) . visual-fill-column-mode))
   :config
   (progn
-    (setq mu4e-maildir "~/Maildir"
+    (setq mail-user-agent 'mu4e-user-agent
+	  mu4e-maildir "~/Maildir"
 	  mu4e-get-mail-command "mbsync -a"
+	  message-send-mail-function 'smtpmail-send-it
 	  mu4e-html2text-command "w3m -dump -s -T text/html"
 	  mu4e-attachment-dir  "~/Downloads"
 	  mu4e-compose-signature nil ;; must be configured later by context
