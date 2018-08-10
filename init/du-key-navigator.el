@@ -132,6 +132,7 @@
     
     (evil-set-initial-state 'bongo-playlist-mode 'emacs)
     (evil-set-initial-state 'osx-dictionary-mode 'emacs)
+    (evil-set-initial-state 'ein:notebook-multilang-mode 'emacs)
     (evil-add-hjkl-bindings osx-dictionary-mode-map 'emacs)
     (evil-add-hjkl-bindings bongo-playlist-mode-map 'emacs)
     (evil-add-hjkl-bindings recentf-dialog-mode-map 'emacs)

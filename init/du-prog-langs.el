@@ -70,8 +70,8 @@
 (use-package ein
   :ensure t
   :bind ([f6] . ein:jupyter-server-start)
-  :init (setq ein:jupyter-default-server-command "~/anaconda/bin/jupyter"
-	      ein:jupyter-default-notebook-directory "~/Jupyter/"))
+  :hook (ein:notebook-multilang-mode . visual-fill-column-mode)
+  :init (setq ein:jupyter-default-notebook-directory "~/Jupyter/"))
 
 (use-package clojure-mode
   :ensure t
