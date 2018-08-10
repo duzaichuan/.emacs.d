@@ -8,17 +8,16 @@
 
 (use-package julia-mode
   :ensure t
-  :defer t)
+  :mode ("\\.jl$" . julia-mode)
+  :hook (julia-mode . display-line-numbers-mode))
 
 (use-package julia-repl
   :ensure t
-  :commands julia-repl)
+  :hook (julia-mode . julia-repl-mode))
 
 (use-package ess-site
   :ensure ess
-  :mode (("\\.jl$" . ess-julia-mode)
-         ("\\.R$"  . R-mode))
-  :hook (ess-julia-mode . display-line-numbers-mode)
+  :mode ("\\.R$"  . R-mode)
   :bind (:map inferior-ess-mode-map
 	      ("C-c w" . ess-execute-screen-options))
   :config
