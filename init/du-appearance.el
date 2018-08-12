@@ -19,7 +19,7 @@
 (global-hl-line-mode t)
 (global-visual-line-mode)
 (global-prettify-symbols-mode)
-(setq visual-fill-column-width 75)
+(setq visual-fill-column-width 80)
 (setq visual-fill-column-center-text t)
 
 ;;;; 设置编辑环境

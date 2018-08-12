@@ -168,7 +168,6 @@
   :mode (("\\`README\\.md\\'" . gfm-mode)
          ("\\.md\\'"          . markdown-mode)
          ("\\.markdown\\'"    . markdown-mode))
-  :hook (markdown-mode . writeroom-mode)
   :init
   (progn
     (setq markdown-enable-math t
@@ -185,7 +184,7 @@
 (use-package writeroom-mode
   :ensure t
   :commands writeroom-mode
-  :hook org-mode
+  :hook (org-mode LaTeX-mode markdown-mode)
   :init
   (setq writeroom-fullscreen-effect 'maximized
 	writeroom-maximize-window nil))
