@@ -112,12 +112,6 @@
   :config
   (elfeed-goodies/setup))
 
-(use-package writeroom-mode
-  :ensure t
-  :commands writeroom-mode
-  :init
-  (setq writeroom-fullscreen-effect 'maximized))
-
 (use-package chinese-word-at-point
   :ensure t
   :defer t)

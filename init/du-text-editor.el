@@ -182,6 +182,14 @@
   :mode (("\\.md" . poly-markdown-mode)
 	 ("\\.[rR]md\\'" . poly-markdown+r-mode)))
 
+(use-package writeroom-mode
+  :ensure t
+  :commands writeroom-mode
+  :hook org-mode
+  :init
+  (setq writeroom-fullscreen-effect 'maximized
+	writeroom-maximize-window nil))
+
 (use-package ispell
   :commands ispell
   :config
