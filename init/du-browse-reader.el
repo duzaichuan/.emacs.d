@@ -8,10 +8,10 @@
 	 ("p" . du/mpv-play))
   :hook (eww-mode . visual-fill-column-mode)
   :init
-  (progn
-    (setq shr-width 75)
-    (setq shr-external-rendering-functions '((pre . eww-tag-pre)))
-    (setq browse-url-browser-function #'du-browse-url))
+  (setq shr-width 75
+	shr-external-rendering-functions '((pre . eww-tag-pre))
+	browse-url-browser-function #'du-browse-url)
+
   :config (language-detection-buffer))
 
 (use-package du-eww-functions
