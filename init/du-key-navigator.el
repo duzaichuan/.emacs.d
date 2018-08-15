@@ -71,12 +71,14 @@
     	  "or" 'org-refile
     	  "ol" 'org-store-link
     	  "oe" 'org-export-dispatch
-    	  "ow" 'writeroom-mode
+    	  "of" 'writeroom-mode
     	  "of" 'org-footnote-action
     	  "ot" 'org-time-stamp
     	  "on" 'org-noter
     	  "oi" 'org-noter-insert-note
-    	  "os" 'ispell-buffer)
+    	  "os" 'ispell-buffer
+	  "ow" 'org-wc-display
+	  "od" 'org-wc-remove-overlays)
     	;; dictionary
     	(evil-leader/set-key
     	  "dd" 'osx-dictionary-search-word-at-point

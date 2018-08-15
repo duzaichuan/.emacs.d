@@ -61,7 +61,7 @@
     (add-hook 'pdf-view-mode-hook
 	      (lambda () (set (make-local-variable 'evil-normal-state-cursor) (list nil))
 		(set (make-local-variable 'evil-visual-state-cursor) (list nil))))
-    (setq-default pdf-view-display-size 'fit-width) ; fit page by default
+    (setq-default pdf-view-display-size 'fit-page) ; fit page by default
     (setq pdf-view-resize-factor 1.10)
     (setq pdf-view-midnight-colors `(,(face-attribute 'default :foreground) .
                                      ,(face-attribute 'default :background)))

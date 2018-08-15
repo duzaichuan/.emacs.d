@@ -130,6 +130,10 @@
   :config
   (require 'org-ref-citeproc))
 
+(use-package org-wc
+  :ensure t
+  :commands (org-wc-remove-overlays org-wc-count-subtrees org-wc-display))
+
 (use-package helm-bibtex
   :ensure t
   :defer t
