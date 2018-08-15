@@ -134,6 +134,10 @@
   :ensure t
   :commands (org-wc-remove-overlays org-wc-count-subtrees org-wc-display))
 
+(use-package ox-word
+  :load-path "lib/"
+  :after org)
+
 (use-package helm-bibtex
   :ensure t
   :defer t
