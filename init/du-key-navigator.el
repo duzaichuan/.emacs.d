@@ -119,18 +119,12 @@
   :config
   (progn
     (evil-mode 1)
-    (setq evil-cross-lines t)
-    (setq evil-move-cursor-back nil)
-    (setq evil-want-C-u-scroll t)
+    (setq evil-cross-lines t
+	  evil-respect-visual-line-mode t
+	  evil-move-cursor-back nil
+	  evil-want-C-u-scroll t)
     (setcdr evil-insert-state-map nil)
     (define-key evil-insert-state-map [escape] 'evil-normal-state)
-    
-    ;; Make evil-mode up/down operate in screen lines instead of logical lines
-    (define-key evil-motion-state-map "j" 'evil-next-visual-line)
-    (define-key evil-motion-state-map "k" 'evil-previous-visual-line)
-    ;; Also in visual mode
-    (define-key evil-visual-state-map "j" 'evil-next-visual-line)
-    (define-key evil-visual-state-map "k" 'evil-previous-visual-line)
     
     (evil-set-initial-state 'bongo-playlist-mode 'emacs)
     (evil-set-initial-state 'osx-dictionary-mode 'emacs)
