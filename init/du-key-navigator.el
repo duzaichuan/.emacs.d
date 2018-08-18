@@ -23,7 +23,7 @@
       :config
       (progn
 	(which-key-mode)
-	(which-key-setup-side-window-right-bottom)))
+	(which-key-setup-side-window-bottom)))
 
 (use-package avy
   :ensure t
@@ -38,83 +38,7 @@
     (setq evil-want-integration nil) 
     (use-package evil-leader
       :ensure t
-      :init (global-evil-leader-mode)
-      :config
-      (progn
-    	(evil-leader/set-leader "SPC")
-    	(evil-leader/set-key "gs" 'magit-status)
-    	(evil-leader/set-key "gu" 'browse-url-at-point)	
-    	;; window edit
-    	(evil-leader/set-key
-    	  "wd" 'delete-window
-    	  "wo" 'delete-other-windows
-    	  "wh" 'split-window-horizontally
-    	  "wv" 'split-window-vertically
-    	  "ww" 'other-window)
-    	;; buffer switch
-    	(evil-leader/set-key
-    	  "bb" 'ivy-switch-buffer
-    	  "bq" 'kill-buffer
-    	  "bj" 'next-buffer
-    	  "bk" 'previous-buffer)
-    	;; file navigate and formatting region
-    	(evil-leader/set-key
-    	  "ff" 'counsel-find-file
-    	  "fr" 'recentf-open-files
-    	  "fc" 'evilnc-comment-or-uncomment-lines
-    	  "fi" 'indent-region)
-    	;; org
-    	(evil-leader/set-key
-    	  "oa" 'org-agenda
-    	  "oc" 'org-capture
-    	  "ob" 'org-iswitchb
-    	  "or" 'org-refile
-    	  "ol" 'org-store-link
-    	  "oe" 'org-export-dispatch
-    	  "of" 'writeroom-mode
-    	  "of" 'org-footnote-action
-    	  "ot" 'org-time-stamp
-    	  "on" 'org-noter
-    	  "oi" 'org-noter-insert-note
-    	  "os" 'ispell-buffer
-	  "ow" 'org-wc-display
-	  "od" 'org-wc-remove-overlays)
-    	;; dictionary
-    	(evil-leader/set-key
-    	  "dd" 'osx-dictionary-search-word-at-point
-    	  "di" 'osx-dictionary-search-input)
-    	;; Media
-    	(evil-leader/set-key
-    	  "mb" 'bongo-playlist
-    	  "me" 'emms
-    	  "mt" 'twit
-    	  "mm" 'simple-mpc
-    	  "mc" 'circe
-    	  "mr" 'md4rd)
-    	;; emms media
-    	(evil-leader/set-key
-    	  "ec" 'mpd/start-music-daemon
-    	  "ee" 'mpd/kill-music-daemon
-    	  "eu" 'mpd/update-database
-    	  "ej" 'emms-next
-    	  "ek" 'emms-previous
-    	  "ep" 'emms-pause)
-    	;; pdf reader
-    	(evil-leader/set-key
-    	  "pu" 'pdf-annot-add-underline-markup-annotation
-    	  "ph" 'pdf-annot-add-highlight-markup-annotation
-    	  "pd" 'pdf-annot-delete
-    	  "pg" 'pdf-view-goto-page)
-    	;; avy jump
-    	(evil-leader/set-key
-    	  "SPC" 'avy-goto-char
-    	  "jj" 'avy-goto-char-2
-    	  "jl" 'avy-goto-line)
-    	;; lookup
-    	(evil-leader/set-key
-    	  "lw" 'xah-lookup-wikipedia
-    	  "ld" 'xah-lookup-word-definition)
-	))
+      :config (global-evil-leader-mode))
     )
   :config
   (progn
@@ -186,5 +110,69 @@
 (use-package treemacs-evil
   :after treemacs evil
   :ensure t)
+
+(use-package general
+  :ensure t
+  :defer 0.11
+  :config
+  (general-define-key
+   :keymaps '(normal visual insert emacs)
+   :prefix "SPC"
+   :non-normal-prefix "M-SPC"
+   "b" '(:ignore t :which-key "buffers")
+   "w" '(:ignore t :which-key "windows")
+   "f" '(:ignore t :which-key "files")
+   "g" '(:ignore t :which-key "magit")
+   "o" '(:ignore t :which-key "org")
+   "p" '(:ignore t :which-key "pdf")
+   "m" '(:ignore t :which-key "media")
+   "j" '(:ignore t :which-key "avy-jump")
+   "l" '(:ignore t :which-key "look-up")
+   "SPC" 'avy-goto-char
+   "jj" 'avy-goto-char-2
+   "jl" 'avy-goto-line
+   "gs" 'magit-status
+   "wd" 'delete-window
+   "wo" 'delete-other-windows
+   "wh" 'split-window-horizontally
+   "wv" 'split-window-vertically
+   "ww" 'other-window
+   "bb" 'ivy-switch-buffer
+   "bj" 'next-buffer
+   "bk" 'previous-buffer
+   "bd" 'kill-buffer-and-window
+   "ff" 'counsel-find-file
+   "fr" 'recentf-open-files
+   "fc" 'evilnc-comment-or-uncomment-lines
+   "fi" 'indent-region
+   "mb" 'bongo-playlist
+   "me" 'emms
+   "mt" 'twit
+   "mm" 'simple-mpc
+   "mc" 'circe
+   "mr" 'md4rd
+   "oa" 'org-agenda
+   "oc" 'org-capture
+   "ob" 'org-iswitchb
+   "or" 'org-refile
+   "ol" 'org-store-link
+   "oe" 'org-export-dispatch
+   "of" 'writeroom-mode
+   "of" 'org-footnote-action
+   "ot" 'org-time-stamp
+   "on" 'org-noter
+   "oi" 'org-noter-insert-note
+   "os" 'ispell-buffer
+   "ow" 'org-wc-display
+   "od" 'org-wc-remove-overlays
+   "dd" 'osx-dictionary-search-word-at-point
+   "di" 'osx-dictionary-search-input
+   "pu" 'pdf-annot-add-underline-markup-annotation
+   "ph" 'pdf-annot-add-highlight-markup-annotation
+   "pd" 'pdf-annot-delete
+   "pg" 'pdf-view-goto-page
+   "lw" 'xah-lookup-wikipedia
+   "ld" 'xah-lookup-word-definition
+   ))
 
 (provide 'du-key-navigator)
