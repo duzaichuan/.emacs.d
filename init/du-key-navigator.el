@@ -33,13 +33,7 @@
 (use-package evil
   :ensure t
   :diminish evil-mode
-  :init
-  (progn
-    (setq evil-want-integration nil) 
-    (use-package evil-leader
-      :ensure t
-      :config (global-evil-leader-mode))
-    )
+  :init (setq evil-want-integration nil) 
   :config
   (progn
     (evil-mode 1)
@@ -113,44 +107,36 @@
 
 (use-package general
   :ensure t
-  :defer 0.11
+  :after evil-collection
   :config
   (general-define-key
    :keymaps '(normal visual insert emacs)
    :prefix "SPC"
    :non-normal-prefix "M-SPC"
+
    "b" '(:ignore t :which-key "buffers")
+   "bb" 'ivy-switch-buffer
+   "bj" 'next-buffer
+   "bk" 'previous-buffer
+   "bd" 'kill-buffer-and-window
+   
    "w" '(:ignore t :which-key "windows")
-   "f" '(:ignore t :which-key "files")
-   "g" '(:ignore t :which-key "magit")
-   "o" '(:ignore t :which-key "org")
-   "p" '(:ignore t :which-key "pdf")
-   "m" '(:ignore t :which-key "media")
-   "j" '(:ignore t :which-key "avy-jump")
-   "l" '(:ignore t :which-key "look-up")
-   "SPC" 'avy-goto-char
-   "jj" 'avy-goto-char-2
-   "jl" 'avy-goto-line
-   "gs" 'magit-status
    "wd" 'delete-window
    "wo" 'delete-other-windows
    "wh" 'split-window-horizontally
    "wv" 'split-window-vertically
    "ww" 'other-window
-   "bb" 'ivy-switch-buffer
-   "bj" 'next-buffer
-   "bk" 'previous-buffer
-   "bd" 'kill-buffer-and-window
+
+   "f" '(:ignore t :which-key "files")
    "ff" 'counsel-find-file
    "fr" 'recentf-open-files
    "fc" 'evilnc-comment-or-uncomment-lines
    "fi" 'indent-region
-   "mb" 'bongo-playlist
-   "me" 'emms
-   "mt" 'twit
-   "mm" 'simple-mpc
-   "mc" 'circe
-   "mr" 'md4rd
+
+   "g" '(:ignore t :which-key "magit")
+   "gs" 'magit-status
+   
+   "o" '(:ignore t :which-key "org")
    "oa" 'org-agenda
    "oc" 'org-capture
    "ob" 'org-iswitchb
@@ -165,14 +151,34 @@
    "os" 'ispell-buffer
    "ow" 'org-wc-display
    "od" 'org-wc-remove-overlays
-   "dd" 'osx-dictionary-search-word-at-point
-   "di" 'osx-dictionary-search-input
+
+   "p" '(:ignore t :which-key "pdf")
    "pu" 'pdf-annot-add-underline-markup-annotation
    "ph" 'pdf-annot-add-highlight-markup-annotation
    "pd" 'pdf-annot-delete
    "pg" 'pdf-view-goto-page
+
+   "m" '(:ignore t :which-key "media")
+   "mb" 'bongo-playlist
+   "me" 'emms
+   "mt" 'twit
+   "mm" 'simple-mpc
+   "mc" 'circe
+   "mr" 'md4rd
+
+   "j" '(:ignore t :which-key "avy-jump")
+   "SPC" 'avy-goto-char
+   "jj" 'avy-goto-char-2
+   "jl" 'avy-goto-line
+
+   "d" '(:ignore t :which-key "dictionary")
+   "dd" 'osx-dictionary-search-word-at-point
+   "di" 'osx-dictionary-search-input
+   
+   "l" '(:ignore t :which-key "look-up")
    "lw" 'xah-lookup-wikipedia
    "ld" 'xah-lookup-word-definition
+
    ))
 
 (provide 'du-key-navigator)
