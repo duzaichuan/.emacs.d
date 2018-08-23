@@ -160,6 +160,10 @@
   :ensure t
   :commands org-noter)
 
+(use-package org-mind-map
+  :ensure t
+  :commands org-mind-map-write)
+
 (use-package org-babel-eval-in-repl
   :ensure t
   :after ob

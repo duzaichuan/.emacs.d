@@ -151,6 +151,7 @@
    "os" 'ispell-buffer
    "ow" 'org-wc-display
    "od" 'org-wc-remove-overlays
+   "om" 'org-mind-map-write
 
    "p" '(:ignore t :which-key "pdf")
    "pu" 'pdf-annot-add-underline-markup-annotation
