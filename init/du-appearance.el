@@ -65,4 +65,9 @@
   :diminish t
   :hook ((clojure-mode cider-repl-mode emacs-lisp-mode) . rainbow-delimiters-mode))
 
+(use-package color-identifiers-mode
+  :ensure t
+  :diminish color-identifiers-mode
+  :hook (prog-mode . color-identifiers-mode))
+
 (provide 'du-appearance)
