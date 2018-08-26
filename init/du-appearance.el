@@ -63,11 +63,10 @@
 (use-package rainbow-delimiters
   :ensure t
   :diminish t
-  :hook ((clojure-mode cider-repl-mode emacs-lisp-mode) . rainbow-delimiters-mode))
+  :hook ((emacs-lisp-mode lisp-mode sly-mrepl-mode clojure-mode cider-repl-mode) . rainbow-delimiters-mode))
 
-(use-package color-identifiers-mode
+(use-package visual-fill-column
   :ensure t
-  :diminish color-identifiers-mode
-  :hook (prog-mode . color-identifiers-mode))
+  :commands visual-fill-column-mode)
 
 (provide 'du-appearance)

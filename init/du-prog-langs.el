@@ -6,6 +6,11 @@
   ;; Place REPL on the left of the script window when splitting.
   (setq eir-repl-placement 'left))
 
+(use-package sly
+  :ensure t
+  :init (setq inferior-lisp-program "/usr/local/bin/clisp")
+  :commands sly)
+
 (use-package julia-mode
   :ensure t
   :mode ("\\.jl$" . julia-mode)
