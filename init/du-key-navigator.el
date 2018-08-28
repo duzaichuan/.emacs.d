@@ -64,7 +64,10 @@
 
 (use-package evil-escape
   :ensure t
-  :config (evil-escape-mode))
+  :config
+  (progn
+    (evil-escape-mode)
+    (setq-default evil-escape-delay 0.2) ))
 
 (use-package evil-collection
   :ensure t
@@ -131,7 +134,7 @@
    "wv" 'split-window-vertically
    "ww" 'other-window
 
-   "f" '(:ignore t :which-key "files")
+   "f" '(:ignore t :which-key "file/format")
    "ff" 'counsel-find-file
    "fr" 'recentf-open-files
    "fc" 'evilnc-comment-or-uncomment-lines
