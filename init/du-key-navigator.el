@@ -156,9 +156,8 @@
    "on" 'org-noter
    "oi" 'org-noter-insert-note
    "os" 'ispell-buffer
-   "ow" 'org-wc-display
-   "od" 'org-wc-remove-overlays
    "om" 'org-mind-map-write
+   "ow" 'writeroom-mode
 
    "p" '(:ignore t :which-key "pdf")
    "pu" 'pdf-annot-add-underline-markup-annotation

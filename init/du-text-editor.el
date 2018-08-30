@@ -130,10 +130,6 @@
   :config
   (require 'org-ref-citeproc))
 
-(use-package org-wc
-  :ensure t
-  :commands (org-wc-remove-overlays org-wc-count-subtrees org-wc-display))
-
 (use-package ox-word
   :load-path "lib/"
   :after org)
@@ -199,7 +195,8 @@
   :hook (org-mode LaTeX-mode markdown-mode)
   :init
   (setq writeroom-fullscreen-effect 'maximized
-	writeroom-maximize-window nil))
+	writeroom-maximize-window nil
+	writeroom-width 85))
 
 (use-package ispell
   :commands ispell
