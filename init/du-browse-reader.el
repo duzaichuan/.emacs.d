@@ -6,7 +6,6 @@
   :bind (([f7] . eww)
 	 :map eww-link-keymap
 	 ("p" . du/mpv-play))
-  :hook (eww-mode . visual-fill-column-mode)
   :init
   (setq shr-width 90
 	shr-external-rendering-functions '((pre . eww-tag-pre))
@@ -74,9 +73,7 @@
 (use-package nov
   :ensure t
   :mode ("\\.epub\\'" . nov-mode)
-  :hook (nov-mode . visual-fill-column-mode)
-  :init (setq nov-text-width most-positive-fixnum
-	      visual-fill-column-center-text t)
+  :init (setq nov-text-width most-positive-fixnum)
   :config
   (progn
     

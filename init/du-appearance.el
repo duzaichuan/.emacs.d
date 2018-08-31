@@ -19,8 +19,6 @@
 (global-hl-line-mode t)
 (global-visual-line-mode)
 (global-prettify-symbols-mode)
-(setq visual-fill-column-width 90)
-(setq visual-fill-column-center-text t)
 
 ;;;; 设置编辑环境
 ;; 设置为中文简体语言环境
@@ -67,6 +65,8 @@
 
 (use-package visual-fill-column
   :ensure t
-  :commands visual-fill-column-mode)
+  :init (setq visual-fill-column-center-text t
+	      visual-fill-column-width 90)
+  :hook ((eww-mode nov-mode) . visual-fill-column-mode))
 
 (provide 'du-appearance)

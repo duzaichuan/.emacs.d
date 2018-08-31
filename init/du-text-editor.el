@@ -185,7 +185,7 @@
 (use-package writeroom-mode
   :ensure t
   :commands writeroom-mode
-  :hook (org-mode LaTeX-mode)
+  :hook org-mode
   :init
   (setq writeroom-fullscreen-effect 'maximized
 	writeroom-maximize-window nil
