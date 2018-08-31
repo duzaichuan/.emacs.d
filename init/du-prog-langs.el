@@ -64,15 +64,15 @@
     (eval-after-load 'matlab
       '(add-to-list 'matlab-shell-command-switches "-nodesktop -nosplash"))
     
-    (defun du/matlab-shell-here ()
+    (defun du-matlab-shell-here ()
       "opens up a new matlab shell in the directory associated with the current buffer's file."
       (interactive)
-      (split-window-right)
+      (split-window-below)
       (other-window 1)
       (matlab-shell)) ))
 
 (use-package dynare
-  :load-path "/lib"
+  :load-path "lib/"
   :hook (dynare-mode . display-line-numbers-mode)
   :mode ("\\.mod\\'" . dynare-mode))
 
@@ -85,7 +85,6 @@
 (use-package ein
   :ensure t
   :bind ([f6] . ein:jupyter-server-start)
-  :hook (ein:notebook-multilang-mode . visual-fill-column-mode)
   :init (setq ein:jupyter-default-notebook-directory "~/Jupyter/"))
 
 (use-package clojure-mode
@@ -112,8 +111,6 @@
         cider-repl-use-clojure-font-lock t
         cider-repl-wrap-history t
         cider-repl-history-size 1000
-        ;; cider-repl-history-file (f-expand ".cider-history"
-	;; 			      user-emacs-directory)
         cider-show-error-buffer t
         nrepl-hide-special-buffers t))
 

@@ -74,7 +74,8 @@
   (progn
     (setq org-preview-latex-default-process 'imagemagick
 	  org-image-actual-width (/ (display-pixel-width) 2)
-	 ; org-pretty-entities t ; render UTF8 characters
+	  org-pretty-entities t ; render UTF8 characters
+	  org-pretty-entities-include-sub-superscripts nil
 	  org-confirm-babel-evaluate nil
 	  org-src-fontify-natively t ; syntax highlight in org mode
 	  org-highlight-latex-and-related '(latex) ; org-mode buffer latex syntax highlighting
