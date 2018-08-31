@@ -8,7 +8,7 @@
 	 ("p" . du/mpv-play))
   :hook (eww-mode . visual-fill-column-mode)
   :init
-  (setq shr-width 80
+  (setq shr-width 90
 	shr-external-rendering-functions '((pre . eww-tag-pre))
 	browse-url-browser-function #'du-browse-url)
 

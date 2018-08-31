@@ -13,7 +13,7 @@
  '(company-quickhelp-color-foreground "#DCDCCC")
  '(compilation-message-face (quote default))
  '(counsel-find-file-ignore-regexp
-   "\\(\\`\\.[^.]\\|\\(?:\\.\\(?:aux\\|b\\(?:bl\\|in\\|lg\\|zr/\\)\\|c\\(?:lass\\|ps?\\)\\|d\\(?:\\(?:64fs\\|fs\\|x\\(?:\\(?:32\\|64\\)fs\\)?\\)l\\)\\|elc\\|f\\(?:asl?\\|mt\\|ns?\\|\\(?:x\\(?:\\(?:32\\|64\\)f\\)\\)?sl\\)\\|g\\(?:it/\\|[lm]o\\)\\|hg/\\|idx\\|kys?\\|l\\(?:bin\\|ib\\|o[ft]\\|x\\(?:\\(?:32\\|64\\)fsl\\)\\|[ano]\\)\\|m\\(?:em\\|o\\)\\|p\\(?:64fsl\\|fsl\\|gs?\\|y[co]\\)\\|s\\(?:o\\|parcf\\|vn/\\|x\\(?:\\(?:32\\|64\\)fsl\\)\\)\\|t\\(?:fm\\|oc\\|ps?\\)\\|ufsl\\|vrs?\\|wx\\(?:\\(?:32\\|64\\)fsl\\)\\|x86f\\|[ao]\\)\\|CVS/\\|_\\(?:\\(?:MTN\\|darcs\\)/\\)\\|~\\)\\'\\)" t)
+   "\\(\\`\\.[^.]\\|\\(?:\\.\\(?:aux\\|b\\(?:bl\\|in\\|lg\\|zr/\\)\\|c\\(?:lass\\|ps?\\)\\|d\\(?:\\(?:64fs\\|fs\\|x\\(?:\\(?:32\\|64\\)fs\\)?\\)l\\)\\|elc\\|f\\(?:asl?\\|mt\\|ns?\\|\\(?:x\\(?:\\(?:32\\|64\\)f\\)\\)?sl\\)\\|g\\(?:it/\\|[lm]o\\)\\|hg/\\|idx\\|kys?\\|l\\(?:bin\\|ib\\|o[ft]\\|x\\(?:\\(?:32\\|64\\)fsl\\)\\|[ano]\\)\\|m\\(?:em\\|o\\)\\|p\\(?:64fsl\\|fsl\\|gs?\\|y[co]\\)\\|s\\(?:o\\|parcf\\|vn/\\|x\\(?:\\(?:32\\|64\\)fsl\\)\\)\\|t\\(?:fm\\|oc\\|ps?\\)\\|ufsl\\|vrs?\\|wx\\(?:\\(?:32\\|64\\)fsl\\)\\|x86f\\|[ao]\\)\\|CVS/\\|_\\(?:\\(?:MTN\\|darcs\\)/\\)\\|~\\)\\'\\)")
  '(cua-global-mark-cursor-color "#2aa198")
  '(cua-normal-cursor-color "#657b83")
  '(cua-overwrite-cursor-color "#b58900")
@@ -51,13 +51,13 @@
  '(hl-fg-colors
    (quote
     ("#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3" "#fdf6e3")))
- '(ivy-dynamic-exhibit-delay-ms 200 t)
- '(ivy-height 10 t)
+ '(ivy-dynamic-exhibit-delay-ms 200)
+ '(ivy-height 10)
  '(ivy-initial-inputs-alist nil t)
- '(ivy-magic-tilde nil t)
+ '(ivy-magic-tilde nil)
  '(ivy-re-builders-alist (quote ((t . ivy--regex-ignore-order))) t)
- '(ivy-use-virtual-buffers t t)
- '(ivy-wrap t t)
+ '(ivy-use-virtual-buffers t)
+ '(ivy-wrap t)
  '(magit-diff-use-overlays nil)
  '(mu4e-headers-include-related nil)
  '(neo-theme (quote icons))
@@ -84,7 +84,7 @@
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote
-    (evil-escape sly rainbow-identifiers org-wc julia-repl smartparens-org web-search julia-mode ess xah-lookup language-detection magithub simple-mpc bongo posframe circe skewer-mode org-beautify-theme evil-collection clj-refactor rainbow-delimiters org-download org-pdfview writeroom-mode org-bullets matlab-mode org org-edna 0blayout pdf-tools ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex)))
+    (poly-noweb poly-markdown poly-R evil-escape sly rainbow-identifiers org-wc julia-repl smartparens-org web-search julia-mode ess xah-lookup language-detection magithub simple-mpc bongo posframe circe skewer-mode org-beautify-theme evil-collection clj-refactor rainbow-delimiters org-download org-pdfview writeroom-mode org-bullets matlab-mode org org-edna 0blayout pdf-tools ob-ipython smartparens company auto-package-update polymode pandoc-mode auctex)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(pos-tip-background-color "#eee8d5")
  '(pos-tip-foreground-color "#586e75")

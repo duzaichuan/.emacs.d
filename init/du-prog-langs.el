@@ -35,6 +35,16 @@
     (add-hook 'ess-mode-hook (lambda () (ess-set-style 'RStudio))) ; Make ESS use more horizontal screen	     
     (add-hook 'ess-R-post-run-hook 'ess-execute-screen-options) ))
 
+(use-package polymode :ensure t :defer t)
+(use-package poly-noweb :ensure t :defer t)
+(use-package poly-markdown :ensure t :defer t)
+
+(use-package poly-R
+  :ensure t
+  ;; :hook ((poly-markdown+r-mode . writeroom-mode))
+  :mode (("\\.md" . poly-markdown-mode)
+	 ("\\.[rR]md\\'" . poly-markdown+r-mode)))
+
 (use-package matlab-mode
   :ensure t
   :mode "\\.m\\'"

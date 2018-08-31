@@ -182,21 +182,14 @@
     	  markdown-command "multimarkdown")
     ))
 
-(use-package polymode
-  :ensure t
-  :init (autoload 'r-mode "ess-site.el" "Major mode for editing R source." t)
-  :hook (poly-markdown+r-mode . writeroom-mode)
-  :mode (("\\.md" . poly-markdown-mode)
-	 ("\\.[rR]md\\'" . poly-markdown+r-mode)))
-
 (use-package writeroom-mode
   :ensure t
   :commands writeroom-mode
-  :hook (org-mode LaTeX-mode markdown-mode)
+  :hook (org-mode LaTeX-mode)
   :init
   (setq writeroom-fullscreen-effect 'maximized
 	writeroom-maximize-window nil
-	writeroom-width 85))
+	writeroom-width 90))
 
 (use-package ispell
   :commands ispell
