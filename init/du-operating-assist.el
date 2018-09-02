@@ -46,10 +46,7 @@
   :ensure t
   :diminish paredit-mode
   :bind ("C-c d" . paredit-delete-region)
-  :hook ((lisp-mode . paredit-mode)
-	 (emacs-lisp-mode . paredit-mode)
-	 (ielm-mode . paredit-mode)
-	 (eval-expression-minibuffer-setup . paredit-mode)))
+  :hook ((lisp-mode emacs-lisp-mode ielm-mode eval-expression-minibuffer-setup) . paredit-mode))
 
 (use-package paren
   :config
@@ -87,9 +84,9 @@
   :diminish ivy-mode
   :bind (("C-x b" . ivy-switch-buffer)
          ("C-x B" . ivy-switch-buffer-other-window)
-         ("M-H"   . ivy-resume))
-  :bind (:map ivy-switch-buffer-map
-              ("C-k" . ivy-switch-buffer-kill))
+         ("M-H"   . ivy-resume)
+	 :map ivy-switch-buffer-map
+	 ("C-k" . ivy-switch-buffer-kill))
   :custom
   (ivy-dynamic-exhibit-delay-ms 200)
   (ivy-height 10)
@@ -123,8 +120,6 @@
          ("M-s g" . counsel-rg)
          ("M-s j" . counsel-dired-jump)
 	 ("C-x p f" . counsel-git))
-  :init
-  (bind-key "M-r" #'counsel-minibuffer-history minibuffer-local-map)
   :config
   (add-to-list 'ivy-sort-matches-functions-alist
                '(counsel-find-file . ivy--sort-files-by-date)))

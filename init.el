@@ -38,14 +38,6 @@
       (setq exec-path-from-shell-arguments '("-l")))
     (exec-path-from-shell-initialize)))
 
-(use-package auto-package-update
-  :ensure t
-  :config
-  (progn
-    (setq auto-package-update-delete-old-versions t)
-    (setq auto-package-update-hide-results t)
-    (auto-package-update-maybe)))
-
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
 ;; Libraries

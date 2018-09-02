@@ -80,7 +80,7 @@
      ("" "textcomp" t nil)
      ("" "amssymb" t nil)
      ("" "capt-of" nil nil)
-     ("hidelinks=true" "hyperref" nil nil))))
+     ("hidelinks" "hyperref" nil nil))))
  '(org-startup-truncated nil)
  '(package-selected-packages
    (quote

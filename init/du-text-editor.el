@@ -93,7 +93,6 @@
     ;; Quickly insert blocks
     (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
-    (add-hook 'org-mode-hook 'org-display-inline-images)
     (use-package smartparens-org)
     (use-package smartparens-Tex-org :load-path "lib/") ))
 
