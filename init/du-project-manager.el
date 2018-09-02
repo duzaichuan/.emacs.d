@@ -14,6 +14,7 @@
   :bind ("C-." . imenu-anywhere))
 
 (use-package dired
+  :defer t
   :config
   (progn
     ;; 延迟加载
@@ -22,17 +23,25 @@
     ;; dired - reuse current buffer by pressing 'a'
     (put 'dired-find-alternate-file 'disabled nil)
     ;; always delete and copy recursively
-    (setq dired-recursive-deletes 'always)
-    (setq dired-recursive-copies 'always)
+    (setq dired-recursive-deletes 'always
+	  dired-recursive-copies 'always)
     ;; if there is a dired buffer displayed in the next window, use its
     ;; current subdir, instead of the current subdir of this dired buffer
     (setq dired-dwim-target t)
-    ;; get rid of a message error
+    ;; get rid of a message error in osx
     (when (eq system-type 'darwin)
       (require 'ls-lisp)
-      (setq ls-lisp-use-insert-directory-program nil))
-    ;; enable some really cool extensions like C-x C-j(dired-jump)
-    (use-package dired-x)))
+      (setq ls-lisp-use-insert-directory-program nil
+	    dired-listing-switches "-alhG"
+	    ls-lisp-ignore-case t
+	    ls-lisp-use-string-collate nil
+	    ls-lisp-verbosity '(links uid)
+	    ls-lisp-format-time-list '("%b %e %H:%M" "%b %e  %Y")
+	    ls-lisp-use-localized-time-format t))
+    ))
+
+(use-package dired-x
+  :bind ("C-x C-j" . dired-jump))
 
 (use-package treemacs
   :ensure t
