@@ -17,9 +17,6 @@
   :defer t
   :config
   (progn
-    ;; 延迟加载
-    (with-eval-after-load 'dired
-      (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file))
     ;; dired - reuse current buffer by pressing 'a'
     (put 'dired-find-alternate-file 'disabled nil)
     ;; always delete and copy recursively

@@ -122,7 +122,7 @@
    :non-normal-prefix "M-SPC"
 
    "b" '(:ignore t :which-key "buffers")
-   "bb" 'ivy-switch-buffer
+   "bb" 'helm-mini
    "bj" 'next-buffer
    "bk" 'previous-buffer
    "bd" 'kill-buffer-and-window

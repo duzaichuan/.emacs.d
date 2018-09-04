@@ -81,13 +81,14 @@
 	  org-highlight-latex-and-related '(latex) ; org-mode buffer latex syntax highlighting
 	  org-footnote-auto-adjust t ; renumber footnotes when new ones are inserted
 	  org-export-with-smart-quotes t ; export pretty double quotation marks
+	  ispell-parser 'tex
+	  org-latex-caption-above '(table image)
 	  ;; set value of the variable org-latex-pdf-process
 	  org-latex-pdf-process
 	  '("pdflatex -interaction nonstopmode -output-directory %o %f"
 	    "bibtex %b"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"
-	    "pdflatex -interaction nonstopmode -output-directory %o %f")
-	  ispell-parser 'tex)
+	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
     (plist-put org-format-latex-options :scale 1.70) ; bigger latex fragment
     (set-default 'truncate-lines nil) ; line wrap in org mode
     ;; Quickly insert blocks
@@ -114,7 +115,7 @@
 
 (use-package org-ref
   :ensure t
-  :defer 0.5
+  ;; :defer 0.5
   :bind (("C-c r" . org-ref-helm-insert-cite-link)
 	 ("C-c ir" . org-ref-helm-insert-ref-link)
 	 ("C-c il" . org-ref-helm-insert-label-link))

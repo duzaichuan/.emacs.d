@@ -71,10 +71,9 @@
 
 (use-package helm
   :ensure t
-  :demand t
+  :commands helm-mini
   :bind (:map helm-map
               ("<tab>" . helm-execute-persistent-action)
-              ("C-i"   . helm-execute-persistent-action)
               ("C-z"   . helm-select-action)
               ("A-v"   . helm-previous-page))
   :config (helm-autoresize-mode 1))
