@@ -67,6 +67,6 @@
   :ensure t
   :init (setq visual-fill-column-center-text t
 	      visual-fill-column-width 90)
-  :hook ((eww-mode nov-mode ein:notebook-multilang-mode) . visual-fill-column-mode))
+  :hook ((eww-mode nov-mode ein:notebook-multilang-mode mu4e-compose-mode mu4e-view-mode) . visual-fill-column-mode))
 
 (provide 'du-appearance)

@@ -116,10 +116,10 @@
   :ensure t
   :after evil-collection
   :config
-  (general-define-key
-   :keymaps '(normal visual insert emacs)
-   :prefix "SPC"
-   :non-normal-prefix "M-SPC"
+  (general-evil-setup t)
+  (general-nvmap
+    :prefix "SPC"
+    :keymaps 'override
 
    "b" '(:ignore t :which-key "buffers")
    "bb" 'helm-mini
