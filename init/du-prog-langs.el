@@ -59,8 +59,10 @@
 	(message "Tracking stable Emacs")
       (defvar default-fill-column (default-value 'fill-column))
       (defalias 'string-to-int 'string-to-number))
-    (setq matlab-indent-function t)
-    (setq matlab-shell-command "/Applications/MATLAB/MATLAB_R2017b.app/bin/matlab")
+    (setq matlab-indent-function t
+	  semantic-matlab-root-directory "/Applications/MATLAB/MATLAB_R2017b.app"
+	  matlab-mode-install-path "/Applications/MATLAB/MATLAB_R2017b.app/toolbox"
+	  matlab-shell-command "/Applications/MATLAB/MATLAB_R2017b.app/bin/matlab")
     (eval-after-load 'matlab
       '(add-to-list 'matlab-shell-command-switches "-nodesktop -nosplash"))
     
@@ -69,7 +71,9 @@
       (interactive)
       (split-window-below)
       (other-window 1)
-      (matlab-shell)) ))
+      (matlab-shell))
+    )
+  :config (matlab-cedet-setup))
 
 (use-package dynare
   :load-path "lib/"
