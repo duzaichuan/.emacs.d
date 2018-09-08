@@ -46,7 +46,7 @@
   :ensure t
   :diminish paredit-mode
   :bind ("C-c d" . paredit-delete-region)
-  :hook ((lisp-mode emacs-lisp-mode ielm-mode eval-expression-minibuffer-setup) . paredit-mode))
+  :hook ((lisp-mode emacs-lisp-mode clojure-mode ielm-mode eval-expression-minibuffer-setup) . paredit-mode))
 
 (use-package paren
   :config

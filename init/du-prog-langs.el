@@ -96,7 +96,6 @@
   :commands (clojure-mode)
   :mode ("\\.clj\\'" "\\.cljs\\'" "\\.edn\\'" "\\.boot\\'")
   :interpreter "clojure"
-  :hook ((clojure-mode . paredit-mode))
   :bind (:map clojure-mode-map
 	      ("C-<return>" . eir-eval-in-cider))
   :config
