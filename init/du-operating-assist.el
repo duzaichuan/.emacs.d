@@ -62,6 +62,7 @@
 (use-package smartparens
   :ensure t
   :diminish smartparens-mode
+  :hook (prog-mode . smartparens-mode)
   :config
   (progn
     (smartparens-global-mode t)

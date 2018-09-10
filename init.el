@@ -25,8 +25,8 @@
   )
 
 (use-package dash)                ; A modern list library
-(use-package diminish :ensure t)  ; Hide modes in the mode-line
-(use-package bind-key :ensure t)  ; if you use any :bind variant
+(use-package diminish :ensure t :defer t)  ; Hide modes in the mode-line
+(use-package bind-key :ensure t :defer t)  ; if you use any :bind variant
 
 (use-package exec-path-from-shell
   :if (memq window-system '(ns mac))

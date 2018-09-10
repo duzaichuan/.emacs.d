@@ -52,8 +52,7 @@
   :ensure t
   :config
   (setq powerline-image-apple-rgb t
-	powerline-default-separator 'butt)
-  (powerline-center-evil-theme))
+	powerline-default-separator 'butt))
 
 (use-package org-beautify-theme
   :ensure t)

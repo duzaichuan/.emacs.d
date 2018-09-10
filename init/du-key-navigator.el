@@ -20,6 +20,7 @@
 (use-package which-key
   :ensure t
   :diminish which-key-mode
+  :after general
   :config
   (progn
     (which-key-mode)
@@ -33,6 +34,7 @@
 (use-package evil
   :ensure t
   :diminish evil-mode
+  :defer t
   :init (setq evil-want-integration nil) 
   :config
   (progn
@@ -43,6 +45,8 @@
 	  evil-want-C-u-scroll t)
     (setcdr evil-insert-state-map nil)
     (define-key evil-insert-state-map [escape] 'evil-normal-state)
+
+    (powerline-center-evil-theme)
     
     (evil-set-initial-state 'bongo-playlist-mode 'emacs)
     (evil-set-initial-state 'osx-dictionary-mode 'emacs)
@@ -64,6 +68,7 @@
 
 (use-package evil-escape
   :ensure t
+  :after evil
   :config
   (progn
     (evil-escape-mode)
@@ -85,7 +90,7 @@
 
 (use-package evil-org
   :ensure t
-  :after org
+  :after (evil org)
   :diminish t
   :config
   (progn
@@ -97,12 +102,12 @@
 
 (use-package evil-cleverparens
   :ensure t
-  :hook (paredit-mode . evil-cleverparens-mode)
+  :after (evil paredit)
   :config (setq evil-cleverparens-swap-move-by-word-and-symbol t))
 
 (use-package evil-paredit
   :ensure t
-  :hook (paredit-mode . evil-paredit-mode))
+  :after (evil paredit))
 
 (use-package evil-nerd-commenter
   :ensure t
