@@ -77,7 +77,6 @@
 
 (use-package dynare
   :load-path "lib/"
-  :hook (dynare-mode . display-line-numbers-mode)
   :mode ("\\.mod\\'" . dynare-mode))
 
 (use-package python

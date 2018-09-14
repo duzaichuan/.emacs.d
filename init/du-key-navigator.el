@@ -35,12 +35,12 @@
   :ensure t
   :diminish evil-mode
   :defer t
-  :init (setq evil-want-integration nil) 
+  :init (setq evil-want-keybinding nil
+	      evil-respect-visual-line-mode t) 
   :config
   (progn
     (evil-mode 1)
     (setq evil-cross-lines t
-	  evil-respect-visual-line-mode t
 	  evil-move-cursor-back nil
 	  evil-want-C-u-scroll t)
     (setcdr evil-insert-state-map nil)
