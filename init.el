@@ -2,9 +2,18 @@
 (setq package-enable-at-startup nil ; :mode :interpreter is needed if set to nil
       file-name-handler-alist nil
       message-log-max 16384
-      gc-cons-threshold 402653184
-      gc-cons-percentage 0.6
+      gc-cons-threshold 64102410241024
+      gc-cons-percentage 0.9
       auto-window-vscroll nil)
+
+(defun du-reset-gc-cons ()
+  "Return the garbage collection threshold to default values."
+  (setq gc-cons-threshold
+	(car (get 'gc-cons-threshold 'standard-value))
+	gc-cons-percentage
+	(car (get 'gc-cons-percentage 'standard-value))))
+
+(add-hook 'after-init-hook 'du-reset-gc-cons)
 
 (eval-when-compile (require 'cl-lib))
 

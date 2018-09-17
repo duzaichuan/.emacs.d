@@ -126,70 +126,70 @@
     :prefix "SPC"
     :keymaps 'override
 
-   "b" '(:ignore t :which-key "buffers")
-   "bb" 'helm-mini
-   "bj" 'next-buffer
-   "bk" 'previous-buffer
-   "bd" 'kill-buffer-and-window
-   
-   "w" '(:ignore t :which-key "windows")
-   "wd" 'delete-window
-   "wo" 'delete-other-windows
-   "wh" 'split-window-horizontally
-   "wv" 'split-window-vertically
-   "ww" 'other-window
+    "b" '(:ignore t :which-key "buffers")
+    "bb" 'helm-mini
+    "bj" 'next-buffer
+    "bk" 'previous-buffer
+    "bd" 'kill-buffer-and-window
+    
+    "w" '(:ignore t :which-key "windows")
+    "wd" 'delete-window
+    "wo" 'delete-other-windows
+    "wh" 'split-window-horizontally
+    "wv" 'split-window-vertically
+    "ww" 'other-window
 
-   "f" '(:ignore t :which-key "file/format")
-   "ff" 'counsel-find-file
-   "fr" 'recentf-open-files
-   "fc" 'evilnc-comment-or-uncomment-lines
-   "fi" 'indent-region
+    "f" '(:ignore t :which-key "file/format")
+    "ff" 'counsel-find-file
+    "fr" 'recentf-open-files
+    "fc" 'evilnc-comment-or-uncomment-lines
+    "fi" 'indent-region
 
-   "g" '(:ignore t :which-key "magit")
-   "gs" 'magit-status
-   
-   "o" '(:ignore t :which-key "org")
-   "oa" 'org-agenda
-   "oc" 'org-capture
-   "ob" 'org-iswitchb
-   "or" 'org-refile
-   "ol" 'org-store-link
-   "oe" 'org-export-dispatch
-   "of" 'writeroom-mode
-   "of" 'org-footnote-action
-   "ot" 'org-time-stamp
-   "on" 'org-noter
-   "oi" 'org-noter-insert-note
-   "os" 'ispell-buffer
-   "om" 'org-mind-map-write
-   "ow" 'writeroom-mode
+    "g" '(:ignore t :which-key "magit")
+    "gs" 'magit-status
+    
+    "o" '(:ignore t :which-key "org")
+    "oa" 'org-agenda
+    "oc" 'org-capture
+    "ob" 'org-iswitchb
+    "or" 'org-refile
+    "ol" 'org-store-link
+    "oe" 'org-export-dispatch
+    "of" 'writeroom-mode
+    "of" 'org-footnote-action
+    "ot" 'org-time-stamp
+    "on" 'org-noter
+    "oi" 'org-noter-insert-note
+    "os" 'ispell-buffer
+    "om" 'org-mind-map-write
+    "ow" 'writeroom-mode
 
-   "p" '(:ignore t :which-key "pdf")
-   "pu" 'pdf-annot-add-underline-markup-annotation
-   "ph" 'pdf-annot-add-highlight-markup-annotation
-   "pd" 'pdf-annot-delete
-   "pg" 'pdf-view-goto-page
+    "p" '(:ignore t :which-key "pdf")
+    "pu" 'pdf-annot-add-underline-markup-annotation
+    "ph" 'pdf-annot-add-highlight-markup-annotation
+    "pd" 'pdf-annot-delete
+    "pg" 'pdf-view-goto-page
 
-   "m" '(:ignore t :which-key "media")
-   "mb" 'bongo-playlist
-   "me" 'emms
-   "mt" 'twit
-   "mm" 'simple-mpc
-   "mc" 'circe
-   "mr" 'md4rd
+    "m" '(:ignore t :which-key "media")
+    "mb" 'bongo-playlist
+    "me" 'emms
+    "mt" 'twit
+    "mm" 'simple-mpc
+    "mc" 'circe
+    "mr" 'md4rd
 
-   "j" '(:ignore t :which-key "avy-jump")
-   "SPC" 'avy-goto-char
-   "jj" 'avy-goto-char-2
-   "jl" 'avy-goto-line
+    "j" '(:ignore t :which-key "avy-jump")
+    "SPC" 'avy-goto-char
+    "jj" 'avy-goto-char-2
+    "jl" 'avy-goto-line
 
-   "d" '(:ignore t :which-key "dictionary")
-   "dd" 'osx-dictionary-search-word-at-point
-   "di" 'osx-dictionary-search-input
-   
-   "l" '(:ignore t :which-key "look-up")
-   "lw" 'xah-lookup-wikipedia
-   "ld" 'xah-lookup-word-definition
+    "d" '(:ignore t :which-key "dictionary")
+    "dd" 'osx-dictionary-search-word-at-point
+    "di" 'osx-dictionary-search-input
+    
+    "l" '(:ignore t :which-key "look-up")
+    "lw" 'xah-lookup-wikipedia
+    "ld" 'xah-lookup-word-definition
 
    ))
 
