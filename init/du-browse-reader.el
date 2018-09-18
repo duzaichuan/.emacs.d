@@ -5,7 +5,7 @@
 (use-package eww
   :bind (([f7] . eww)
 	 :map eww-link-keymap
-	 ("p" . du/mpv-play))
+	 ("p" . du-mpv-play))
   :init
   (setq shr-width 90
 	shr-external-rendering-functions '((pre . eww-tag-pre))
@@ -77,11 +77,11 @@
   :config
   (progn
     
-    (defun du/nov-font-setup ()
+    (defun du-nov-font-setup ()
       (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
                                :height 1.1))
     
-    (add-hook 'nov-mode-hook 'du/nov-font-setup) )) 
+    (add-hook 'nov-mode-hook 'du-nov-font-setup) )) 
 
 (use-package elfeed
   :ensure t
@@ -89,11 +89,11 @@
   :config
   (progn
     
-    (defun du/feed-font-setup ()
+    (defun du-feed-font-setup ()
       (face-remap-add-relative 'variable-pitch :family "Liberation Serif"
                                :height 1.1))
     
-    (add-hook 'elfeed-show-mode-hook 'du/feed-font-setup) ))
+    (add-hook 'elfeed-show-mode-hook 'du-feed-font-setup) ))
 
 (use-package elfeed-org
   :ensure t

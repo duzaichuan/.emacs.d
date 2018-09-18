@@ -3,7 +3,7 @@
   :mode ("\\.ses\\'" . ses-mode)
   :config
   (progn
-    (defun du/ses-export-buffer-to-tsv nil
+    (defun du-ses-export-buffer-to-tsv nil
       "Export the current SES buffer to a TSV file.  The file name
     will be derived from the current buffer name."
       (interactive)
@@ -19,6 +19,6 @@
 	(with-temp-file fname (insert (car kill-ring)))))
 
     (add-hook 'ses-mode-hook
-	      (lambda () (add-hook 'after-save-hook 'du/ses-export-buffer-to-tsv t t))) ))
+	      (lambda () (add-hook 'after-save-hook 'du-ses-export-buffer-to-tsv t t))) ))
 
 (provide 'du-data-manipulator)

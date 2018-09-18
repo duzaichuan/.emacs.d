@@ -72,7 +72,7 @@
       mode)))
 
 ;;Mpv trigger
-(defun du/mpv-play (url)
+(defun du-mpv-play (url)
   "play youtube and bilibili at the url point"
   (interactive (list (shr-url-at-point current-prefix-arg)))
   (cond ((string-match "youtube" url)

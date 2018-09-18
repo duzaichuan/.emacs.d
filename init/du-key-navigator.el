@@ -55,14 +55,14 @@
     (evil-add-hjkl-bindings bongo-playlist-mode-map 'emacs)
     (evil-add-hjkl-bindings recentf-dialog-mode-map 'emacs)
     
-    (defun du/evil-record-macro ()
+    (defun du-evil-record-macro ()
       (interactive)
       (if buffer-read-only
     	  (quit-window)
     	(call-interactively 'evil-record-macro)))
     ;; evil quit-window and evil-record-macro integration
     (with-eval-after-load 'evil-maps
-      (define-key evil-normal-state-map (kbd "q") 'du/evil-record-macro))
+      (define-key evil-normal-state-map (kbd "q") 'du-evil-record-macro))
 
     ))
 
