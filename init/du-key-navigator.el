@@ -45,8 +45,6 @@
 	  evil-want-C-u-scroll t)
     (setcdr evil-insert-state-map nil)
     (define-key evil-insert-state-map [escape] 'evil-normal-state)
-
-    (powerline-center-evil-theme)
     
     (evil-set-initial-state 'bongo-playlist-mode 'emacs)
     (evil-set-initial-state 'osx-dictionary-mode 'emacs)
@@ -76,11 +74,10 @@
 
 (use-package evil-collection
   :ensure t
-  :defer 0.1
   :custom (evil-collection-setup-minibuffer t)
+  :hook (after-init . evil-collection-init)
   :config
   (progn
-    (evil-collection-init)
     (with-eval-after-load 'pdf-tools
       (require 'evil-collection-pdf) (evil-collection-pdf-setup)) ))
 

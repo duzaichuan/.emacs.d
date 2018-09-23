@@ -48,11 +48,9 @@
   (setf custom-safe-themes t)
   (load-theme 'zenburn))
 
-(use-package powerline
+(use-package doom-modeline
   :ensure t
-  :config
-  (setq powerline-image-apple-rgb t
-	powerline-default-separator 'butt))
+  :hook (after-init . doom-modeline-init))
 
 (use-package org-beautify-theme
   :ensure t)

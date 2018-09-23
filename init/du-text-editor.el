@@ -1,6 +1,6 @@
 (use-package persistent-scratch
   :ensure t
-  :defer 0.3
+  :defer 0.2
   :config
   (persistent-scratch-setup-default))
 

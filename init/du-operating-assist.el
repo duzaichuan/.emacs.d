@@ -30,7 +30,7 @@
 (use-package company
   :ensure t
   :diminish company-mode
-  :defer 0.2
+  :defer 0.1
   :config
   (progn
     (global-company-mode)
