@@ -1,6 +1,6 @@
 (use-package persistent-scratch
   :ensure t
-  :defer 0.4
+  :defer 0.3
   :config
   (persistent-scratch-setup-default))
 
@@ -37,7 +37,6 @@
 
 (use-package org
   :ensure t
-  :defer 0.2
   :mode ("\\.org\\'" . org-mode)
   :hook ((org-mode . turn-on-org-cdlatex))
   :bind (("C-c l" . org-store-link)
@@ -115,7 +114,6 @@
 
 (use-package org-ref
   :ensure t
-  ;; :defer 0.5
   :bind (("C-c r" . org-ref-helm-insert-cite-link)
 	 ("C-c ir" . org-ref-helm-insert-ref-link)
 	 ("C-c il" . org-ref-helm-insert-label-link))
