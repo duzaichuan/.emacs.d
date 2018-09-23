@@ -107,7 +107,8 @@
   :ensure t
   :after elfeed
   :config
-  (elfeed-goodies/setup))
+  (elfeed-goodies/setup)
+  (setq elfeed-goodies/powerline-default-separator 'bar))
 
 (use-package chinese-word-at-point
   :ensure t

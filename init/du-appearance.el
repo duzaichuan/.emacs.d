@@ -48,9 +48,10 @@
   (setf custom-safe-themes t)
   (load-theme 'zenburn))
 
-(use-package doom-modeline
+(use-package powerline
   :ensure t
-  :hook (after-init . doom-modeline-init))
+  :hook (after-init . powerline-center-evil-theme)
+  :config (setq powerline-default-separator 'butt))
 
 (use-package org-beautify-theme
   :ensure t)

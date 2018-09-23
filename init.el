@@ -33,7 +33,7 @@
   ;; (setq use-package-verbose t)
   )
 
-(use-package dash)                ; A modern list library
+(use-package dash :defer t)                ; A modern list library
 (use-package diminish :ensure t :defer t)  ; Hide modes in the mode-line
 (use-package bind-key :ensure t :defer t)  ; if you use any :bind variant
 
