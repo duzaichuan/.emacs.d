@@ -10,8 +10,10 @@
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
 
 ;; grow shrink windows
-(global-set-key (kbd "M-[") 'shrink-window-horizontally)
-(global-set-key (kbd "M-]") 'enlarge-window-horizontally)
+(global-set-key (kbd "s-[") 'shrink-window-horizontally)
+(global-set-key (kbd "s-]") 'enlarge-window-horizontally)
+(global-set-key (kbd "<s-up>") 'shrink-window)
+(global-set-key (kbd "<s-down>") 'enlarge-window)
 
 (use-package key-chord
   :ensure t
