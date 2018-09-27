@@ -3,7 +3,8 @@
   :bind (([f9] . mu4e)
 	 :map mu4e-compose-mode-map
 	 ("C-x C-a" . mail-add-attachment))
-  :hook (mu4e-compose-mode . flyspell-mode)
+  :hook ((mu4e-compose-mode . flyspell-mode)
+	 (mu4e-compose-mode . turn-off-auto-fill))
   :config
   (progn
     (setq mail-user-agent 'mu4e-user-agent

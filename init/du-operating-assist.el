@@ -48,27 +48,26 @@
   :bind ("C-c d" . paredit-delete-region)
   :hook ((lisp-mode emacs-lisp-mode clojure-mode ielm-mode eval-expression-minibuffer-setup) . paredit-mode))
 
-(use-package paren
-  :config
-  (show-paren-mode t)
-  ;; show paren highlight inside
-  (define-advice show-paren-function (:around (fn) fix-show-paren-function)
-    "Highlight enclosing parens."
-    (cond ((looking-at-p "\\s(") (funcall fn))
-          (t (save-excursion
-               (ignore-errors (backward-up-list))
-               (funcall fn))))) )
-
 (use-package smartparens
   :ensure t
   :diminish smartparens-mode
-  :hook (prog-mode . smartparens-mode)
+  :init
+  (progn
+    (show-paren-mode t)
+    (setq show-paren-when-point-inside-paren t)
+    (define-advice show-paren-function (:around (fn) fix)
+      "Highlight enclosing parens."
+      (cond ((looking-at-p "\\s(") (funcall fn))
+            (t (save-excursion
+		 (ignore-errors (backward-up-list))
+		 (funcall fn))))) )
+  
+  :hook (after-init . smartparens-global-mode)
   :config
   (progn
-    (smartparens-global-mode t)
     ;; single "'" in emacs-lisp mode 
     (sp-local-pair '(emacs-lisp-mode lisp-interaction-mode) "'" nil :actions nil)
-    (sp-local-pair 'emacs-lisp-mode "`" nil :actions nil)))
+    (sp-local-pair 'emacs-lisp-mode "`" nil :actions nil) ))
 
 (use-package helm
   :ensure t

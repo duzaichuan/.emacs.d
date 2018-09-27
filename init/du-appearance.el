@@ -53,13 +53,12 @@
   :hook (after-init . powerline-center-evil-theme)
   :config (setq powerline-default-separator 'butt))
 
-(use-package org-beautify-theme
-  :ensure t)
+(use-package org-beautify-theme :ensure t)
 
 (use-package rainbow-delimiters
   :ensure t
   :diminish t
-  :hook ((emacs-lisp-mode lisp-mode sly-mrepl-mode clojure-mode cider-repl-mode) . rainbow-delimiters-mode))
+  :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package visual-fill-column
   :ensure t
