@@ -11,6 +11,37 @@
   :init (setq inferior-lisp-program "/usr/local/bin/clisp")
   :commands sly)
 
+(use-package geiser
+  :ensure t
+  :init (setq geiser-active-implementations '(chez guile))
+  :commands geiser)
+
+(use-package clojure-mode
+  :ensure t
+  :commands (clojure-mode)
+  :mode ("\\.clj\\'" "\\.cljs\\'" "\\.edn\\'" "\\.boot\\'")
+  :interpreter "clojure"
+  :bind (:map clojure-mode-map
+	      ("C-<return>" . eir-eval-in-cider))
+  :config
+  (progn
+    ;; single "'" and "`" 
+    (sp-local-pair '(clojure-mode cider-repl-mode) "'" nil :actions nil)
+    (sp-local-pair '(clojure-mode cider-repl-mode) "`" nil :actions nil)
+    (require 'eval-in-repl-cider) ))
+
+(use-package cider
+  :ensure t
+  :commands (cider-connect cider-jack-in)
+  :init
+  (setq cider-auto-select-error-buffer t
+        cider-repl-pop-to-buffer-on-connect nil
+        cider-repl-use-clojure-font-lock t
+        cider-repl-wrap-history t
+        cider-repl-history-size 1000
+        cider-show-error-buffer t
+        nrepl-hide-special-buffers t))
+
 (use-package julia-mode
   :ensure t
   :mode ("\\.jl$" . julia-mode)
@@ -27,10 +58,6 @@
 	      ("C-c w" . ess-execute-screen-options))
   :config
   (progn
-    (add-hook 'ess-julia-mode-hook
-              (lambda()
-		(define-key
-                  ess-julia-mode-map (kbd "TAB") 'julia-latexsub-or-indent)))
     (setq ess-fancy-comments nil) ; Make ESS use RStudio's indenting style
     (add-hook 'ess-mode-hook (lambda () (ess-set-style 'RStudio))) ; Make ESS use more horizontal screen	     
     (add-hook 'ess-R-post-run-hook 'ess-execute-screen-options) ))
@@ -41,7 +68,6 @@
 
 (use-package poly-R
   :ensure t
-  ;; :hook ((poly-markdown+r-mode . writeroom-mode))
   :mode (("\\.md" . poly-markdown-mode)
 	 ("\\.[rR]md\\'" . poly-markdown+r-mode)))
 
@@ -89,31 +115,5 @@
   :ensure t
   :bind ([f6] . ein:jupyter-server-start)
   :init (setq ein:jupyter-default-notebook-directory "~/Jupyter/"))
-
-(use-package clojure-mode
-  :ensure t
-  :commands (clojure-mode)
-  :mode ("\\.clj\\'" "\\.cljs\\'" "\\.edn\\'" "\\.boot\\'")
-  :interpreter "clojure"
-  :bind (:map clojure-mode-map
-	      ("C-<return>" . eir-eval-in-cider))
-  :config
-  (progn
-    ;; single "'" and "`" 
-    (sp-local-pair '(clojure-mode cider-repl-mode) "'" nil :actions nil)
-    (sp-local-pair '(clojure-mode cider-repl-mode) "`" nil :actions nil)
-    (require 'eval-in-repl-cider) ))
-
-(use-package cider
-  :ensure t
-  :commands (cider-connect cider-jack-in)
-  :init
-  (setq cider-auto-select-error-buffer t
-        cider-repl-pop-to-buffer-on-connect nil
-        cider-repl-use-clojure-font-lock t
-        cider-repl-wrap-history t
-        cider-repl-history-size 1000
-        cider-show-error-buffer t
-        nrepl-hide-special-buffers t))
 
 (provide 'du-prog-langs)
