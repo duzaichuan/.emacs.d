@@ -109,8 +109,7 @@
 (use-package org-bullets
   :ensure t
   :hook (org-mode . org-bullets-mode)
-  :config
-  (setq org-bullets-bullet-list '("◉" "○" "●" "◆" "♦")))
+  :custom (org-bullets-bullet-list '("◉" "○" "●" "◆" "♦")))
 
 (use-package org-ref
   :ensure t
@@ -175,11 +174,9 @@
   :mode (("\\`README\\.md\\'" . gfm-mode)
          ("\\.md\\'"          . markdown-mode)
          ("\\.markdown\\'"    . markdown-mode))
-  :init
-  (progn
-    (setq markdown-enable-math t
-    	  markdown-command "multimarkdown")
-    ))
+  :custom
+  (markdown-enable-math t)
+  (markdown-command "multimarkdown"))
 
 (use-package writeroom-mode
   :ensure t

@@ -1,13 +1,11 @@
 (use-package recentf
   :bind ("\C-x\ \C-r" . recentf-open-files)
+  :custom
+  (recentf-max-saved-items 500)
+  (recentf-max-menu-items 15)
+  (recentf-auto-cleanup 'never "disable recentf-cleanup on Emacs start, because it can cause problems with remote files")
   :config
-  (progn
-    (setq 
-        recentf-max-saved-items 500
-        recentf-max-menu-items 15
-        ;; disable recentf-cleanup on Emacs start, because it can cause problems with remote files
-        recentf-auto-cleanup 'never)
-    (recentf-mode +1) ))
+  (recentf-mode t))
 
 (use-package imenu-anywhere
   :ensure t
@@ -15,17 +13,15 @@
 
 (use-package dired
   :defer t
+  :custom
+  (dired-recursive-deletes 'always "always delete and copy recursively")
+  (dired-recursive-copies 'always)
+  (dired-dwim-target t)
   :config
   (progn
     ;; dired - reuse current buffer by pressing 'a'
     (put 'dired-find-alternate-file 'disabled nil)
-    ;; always delete and copy recursively
-    (setq dired-recursive-deletes 'always
-	  dired-recursive-copies 'always)
-    ;; if there is a dired buffer displayed in the next window, use its
-    ;; current subdir, instead of the current subdir of this dired buffer
-    (setq dired-dwim-target t)
-    ;; get rid of a message error in osx
+   ;; get rid of a message error in osx
     (when (eq system-type 'darwin)
       (require 'ls-lisp)
       (setq ls-lisp-use-insert-directory-program nil
@@ -48,19 +44,19 @@
 	("C-c C-f" . treemacs-find-file))
   :config
   (progn
-   (setq treemacs-follow-after-init          t
-         treemacs-width                      35
-         treemacs-indentation                2
-         treemacs-git-integration            t
-         treemacs-collapse-dirs              3
-         treemacs-silent-refresh             nil
-         treemacs-change-root-without-asking nil
-         treemacs-sorting                    'alphabetic-desc
-         treemacs-show-hidden-files          t
-         treemacs-never-persist              nil
-         treemacs-is-never-other-window      nil
-         treemacs-goto-tag-strategy          'refetch-index
-	 treemacs-width                      30)
+    (setq treemacs-follow-after-init          t
+          treemacs-width                      35
+          treemacs-indentation                2
+          treemacs-git-integration            t
+          treemacs-collapse-dirs              3
+          treemacs-silent-refresh             nil
+          treemacs-change-root-without-asking nil
+          treemacs-sorting                    'alphabetic-desc
+          treemacs-show-hidden-files          t
+          treemacs-never-persist              nil
+          treemacs-is-never-other-window      nil
+          treemacs-goto-tag-strategy          'refetch-index
+	  treemacs-width                      30)
    (treemacs-follow-mode t)
    (treemacs-filewatch-mode t) ))
 
@@ -72,9 +68,10 @@
   :ensure t
   ;; :after magit
   :defer t
+  :custom (magithub-clone-default-directory "~/github")
   :config
   (magithub-feature-autoinject t)
-  (setq magithub-clone-default-directory "~/github"))
+  )
 
 (use-package projectile
   :ensure t
@@ -82,18 +79,17 @@
 
 (use-package deft
   :ensure t
-  ;:bind ("<f7>" . deft)
   :commands (deft)
-  :config
-  (progn
-    (setq deft-directory         "~/Dropbox/Org"
-	  deft-extensions        '("org")
-	  deft-default-extension "org"
-	  deft-text-mode         'org-mode)))
+  :custom
+  (deft-directory "~/Dropbox/Org")
+  (deft-extensions        '("org"))
+  (deft-default-extension "org")
+  (deft-text-mode         'org-mode)
+  )
 
 (use-package bibliothek
   :ensure t
   :commands bibliothek
-  :init (setq bibliothek-path (list "~/Desktop")))
+  :custom (bibliothek-path (list "~/Desktop")))
 
 (provide 'du-project-manager)
