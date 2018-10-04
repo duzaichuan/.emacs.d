@@ -102,7 +102,7 @@
 (use-package evil-cleverparens
   :ensure t
   :after (evil paredit)
-  :config (setq evil-cleverparens-swap-move-by-word-and-symbol t))
+  :custom (evil-cleverparens-swap-move-by-word-and-symbol t))
 
 (use-package evil-paredit
   :ensure t

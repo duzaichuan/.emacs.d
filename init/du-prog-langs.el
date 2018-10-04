@@ -2,18 +2,17 @@
 (use-package eval-in-repl
   :ensure t
   :defer t
-  :init
-  ;; Place REPL on the left of the script window when splitting.
-  (setq eir-repl-placement 'left))
+  :custom
+  (eir-repl-placement 'left "Place REPL on the left of the script window when splitting."))
 
 (use-package sly
   :ensure t
-  :init (setq inferior-lisp-program "/usr/local/bin/clisp")
+  :custom (inferior-lisp-program "/usr/local/bin/clisp")
   :commands sly)
 
 (use-package geiser
   :ensure t
-  :init (setq geiser-active-implementations '(chez guile))
+  :custom (geiser-active-implementations '(guile chez))
   :commands geiser)
 
 (use-package clojure-mode
@@ -33,14 +32,14 @@
 (use-package cider
   :ensure t
   :commands (cider-connect cider-jack-in)
-  :init
-  (setq cider-auto-select-error-buffer t
-        cider-repl-pop-to-buffer-on-connect nil
-        cider-repl-use-clojure-font-lock t
-        cider-repl-wrap-history t
-        cider-repl-history-size 1000
-        cider-show-error-buffer t
-        nrepl-hide-special-buffers t))
+  :custom
+  (cider-auto-select-error-buffer t)
+  (cider-repl-pop-to-buffer-on-connect nil)
+  (cider-repl-use-clojure-font-lock t)
+  (cider-repl-wrap-history t)
+  (cider-repl-history-size 1000)
+  (cider-show-error-buffer t)
+  (nrepl-hide-special-buffers t))
 
 (use-package julia-mode
   :ensure t
@@ -56,9 +55,9 @@
   :mode ("\\.R$"  . R-mode)
   :bind (:map inferior-ess-mode-map
 	      ("C-c w" . ess-execute-screen-options))
+  :custom (ess-fancy-comments nil "Make ESS use RStudio's indenting style")
   :config
   (progn
-    (setq ess-fancy-comments nil) ; Make ESS use RStudio's indenting style
     (add-hook 'ess-mode-hook (lambda () (ess-set-style 'RStudio))) ; Make ESS use more horizontal screen	     
     (add-hook 'ess-R-post-run-hook 'ess-execute-screen-options) ))
 
@@ -78,6 +77,11 @@
               ("C-c C-c" . term-interrupt-subjob))
   :commands matlab-shell
   :hook (matlab-mode . display-line-numbers-mode)
+  :custom
+  (matlab-indent-function t)
+  (semantic-matlab-root-directory "/Applications/MATLAB/MATLAB_R2017b.app")
+  (matlab-mode-install-path "/Applications/MATLAB/MATLAB_R2017b.app/toolbox")
+  (matlab-shell-command "/Applications/MATLAB/MATLAB_R2017b.app/bin/matlab")
   :init
   (progn
     ;; workaround for emacs 26
@@ -85,10 +89,6 @@
 	(message "Tracking stable Emacs")
       (defvar default-fill-column (default-value 'fill-column))
       (defalias 'string-to-int 'string-to-number))
-    (setq matlab-indent-function t
-	  semantic-matlab-root-directory "/Applications/MATLAB/MATLAB_R2017b.app"
-	  matlab-mode-install-path "/Applications/MATLAB/MATLAB_R2017b.app/toolbox"
-	  matlab-shell-command "/Applications/MATLAB/MATLAB_R2017b.app/bin/matlab")
     (eval-after-load 'matlab
       '(add-to-list 'matlab-shell-command-switches "-nodesktop -nosplash"))
     
@@ -114,6 +114,6 @@
 (use-package ein
   :ensure t
   :bind ([f6] . ein:jupyter-server-start)
-  :init (setq ein:jupyter-default-notebook-directory "~/Jupyter/"))
+  :custom (ein:jupyter-default-notebook-directory "~/Jupyter/"))
 
 (provide 'du-prog-langs)

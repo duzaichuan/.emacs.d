@@ -50,8 +50,8 @@
 
 (use-package powerline
   :ensure t
-  :hook (after-init . powerline-center-evil-theme)
-  :config (setq powerline-default-separator 'butt))
+  :custom (powerline-default-separator 'butt)
+  :hook (after-init . powerline-center-evil-theme))
 
 (use-package org-beautify-theme :ensure t)
 
@@ -62,8 +62,10 @@
 
 (use-package visual-fill-column
   :ensure t
-  :init (setq visual-fill-column-center-text t
-	      visual-fill-column-width 90)
-  :hook ((eww-mode nov-mode ein:notebook-multilang-mode mu4e-compose-mode mu4e-view-mode) . visual-fill-column-mode))
+  :custom
+  (visual-fill-column-center-text t)
+  (visual-fill-column-width 90)
+  :hook
+  ((eww-mode nov-mode ein:notebook-multilang-mode mu4e-compose-mode mu4e-view-mode) . visual-fill-column-mode))
 
 (provide 'du-appearance)

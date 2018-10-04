@@ -1,29 +1,29 @@
 (use-package twittering-mode
   :ensure t
   :commands twit
-  :init
-  (setq twittering-use-master-password t
-	epa-pinentry-mode 'loopback
-	twittering-icon-mode t
-	twittering-use-icon-storage t))
+  :custom
+  (twittering-use-master-password t)
+  (epa-pinentry-mode 'loopback)
+  (twittering-icon-mode t)
+  (twittering-use-icon-storage t))
 
 (use-package md4rd
   :ensure t
   :commands md4rd
   :hook (md4rd-mode . visual-fill-column-mode)
-  :init
-  (setq md4rd-subs-active '(emacs Economics writing)
-	md4rd--oauth-access-token "147565326956-VPG767JAGLr9uxHu6KgzWKoYxeg"
-	md4rd--oauth-refresh-token "147565326956-dDXMWAq0SSME9Qvb6-hafaRsD-s"))
+  :custom
+  (md4rd-subs-active '(emacs Economics writing))
+  (md4rd--oauth-refresh-token "147565326956-dDXMWAq0SSME9Qvb6-hafaRsD-s")
+  (md4rd--oauth-access-token "147565326956-VPG767JAGLr9uxHu6KgzWKoYxeg"))
 
 (use-package circe
   :ensure t
   :commands circe
+  :custom
+  (circe-use-cycle-completion t)
+  (my-credentials-file "~/.private.el")
   :init
   (progn
-    (setq circe-use-cycle-completion t)
-    (setq my-credentials-file "~/.private.el")
-
     (defun du/nickserv-password (server)
       (with-temp-buffer
 	(insert-file-contents-literally my-credentials-file)

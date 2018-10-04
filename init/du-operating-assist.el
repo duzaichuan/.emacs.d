@@ -31,11 +31,12 @@
   :ensure t
   :diminish company-mode
   :defer 0.1
+  :custom
+  (company-idle-delay 0.1)
+  (company-minimum-prefix-length 3)
   :config
   (progn
     (global-company-mode)
-    (setq company-idle-delay 0.1
-	  company-minimum-prefix-length 3)
     (with-eval-after-load 'company
       (define-key company-active-map (kbd "M-n") nil)
       (define-key company-active-map (kbd "M-p") nil)
@@ -51,10 +52,10 @@
 (use-package smartparens
   :ensure t
   :diminish smartparens-mode
+  :custom (show-paren-when-point-inside-paren t)
   :init
   (progn
     (show-paren-mode t)
-    (setq show-paren-when-point-inside-paren t)
     (define-advice show-paren-function (:around (fn) fix)
       "Highlight enclosing parens."
       (cond ((looking-at-p "\\s(") (funcall fn))

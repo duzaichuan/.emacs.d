@@ -105,14 +105,14 @@
 (use-package mu4e-alert
   :ensure t
   :after mu4e
-  :init (mu4e-alert-set-default-style 'notifications)
-  :config
-  (progn
-    (mu4e-alert-enable-mode-line-display)
-    (setq mu4e-alert-interesting-mail-query
+  :custom
+  (mu4e-alert-style 'notifications)
+  (mu4e-alert-interesting-mail-query
 	  (concat
 	   "flag:unread"
-	   " AND NOT flag:trashed")) ))
+	   " AND NOT flag:trashed"))
+  :config
+  (mu4e-alert-enable-mode-line-display))
 
 (use-package du-mail-attach-reminder
   :load-path "lib/"

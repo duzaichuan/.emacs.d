@@ -31,12 +31,13 @@
 (use-package eshell-prompt-extras
   :ensure t
   :after eshell
+  :custom (eshell-prompt-function 'epe-theme-lambda)
   :config
   (with-eval-after-load "esh-opt"
     (require 'virtualenvwrapper)
     (venv-initialize-eshell)
     (autoload 'epe-theme-lambda "eshell-prompt-extras")
-    (setq eshell-prompt-function 'epe-theme-lambda)))
+    ))
 
 (use-package eshell-fringe-status
   :ensure t
