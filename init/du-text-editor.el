@@ -144,11 +144,13 @@
 (use-package org-mime
   :ensure t
   :commands (org-mime-htmlize)
-  :init (setq org-mime-up-subtree-heading 'org-back-to-heading
-	      org-mime-export-options '(:section-numbers nil
-							 :with-author nil
-							 :with-toc nil
-							 :with-latex imagemagick)))
+  :custom
+  (org-mime-up-subtree-heading 'org-back-to-heading)
+  (org-mime-export-options '(:section-numbers nil
+					      :with-author nil
+					      :with-toc nil
+					      :with-latex imagemagick))
+  )
 
 (use-package org-noter
   :ensure t
@@ -182,10 +184,10 @@
   :ensure t
   :commands writeroom-mode
   :hook (org-mode markdown-mode LaTeX-mode)
-  :init
-  (setq writeroom-fullscreen-effect 'maximized
-	writeroom-maximize-window nil
-	writeroom-width 90))
+  :custom
+  (writeroom-fullscreen-effect 'maximized)
+  (writeroom-maximize-window nil)
+  (writeroom-width 90))
 
 (use-package ispell
   :commands ispell
@@ -231,9 +233,8 @@
     (setq default-input-method "pyim"
 	  pyim-default-scheme 'quanpin
 	  pyim-page-tooltip 'posframe
-	  pyim-page-length 5)
-
-    (setq pyim-dicts
+	  pyim-page-length 5
+	  pyim-dicts
 	  '((:name "default" :file "~/pyim-dicts/pyim-bigdict.pyim")
             (:name "eng abbriv" :file "~/pyim-dicts/eng-abbrev.pyim")))
     

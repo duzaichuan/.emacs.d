@@ -19,9 +19,9 @@
 	eshell-scroll-to-bottom-on-input 'all
 	eshell-list-files-after-cd t)
   :config
-  (progn
-    (add-hook 'eshell-mode-hook
-	      (lambda ()(eshell-cmpl-initialize))) ))
+  (add-hook 'eshell-mode-hook
+	    (lambda ()(eshell-cmpl-initialize)))
+  )
 
 (use-package virtualenvwrapper
   :ensure t
@@ -35,8 +35,8 @@
   (with-eval-after-load "esh-opt"
     (require 'virtualenvwrapper)
     (venv-initialize-eshell)
-    (autoload 'epe-theme-lambda "eshell-prompt-extras")
-    ))
+    (autoload 'epe-theme-lambda "eshell-prompt-extras"))
+  )
 
 (use-package eshell-fringe-status
   :ensure t

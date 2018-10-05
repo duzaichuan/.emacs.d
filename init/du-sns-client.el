@@ -22,18 +22,17 @@
   :custom
   (circe-use-cycle-completion t)
   (my-credentials-file "~/.private.el")
-  :init
-  (progn
-    (defun du/nickserv-password (server)
-      (with-temp-buffer
-	(insert-file-contents-literally my-credentials-file)
-	(plist-get (read (buffer-string)) :nickserv-password)))
-
-    (setq circe-network-options
+  (circe-network-options
 	  '(("Freenode"
              :nick "Solatle"
              :channels ("#org-mode" "#evil-mode" :after-auth "#emacs")
-             :nickserv-password du/nickserv-password))) ))
+             :nickserv-password du/nickserv-password)))
+  :init
+  (defun du/nickserv-password (server)
+      (with-temp-buffer
+	(insert-file-contents-literally my-credentials-file)
+	(plist-get (read (buffer-string)) :nickserv-password)))
+  )
 
 (use-package circe-notifications
   :ensure t
