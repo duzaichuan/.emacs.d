@@ -37,14 +37,15 @@
   :ensure t
   :diminish evil-mode
   :defer t
-  :init (setq evil-want-keybinding nil
-	      evil-respect-visual-line-mode t) 
+  :custom
+  (evil-want-keybinding nil "use evil-collection bindings")
+  (evil-respect-visual-line-mode t "visual line jk")
+  (evil-cross-lines t)
+  (evil-move-cursor-back nil)
+  (evil-want-C-u-scroll t)
   :config
   (progn
     (evil-mode 1)
-    (setq evil-cross-lines t
-	  evil-move-cursor-back nil
-	  evil-want-C-u-scroll t)
     (setcdr evil-insert-state-map nil)
     (define-key evil-insert-state-map [escape] 'evil-normal-state)
     

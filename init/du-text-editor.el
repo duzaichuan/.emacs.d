@@ -7,18 +7,19 @@
 (use-package tex
   :ensure auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)
+  :custom
+  (TeX-auto-save t)
+  (TeX-parse-self t)
+  (font-latex-fontify-script nil)
+  (preview-image-type 'imagemagick)
+  (reftex-plug-into-AUCTeX t)
+  (TeX-PDF-mode nil)
+  (reftex-plug-into-AUCTeX t)
+  (LaTeX-electric-left-right-brace t)
+  (TeX-master nil)
   :config
   (progn
-    (setq TeX-auto-save t
-	  TeX-parse-self t
-	  font-latex-fontify-script nil
-	  preview-image-type 'imagemagick
-	  reftex-plug-into-AUCTeX t
-	  TeX-PDF-mode nil
-	  reftex-plug-into-AUCTeX t
-	  LaTeX-electric-left-right-brace t)
     (fset 'tex-font-lock-suscript 'ignore)
-    (setq-default TeX-master nil)
     (use-package smartparens-latex :ensure smartparens)
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
@@ -89,7 +90,7 @@
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
     (plist-put org-format-latex-options :scale 1.70) ; bigger latex fragment
-    (set-default 'truncate-lines nil) ; line wrap in org mode
+    (setq-default truncate-lines nil) ; line wrap in org mode
     ;; Quickly insert blocks
     (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
@@ -116,15 +117,15 @@
   :bind (("C-c r" . org-ref-helm-insert-cite-link)
 	 ("C-c ir" . org-ref-helm-insert-ref-link)
 	 ("C-c il" . org-ref-helm-insert-label-link))
-  :init
-  (setq org-ref-bibliography-notes "~/Dropbox/bibliography/Notes.org"
-	org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib")
-	org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/"
-	org-ref-show-broken-links nil
-	org-ref-default-ref-type "eqref"
-	org-ref-default-citation-link "citet"
-	org-ref-ref-color "Brown"
-	org-ref-label-color "light green")
+  :custom
+  (org-ref-bibliography-notes "~/Dropbox/bibliography/Notes.org")
+  (org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib"))
+  (org-ref-pdf-directory "~/Dropbox/bibliography/bibtex-pdfs/")
+  (org-ref-show-broken-links nil)
+  (org-ref-default-ref-type "eqref")
+  (org-ref-default-citation-link "citet")
+  (org-ref-ref-color "Brown")
+  (org-ref-label-color "light green")
   :config
   (require 'org-ref-citeproc))
 
@@ -135,10 +136,10 @@
 (use-package helm-bibtex
   :ensure t
   :defer t
-  :init
-  (setq bibtex-completion-bibliography "~/Dropbox/bibliography/references.bib" 
-	bibtex-completion-library-path "~/Dropbox/bibliography/bibtex-pdfs"
-	bibtex-completion-notes-path "~/Dropbox/bibliography/Notes.org"))
+  :custom
+  (bibtex-completion-bibliography "~/Dropbox/bibliography/references.bib")
+  (bibtex-completion-library-path "~/Dropbox/bibliography/bibtex-pdfs")
+  (bibtex-completion-notes-path "~/Dropbox/bibliography/Notes.org") )
 
 ;; a WYSiWYG HTML mail editor that can be useful for sending tables, fontified source code, and inline images in email. 
 (use-package org-mime
@@ -149,8 +150,7 @@
   (org-mime-export-options '(:section-numbers nil
 					      :with-author nil
 					      :with-toc nil
-					      :with-latex imagemagick))
-  )
+					      :with-latex imagemagick)) )
 
 (use-package org-noter
   :ensure t
@@ -191,11 +191,12 @@
 
 (use-package ispell
   :commands ispell
+  :custom
+  (ispell-program-name (executable-find "hunspell"))
+  (ispell-choices-win-default-height 5)
+  (ispell-dictionary "en_US")
   :config
   (progn
-    (setq ispell-program-name (executable-find "hunspell")
-	  ispell-choices-win-default-height 5
-	  ispell-dictionary "en_US")
     (setenv "DICTIONARY" "en_US")
     
     (defun endless/org-ispell ()
@@ -219,9 +220,9 @@
 (use-package langtool
   :ensure t
   :commands langtool-check
-  :config
-  (setq langtool-default-language "en-US"
-	langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
+  :custom
+  (langtool-default-language "en-US")
+  (langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
 
 (use-package pyim
   :ensure t
