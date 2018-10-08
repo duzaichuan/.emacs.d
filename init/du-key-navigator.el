@@ -80,9 +80,8 @@
   :custom (evil-collection-setup-minibuffer t)
   :hook (after-init . evil-collection-init)
   :config
-  (progn
-    (with-eval-after-load 'pdf-tools
-      (require 'evil-collection-pdf) (evil-collection-pdf-setup)) ))
+  (with-eval-after-load 'pdf-tools
+      (require 'evil-collection-pdf) (evil-collection-pdf-setup)))
 
 (use-package evil-magit
   :ensure t
@@ -90,11 +89,10 @@
 
 (use-package evil-org
   :ensure t
-  :after (evil org)
+  :hook (org-mode . evil-org-mode)
   :diminish t
   :config
   (progn
-    (add-hook 'org-mode-hook 'evil-org-mode)
     (add-hook 'evil-org-mode-hook
 	      (lambda () (evil-org-set-key-theme '(textobjects insert navigation additional shift todo heading))))
     (require 'evil-org-agenda)

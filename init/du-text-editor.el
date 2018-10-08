@@ -47,29 +47,30 @@
          ("C-c C-w" . org-refile)
          ("C-c j" . org-clock-goto)
          ("C-c C-x C-o" . org-clock-out))
-  :init (setq org-directory "~/Dropbox/Org"
-	      org-default-notes-file (concat org-directory "/notes.org")
-	      org-agenda-files (list "~/Dropbox/Org")
-	      org-refile-targets '((org-agenda-files :maxlevel . 3))
-	      org-capture-templates (quote (("t" "TODO" entry (file+olp+datetree "~/Dropbox/Org/captures.org")
-					     "* TODO %?")
-					    ("m" "Mail-to-do" entry (file+headline "~/Dropbox/Org/captures.org" "Tasks")
-					     "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n%a\n")
-					    ("a" "Appointment" entry (file+olp+datetree "~/Dropbox/Org/captures.org")
-					     "* %?")
-					    ("n" "note" entry (file+headline "~/Dropbox/Org/captures.org" "IDEAS")
-					     "* %?\nCaptured on %U\n  %i")
-					    ("j" "Journal" entry (file+olp+datetree "~/Dropbox/journal.org")
-					     "* %?\nEntered on %U\n  %i")))
-	      org-tag-alist (quote (("BUDD"    . ?b)
-				    ("PHIL"    . ?p)
-				    ("ENGL"    . ?e)))
-	      org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")
-				  (sequence "QUESTION(q)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)"))
-	      org-log-done 'time
-	      org-refile-use-outline-path 'file
-	      org-outline-path-complete-in-steps nil
-	      org-refile-allow-creating-parent-nodes 'confirm)
+  :init
+  (setq org-directory "~/Dropbox/Org"
+	org-default-notes-file (concat org-directory "/notes.org")
+	org-agenda-files (list "~/Dropbox/Org")
+	org-refile-targets '((org-agenda-files :maxlevel . 3))
+	org-capture-templates (quote (("t" "TODO" entry (file+olp+datetree "~/Dropbox/Org/captures.org")
+				       "* TODO %?")
+				      ("m" "Mail-to-do" entry (file+headline "~/Dropbox/Org/captures.org" "Tasks")
+				       "* TODO [#A] %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n%a\n")
+				      ("a" "Appointment" entry (file+olp+datetree "~/Dropbox/Org/captures.org")
+				       "* %?")
+				      ("n" "note" entry (file+headline "~/Dropbox/Org/captures.org" "IDEAS")
+				       "* %?\nCaptured on %U\n  %i")
+				      ("j" "Journal" entry (file+olp+datetree "~/Dropbox/journal.org")
+				       "* %?\nEntered on %U\n  %i")))
+	org-tag-alist (quote (("BUDD"    . ?b)
+			      ("PHIL"    . ?p)
+			      ("ENGL"    . ?e)))
+	org-todo-keywords '((sequence "TODO(t)" "STARTED(s)" "WAITING(w)" "|" "DONE(d)" "CANCELED(c)")
+			    (sequence "QUESTION(q)" "BUG(b)" "KNOWNCAUSE(k)" "|" "FIXED(f)"))
+	org-log-done 'time
+	org-refile-use-outline-path 'file
+	org-outline-path-complete-in-steps nil
+	org-refile-allow-creating-parent-nodes 'confirm)
   :config
   (progn
     (setq org-preview-latex-default-process 'imagemagick
@@ -249,11 +250,8 @@
                 '(pyim-probe-punctuation-line-beginning
                   pyim-probe-punctuation-after-punctuation)) )
   :config
-  (progn
-    ;(pyim-isearch-mode 1)
-    ;; 激活 basedict 拼音词库
-    (use-package pyim-basedict
-      :config (pyim-basedict-enable)) ))
+  (use-package pyim-basedict
+      :config (pyim-basedict-enable)))
 
 (use-package academic-phrases
   :ensure t
