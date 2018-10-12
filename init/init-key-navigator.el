@@ -191,4 +191,4 @@
 
    ))
 
-(provide 'du-key-navigator)
+(provide 'init-key-navigator)

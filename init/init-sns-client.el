@@ -48,4 +48,4 @@
     
     (add-hook 'circe-server-connected-hook 'enable-circe-notifications) ))
 
-(provide 'du-sns-client)
+(provide 'init-sns-client)

@@ -46,4 +46,4 @@
   :ensure t
   :hook (eshell-mode . esh-autosuggest-mode))
 
-(provide 'du-shell)
+(provide 'init-shell)

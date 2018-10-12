@@ -92,4 +92,4 @@
   :commands bibliothek
   :custom (bibliothek-path (list "~/Desktop")))
 
-(provide 'du-project-manager)
+(provide 'init-project-manager)

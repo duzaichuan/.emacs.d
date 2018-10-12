@@ -116,4 +116,4 @@
   :bind ([f6] . ein:jupyter-server-start)
   :custom (ein:jupyter-default-notebook-directory "~/Jupyter/"))
 
-(provide 'du-prog-langs)
+(provide 'init-prog-langs)

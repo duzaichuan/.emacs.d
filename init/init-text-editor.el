@@ -185,8 +185,12 @@
   :ensure t
   :commands writeroom-mode
   :hook (org-mode markdown-mode LaTeX-mode)
+  :bind (:map writeroom-mode-map
+	      ("s-?" . nil)
+	      ("C-c m" . writeroom-toggle-mode-line))
   :custom
   (writeroom-fullscreen-effect 'maximized)
+  (writeroom-bottom-divider-width 0)
   (writeroom-maximize-window nil)
   (writeroom-width 90))
 
@@ -257,4 +261,4 @@
   :ensure t
   :commands (academic-phrases academic-phrases-by-section))
 
-(provide 'du-text-editor)
+(provide 'init-text-editor)

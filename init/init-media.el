@@ -34,4 +34,4 @@
   :ensure t
   :after bongo)
 
-(provide 'du-media)
+(provide 'init-media)

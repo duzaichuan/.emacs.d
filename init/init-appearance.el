@@ -68,4 +68,4 @@
   :hook
   ((eww-mode nov-mode ein:notebook-multilang-mode mu4e-compose-mode mu4e-view-mode) . visual-fill-column-mode))
 
-(provide 'du-appearance)
+(provide 'init-appearance)

@@ -97,4 +97,4 @@
   (push "*osx-dictionary*" popwin:special-display-config) ;; Work with popwin-el (https://github.com/m2ym/popwin-el)
   )
 
-(provide 'du-browse-reader)
+(provide 'init-browse-reader)

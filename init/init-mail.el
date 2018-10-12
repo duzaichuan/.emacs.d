@@ -118,4 +118,4 @@
   :load-path "lib/"
   :after mu4e)
 
-(provide 'du-mail)
+(provide 'init-mail)
