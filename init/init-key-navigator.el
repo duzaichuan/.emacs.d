@@ -161,6 +161,7 @@
     "os" 'ispell-buffer
     "om" 'org-mind-map-write
     "ow" 'writeroom-mode
+    "op" 'org-present
 
     "p" '(:ignore t :which-key "pdf")
     "pu" 'pdf-annot-add-underline-markup-annotation

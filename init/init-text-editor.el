@@ -161,6 +161,31 @@
   :ensure t
   :commands org-mind-map-write)
 
+(use-package org-present
+  :ensure t
+  :commands org-present
+  :config
+  (add-hook 'org-present-mode-hook
+            (lambda ()
+              (org-present-big)
+              (org-display-inline-images)
+              (org-present-hide-cursor)
+              (org-present-read-only)
+	      (writeroom--disable)
+	      (hide-mode-line-mode +1)))
+
+  (add-hook 'org-present-mode-quit-hook
+            (lambda ()
+              (org-present-small)
+              (org-remove-inline-images)
+              (org-present-show-cursor)
+              (org-present-read-write)
+	      (writeroom--enable)))
+
+  (define-key org-present-mode-keymap (kbd "C-c C-,")   'org-present-prev)
+  (define-key org-present-mode-keymap (kbd "C-c C-.")   'org-present-next)
+  )
+
 (use-package org-babel-eval-in-repl
   :ensure t
   :after ob

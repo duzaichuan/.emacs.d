@@ -68,4 +68,8 @@
   :hook
   ((eww-mode nov-mode ein:notebook-multilang-mode mu4e-compose-mode mu4e-view-mode) . visual-fill-column-mode))
 
+(use-package hide-mode-line
+  :ensure t
+  :commands hide-mode-line-mode)
+
 (provide 'init-appearance)
