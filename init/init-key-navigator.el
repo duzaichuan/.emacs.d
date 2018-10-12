@@ -153,7 +153,6 @@
     "or" 'org-refile
     "ol" 'org-store-link
     "oe" 'org-export-dispatch
-    "of" 'writeroom-mode
     "of" 'org-footnote-action
     "ot" 'org-time-stamp
     "on" 'org-noter
@@ -161,7 +160,7 @@
     "os" 'ispell-buffer
     "om" 'org-mind-map-write
     "ow" 'writeroom-mode
-    "op" 'org-present
+    "op" 'org-tree-slide-mode
 
     "p" '(:ignore t :which-key "pdf")
     "pu" 'pdf-annot-add-underline-markup-annotation
