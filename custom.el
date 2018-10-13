@@ -126,6 +126,10 @@
  '(mu4e-headers-include-related nil)
  '(my-credentials-file "~/.private.el" t)
  '(neo-theme (quote icons))
+ '(netease-music-api "YOUR-API-ADDRESS" t)
+ '(netease-music-user-id "YOUR-USER-ID" t)
+ '(netease-music-user-password "YOUR-PASSWORD" t)
+ '(netease-music-username "YOUR-PHONE-NUMBER" t)
  '(nov-text-width 2305843009213693951 t)
  '(nrepl-hide-special-buffers t t)
  '(nrepl-message-colors

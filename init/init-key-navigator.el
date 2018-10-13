@@ -188,7 +188,7 @@
     "l" '(:ignore t :which-key "look-up")
     "lw" 'xah-lookup-wikipedia
     "ld" 'xah-lookup-word-definition
-
-   ))
+    
+    ))
 
 (provide 'init-key-navigator)

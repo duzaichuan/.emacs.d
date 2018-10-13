@@ -166,7 +166,36 @@
 
 (use-package org-tree-slide
   :ensure t
-  :commands org-tree-slide-mode)
+  :commands org-tree-slide-mode
+  :custom-face
+  (org-tree-slide-header-overlay-face ((t (:foreground "#7F9F7F" :weight bold))))
+  :config
+  (progn
+
+    (defun du-org-present-big ()
+      "Make font size larger."
+      (interactive)
+      (text-scale-increase 0)
+      (text-scale-increase 5)) ;MAKE THIS BUFFER-LOCAL
+
+    (defun du-org-present-small ()
+      "Change font size back to original."
+      (interactive)
+      (text-scale-increase 0))
+
+    (add-hook 'org-tree-slide-play-hook
+              (lambda ()
+		(du-org-present-big)
+		(org-display-inline-images)
+		(writeroom--disable)
+		(hide-mode-line-mode +1)))
+
+    (add-hook 'org-tree-slide-stop-hook
+              (lambda ()
+		(du-org-present-small)
+		(org-remove-inline-images)
+		(writeroom--enable)))
+    ))
 
 (use-package org-babel-eval-in-repl
   :ensure t

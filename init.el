@@ -24,18 +24,20 @@
 (package-initialize)
 
 ;; Bootstrap 'use-package'
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
+(mapc
+ (lambda (package)
+   (if (not (package-installed-p 'use-package))
+       (progn
+	 (package-refresh-contents)
+	 (package-install 'use-package))))
+ '(use-package diminish bind-key))
 
 (eval-when-compile
   (require 'use-package)
   ;; (setq use-package-verbose t)
   )
-
-(use-package dash :defer t)                ; A modern list library
-(use-package diminish :ensure t :defer t)  ; Hide modes in the mode-line
-(use-package bind-key :ensure t :defer t)  ; if you use any :bind variant
+(require 'diminish)
+(require 'bind-key)
 
 (use-package exec-path-from-shell
   :if (memq window-system '(ns mac))

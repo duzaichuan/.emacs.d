@@ -34,4 +34,13 @@
   :ensure t
   :after bongo)
 
+(use-package netease-music
+  :ensure t
+  :defer t
+  :init
+  (setq netease-music-username "18811472076")
+  (setq netease-music-user-password "Du2046Du")
+  (setq netease-music-user-id "66148971")
+  (setq netease-music-api "http://localhost:3000"))
+
 (provide 'init-media)
