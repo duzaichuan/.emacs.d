@@ -6,8 +6,10 @@
 
 (use-package tex
   
-  :straight auctex
-  :mode ("\\.tex\\'" . LaTeX--mode)
+  :straight (auctex :host github :repo "raxod502/auctex"
+                    :branch "fork/1"
+                    :files (:defaults (:exclude "doc/*.texi")))
+  :mode ("\\.tex\\'" . TeX-latex-mode)
   :custom
   (TeX-auto-save t)
   (TeX-parse-self t)
