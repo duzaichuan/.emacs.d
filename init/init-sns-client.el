@@ -1,5 +1,5 @@
 (use-package twittering-mode
-  :ensure t
+  
   :commands twit
   :custom
   (twittering-use-master-password t)
@@ -8,7 +8,7 @@
   (twittering-use-icon-storage t))
 
 (use-package md4rd
-  :ensure t
+  
   :commands md4rd
   :hook (md4rd-mode . visual-fill-column-mode)
   :custom
@@ -17,7 +17,7 @@
   (md4rd--oauth-access-token "147565326956-VPG767JAGLr9uxHu6KgzWKoYxeg"))
 
 (use-package circe
-  :ensure t
+  
   :commands circe
   :custom
   (circe-use-cycle-completion t)
@@ -35,7 +35,7 @@
   )
 
 (use-package circe-notifications
-  :ensure t
+  
   :after circe
   :config
   (progn

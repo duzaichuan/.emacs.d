@@ -16,11 +16,11 @@
 (global-set-key (kbd "<s-down>") 'enlarge-window)
 
 (use-package key-chord
-  :ensure t
+  
   :commands key-chord-mode)
 
 (use-package which-key
-  :ensure t
+  
   :diminish which-key-mode
   :after general
   :config
@@ -29,12 +29,12 @@
     (which-key-setup-side-window-bottom)))
 
 (use-package avy
-  :ensure t
+  
   :bind ("C-;" . avy-goto-char)
   :commands (avy-goto-char avy-goto-char-2 avy-goto-line))
 
 (use-package evil
-  :ensure t
+  
   :diminish evil-mode
   :defer t
   :custom
@@ -68,7 +68,7 @@
     ))
 
 (use-package evil-escape
-  :ensure t
+  
   :after evil
   :config
   (progn
@@ -76,7 +76,7 @@
     (setq-default evil-escape-delay 0.2) ))
 
 (use-package evil-collection
-  :ensure t
+  
   :custom (evil-collection-setup-minibuffer t)
   :hook (after-init . evil-collection-init)
   :config
@@ -84,11 +84,11 @@
       (require 'evil-collection-pdf) (evil-collection-pdf-setup)))
 
 (use-package evil-magit
-  :ensure t
+  
   :after magit)
 
 (use-package evil-org
-  :ensure t
+  
   :hook (org-mode . evil-org-mode)
   :diminish t
   :config
@@ -99,24 +99,24 @@
     (evil-org-agenda-set-keys)))
 
 (use-package evil-cleverparens
-  :ensure t
+  
   :after (evil paredit)
   :custom (evil-cleverparens-swap-move-by-word-and-symbol t))
 
 (use-package evil-paredit
-  :ensure t
+  
   :after (evil paredit))
 
 (use-package evil-nerd-commenter
-  :ensure t
+  
   :bind ("M-;" . evilnc-comment-or-uncomment-lines))
 
 (use-package treemacs-evil
   :after treemacs evil
-  :ensure t)
+  )
 
 (use-package general
-  :ensure t
+  
   :after evil-collection
   :config
   (general-evil-setup t)

@@ -1,10 +1,12 @@
-;; Startup speed
-(setq package-enable-at-startup nil ; :mode :interpreter is needed if set to nil
+(setq package-enable-at-startup nil
       file-name-handler-alist nil
       message-log-max 16384
       gc-cons-threshold 64102410241024
       gc-cons-percentage 0.9
-      auto-window-vscroll nil)
+      auto-window-vscroll nil
+      straight-check-for-modifications 'live
+      straight-recipes-gnu-elpa-use-mirror t
+      straight-use-package-by-default t)
 
 (defun du-reset-gc-cons ()
   "Return the garbage collection threshold to default values."
@@ -17,31 +19,26 @@
 
 (eval-when-compile (require 'cl-lib))
 
-(require 'package)
-(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")             
-                         ("melpa" . "https://melpa.org/packages/")
-			 ("org" . "http://orgmode.org/elpa/")))
-(package-initialize)
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
 
-;; Bootstrap 'use-package'
-(mapc
- (lambda (package)
-   (if (not (package-installed-p 'use-package))
-       (progn
-	 (package-refresh-contents)
-	 (package-install 'use-package))))
- '(use-package diminish bind-key))
-
-(eval-when-compile
-  (require 'use-package)
-  ;; (setq use-package-verbose t)
-  )
-(require 'diminish)
-(require 'bind-key)
+(straight-use-package 'use-package)
+(straight-use-package 'diminish)
+(straight-use-package 'bind-key)
 
 (use-package exec-path-from-shell
   :if (memq window-system '(ns mac))
-  :ensure t
+  :straight t
   :config
   (progn
     (when (string-match-p "/zsh$" (getenv "SHELL"))
@@ -52,19 +49,19 @@
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 
 ;; Libraries
-(use-package init-appearance)
-(use-package init-operating-assist)
-(use-package init-key-navigator)
-(use-package init-project-manager)
-(use-package init-prog-langs)
-(use-package init-text-editor)
-(use-package init-browse-reader)
-(use-package init-shell)
-(use-package init-mail)
-(use-package init-media)
-(use-package init-sns-client)
-(use-package init-data-manipulator)
+(require 'init-appearance)
+(require 'init-operating-assist)
+(require 'init-key-navigator)
+(require 'init-project-manager)
+(require 'init-prog-langs)
+(require 'init-text-editor)
+(require 'init-browse-reader)
+(require 'init-shell)
+(require 'init-mail)
+(require 'init-media)
+(require 'init-sns-client)
+(require 'init-data-manipulator)
 
-;; Customisations
+;; Customizations
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (when (file-exists-p custom-file) (load custom-file))

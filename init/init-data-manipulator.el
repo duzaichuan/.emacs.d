@@ -1,5 +1,6 @@
 ;; Spreadsheet
 (use-package ses-mode
+  :straight nil
   :mode ("\\.ses\\'" . ses-mode)
   :config
   (progn

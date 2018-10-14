@@ -8,10 +8,11 @@
   (recentf-mode t))
 
 (use-package imenu-anywhere
-  :ensure t
+  
   :bind ("C-." . imenu-anywhere))
 
 (use-package dired
+  :straight nil
   :defer t
   :custom
   (dired-recursive-deletes 'always "always delete and copy recursively")
@@ -34,10 +35,11 @@
     ))
 
 (use-package dired-x
+  :straight nil
   :bind ("C-x C-j" . dired-jump))
 
 (use-package treemacs
-  :ensure t
+  
   :bind 
   (:map global-map
 	([f8] . treemacs)
@@ -61,11 +63,11 @@
    (treemacs-filewatch-mode t) ))
 
 (use-package magit
-  :ensure t
+  
   :bind ("C-x g" . magit-status))
 
 (use-package magithub
-  :ensure t
+  
   ;; :after magit
   :defer t
   :custom (magithub-clone-default-directory "~/github")
@@ -74,11 +76,11 @@
   )
 
 (use-package projectile
-  :ensure t
+  
   :bind ([f5] . projectile-compile-project))
 
 (use-package deft
-  :ensure t
+  
   :commands (deft)
   :custom
   (deft-directory "~/Dropbox/Org")
@@ -88,7 +90,7 @@
   )
 
 (use-package bibliothek
-  :ensure t
+  
   :commands bibliothek
   :custom (bibliothek-path (list "~/Desktop")))
 

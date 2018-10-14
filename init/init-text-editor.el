@@ -1,11 +1,11 @@
 (use-package persistent-scratch
-  :ensure t
+  
   :defer 0.2
   :config
   (persistent-scratch-setup-default))
 
-(use-package tex
-  :ensure auctex
+(use-package tex-site
+  :straight auctex
   :mode ("\\.tex\\'" . TeX-latex-mode)
   :custom
   (TeX-auto-save t)
@@ -20,24 +20,25 @@
   :config
   (progn
     (fset 'tex-font-lock-suscript 'ignore)
-    (use-package smartparens-latex :ensure smartparens)
+    (require 'smartparens-latex)
     (add-hook 'LaTeX-mode-hook 'flyspell-mode)
     (add-hook 'LaTeX-mode-hook 'LaTeX-math-mode)
     (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
     (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
     (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
     (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer) ))
+;; (straight-use-package 'auctex)
 
 (use-package magic-latex-buffer
-  :ensure t
+  
   :hook LaTeX-mode)
 
 (use-package cdlatex
-  :ensure t
+  
   :commands (turn-on-cdlatex cdlatex-mode))
 
 (use-package org
-  :ensure t
+  :straight nil
   :mode ("\\.org\\'" . org-mode)
   :hook ((org-mode . turn-on-org-cdlatex))
   :bind (("C-c l" . org-store-link)
@@ -95,26 +96,27 @@
     ;; Quickly insert blocks
     (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
-    (use-package smartparens-org)
-    (use-package smartparens-Tex-org :load-path "lib/") ))
+    (require 'smartparens-org)
+    (use-package smartparens-Tex-org :straight nil :load-path "lib/") ))
 
 (use-package org-auto-formula
+  :straight nil
   :load-path "lib/"
   :after org
   :config
   (add-hook 'post-command-hook 'cw/org-auto-toggle-fragment-display))
 
 (use-package org-download
-  :ensure t
+  
   :hook ((org-mode dired-mode) . org-download-enable))
 
 (use-package org-bullets
-  :ensure t
+  
   :hook (org-mode . org-bullets-mode)
   :custom (org-bullets-bullet-list '("◉" "○" "●" "◆" "♦")))
 
 (use-package org-ref
-  :ensure t
+  
   :bind (("C-c r" . org-ref-helm-insert-cite-link)
 	 ("C-c ir" . org-ref-helm-insert-ref-link)
 	 ("C-c il" . org-ref-helm-insert-label-link))
@@ -131,11 +133,12 @@
   (require 'org-ref-citeproc))
 
 (use-package ox-word
+  :straight nil
   :load-path "lib/"
   :after org)
 
 (use-package helm-bibtex
-  :ensure t
+  
   :defer t
   :custom
   (bibtex-completion-bibliography "~/Dropbox/bibliography/references.bib")
@@ -144,7 +147,7 @@
 
 ;; a WYSiWYG HTML mail editor that can be useful for sending tables, fontified source code, and inline images in email. 
 (use-package org-mime
-  :ensure t
+  
   :commands (org-mime-htmlize)
   :custom
   (org-mime-up-subtree-heading 'org-back-to-heading)
@@ -154,18 +157,18 @@
 					      :with-latex imagemagick)) )
 
 (use-package org-noter
-  :ensure t
+  
   :commands org-noter)
 
 (use-package org-mind-map
-  :ensure t
+  
   :commands org-mind-map-write)
 
 (use-package demo-it
-  :ensure t :defer t)
+   :defer t)
 
 (use-package org-tree-slide
-  :ensure t
+  
   :commands org-tree-slide-mode
   :custom-face
   (org-tree-slide-header-overlay-face ((t (:foreground "#7F9F7F" :weight bold))))
@@ -198,18 +201,18 @@
     ))
 
 (use-package org-babel-eval-in-repl
-  :ensure t
+  
   :after ob
   :bind (:map org-mode-map
 	      ("C-<return>" . ober-eval-in-repl)
 	      ("M-<return>" . ober-eval-block-in-repl)))
 
 (use-package yaml-mode
-  :ensure t
+  
   :mode "\\.yaml\\'")
 
 (use-package markdown-mode
-  :ensure t
+  
   :mode (("\\`README\\.md\\'" . gfm-mode)
          ("\\.md\\'"          . markdown-mode)
          ("\\.markdown\\'"    . markdown-mode))
@@ -218,7 +221,7 @@
   (markdown-command "multimarkdown"))
 
 (use-package writeroom-mode
-  :ensure t
+  
   :commands writeroom-mode
   :hook (org-mode markdown-mode LaTeX-mode)
   :bind (:map writeroom-mode-map
@@ -231,6 +234,7 @@
   (writeroom-width 90))
 
 (use-package ispell
+  :straight nil
   :commands ispell
   :custom
   (ispell-program-name (executable-find "hunspell"))
@@ -259,14 +263,14 @@
     ))
 
 (use-package langtool
-  :ensure t
+  
   :commands langtool-check
   :custom
   (langtool-default-language "en-US")
   (langtool-language-tool-jar "/usr/local/Cellar/languagetool/4.1/libexec/languagetool-commandline.jar"))
 
 (use-package pyim
-  :ensure t
+  
   :bind (("M-p" . pyim-convert-code-at-point)
 	 ("M-f" . pyim-forward-word)
 	 ("M-b" . pyim-backward-word))
@@ -294,7 +298,7 @@
       :config (pyim-basedict-enable)))
 
 (use-package academic-phrases
-  :ensure t
+  
   :commands (academic-phrases academic-phrases-by-section))
 
 (provide 'init-text-editor)

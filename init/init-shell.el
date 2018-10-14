@@ -1,5 +1,5 @@
 (use-package eshell
-  :ensure t
+  
   :bind (([f1] . eshell)
 	 :map comint-mode-map
 	 ([up] . comint-previous-input)
@@ -24,11 +24,11 @@
   )
 
 (use-package virtualenvwrapper
-  :ensure t
+  
   :defer t)
 
 (use-package eshell-prompt-extras
-  :ensure t
+  
   :after eshell
   :custom (eshell-prompt-function 'epe-theme-lambda)
   :config
@@ -39,11 +39,11 @@
   )
 
 (use-package eshell-fringe-status
-  :ensure t
+  
   :hook (eshell-mode . eshell-fringe-status-mode))
 
 (use-package esh-autosuggest
-  :ensure t
+  
   :hook (eshell-mode . esh-autosuggest-mode))
 
 (provide 'init-shell)

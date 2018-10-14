@@ -1,4 +1,5 @@
 (use-package mu4e
+  :straight nil
   :load-path "/usr/local/share/emacs/site-lisp/mu/mu4e"
   :bind (([f9] . mu4e)
 	 :map mu4e-compose-mode-map
@@ -97,13 +98,14 @@
     ))
 
 (use-package org-mu4e
+  :straight nil
   :after mu4e
   :config
   (setq org-mu4e-link-query-in-headers-mode nil))
 
 ;; Alerts for new mails
 (use-package mu4e-alert
-  :ensure t
+  
   :after mu4e
   :custom
   (mu4e-alert-style 'notifications)
@@ -115,6 +117,7 @@
   (mu4e-alert-enable-mode-line-display))
 
 (use-package du-mail-attach-reminder
+  :straight nil
   :load-path "lib/"
   :after mu4e)
 

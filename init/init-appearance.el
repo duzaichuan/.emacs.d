@@ -43,25 +43,21 @@
 (set-file-name-coding-system 'utf-8)
 
 (use-package zenburn-theme
-  :ensure t
   :config
   (setf custom-safe-themes t)
   (load-theme 'zenburn))
 
 (use-package powerline
-  :ensure t
   :custom (powerline-default-separator 'butt)
   :hook (after-init . powerline-center-evil-theme))
 
-(use-package org-beautify-theme :ensure t)
+(use-package org-beautify-theme )
 
 (use-package rainbow-delimiters
-  :ensure t
   :diminish t
   :hook (prog-mode . rainbow-delimiters-mode))
 
 (use-package visual-fill-column
-  :ensure t
   :custom
   (visual-fill-column-center-text t)
   (visual-fill-column-width 90)
@@ -69,7 +65,6 @@
   ((eww-mode nov-mode ein:notebook-multilang-mode mu4e-compose-mode mu4e-view-mode) . visual-fill-column-mode))
 
 (use-package hide-mode-line
-  :ensure t
   :commands hide-mode-line-mode)
 
 (provide 'init-appearance)

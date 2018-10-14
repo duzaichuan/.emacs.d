@@ -10,25 +10,25 @@
           `(("." . ,(concat user-emacs-directory "backups"))))
 
 (use-package real-auto-save
-  :ensure t
+  
   :diminish real-auto-save-mode
   :init (setq save-silently t)
   :hook ((org-mode emacs-lisp-mode) . real-auto-save-mode))
 
-(use-package ov        :ensure t :defer t)
-(use-package f    :ensure t :defer t)
-(use-package s    :ensure t :defer t)
-(use-package hydra :ensure t :defer t)
-(use-package math-symbol-lists  :ensure t :defer t)
+(use-package ov         :defer t)
+(use-package f     :defer t)
+(use-package s     :defer t)
+(use-package hydra  :defer t)
+(use-package math-symbol-lists   :defer t)
 
 (use-package popwin
-  :ensure t
+  
   :diminish t
   :config
   (popwin-mode t))
 
 (use-package company
-  :ensure t
+  
   :diminish company-mode
   :defer 0.1
   :custom
@@ -44,13 +44,13 @@
       (define-key company-active-map (kbd "C-p") #'company-select-previous))))
 
 (use-package paredit
-  :ensure t
+  
   :diminish paredit-mode
   :bind ("C-c d" . paredit-delete-region)
   :hook ((lisp-mode emacs-lisp-mode clojure-mode ielm-mode eval-expression-minibuffer-setup) . paredit-mode))
 
 (use-package smartparens
-  :ensure t
+  
   :diminish smartparens-mode
   :custom (show-paren-when-point-inside-paren t)
   :init
@@ -71,7 +71,7 @@
     (sp-local-pair 'emacs-lisp-mode "`" nil :actions nil) ))
 
 (use-package helm
-  :ensure t
+  
   :commands helm-mini
   :bind (:map helm-map
               ("<tab>" . helm-execute-persistent-action)
@@ -80,7 +80,7 @@
   :config (helm-autoresize-mode 1))
 
 (use-package ivy
-  :ensure t
+  
   :diminish ivy-mode
   :bind (("C-x b" . ivy-switch-buffer)
          ("C-x B" . ivy-switch-buffer-other-window)
@@ -101,11 +101,11 @@
    (ivy-set-occur 'ivy-switch-buffer 'ivy-switch-buffer-occur)))
 
 (use-package swiper
-  :ensure t
+  
   :bind ("\C-s" . swiper))
 
 (use-package counsel
-  :ensure t
+  
   :custom (counsel-find-file-ignore-regexp
            (concat "\\(\\`\\.[^.]\\|"
                    (regexp-opt completion-ignored-extensions)
@@ -125,7 +125,7 @@
                '(counsel-find-file . ivy--sort-files-by-date)))
 
 (use-package undo-tree
-  :ensure t
+  
   :diminish undo-tree-mode
   :bind ("s-z" . undo-tree-undo)
   :config
@@ -135,7 +135,7 @@
     (global-set-key (kbd "s-r") 'redo) ))
 
 (use-package expand-region
-  :ensure t
+  
   :bind ("C-=" . er/expand-region)
   :config
   (defun er/add-text-mode-expansions ()
