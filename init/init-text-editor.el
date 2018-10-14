@@ -39,9 +39,13 @@
   
   :commands (turn-on-cdlatex cdlatex-mode))
 
+(use-package org-version
+  
+  :straight nil
+  :load-path "lib/")
+
 (use-package org
 
-  :straight nil
   :mode ("\\.org\\'" . org-mode)
   :hook ((org-mode . turn-on-org-cdlatex))
   :bind (("C-c l" . org-store-link)
