@@ -36,6 +36,8 @@
 (straight-use-package 'diminish)
 (straight-use-package 'bind-key)
 
+;; (setq use-package-verbose t)
+
 (use-package exec-path-from-shell
 
   :if (memq window-system '(ns mac))
@@ -57,6 +59,7 @@
 (require 'init-project-manager)
 (require 'init-prog-langs)
 (require 'init-text-editor)
+(require 'init-wiki-lib)
 (require 'init-browse-reader)
 (require 'init-shell)
 (require 'init-mail)
