@@ -112,8 +112,8 @@
   :bind ("M-;" . evilnc-comment-or-uncomment-lines))
 
 (use-package treemacs-evil
-  :after treemacs evil
-  )
+  
+  :after treemacs evil)
 
 (use-package general
   

@@ -37,6 +37,7 @@
 (straight-use-package 'bind-key)
 
 (use-package exec-path-from-shell
+
   :if (memq window-system '(ns mac))
   :straight t
   :config
@@ -44,7 +45,8 @@
     (when (string-match-p "/zsh$" (getenv "SHELL"))
       ;; Use a non-interactive login shell. A login shell, because my environment variables are mostly set in `.zprofile'.
       (setq exec-path-from-shell-arguments '("-l")))
-    (exec-path-from-shell-initialize)))
+    (exec-path-from-shell-initialize)
+    ))
 
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
 

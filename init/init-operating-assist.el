@@ -15,10 +15,10 @@
   :init (setq save-silently t)
   :hook ((org-mode emacs-lisp-mode) . real-auto-save-mode))
 
-(use-package ov         :defer t)
+(use-package ov    :defer t)
 (use-package f     :defer t)
 (use-package s     :defer t)
-(use-package hydra  :defer t)
+(use-package hydra :defer t)
 (use-package math-symbol-lists   :defer t)
 
 (use-package popwin

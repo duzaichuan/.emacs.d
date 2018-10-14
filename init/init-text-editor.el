@@ -4,9 +4,10 @@
   :config
   (persistent-scratch-setup-default))
 
-(use-package tex-site
+(use-package tex
+  
   :straight auctex
-  :mode ("\\.tex\\'" . TeX-latex-mode)
+  :mode ("\\.tex\\'" . LaTeX--mode)
   :custom
   (TeX-auto-save t)
   (TeX-parse-self t)
@@ -38,6 +39,7 @@
   :commands (turn-on-cdlatex cdlatex-mode))
 
 (use-package org
+
   :straight nil
   :mode ("\\.org\\'" . org-mode)
   :hook ((org-mode . turn-on-org-cdlatex))
@@ -234,6 +236,7 @@
   (writeroom-width 90))
 
 (use-package ispell
+
   :straight nil
   :commands ispell
   :custom

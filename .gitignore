@@ -1,6 +1,5 @@
 .DS_Store
 .cache/
-.cask/
 .cider-history
 .last-package-update-day
 abbrev_defs
@@ -26,6 +25,6 @@ backups/
 elpa/
 .persistent-scratch
 elfeed.org
-Cask
+init-package.el
 scimax/
 straight/
