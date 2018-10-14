@@ -30,7 +30,6 @@
     (add-hook 'LaTeX-mode-hook 'turn-on-cdlatex)
     (add-hook 'LaTeX-mode-hook '(lambda () (setq compile-command "latexmk -pdf")))
     (add-hook 'TeX-after-compilation-finished-functions #'TeX-revert-document-buffer) ))
-;; (straight-use-package 'auctex)
 
 (use-package magic-latex-buffer
   
@@ -104,6 +103,7 @@
     (use-package smartparens-Tex-org :straight nil :load-path "lib/") ))
 
 (use-package org-auto-formula
+
   :straight nil
   :load-path "lib/"
   :after org
@@ -120,6 +120,7 @@
   :custom (org-bullets-bullet-list '("◉" "○" "●" "◆" "♦")))
 
 (use-package ox-word
+
   :straight nil
   :load-path "lib/"
   :after org)

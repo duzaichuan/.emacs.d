@@ -48,6 +48,7 @@
       ;; Use a non-interactive login shell. A login shell, because my environment variables are mostly set in `.zprofile'.
       (setq exec-path-from-shell-arguments '("-l")))
     (exec-path-from-shell-initialize)
+
     ))
 
 (add-to-list 'load-path (expand-file-name "init" user-emacs-directory))
