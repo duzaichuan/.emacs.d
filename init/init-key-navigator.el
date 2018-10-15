@@ -190,7 +190,7 @@
     "ld" 'xah-lookup-word-definition
 
     "s" '(:ignore t :which-key "straight packages")
-    "sn" 'straight-normalize-package
+    "sn" 'straight-normalize-all
     
     ))
 

@@ -3,6 +3,7 @@
   :bind (("C-c r" . org-ref-helm-insert-cite-link)
 	 ("C-c ir" . org-ref-helm-insert-ref-link)
 	 ("C-c il" . org-ref-helm-insert-label-link))
+
   :custom
   (org-ref-bibliography-notes "~/Dropbox/bibliography/Notes.org")
   (org-ref-default-bibliography '("~/Dropbox/bibliography/references.bib"))
@@ -12,6 +13,7 @@
   (org-ref-default-citation-link "citet")
   (org-ref-ref-color "Brown")
   (org-ref-label-color "light green")
+
   :config
   (require 'org-ref-citeproc))
 
@@ -37,8 +39,10 @@
 (use-package org-tree-slide
   
   :commands org-tree-slide-mode
+
   :custom-face
   (org-tree-slide-header-overlay-face ((t (:foreground "#7F9F7F" :weight bold))))
+
   :config
   (progn
 
@@ -69,8 +73,9 @@
 
 (use-package org-wiki
   
-  :defer 
+  :defer t
   :straight (org-wiki :host github :repo "caiorss/org-wiki")
-  :init (setq org-wiki-location "~/org/wiki"))
+
+  :init (setq org-wiki-location "~/Dropbox/org/wiki/"))
 
 (provide 'init-wiki-lib)

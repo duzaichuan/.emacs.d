@@ -47,7 +47,9 @@
 (use-package org
 
   :mode ("\\.org\\'" . org-mode)
+
   :hook ((org-mode . turn-on-org-cdlatex))
+
   :bind (("C-c l" . org-store-link)
          ("C-c a" . org-agenda)
          ("C-c c" . org-capture)
@@ -55,6 +57,12 @@
          ("C-c C-w" . org-refile)
          ("C-c j" . org-clock-goto)
          ("C-c C-x C-o" . org-clock-out))
+
+  :custom-face
+  (org-block                 ((t (:background "#383838"))))
+  (org-block-begin-line      ((t (:background nil :height 0.95 :foreground "grey70"))))
+  (org-block-end-line        ((t (:background nil :height 0.95 :foreground "grey70"))))
+
   :init
   (setq org-directory "~/Dropbox/Org"
 	org-default-notes-file (concat org-directory "/notes.org")
@@ -78,7 +86,10 @@
 	org-log-done 'time
 	org-refile-use-outline-path 'file
 	org-outline-path-complete-in-steps nil
-	org-refile-allow-creating-parent-nodes 'confirm)
+	org-refile-allow-creating-parent-nodes 'confirm
+	org-hide-emphasis-markers t
+	truncate-lines nil)
+
   :config
   (progn
     (setq org-preview-latex-default-process 'imagemagick
@@ -98,8 +109,13 @@
 	    "bibtex %b"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"
 	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
+    
     (plist-put org-format-latex-options :scale 1.70) ; bigger latex fragment
-    (setq-default truncate-lines nil) ; line wrap in org mode
+    ;; a font-lock substitution for list markers 
+    (font-lock-add-keywords 'org-mode
+                        '(("^ *\\([-]\\) "
+                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
     ;; Quickly insert blocks
     (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
