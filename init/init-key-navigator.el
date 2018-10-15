@@ -37,12 +37,14 @@
   
   :diminish evil-mode
   :defer t
+
   :custom
   (evil-want-keybinding nil "use evil-collection bindings")
   (evil-respect-visual-line-mode t "visual line jk")
   (evil-cross-lines t)
   (evil-move-cursor-back nil)
   (evil-want-C-u-scroll t)
+
   :config
   (progn
     (evil-mode 1)
@@ -79,6 +81,7 @@
   
   :custom (evil-collection-setup-minibuffer t)
   :hook (after-init . evil-collection-init)
+
   :config
   (with-eval-after-load 'pdf-tools
       (require 'evil-collection-pdf) (evil-collection-pdf-setup)))
@@ -91,6 +94,7 @@
   
   :hook (org-mode . evil-org-mode)
   :diminish t
+
   :config
   (progn
     (add-hook 'evil-org-mode-hook
@@ -191,6 +195,7 @@
 
     "s" '(:ignore t :which-key "straight packages")
     "sn" 'straight-normalize-all
+    "sp" 'straight-pull-all
     
     ))
 

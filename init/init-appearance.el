@@ -16,7 +16,6 @@
 (set-face-attribute 'default nil :height 160)
 (setq inhibit-startup-screen t)
 (setq-default cursor-type 'bar)
-(global-hl-line-mode t)
 (global-visual-line-mode)
 (global-prettify-symbols-mode)
 
@@ -44,16 +43,26 @@
 
 (use-package zenburn-theme
 
+  :init
+  ;; use variable-pitch fonts for some headings and titles
+  (setq zenburn-use-variable-pitch t)
+
+  ;; scale headings in org-mode
+  (setq zenburn-scale-org-headlines t)
+
+  ;; scale headings in outline-mode
+  (setq zenburn-scale-outline-headlines t)
+
   :config
-  (setf custom-safe-themes t)
-  (load-theme 'zenburn))
+  ;; (setf custom-safe-themes t)
+  (load-theme 'zenburn t))
 
 (use-package powerline
 
   :custom (powerline-default-separator 'butt)
   :hook (after-init . powerline-center-evil-theme))
 
-(use-package org-beautify-theme )
+;; (use-package org-beautify-theme)
 
 (use-package rainbow-delimiters
 
@@ -65,6 +74,7 @@
   :custom
   (visual-fill-column-center-text t)
   (visual-fill-column-width 90)
+
   :hook
   ((eww-mode nov-mode ein:notebook-multilang-mode mu4e-compose-mode mu4e-view-mode) . visual-fill-column-mode))
 

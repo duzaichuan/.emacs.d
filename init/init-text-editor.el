@@ -92,6 +92,7 @@
 
   :config
   (progn
+   
     (setq org-preview-latex-default-process 'imagemagick
 	  org-image-actual-width (/ (display-pixel-width) 2)
 	  org-pretty-entities t ; render UTF8 characters
@@ -118,7 +119,22 @@
 
     ;; Quickly insert blocks
     (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
+    
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
+
+    ;; Automatically turn on hl-line-mode inside org-mode tables
+    (defun highlight-current-table-line ()
+      (interactive)
+      (if (org-at-table-p)
+	  (hl-line-mode 1)
+	(hl-line-mode -1)))
+
+    (defun setup-table-highlighting ()
+      (add-hook 'post-command-hook #'highlight-current-table-line nil t))
+
+    (add-hook 'org-mode-hook #'setup-table-highlighting)
+    (add-hook 'orgtbl-mode-hook #'setup-table-highlighting)
+    
     (require 'smartparens-org)
     (use-package smartparens-Tex-org :straight nil :load-path "lib/") ))
 
