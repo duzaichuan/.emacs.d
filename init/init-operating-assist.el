@@ -30,18 +30,21 @@
 (use-package company
   
   :diminish company-mode
+
   :defer 0.1
+
+  :bind (:map company-active-map
+	      ("M-n" . nil)
+	      ("M-p" . nil)
+	      ("C-n" . company-select-next)
+	      ("C-p" . company-select-previous))
+
   :custom
   (company-idle-delay 0.1)
   (company-minimum-prefix-length 3)
+
   :config
-  (progn
-    (global-company-mode)
-    (with-eval-after-load 'company
-      (define-key company-active-map (kbd "M-n") nil)
-      (define-key company-active-map (kbd "M-p") nil)
-      (define-key company-active-map (kbd "C-n") #'company-select-next)
-      (define-key company-active-map (kbd "C-p") #'company-select-previous))))
+  (global-company-mode) )
 
 (use-package paredit
   
@@ -53,6 +56,7 @@
   
   :diminish smartparens-mode
   :custom (show-paren-when-point-inside-paren t)
+
   :init
   (progn
     (show-paren-mode t)
@@ -64,6 +68,7 @@
 		 (funcall fn))))) )
   
   :hook (after-init . smartparens-global-mode)
+
   :config
   (progn
     ;; single "'" in emacs-lisp mode 
@@ -82,11 +87,13 @@
 (use-package ivy
   
   :diminish ivy-mode
+
   :bind (("C-x b" . ivy-switch-buffer)
          ("C-x B" . ivy-switch-buffer-other-window)
          ("M-H"   . ivy-resume)
 	 :map ivy-switch-buffer-map
 	 ("C-k" . ivy-switch-buffer-kill))
+
   :custom
   (ivy-dynamic-exhibit-delay-ms 200)
   (ivy-height 10)
@@ -95,6 +102,7 @@
   (ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
   (ivy-use-virtual-buffers t)
   (ivy-wrap t)
+
   :config
   (progn
    (ivy-mode 1)
@@ -110,6 +118,7 @@
            (concat "\\(\\`\\.[^.]\\|"
                    (regexp-opt completion-ignored-extensions)
                    "\\'\\)"))
+
   :bind (("C-*"     . counsel-org-agenda-headlines)
          ("C-x C-f" . counsel-find-file)
          ("C-h f"   . counsel-describe-function)
@@ -120,6 +129,7 @@
          ("M-s g" . counsel-rg)
          ("M-s j" . counsel-dired-jump)
 	 ("C-x p f" . counsel-git))
+
   :config
   (add-to-list 'ivy-sort-matches-functions-alist
                '(counsel-find-file . ivy--sort-files-by-date)))
@@ -127,7 +137,9 @@
 (use-package undo-tree
   
   :diminish undo-tree-mode
+
   :bind ("s-z" . undo-tree-undo)
+
   :config
   (progn
     (global-undo-tree-mode 1)
@@ -137,6 +149,7 @@
 (use-package expand-region
   
   :bind ("C-=" . er/expand-region)
+
   :config
   (defun er/add-text-mode-expansions ()
     (make-variable-buffer-local 'er/try-expand-list)

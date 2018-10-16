@@ -1,6 +1,7 @@
 (use-package twittering-mode
   
   :commands twit
+
   :custom
   (twittering-use-master-password t)
   (epa-pinentry-mode 'loopback)
@@ -10,7 +11,9 @@
 (use-package md4rd
   
   :commands md4rd
+
   :hook (md4rd-mode . visual-fill-column-mode)
+
   :custom
   (md4rd-subs-active '(emacs Economics writing))
   (md4rd--oauth-refresh-token "147565326956-dDXMWAq0SSME9Qvb6-hafaRsD-s")
@@ -19,6 +22,7 @@
 (use-package circe
   
   :commands circe
+
   :custom
   (circe-use-cycle-completion t)
   (my-credentials-file "~/.private.el")
@@ -27,6 +31,7 @@
              :nick "Solatle"
              :channels ("#org-mode" "#evil-mode" :after-auth "#emacs")
              :nickserv-password du/nickserv-password)))
+
   :init
   (defun du/nickserv-password (server)
       (with-temp-buffer
@@ -37,6 +42,7 @@
 (use-package circe-notifications
   
   :after circe
+
   :config
   (progn
     (autoload 'enable-circe-notifications "circe-notifications" nil t)

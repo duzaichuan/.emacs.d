@@ -23,6 +23,7 @@
   
   :diminish which-key-mode
   :after general
+
   :config
   (progn
     (which-key-mode)
@@ -80,6 +81,7 @@
 (use-package evil-collection
   
   :custom (evil-collection-setup-minibuffer t)
+  
   :hook (after-init . evil-collection-init)
 
   :config
@@ -122,8 +124,10 @@
 (use-package general
   
   :after evil-collection
+
   :config
   (general-evil-setup t)
+
   (general-nvmap
     :prefix "SPC"
     :keymaps 'override

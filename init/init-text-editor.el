@@ -9,6 +9,7 @@
   :straight (auctex :host github :repo "raxod502/auctex"
                     :branch "fork/1"
                     :files (:defaults (:exclude "doc/*.texi")))
+
   :mode ("\\.tex\\'" . TeX-latex-mode)
   :custom
   (TeX-auto-save t)
@@ -20,6 +21,7 @@
   (reftex-plug-into-AUCTeX t)
   (LaTeX-electric-left-right-brace t)
   (TeX-master nil)
+
   :config
   (progn
     (fset 'tex-font-lock-suscript 'ignore)
@@ -165,6 +167,7 @@
 (use-package org-mime
   
   :commands (org-mime-htmlize)
+
   :custom
   (org-mime-up-subtree-heading 'org-back-to-heading)
   (org-mime-export-options '(:section-numbers nil
@@ -188,6 +191,7 @@
   :mode (("\\`README\\.md\\'" . gfm-mode)
          ("\\.md\\'"          . markdown-mode)
          ("\\.markdown\\'"    . markdown-mode))
+
   :custom
   (markdown-enable-math t)
   (markdown-command "multimarkdown"))
@@ -195,10 +199,13 @@
 (use-package writeroom-mode
   
   :commands writeroom-mode
+
   :hook (org-mode markdown-mode LaTeX-mode)
+
   :bind (:map writeroom-mode-map
 	      ("s-?" . nil)
 	      ("C-c m" . writeroom-toggle-mode-line))
+
   :custom
   (writeroom-fullscreen-effect 'maximized)
   (writeroom-bottom-divider-width 0)
@@ -208,11 +215,14 @@
 (use-package ispell
 
   :straight nil
+
   :commands ispell
+
   :custom
   (ispell-program-name (executable-find "hunspell"))
   (ispell-choices-win-default-height 5)
   (ispell-dictionary "en_US")
+
   :config
   (progn
     (setenv "DICTIONARY" "en_US")
@@ -247,6 +257,7 @@
   :bind (("M-p" . pyim-convert-code-at-point)
 	 ("M-f" . pyim-forward-word)
 	 ("M-b" . pyim-backward-word))
+
   :init
   (progn
     (setq default-input-method "pyim"
@@ -266,6 +277,7 @@
     (setq-default pyim-punctuation-half-width-functions
                 '(pyim-probe-punctuation-line-beginning
                   pyim-probe-punctuation-after-punctuation)) )
+
   :config
   (use-package pyim-basedict
       :config (pyim-basedict-enable)))

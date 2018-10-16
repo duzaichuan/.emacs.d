@@ -1,9 +1,12 @@
 (use-package recentf
+
   :bind ("\C-x\ \C-r" . recentf-open-files)
+
   :custom
   (recentf-max-saved-items 500)
   (recentf-max-menu-items 15)
   (recentf-auto-cleanup 'never "disable recentf-cleanup on Emacs start, because it can cause problems with remote files")
+
   :config
   (recentf-mode t))
 
@@ -12,12 +15,15 @@
   :bind ("C-." . imenu-anywhere))
 
 (use-package dired
+
   :straight nil
   :defer t
+
   :custom
   (dired-recursive-deletes 'always "always delete and copy recursively")
   (dired-recursive-copies 'always)
   (dired-dwim-target t)
+
   :config
   (progn
     ;; dired - reuse current buffer by pressing 'a'
@@ -35,7 +41,9 @@
     ))
 
 (use-package dired-x
+
   :straight nil
+
   :bind ("C-x C-j" . dired-jump))
 
 (use-package treemacs
@@ -44,6 +52,7 @@
   (:map global-map
 	([f8] . treemacs)
 	("C-c C-f" . treemacs-find-file))
+
   :config
   (progn
     (setq treemacs-follow-after-init          t
@@ -70,7 +79,9 @@
   
   ;; :after magit
   :defer t
+
   :custom (magithub-clone-default-directory "~/github")
+
   :config
   (magithub-feature-autoinject t)
   )
@@ -82,6 +93,7 @@
 (use-package deft
   
   :commands (deft)
+
   :custom
   (deft-directory "~/Dropbox/Org")
   (deft-extensions        '("org"))
@@ -92,6 +104,7 @@
 (use-package bibliothek
   
   :commands bibliothek
+
   :custom (bibliothek-path (list "~/Desktop")))
 
 (provide 'init-project-manager)

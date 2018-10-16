@@ -8,6 +8,7 @@
   (emms-info-functions '(emms-info-mpd))
   (emms-player-mpd-server-name "localhost")
   (emms-player-mpd-server-port "6610")
+
   :config
   (progn
     (require 'emms-setup)

@@ -20,6 +20,7 @@
 (use-package helm-bibtex
   
   :defer t
+
   :custom
   (bibtex-completion-bibliography "~/Dropbox/bibliography/references.bib")
   (bibtex-completion-library-path "~/Dropbox/bibliography/bibtex-pdfs")
@@ -74,6 +75,7 @@
 (use-package org-wiki
   
   :defer t
+
   :straight (org-wiki :host github :repo "caiorss/org-wiki")
 
   :init (setq org-wiki-location "~/Dropbox/org/wiki/"))

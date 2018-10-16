@@ -43,18 +43,14 @@
 
 (use-package zenburn-theme
 
-  :init
-  ;; use variable-pitch fonts for some headings and titles
-  (setq zenburn-use-variable-pitch t)
+  :custom
+  (zenburn-use-variable-pitch t "use variable-pitch fonts for some headings and titles")
 
-  ;; scale headings in org-mode
-  (setq zenburn-scale-org-headlines t)
+  (zenburn-scale-org-headlines t "scale headings in org-mode")
 
-  ;; scale headings in outline-mode
-  (setq zenburn-scale-outline-headlines t)
+  (zenburn-scale-outline-headlines t "scale headings in outline-mode")
 
   :config
-  ;; (setf custom-safe-themes t)
   (load-theme 'zenburn t))
 
 (use-package powerline

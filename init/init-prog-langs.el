@@ -32,6 +32,7 @@
 (use-package cider
   
   :commands (cider-connect cider-jack-in)
+
   :custom
   (cider-auto-select-error-buffer t)
   (cider-repl-pop-to-buffer-on-connect nil)
@@ -53,9 +54,12 @@
 (use-package ess
   
   :mode ("\\.R$"  . R-mode)
+
   :bind (:map inferior-ess-mode-map
 	      ("C-c w" . ess-execute-screen-options))
+
   :custom (ess-fancy-comments nil "Make ESS use RStudio's indenting style")
+
   :config
   (progn
     (add-hook 'ess-mode-hook (lambda () (ess-set-style 'RStudio))) ; Make ESS use more horizontal screen	     
@@ -73,15 +77,20 @@
 (use-package matlab-mode
   
   :mode "\\.m\\'"
+
   :bind (:map matlab-shell-mode-map
               ("C-c C-c" . term-interrupt-subjob))
+
   :commands matlab-shell
+
   :hook (matlab-mode . display-line-numbers-mode)
+
   :custom
   (matlab-indent-function t)
   (semantic-matlab-root-directory "/Applications/MATLAB/MATLAB_R2017b.app")
   (matlab-mode-install-path "/Applications/MATLAB/MATLAB_R2017b.app/toolbox")
   (matlab-shell-command "/Applications/MATLAB/MATLAB_R2017b.app/bin/matlab")
+
   :init
   (progn
     ;; workaround for emacs 26
@@ -99,6 +108,7 @@
       (other-window 1)
       (matlab-shell))
     )
+
   :config (matlab-cedet-setup))
 
 (use-package dynare
@@ -110,12 +120,15 @@
 (use-package python
   
   :mode ("\\.py\\'" . python-mode)
+
   :hook (python-mode . display-line-numbers-mode)
+
   :interpreter ("python" . python-mode))
 
 (use-package ein
   
   :bind ([f6] . ein:jupyter-server-start)
+
   :custom (ein:jupyter-default-notebook-directory "~/Jupyter/"))
 
 (provide 'init-prog-langs)

@@ -8,6 +8,7 @@
 	 (mu4e-compose-mode . turn-off-auto-fill))
   :config
   (progn
+
     (setq mail-user-agent 'mu4e-user-agent
 	  mu4e-maildir "~/Maildir"
 	  mu4e-get-mail-command "mbsync -a"

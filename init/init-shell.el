@@ -4,7 +4,9 @@
 	 :map comint-mode-map
 	 ([up] . comint-previous-input)
 	 ([down] . comint-next-input))
+
   :commands eshell-mode
+
   :init
   (setq eshell-highlight-prompt nil
 	eshell-visual-subcommands '(("git" "log" "diff" "show"))
@@ -18,6 +20,7 @@
 	eshell-glob-case-insensitive t
 	eshell-scroll-to-bottom-on-input 'all
 	eshell-list-files-after-cd t)
+
   :config
   (add-hook 'eshell-mode-hook
 	    (lambda ()(eshell-cmpl-initialize)))
@@ -30,7 +33,9 @@
 (use-package eshell-prompt-extras
   
   :after eshell
+
   :custom (eshell-prompt-function 'epe-theme-lambda)
+
   :config
   (with-eval-after-load "esh-opt"
     (require 'virtualenvwrapper)
