@@ -61,7 +61,7 @@
          ("C-c C-x C-o" . org-clock-out))
 
   :custom-face
-  (org-block                 ((t (:background "#383838"))))
+  (org-block                 ((t (:background "#424242"))))
   (org-block-begin-line      ((t (:background nil :height 0.95 :foreground "grey70"))))
   (org-block-end-line        ((t (:background nil :height 0.95 :foreground "grey70"))))
 
@@ -89,7 +89,6 @@
 	org-refile-use-outline-path 'file
 	org-outline-path-complete-in-steps nil
 	org-refile-allow-creating-parent-nodes 'confirm
-	org-hide-emphasis-markers t
 	truncate-lines nil)
 
   :config
@@ -108,10 +107,10 @@
 	  org-latex-caption-above '(table image)
 	  ;; set value of the variable org-latex-pdf-process
 	  org-latex-pdf-process
-	  '("pdflatex -interaction nonstopmode -output-directory %o %f"
+	  '("xelatex -interaction nonstopmode -output-directory %o %f"
 	    "bibtex %b"
-	    "pdflatex -interaction nonstopmode -output-directory %o %f"
-	    "pdflatex -interaction nonstopmode -output-directory %o %f"))
+	    "xelatex -interaction nonstopmode -output-directory %o %f"
+	    "xelatex -interaction nonstopmode -output-directory %o %f"))
     
     (plist-put org-format-latex-options :scale 1.70) ; bigger latex fragment
     ;; a font-lock substitution for list markers 
@@ -160,8 +159,8 @@
 (use-package ox-word
 
   :straight nil
-  :load-path "lib/"
-  :after org)
+  :after org
+  :load-path "lib/")
 
 ;; a WYSiWYG HTML mail editor that can be useful for sending tables, fontified source code, and inline images in email. 
 (use-package org-mime
