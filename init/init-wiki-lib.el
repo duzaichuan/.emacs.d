@@ -11,8 +11,6 @@
   (org-ref-show-broken-links nil)
   (org-ref-default-ref-type "eqref")
   (org-ref-default-citation-link "citet")
-  (org-ref-ref-color "Brown")
-  (org-ref-label-color "light green")
 
   :config
   (require 'org-ref-citeproc))

@@ -46,11 +46,17 @@
   :config
   (global-company-mode) )
 
-(use-package paredit
+(use-package lispy
   
-  :diminish paredit-mode
-  :bind ("C-c d" . paredit-delete-region)
-  :hook ((lisp-mode emacs-lisp-mode clojure-mode ielm-mode eval-expression-minibuffer-setup) . paredit-mode))
+  :diminish lispy-mode
+
+  :hook ((lisp-mode scheme-mode emacs-lisp-mode clojure-mode julia-mode) . lispy-mode))
+
+(use-package lispyville
+
+  :diminish lispyville-mode
+
+  :hook (lispy-mode . lispyville-mode))
 
 (use-package smartparens
   

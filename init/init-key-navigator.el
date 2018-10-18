@@ -104,15 +104,6 @@
     (require 'evil-org-agenda)
     (evil-org-agenda-set-keys)))
 
-(use-package evil-cleverparens
-  
-  :after (evil paredit)
-  :custom (evil-cleverparens-swap-move-by-word-and-symbol t))
-
-(use-package evil-paredit
-  
-  :after (evil paredit))
-
 (use-package evil-nerd-commenter
   
   :bind ("M-;" . evilnc-comment-or-uncomment-lines))

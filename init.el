@@ -4,6 +4,7 @@
       gc-cons-threshold 64102410241024
       gc-cons-percentage 0.9
       auto-window-vscroll nil
+      load-prefer-newer t
       straight-check-for-modifications 'live
       straight-recipes-gnu-elpa-use-mirror t
       straight-use-package-by-default t)
