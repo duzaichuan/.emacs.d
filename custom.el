@@ -238,7 +238,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(neo-banner-face ((t (:foreground "dark cyan"))))
- '(neo-header-face ((t (:foreground "dark gray" :weight semi-bold))))
- '(vertical-border ((t (:foreground "#3F3F3F"))))
- '(pdf-occur-document-face ((t (:foreground "dark magenta")))))
+ '(vertical-border ((t (:foreground "#2B2B2B")))))

@@ -6,7 +6,7 @@
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
 ;; fringe width
-(fringe-mode '(nil . 0))
+(fringe-mode '(1 . 0))
 
 ;; Default minibuffer message
 (defun display-startup-echo-area-message ()

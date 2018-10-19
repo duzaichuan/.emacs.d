@@ -73,18 +73,20 @@
 
 (use-package magit
   
-  :bind ("C-x g" . magit-status))
+  :bind ("C-x g" . magit-status)
+
+  :custom
+  (magit-display-buffer-function 'magit-display-buffer-fullframe-status-v1))
 
 (use-package magithub
   
-  ;; :after magit
-  :defer t
+  :after magit
 
-  :custom (magithub-clone-default-directory "~/github")
+  :custom
+  (magithub-clone-default-directory "~/Github")
 
   :config
-  (magithub-feature-autoinject t)
-  )
+  (magithub-feature-autoinject t))
 
 (use-package projectile
   
