@@ -240,4 +240,5 @@
  ;; If there is more than one, they won't work right.
  '(neo-banner-face ((t (:foreground "dark cyan"))))
  '(neo-header-face ((t (:foreground "dark gray" :weight semi-bold))))
+ '(vertical-border ((t (:foreground "#3F3F3F"))))
  '(pdf-occur-document-face ((t (:foreground "dark magenta")))))

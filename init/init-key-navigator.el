@@ -148,7 +148,7 @@
     "o" '(:ignore t :which-key "org")
     "oa" 'org-agenda
     "oc" 'org-capture
-    "ob" 'org-iswitchb
+    "ob" 'org-insert-structure-template
     "or" 'org-refile
     "ol" 'org-store-link
     "oe" 'org-export-dispatch

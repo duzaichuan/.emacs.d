@@ -5,6 +5,9 @@
 (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
 (add-to-list 'default-frame-alist '(ns-appearance . dark))
 
+;; fringe width
+(fringe-mode '(nil . 0))
+
 ;; Default minibuffer message
 (defun display-startup-echo-area-message ()
   (message "Write!"))

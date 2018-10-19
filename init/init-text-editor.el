@@ -96,10 +96,10 @@
    
     (setq org-preview-latex-default-process 'imagemagick
 	  org-image-actual-width (/ (display-pixel-width) 2)
-	  org-pretty-entities t ; render UTF8 characters
+	  org-pretty-entities t		; render UTF8 characters
 	  org-pretty-entities-include-sub-superscripts nil
 	  org-confirm-babel-evaluate nil
-	  org-src-fontify-natively t ; syntax highlight in org mode
+	  org-src-fontify-natively t	; syntax highlight in org mode
 	  org-highlight-latex-and-related '(latex) ; org-mode buffer latex syntax highlighting
 	  org-footnote-auto-adjust t ; renumber footnotes when new ones are inserted
 	  org-export-with-smart-quotes t ; export pretty double quotation marks
@@ -111,16 +111,16 @@
 	    "bibtex %b"
 	    "xelatex -interaction nonstopmode -output-directory %o %f"
 	    "xelatex -interaction nonstopmode -output-directory %o %f"))
+
+    (require 'org-tempo) ;; Easy Templates Expansion
     
     (plist-put org-format-latex-options :scale 1.70) ; bigger latex fragment
+
     ;; a font-lock substitution for list markers 
     (font-lock-add-keywords 'org-mode
-                        '(("^ *\\([-]\\) "
-                           (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+                            '(("^ *\\([-]\\) "
+                               (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
-    ;; Quickly insert blocks
-    (add-to-list 'org-structure-template-alist '("s" "#+NAME: ?\n#+BEGIN_SRC \n\n#+END_SRC"))
-    
     (add-hook 'org-babel-after-execute-hook 'org-display-inline-images) ; images auto-load
 
     ;; Automatically turn on hl-line-mode inside org-mode tables
@@ -137,7 +137,10 @@
     (add-hook 'orgtbl-mode-hook #'setup-table-highlighting)
     
     (require 'smartparens-org)
-    (use-package smartparens-Tex-org :straight nil :load-path "lib/") ))
+
+    (use-package smartparens-Tex-org :straight nil :load-path "lib/")
+
+    ))
 
 (use-package org-auto-formula
 
