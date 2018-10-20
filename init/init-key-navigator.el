@@ -37,6 +37,7 @@
 (use-package evil
   
   :diminish evil-mode
+
   :defer t
 
   :custom
@@ -73,6 +74,7 @@
 (use-package evil-escape
   
   :after evil
+
   :config
   (progn
     (evil-escape-mode)
@@ -95,6 +97,7 @@
 (use-package evil-org
   
   :hook (org-mode . evil-org-mode)
+
   :diminish t
 
   :config

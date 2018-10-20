@@ -17,7 +17,11 @@
 (use-package dired
 
   :straight nil
-  :defer t
+
+  :bind (:map dired-mode-map
+	      ("C-c z" . (lambda () (interactive)
+			   (let ((fn (dired-get-file-for-visit)))
+			     (start-process "default-app" nil "open" fn)))))
 
   :custom
   (dired-recursive-deletes 'always "always delete and copy recursively")
@@ -28,7 +32,7 @@
   (progn
     ;; dired - reuse current buffer by pressing 'a'
     (put 'dired-find-alternate-file 'disabled nil)
-   ;; get rid of a message error in osx
+    ;; get rid of a message error in osx
     (when (eq system-type 'darwin)
       (require 'ls-lisp)
       (setq ls-lisp-use-insert-directory-program nil
