@@ -149,6 +149,8 @@
     "gs" 'magit-status
     
     "o" '(:ignore t :which-key "org")
+    "oo" 'org-toggle-narrow-to-subtree
+    "ov" 'org-narrow-to-subtree
     "oa" 'org-agenda
     "oc" 'org-capture
     "ob" 'org-insert-structure-template
@@ -194,6 +196,9 @@
     "s" '(:ignore t :which-key "straight packages")
     "sn" 'straight-normalize-all
     "sp" 'straight-pull-all
+
+    "i" '(:ignore t :which-key "imenu-list")
+    "ii" 'imenu-list-smart-toggle
     
     ))
 

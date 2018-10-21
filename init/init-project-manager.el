@@ -70,10 +70,9 @@
           treemacs-show-hidden-files          t
           treemacs-never-persist              nil
           treemacs-is-never-other-window      nil
-          treemacs-goto-tag-strategy          'refetch-index
-	  treemacs-width                      30)
-   (treemacs-follow-mode t)
-   (treemacs-filewatch-mode t) ))
+          treemacs-goto-tag-strategy          'refetch-index)
+    (treemacs-follow-mode t)
+    (treemacs-filewatch-mode t) ))
 
 (use-package magit
   

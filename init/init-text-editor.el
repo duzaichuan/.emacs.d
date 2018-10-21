@@ -11,6 +11,7 @@
                     :files (:defaults (:exclude "doc/*.texi")))
 
   :mode ("\\.tex\\'" . TeX-latex-mode)
+
   :custom
   (TeX-auto-save t)
   (TeX-parse-self t)
@@ -65,6 +66,9 @@
   (org-block-begin-line      ((t (:background nil :height 0.95 :foreground "grey70"))))
   (org-block-end-line        ((t (:background nil :height 0.95 :foreground "grey70"))))
 
+  :custom
+  (org-imenu-depth 3 "Three-level entries in imenu-list")
+  
   :init
   (setq org-directory "~/Dropbox/Org"
 	org-default-notes-file (concat org-directory "/notes.org")

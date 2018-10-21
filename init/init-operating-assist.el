@@ -24,6 +24,7 @@
 (use-package popwin
   
   :diminish t
+
   :config
   (popwin-mode t))
 
@@ -61,6 +62,7 @@
 (use-package smartparens
   
   :diminish smartparens-mode
+
   :custom (show-paren-when-point-inside-paren t)
 
   :init
@@ -84,10 +86,12 @@
 (use-package helm
   
   :commands helm-mini
+
   :bind (:map helm-map
               ("<tab>" . helm-execute-persistent-action)
               ("C-z"   . helm-select-action)
               ("A-v"   . helm-previous-page))
+
   :config (helm-autoresize-mode 1))
 
 (use-package ivy
@@ -164,5 +168,16 @@
                               '(mark-paragraph
 				mark-page))))
   (add-hook 'text-mode-hook 'er/add-text-mode-expansions))
+
+(use-package imenu-list
+
+  :commands imenu-list-smart-toggle
+
+  :custom
+  (imenu-list-focus-after-activation t)
+
+  :init
+  (add-hook 'org-mode-hook
+	    (lambda () (setq-local imenu-list-after-jump-hook 'org-narrow-to-subtree))))
 
 (provide 'init-operating-assist)
