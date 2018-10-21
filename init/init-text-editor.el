@@ -233,7 +233,7 @@
   (progn
     (setenv "DICTIONARY" "en_US")
     
-    (defun endless/org-ispell ()
+    (defun du-org-ispell ()
       "Configure `ispell-skip-region-alist' for `org-mode'."
       (make-local-variable 'ispell-skip-region-alist)
       (add-to-list 'ispell-skip-region-alist '(org-property-drawer-re))
@@ -241,15 +241,19 @@
       (add-to-list 'ispell-skip-region-alist '("=" "="))
       ;; this next line approximately ignores org-ref-links
       (add-to-list 'ispell-skip-region-alist '("cite:" . "[[:space:]]"))
-      (add-to-list 'ispell-skip-region-alist '("citet:" . "[[:space:]]"))
+      (add-to-list 'ispell-skip-region-alist '("citet" . "[[:space:]]"))
+      (add-to-list 'ispell-skip-region-alist '("citep" . "[[:space:]]"))
       (add-to-list 'ispell-skip-region-alist '("label:" . "[[:space:]]"))
       (add-to-list 'ispell-skip-region-alist '("ref:" . "[[:space:]]"))
       (add-to-list 'ispell-skip-region-alist '("eqref:" . "[[:space:]]"))
-      (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_SRC" . "^#\\+END_SRC")))
+      (add-to-list 'ispell-skip-region-alist '("Cref:" . "[[:space:]]"))
+      (add-to-list 'ispell-skip-region-alist '("\\[fn:.+:" . "\\]"))
+      (add-to-list 'ispell-skip-region-alist '("^http" . "\\]"))
+      (add-to-list 'ispell-skip-region-alist '("- \\*.+" . ".*\\*: "))
+      (add-to-list 'ispell-skip-region-alist '("^#\\+BEGIN_SRC" . "^#\\+END_SRC"))
+      (add-to-list 'ispell-skip-region-alist '(":\\(PROPERTIES\\|LOGBOOK\\):" . ":END:"))) 
 
-    (add-hook 'org-mode-hook #'endless/org-ispell)
-
-    ))
+    (add-hook 'org-mode-hook #'du-org-ispell)))
 
 (use-package langtool
   
